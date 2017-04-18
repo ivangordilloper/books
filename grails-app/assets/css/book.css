@@ -1,0 +1,48 @@
+.image-book{
+  height: 300px!important;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto
+}
+.image-profile{
+  height: 31px;  width: auto; margin-bottom: -9px; margin-right: 10px!important;
+
+}
+
+.image-book-add{
+  height: 300px!important;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto;
+  margin-left: 339px;
+
+}
+
+@media screen and (max-width: 1680px) {
+
+
+}
+
+@media screen and (max-width: 1280px) {
+  .image-book-add{
+    height: 206px!important;
+width: auto;
+display: block;
+margin: 0 auto 0 auto;
+margin-left: 203px;
+
+  }
+
+}
+
+@media screen and (max-width: 736px) {
+
+  .image-book-add{
+    height: 180px!important;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto;
+  margin-left: 63px
+
+  }
+}

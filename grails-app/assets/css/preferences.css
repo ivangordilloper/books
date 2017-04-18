@@ -1,0 +1,42 @@
+.image-list{
+  height: 100px;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto
+}
+
+.image-list2{
+  height: 50px;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto
+}
+
+
+.image-list3{
+  height: 20px;
+  display:block;
+  text-align:center;
+}
+
+.image-profile{
+  height: 31px;  width: auto; margin-bottom: -9px; margin-right: 10px!important;
+
+}
+.img-config{
+  height: 20px;
+  margin-top: -37px;
+}
+
+.img-config2{
+  height: 34px;
+  margin-top: -50px;
+  margin-right: 50px;
+}
+.img-config3{
+  height: 26px;
+  margin-top: -48px;
+
+
+}
+
