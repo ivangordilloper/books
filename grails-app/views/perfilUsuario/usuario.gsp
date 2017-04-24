@@ -35,15 +35,87 @@
             </div>
         </div>
         </section>
+        <section >
+            <div id="map" style="width:864px;height:400px;"></div>
+            <script>
+                var pos;
+                var map;
+                var infoWindow;
+                var labels = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var labelIndex = 0;
+
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 14
+                    });
+                    infoWindow = new google.maps.InfoWindow({map: map});
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            var libreria = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                            var icon = {
+                                url: "/assets/gps.png", // url
+                                scaledSize: new google.maps.Size(50, 50), // scaled size
+                                origin: new google.maps.Point(0,0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                            };
+                            var markerActual = new google.maps.Marker({
+                                position: pos,
+                                map: map,
+                                icon: icon,
+                                label: 'A'
+                            })
+
+                            map.setCenter(pos);
+                            function callback(results, status) {
+                                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                    for (var i = 0; i < results.length; i++) {
+                                        createMarker(results[i]);
+                                    }
+                                }
+                            }
+
+                            function createMarker(place) {
+                                var placeLoc = place.geometry.location;
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    label: labels[labelIndex++ % labels.length],
+                                    position: place.geometry.location
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    infoWindow.setContent(place.name);
+                                    //infoWindow.setContent(place.address);
+                                    infoWindow.open(map, this);
+                                });
+                            }
+                            var service = new google.maps.places.PlacesService(map);
+                            service.nearbySearch({
+                                location: libreria,
+                                radius: 100,
+                                types: ['book_store']
+                            }, callback);
+                        }, function() {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+        </section>
+    <section class="spotlight">
+        <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div><div class="content">
+        <h2>Diviertete eligiendo tus libros favoritos
+        </h2>
+
+    </div>
 
 
-
-        <section class="spotlight">
-            <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div><div class="content">
-            <h2>Diviertete eligiendo tus libros favoritos
-            </h2>
-
-        </div>
         </section>
         <div id="example" class="modal hide fade in" style="display: none;">
             <div class="modal-header">
