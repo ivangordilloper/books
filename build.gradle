@@ -40,6 +40,7 @@ dependencyManagement {
     applyMavenExclusions false
 }
 
+
 dependencies {
     //compile fileTree(dir: './lib', include: ['*.jar'])
     //compile 'org.grails.plugins:spring-security-core:3.1.1'
@@ -64,6 +65,8 @@ dependencies {
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    //compile 'org.grails.plugins:wschat:3.0.16'
+    
 }
 
 task wrapper(type: Wrapper) {

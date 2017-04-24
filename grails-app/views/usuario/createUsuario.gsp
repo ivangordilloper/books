@@ -8,6 +8,8 @@
     <g:external dir="js" file="angular/angular.min.js"/>
     <g:external dir="js" file="angular/angular-messages.min.js"/>
     <g:external dir="js" file="angular/angular.js"/>
+
+
 </head>
 <body>
     <body ng-app="app" >
@@ -22,7 +24,7 @@
                         <section>
                             <div class="box">
                                     <h4>Regístrate</h4>
-                                    <form action="crear" method="post" name="form" >
+                                    <form action="crear" method="post" name="form" id="formRegister">
                                         <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                             <div class="row uniform">
                                                 <div class="12u 12u$(xsmall) controls">
@@ -79,10 +81,14 @@
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
                                                     <ul class="actions">
-                                                        <li ><g:submitButton name="submit" value="Regístrate" class="special"  onClick="validarPasswd()" /></li>
+                                                        <li >
+                                                            <button name="submit" value="Regístrate" ng-click="form.$valid" >SUB</button>
+                                                            <button type="button" id="validar" ng-click="submitted = true">Validate!</button>
+                                                            <a class="special" style="width: 150px; cursor: pointer;" onclick="$('#MSGC_01').modal('show');">CANCELAR</a>
+                                                            <g:submitButton name="submit" value="Regístrate" class="special"  onClick="validarPasswd()" /></li>
                                                     </ul>
                                                 </div>
-                                                <button name="submit" value="Regístrate" ng-click="form.$valid && validate()" >SUB</button>
+
                                             </div>
                                         </div>
                                     </form>
@@ -95,11 +101,15 @@
                 </section>
             </article>
         </div>
+
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.scrollex.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
         <script src="assets/js/util.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -121,8 +131,20 @@
                 });
             });
         </script>
+
         <script type="text/javascript">
-            function validarPasswd() {
+            jQuery.validator.setDefaults({
+                debug: true,
+                success: "valid"
+            });
+            var form = $( '#formRegister' );
+            form.validate();
+            $( "#validar" ).click(function() {
+                $('#MSGC_01').modal('show');
+                alert( "Valid: " + form.valid() );
+            });
+
+            /*function validarPasswd() {
 
 
                 var p1 = document.getElementById("passwd").value;
@@ -159,7 +181,7 @@
                 }
 
 
-            }
+            }*/
         </script>
     </body>
 </body>
