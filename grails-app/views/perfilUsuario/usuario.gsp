@@ -2,6 +2,8 @@
 <head>
     <title> USUARIO </title>
     <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="usuario.css"/>
+
     <g:external dir="css" file="swiper.min.css"/>
     <g:external dir="css" file="slides.css"/>
 </head>
@@ -14,7 +16,7 @@
         </header>
 
 
-        <section class="spotlight">
+        <section class="spotlight swipbooks">
             <div class="image"><g:img dir="image" file="choose.jpg" alt="" /></div><div class="content">
             <div class="swiper-container">
                 <h4>Tal vez te gusten estos libros</h4>
@@ -35,8 +37,38 @@
             </div>
         </div>
         </section>
-        <section >
-            <div id="map" style="width:864px;height:400px;"></div>
+
+    <section class="spotlight">
+        <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div>
+        <div class="content">
+        <h2>Diviertete eligiendo tus libros favoritos
+        </h2>
+    </div>
+    </section>
+    <section class="spotlight white-back">
+        <div class="content listas-full">
+            <div class="swiper-container">
+                <h4>Tal vez te gusten estos libros</h4>
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+
+                    <div class="swiper-slide separator-slide"> <a  href="/usuario/libro"><g:img dir="images" file="book.png" class="image-slide"/><div class="text-book">Libro 1</div></a></div>
+
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- If we need scrollbar -->
+            </div>
+        </div>
+    </section>
+
+        <section class="spotlight" >
+            <div id="map" class="maps"></div>
             <script>
                 var pos;
                 var map;
@@ -46,7 +78,7 @@
 
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 14
+                        zoom: 16
                     });
                     infoWindow = new google.maps.InfoWindow({map: map});
                     if (navigator.geolocation) {
@@ -94,7 +126,7 @@
                             var service = new google.maps.places.PlacesService(map);
                             service.nearbySearch({
                                 location: libreria,
-                                radius: 100,
+                                radius: 1000,
                                 types: ['book_store']
                             }, callback);
                         }, function() {
@@ -108,15 +140,11 @@
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
         </section>
-    <section class="spotlight">
-        <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div><div class="content">
-        <h2>Diviertete eligiendo tus libros favoritos
-        </h2>
-
-    </div>
 
 
-        </section>
+
+
+
         <div id="example" class="modal hide fade in" style="display: none;">
             <div class="modal-header">
                 <a data-dismiss="modal" class="close">×</a>

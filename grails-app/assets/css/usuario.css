@@ -1,0 +1,53 @@
+@media screen and (max-width: 1680px) {
+    #main > header {
+        padding: 3em 0px 2em 0!important;
+    }
+}
+@media screen and (max-width: 1200px) {
+    #main > header {
+        padding: 3em 0px 2em 0!important;
+    }
+}
+@media screen and (max-width: 980px) {
+    #main > header {
+        padding: 3em 0px 2em 0!important;
+
+    .spotlight .image{
+        width: 100% !important;
+    }
+    }
+}
+@media screen and (max-width: 500px) {
+    #main > header {
+        padding: 3em 0px 2em 0!important;
+    }
+}
+@media screen and (max-width: 1680px) {
+    #main > header {
+        padding: 3em 0px 2em 0!important;
+    }
+}
+.swipbooks{
+    height:250px!important;
+}
+.spotlight .image{
+    width: 26%;
+}
+.spotlight .content{
+    max-width: 64em;
+    width: 73%;
+}
+.maps{
+    width:100%;height:400px;
+}
+.spotlight:nth-child(4) {
+    background-color: rgba(0, 0, 0, 0.3)!important;
+}
+.listas-full{
+    max-width: 80em!important;
+    width: 100%!important;
+}
+.separator-slide{
+    width: 180px!important;
+    margin-right: 0px!important;
+}
