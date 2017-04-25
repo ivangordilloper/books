@@ -12,31 +12,42 @@ class ListaPreferenciaAutorController {
 
     }
 
-    def update(){
+    def update(long id) {
+  /*      def lis = ListaPreferenciaAutor.findById(id)
+        [lis: lis]
+    */}
 
+    def delete(long id) {
+  /*      def lista = ListaPreferenciaAutor.findById(id)
+        lista.delete()
+*/
     }
 
-    def delete(){
-
-    }
-
-    def verListaPreferenciaAutor(int id){
+    def verListaPreferenciaAutor(long id) {
         def editarLista = ListaPreferenciaAutor.findById(id)
-        [llista:editarLista]
+        def listaAutor = Libro.list()
+        [llista: editarLista, llibro: listaAutor]
 
     }
 
     def crear(){
         def nombre = params.nombre
-        def usu = Usuario.findById(11)
-        usu.addToListasA(new ListaPreferenciaAutor(nombre: nombre))
-        //ListaPreferenciaAutor ll = new ListaPreferenciaAutor(nombre: nombre).save()
+        [nombre: nombre]
+        ListaPreferenciaAutor nuevalista = new ListaPreferenciaAutor(nombre: nombre).save()
+        // def usu = Usuario.findById()
+        //usu.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
+        nuevalista.addToAutores(Autor.findById(1))
         redirect(action: "read")
-
 
     }
 
     def actualizar(){
-
+        /*
+        def idLista = params.idLista
+        def listaA = ListaPreferenciaAutor.findById(idLista)
+        listaA.nombre = params.nombre
+        listaA.save()
+        redirect(action: "read")
+        */
     }
 }

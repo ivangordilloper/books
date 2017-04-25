@@ -15,7 +15,7 @@
             <div>
                 <div class="box ">
 
-                    <h4>Listas de preferencia de autores </h4><a href="/usuario/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/usuario/createUsuario"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
+                    <h4>Listas de preferencia de autores </h4><a href="/listaPreferenciaAutor/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/listaPreferenciaAutor/createlistaPreferenciaAutor"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
                     <br>
 
 

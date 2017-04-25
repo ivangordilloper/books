@@ -24,8 +24,7 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th style="text-align:center;" >Nombre</th>
-                                <th style="text-align:center;" colspan="2">Apellidos</th>
+                                <th style="text-align:center;" colspan="3">Nombre completo</th>
                                 <th style="text-align:center;">Nacionalidad</th>
                                 <th style="text-align:center;">Género</th>
                                 <th style="text-align:center;" colspan="3">Acciones</th>
@@ -33,17 +32,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <g:each in="${autors}" var="autor">
+                            <g:each in="${preadA}" var="autorV">
                                 <tr>
-                                    <td style="padding-top: 10px"><g:img dir="images" file="usuario.png"  class="image-list2"/></td>
-                                    <td style="padding: 5px; color:#666666">${autor.nombre}</td>
-                                    <td style="padding: 5px; color:#666666">${autor.apellidoP}</td>
-                                    <td style="padding: 5px; color:#666666">${autor.apellidoM}</td>
-                                    <td style="padding: 5px; color:#666666">${autor.nacionalidad}</td>
-                                    <td style="padding: 5px; color:#666666">${autor.generoLiterario}</td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:autor.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'update', params: [id:autor.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${autor.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
+
+                                    <td style="padding-top: 10px"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autorV.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px;"/></td>
+                                    <td style="padding: 5px; color:#666666">${autorV.nombreCompleto}</td>
+                                    <td style="padding: 5px; color:#666666"></td>
+                                    <td style="padding: 5px; color:#666666"></td>
+                                    <td style="padding: 5px; color:#666666">${autorV.nacionalidad}</td>
+                                    <td style="padding: 5px; color:#666666">${autorV.generoLiterario}</td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:autorV.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'update', params: [id:autorV.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${autorV.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
                                 </tr>
                             </g:each>
 

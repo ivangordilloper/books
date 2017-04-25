@@ -12,7 +12,7 @@ class Usuario {
     String username
     String password
 
-    static hasMany = [listasL: ListaPreferenciaLibro, listasA : ListaPreferenciaAutor, following: Usuario]
+   // static hasMany = [listasL: ListaPreferenciaLibro, listasA : ListaPreferenciaAutor, following: Usuario]
    // static belongsTo = [rolU : Rol]
     //boolean enabled = true
     //boolean accountExpired

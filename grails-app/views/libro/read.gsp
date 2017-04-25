@@ -37,9 +37,9 @@
                             <tbody>
                             <g:each in="${libros}" var="libro">
                                 <tr>
-                                    <td style="padding-top: 10px"><g:img dir="images" file="book.png"  class="image-list2"/></td>
+                                    <td style="padding-top: 10px"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
                                     <td style="padding: 5px; color:#666666">${libro.titulo}</td>
-                                    <td style="padding: 5px; color:#666666">${libro.autor.nombre} ${libro.autor.apellidoP} ${libro.autor.apellidoM}</td>
+                                    <td style="padding: 5px; color:#666666">${libro.autores.nombreCompleto}</td>
                                     <td style="padding: 5px; color:#666666">${libro.generoLiterario}</td>
                                     <td style="padding: 5px; color:#666666">${libro.editorial}</td>
                                     <td style="padding: 5px; color:#666666">${libro.pais}</td>

@@ -16,7 +16,7 @@
 
                 <h4>Agregar autor</h4>
 
-                <g:form method="post" action="crear">
+                <g:uploadForm method="post" action="crear">
 
                     <div class="row uniform">
 
@@ -29,12 +29,13 @@
                         <div class="6u 12u$(xsmall)">
                             <g:field type="text" name="apellidoM" id="apellidoM" placeholder="ApellidoM" maxlength="10"/>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+                        <div class="6u 6u$(xsmall)">
                             <g:field  type="date" name="fechaNac" id="fechaNac" value=""  placeholder="Fecha nacimiento" requiered="true"/>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+                        <div class="6u 6u$(xsmall)">
                             <g:field  type="text" name="nacionalidad" id="nacionalidad" value=""  placeholder="Nacionalidad" maxlength="15"/>
                         </div>
+
                         <div class="6u 6u$(xsmall)">
                             <g:select name="genero"  value="Género" from="${['Género', 'M', 'F']}">
                             </g:select>
@@ -42,6 +43,11 @@
                         <div class="6u 6u$(xsmall)">
                             <g:select name="generoLiterario"  value="Género" requiered="true" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}">
                             </g:select>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+
+                                Fotografia: <input name="photo" type="file" />
+
                         </div>
 
                         <div class="12u 12u$(xsmall)">
@@ -53,7 +59,7 @@
                     </div>
 
 
-                </g:form>
+                </g:uploadForm>
 
             </div>
         </section>

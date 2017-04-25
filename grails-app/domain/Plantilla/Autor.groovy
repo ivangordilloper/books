@@ -2,35 +2,25 @@ package Plantilla
 
 class Autor {
 
-    String nombre
-    String apellidoP
-    String apellidoM
+    String nombreCompleto
     Date fechaNac = new Date();
     String genero
     String generoLiterario
     String nacionalidad
+    byte[] foto
      // boolean publicable
 
     static constraints = {
-        nombre size: 1..10, nullable: false
-        apellidoP size: 1..10, nullable: false
-        apellidoM size: 1..10, nullable: true
+        nombreCompleto size: 1..60, nullable: false
         fechaNac nullable: false
         genero inList: ["M", "F"], nullable: true
         generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
         nacionalidad size: 1..20, nullable: true
+        foto nullable: true, maxSize: 2 * 1024 * 1024
 
     }
-    Set libros = []
+    //Set libros = []
     static belongsTo = ListaPreferenciaAutor
-    static hasMany = [libros: Libro, lautor: ListaPreferenciaAutor]
+    static hasMany = [libros: Libro, llista: ListaPreferenciaAutor]
 
-    static mapping = {
-        libros cascade: 'all-delete-orphan'
-    }
-
-
-    /*static mapping = {
-        libros joinTable: [name: "mm_author_books", key: 'mm_author_id']
-    }*/
 }

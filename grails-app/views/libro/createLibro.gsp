@@ -16,36 +16,37 @@
 
                 <h4>Agregar Libro</h4>
 
-                <g:form method="post" action="crear">
+                <g:uploadForm method="post" action="crear">
 
                     <div class="row uniform">
 
                         <div class="12u 12u$(xsmall)">
                             <g:field  type="text" name="titulo" id="titulo" placeholder="Título" requiered="true" maxlength="20"/>
                         </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:select name="autores" requiered="true" optionKey="id" optionValue="nombre" from="${autors}">
+                        <div class="12u 12u$(xsmall)">
+                            <g:select name="autores" requiered="true"   from="${autor.nombreCompleto}"  >
                             </g:select>
                         </div>
                         <div class="6u 12u$(xsmall)">
                             <g:field type="text" name="editorial" id="editorial" placeholder="Editorial" maxlength="20"/>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+                        <div class="6u 6u$(xsmall)">
                             <g:field type="text" name="pais" id="pais" value=""  placeholder="País" maxlength="20"/>
                         </div>
 
-                        <div class="12u 12u$(xsmall)">
-                            <g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación"/>
-                        </div>
-                        <div class="12u 12u$(xsmall)">
-                            <g:field type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
-                        </div>
                         <div class="6u 6u$(xsmall)">
-                            <g:field type="text" name="portada" id="portada" value=""  placeholder="Portada"  maxlength="100"/>
+                            <g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación"/>
                         </div>
                         <div class="6u 6u$(xsmall)">
                             <g:select name="generoLiterario"  value="Género literario" requiered="true" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}">
                             </g:select>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <g:field type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
+                        </div>
+
+                        <div class="12u 12u$(xsmall)">
+                            Portada: <input name="portada" type="file"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">
@@ -55,7 +56,7 @@
                         </div>
 
 </div>
-                </g:form>
+                </g:uploadForm>
 
             </div>
         </section>

@@ -4,11 +4,12 @@ class ListaPreferenciaLibro {
 
     String nombre
     Date fechaCreacion = new Date()
-    static belongsTo = Usuario
+
 
     static constraints = {
-        nombre size: 1..20, nullable: false
+        nombre nullable: false
     }
 
     static hasMany = [libros: Libro]
+    //static belongsTo = Usuario
 }
