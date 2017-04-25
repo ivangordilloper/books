@@ -2,12 +2,9 @@
 <head>
     <title> REGÍSTRATE </title>
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <g:external dir="css" file="main.css"/>
-    <g:external dir="js" file="angular/angular.min.js"/>
-    <g:external dir="js" file="angular/angular-messages.min.js"/>
-    <g:external dir="js" file="angular/angular.js"/>
+
 
 
 </head>
@@ -84,7 +81,7 @@
                                                         <li >
                                                             <button name="submit" value="Regístrate" ng-click="form.$valid" >SUB</button>
                                                             <button type="button" id="validar" ng-click="submitted = true">Validate!</button>
-                                                            <a class="special" style="width: 150px; cursor: pointer;" onclick="$('#MSGC_01').modal('show');">CANCELAR</a>
+                                                            <a class="special" style="width: 150px; cursor: pointer;" onclick="error()">CANCELAR</a>
                                                             <g:submitButton name="submit" value="Regístrate" class="special"  onClick="validarPasswd()" /></li>
                                                     </ul>
                                                 </div>
@@ -103,19 +100,17 @@
         </div>
 
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <g:external dir="js" file="bootstrap.js"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+
+        <g:external dir="js" file="angular/angular.min.js"/>
+        <g:external dir="js" file="angular/angular-messages.min.js"/>
+
+        <g:external dir="js" file="angular/angular.js"/>
+
     <script>
         var app = angular.module('myApp', []);
         app.controller('myCtrl', function($scope) {
@@ -123,26 +118,23 @@
             $scope.lastName = "Doe";
         });
     </script>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker9').datetimepicker({
-                    viewMode: 'years',
-                    format: 'DD/MM/YYYY'
-                });
-            });
-        </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            jQuery.validator.setDefaults({
-                debug: true,
-                success: "valid"
-            });
-            var form = $( '#formRegister' );
-            form.validate();
+
             $( "#validar" ).click(function() {
                 $('#MSGC_01').modal('show');
                 alert( "Valid: " + form.valid() );
             });
+            function error() {
+                jQuery(document).ready(function ($) {
+                    $('#myModal').modal('toggle');
+                });
+            }
+
 
             /*function validarPasswd() {
 
