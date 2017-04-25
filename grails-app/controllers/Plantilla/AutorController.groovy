@@ -1,5 +1,7 @@
 package Plantilla
 
+import org.springframework.dao.DataIntegrityViolationException
+
 class AutorController {
 
     def createAutor() {
@@ -8,31 +10,47 @@ class AutorController {
 
     def read() {
         def listaAutor = Autor.list()
-        [autors: listaAutor]
+        [preadA: listaAutor]
     }
 
-    def update(long id){
+    def update(int id){
         def editarAutor = Autor.findById(id)
         def fecha = editarAutor.fechaNac.toString()
         def fecha2 = fecha.substring(0,10)
-        [autor:editarAutor, fecha:fecha2]
+
+        [pupdateA:editarAutor, fecha:fecha2]
     }
 
-    def crear(){
+    def crear() {
+
         def nombre = params.nombre
         def apellidoP = params.apellidoP
         def apellidoM = params.apellidoM
+        def nombreC = nombre + " " + apellidoP + " " + apellidoM
         def fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
         def genero = params.genero
         def generoLiterario = params.generoLiterario
         def nacionalidad = params.nacionalidad
-        [apellidoM: apellidoM, nacionalidad:nacionalidad, apellidoP: apellidoP, fechaNac: fechaNac, nombre: nombre, genero: genero, generoLiterario: generoLiterario]
-        Autor p = new Autor(apellidoM: apellidoM, apellidoP: apellidoP, nacionalidad: nacionalidad,   fechaNac: fechaNac, nombre: nombre, genero: genero, generoLiterario: generoLiterario)
-        p.save(flush:true)
+        def foto1 = params.photo
+        byte[] foto = foto1.getBytes()
+
+
+        [foto:foto, nacionalidad: nacionalidad, fechaNac: fechaNac, nombreC: nombreC, genero: genero, generoLiterario: generoLiterario]
+        Autor p = new Autor(foto:foto, fechaNac: fechaNac, genero: genero, generoLiterario: generoLiterario, nacionalidad: nacionalidad, nombreCompleto: nombreC)
+        p.save(flush: true)
+/*
+        if (p?.foto) {
+            response.setContentLength(p.foto.size())
+            response.outputStream.write(p.foto)
+        } else {
+             response.sendError(404)
+        }
         redirect(action: "read")
     }
-
-    def verAutor(int id){
+*/
+        redirect(action: "read")
+    }
+    def verAutor(long id){
             def editarAutor = Autor.findById(id)
             //def libros = Libro.list(Libro.getBelongsTo() == id)
             def fecha = editarAutor.fechaNac.toString()
@@ -46,25 +64,34 @@ class AutorController {
     }
 
     def delete(int id){
-        def editarAutor = Autor.findById(id)
-        editarAutor.delete()
-        redirect(action: "read")
+        def editarAutor = Autor.get(id)
+        def a = editarAutor.getLlista().id
+        if (a.size() == 0)
+           editarAutor.delete()
+        else {
+            def b = ListaPreferenciaAutor.findAllByIdInList(a)
+
+            b.each{
+                it.autores.remove(editarAutor)
+            }
+
+            editarAutor.delete(flush: true)
+        }
+        redirect (action: "read")
 
     }
 
-    def actualizar(long id){
-
+    def actualizar(){
+        def id = params.idAutor
         def editarAutor = Autor.findById(id)
-        editarAutor.nombre = params.nombre
-        editarAutor.apellidoP = params.apellidoP
-        editarAutor.apellidoM = params.apellidoM
+        editarAutor.nombreCompleto = params.nombre
         editarAutor.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
         editarAutor.genero = params.genero
         editarAutor.generoLiterario = params.generoLiterario
         editarAutor.nacionalidad = params.nacionalidad
 
         editarAutor.save()
-        redirect (action: "verAutor")
+        redirect (action: "read")
 
     }
 }

@@ -6,36 +6,57 @@ class ListaPreferenciaLibroController {
 
     }
 
-    def read(){
+    def read() {
         def listaLibro = ListaPreferenciaLibro.list()
         [lLibro: listaLibro]
 
     }
 
-    def update(){
+    def opinar(long id) {
 
     }
 
-    def delete(){
+    def eliminarElemento(long id) {
 
     }
 
-    def verListaPreferenciaLibro(int id){
+    def agregarElemento(long id) {
+
+    }
+
+    def update(long id) {
+        def lis = ListaPreferenciaLibro.findById(id)
+        [lis: lis]
+    }
+
+    def delete(long id) {
+        def lista = ListaPreferenciaLibro.findById(id)
+        lista.delete()
+    }
+
+    def verListaPreferenciaLibro(long id) {
         def editarLista = ListaPreferenciaLibro.findById(id)
         def listaAutor = Autor.list()
-        [llista:editarLista, lautor: listaAutor]
+        [llista: editarLista, lautor: listaAutor]
 
-        }
+    }
 
-    def crear(){
+    def crear() {
         def nombre = params.nombre
-       // def usu = Usuario.findById()
+        [nombre: nombre]
+        ListaPreferenciaLibro nuevalista = new ListaPreferenciaLibro(nombre: nombre).save()
+        // def usu = Usuario.findById()
         //usu.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
+         nuevalista.addToLibros(Libro.findById(1))
         redirect(action: "read")
 
     }
 
-    def actualizar(){
-
+    def actualizar() {
+        def idLista = params.idLista
+        def listaA = ListaPreferenciaLibro.findById(idLista)
+        listaA.nombre = params.nombre
+        listaA.save()
+        redirect(action: "read")
     }
 }

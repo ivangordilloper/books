@@ -24,28 +24,26 @@
                             <thead>
                             <tr>
                                 <th></th>
+
+                                <th style="text-align:center;" >Autor</th>
+                                <th style="text-align:center;">Título</th>
                                 <th style="text-align:center;" >Género literario</th>
-                                <th style="text-align:center;" colspan="3">Autor</th>
-                                <th style="text-align:center;">Libro</th>
                                 <th style="text-align:center;">Calificacion</th>
                                 <th style="text-align:center;" colspan="3">Acciones</th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            <g:each in="${llista}" var="lista">
+                            <g:each in="${llista.libros}" var="lista">
                                 <tr>
-                                    <td style="padding-top: 10px"><g:img dir="images" file="book.png"  class="image-list2"/></td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.generoLiterario}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.id}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.id}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.id}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.titulo}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.libros.titulo}</td>
+                                    <td style="padding-top: 10px"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: lista.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
+                                    <td style="padding: 5px; color:#666666">${lista.titulo}</td>
+                                    <td style="padding: 5px; color:#666666">${lista.autores.nombreCompleto}</td>
+                                    <td style="padding: 5px; color:#666666">${lista.generoLiterario}</td>
                                     <td style="padding: 5px; color:#666666">Calificacion</td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:lista.libros.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'update', params: [id:lista.libros.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${lista.libros.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:lista.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'opinar', params: [id:lista.id])}"><g:img dir="images" file="opinion.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <g:link action="eliminarElemento" id="${lista.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
                                 </tr>
                             </g:each>
 
