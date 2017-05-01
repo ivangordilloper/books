@@ -221,7 +221,9 @@
 		clear: none;
 		margin-left: 0;
 	}
-
+	.error-msg{
+		background-color: #FF0000;
+	}
 	.\35 u, .\35 u\24 {
 		width: 41.6666666667%;
 		clear: none;
