@@ -1,7 +1,7 @@
 package Plantilla
 
 class UsuarioController {
-
+    def mailService
     def createUsuario() {
 
     }
@@ -37,13 +37,27 @@ class UsuarioController {
         def genero = params.genero
         [apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
         Usuario p = new Usuario(apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero)
-        p.save()
-        //Rol r = Rol.findByRolU('USUARIO')
-        //r.addToUsuarioU(new Usuario(apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero))
-        //def lista = Usuario.findByUsername(nombreUsuario).id
+        if(!p.save()){
+            p.errors.allErrors.each {
+                print it
+            }
 
-        redirect(controller: "inicio", action: "iniciarSesion")
-        //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
+            redirect(controller: "usuario", action: "createUsuario", "?error=1")
+
+        }else {
+            //Rol r = Rol.findByRolU('USUARIO')
+            //r.addToUsuarioU(new Usuario(apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero))
+            //def lista = Usuario.findByUsername(nombreUsuario).id
+
+            mailService.sendMail {
+                from "bookscomtt@gmail.com"
+                to correo
+                subject "New user"
+                text "A new user has been created"
+            }
+            redirect(controller: "inicio", action: "iniciarSesion")
+            //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
+        }
     }
 
     def delete(int id){
