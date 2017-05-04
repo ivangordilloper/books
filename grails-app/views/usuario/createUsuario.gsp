@@ -16,9 +16,7 @@
 
 </head>
 <body>
-<?
-echo "Hola";
-?>
+
     <body>
         <div id="inicio">
             <!-- Main -->
@@ -31,8 +29,9 @@ echo "Hola";
                         <section>
                             <div class="box">
                                     <h4>Regístrate</h4>
-                                    <form action="crear" method="post" id="myForm">
-                                        <div class="control-group">
+
+                                    <g:uploadForm action="crear" method="post" name="form" id="formRegister">
+                                        <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                             <div class="row uniform">
                                                 <div class="12u 12u$(xsmall) controls" id="divNombre">
                                                     <input  type="text" name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true"/>
@@ -47,6 +46,7 @@ echo "Hola";
                                                 </div>
                                                 <div class="12u 12u$(xsmall)" id="divUsuario">
                                                     <input type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
+
                                                 </div>
                                                 <div class="12u 12u$(xsmall)">
                                                     <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
@@ -71,10 +71,32 @@ echo "Hola";
                                                 <div class="6u 6u$(xsmall)" div="divContrasena">
                                                     <input type="text" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
 
+
                                                 </div>
                                                 <div class="6u 6u$(xsmall)">
                                                     <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
 
+                                                </div>
+                                                <div class="12u 12u$(xsmall)">
+                                                    <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor1" id="autor1" placeholder="Autor Favorito 1"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor2" id="autor2" placeholder="Autor Favorito 2"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor3" id="autor3" placeholder="Autor Favorito 3"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro1" id="libro1" placeholder="Libro Favorito 1"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro2" id="libro2" placeholder="Libro Favorito 2" />
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro3" id="libro3" placeholder="Libro Favorito 3"/>
                                                 </div>
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
@@ -88,7 +110,10 @@ echo "Hola";
 
                                             </div>
                                         </div>
-                                    </form>
+
+                                    </g:uploadForm>
+                                    <li ><g:submitButton name="submit" value="prueba" class="special" onClick="prueba()" /></li>
+
 
                             </div>
                         </section>

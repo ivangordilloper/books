@@ -2,13 +2,13 @@ package Plantilla
 
 class Libro {
     String titulo
+    String isbn
     String editorial
     String pais
     String resumen
     byte[] portada
     Date fechaPub = new Date()
     String generoLiterario
-    //Autor autor
 
     static constraints = {
         titulo size: 1..20, nullable: false
@@ -18,20 +18,11 @@ class Libro {
         fechaPub nullable: true
         portada nullable: true, maxSize: 2 * 1024 * 1024
         generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
+        isbn nullable: true
     }
 
-
-    // static belongsTo = [ListaPreferenciaLibro, Autor]
     static belongsTo = [Autor, ListaPreferenciaLibro]
-    static hasMany = [autores: Autor, llista: ListaPreferenciaLibro]
+    static hasMany = [autores: Autor, llista: ListaPreferenciaLibro, califL: CalificacionLibro, opinL: OpinionLibro]
 
 
-/*
-    static mapping = {
-        authors joinTable: [name: "mm_author_books", key: 'mm_book_id' ]
-    }*/
-   /* static mapping = {
-        autor cascade: 'all-delete-orphan'
-    }
-    */
 }

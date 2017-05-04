@@ -36,7 +36,8 @@
 
                                 <div class="12u$">
                                     <ul class="actions">
-                                        <li ><input type="submit" id="submit" value="Iniciar Sesión " class="special" onclick="redirect(${sesionUsuario})"/></li>
+                                        <li >  <g:submitButton name="submit" value="Iniciar Sesión" class="special" /></li>
+
                                         <li><a href="resetpass.html">Has olvidado tu contraseña</a></li>
                                     </ul>
                                 </div>

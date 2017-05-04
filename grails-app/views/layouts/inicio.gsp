@@ -43,7 +43,7 @@
 <!-- Footer -->
 <footer id="footer">
     <ul class="copyright">
-        <li><a href="#" class="icon fa-twitter"></a></li>
+        <li><a href="#" class="fa fa-twitter-square"></a></li>
         <li><a href="https://www.facebook.com/BooksCom-227500564389966" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
         <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
