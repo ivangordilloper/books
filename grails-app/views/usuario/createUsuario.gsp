@@ -21,7 +21,7 @@
                         <section>
                             <div class="box">
                                     <h4>Regístrate</h4>
-                                    <form action="crear" method="post" name="form" id="formRegister">
+                                    <g:uploadForm action="crear" method="post" name="form" id="formRegister">
                                         <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                             <div class="row uniform">
                                                 <div class="12u 12u$(xsmall) controls">
@@ -40,7 +40,7 @@
                                                     <span class="help-inline" ng-show="submitted && form.apellidoM.$error.pattern">El Apellido Materno no debe contener números.</span>
                                                 </div>
                                                 <div class="12u 12u$(xsmall)">
-                                                    <input type="text" name="nombreUsuario" id="nombreUsuario" value="" ng-model="nombreUsuario" placeholder="Nombre de usuario" required="true"/>
+                                                    <input type="text" name="nombreUsuario" id="nombreUsuario" value="" ng-model="nombreUsuario" placeholder="Nombre de Usuario" required="true"/>
                                                     <span class="help-inline" ng-show="submitted && form.nombreUsuario.$error.required">Este campo es obligatorio</span>
                                                     <span class="help-inline" ng-show="submitted && form.nombreUsuario.$error.pattern">El Apellido Materno no debe contener números.</span>
                                                 </div>
@@ -56,24 +56,45 @@
                                                     <g:select name="genero"  from="${['M', 'F']}">
                                                     </g:select>
                                                 </div>
-                                                <div class="12u 12u$(xsmall)">
+                                                <div class="6u 6u$(xsmall)">
                                                     <input type="email" name="correo" id="email" ng-model="email"  placeholder="Correo Electrónico" required="true" maxlength="50"/>
                                                     <span class="help-inline" ng-show="submitted && form.correo.$error.required">Este campo es obligatorio</span>
                                                     <span class="help-inline" ng-show="submitted && form.correo.$error.email">El email es invalido.</span>
                                                 </div>
-                                                <div class="12u 12u$(xsmall)">
+                                                <div class="6u 6u$(xsmall)">
                                                     <input type="email" name="correo2" id="email2" ng-model="email2" placeholder="Confirma Correo Electrónico" required="true" maxlength="50"/>
                                                     <span class="help-inline" ng-show="submitted && form.correo2.$error.required">Este campo es obligatorio</span>
                                                     <span class="help-inline" ng-show="submitted && form.correo2.$error.email">El email es invalido.</span>
                                                 </div>
                                                 <div class="6u 6u$(xsmall)">
-                                                    <input type="text" name="contrasenia" id="passwd" ng-model="contrasenia" placeholder="Contraseña" required="true" maxlength="10" ng-pattern="/^(?=[^\d\W]*[\d\W])(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])[^.\n].{5,}$/"/>
+                                                    <input type="password" name="contrasenia" id="passwd" ng-model="contrasenia" placeholder="Contraseña" required="true" maxlength="10" ng-pattern="/^(?=[^\d\W]*[\d\W])(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])[^.\n].{5,}$/"/>
                                                     <span class="help-inline" ng-show="submitted && form.contrasenia.$error.required">Este campo es obligatorio</span>
                                                     <span class="help-inline" ng-show="submitted && form.contrasenia.$error.pattern">La contraseña debe contener mayúsculas, minúsculas, números y una longitud mínima de 6.</span>
                                                 </div>
                                                 <div class="6u 6u$(xsmall)">
                                                     <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" required="true" maxlength="10" />
                                                     <span class="help-inline" ng-show="submitted && form.contrasenia.$error.required">Este campo es obligatorio</span>
+                                                </div>
+                                                <div class="12u 12u$(xsmall)">
+                                                    <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor1" id="autor1" placeholder="Autor Favorito 1"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor2" id="autor2" placeholder="Autor Favorito 2"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="autor3" id="autor3" placeholder="Autor Favorito 3"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro1" id="libro1" placeholder="Libro Favorito 1"/>
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro2" id="libro2" placeholder="Libro Favorito 2" />
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="text" name="libro3" id="libro3" placeholder="Libro Favorito 3"/>
                                                 </div>
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
@@ -88,7 +109,7 @@
 
                                             </div>
                                         </div>
-                                    </form>
+                                    </g:uploadForm>
                                     <li ><g:submitButton name="submit" value="prueba" class="special" onClick="prueba()" /></li>
 
 

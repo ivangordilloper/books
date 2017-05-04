@@ -43,7 +43,7 @@
                                     <td style="padding: 5px; color:#666666">${libro.generoLiterario}</td>
                                     <td style="padding: 5px; color:#666666">${libro.editorial}</td>
                                     <td style="padding: 5px; color:#666666">${libro.pais}</td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id, idU:idU])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
                                     <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'update', params: [id:libro.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
                                     <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${libro.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
                                 </tr>

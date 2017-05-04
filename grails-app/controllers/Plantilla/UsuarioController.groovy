@@ -35,16 +35,23 @@ class UsuarioController {
         def correo = params.correo
         def contrasenia = params.contrasenia
         def genero = params.genero
-        [apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
-        Usuario p = new Usuario(apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero)
-        p.save()
-        //Rol r = Rol.findByRolU('USUARIO')
-        //r.addToUsuarioU(new Usuario(apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero))
-        //def lista = Usuario.findByUsername(nombreUsuario).id
+        def rol = "USUARIO"
+        def generof = params.generof
+        def libro1 = params.libro1
+        def libro2 = params.libro2
+        def libro3 = params.libro3
+        def autor1 = params.autor1
+        def autor2 = params.autor2
+        def autor3 = params.autor3
 
-        redirect(controller: "inicio", action: "iniciarSesion")
-        //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
-    }
+        [generoFav:generof, libroFav1: libro1, libroFav2:libro2, libroFav3: libro3, autorFav1:autor1, autorFav2:autor2, autorFav3:autor3, rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
+
+        Usuario p = new Usuario( rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero).save()
+        Formulario pf = new Formulario(generoFav:generof, libroFav1: libro1, libroFav2:libro2, libroFav3: libro3, autorFav1:autor1, autorFav2:autor2, autorFav3:autor3, Usuario: p.id).save()
+
+         redirect(controller: "inicio", action: "iniciarSesion")
+
+   }
 
     def delete(int id){
 

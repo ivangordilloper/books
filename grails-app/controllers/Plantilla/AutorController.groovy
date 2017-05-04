@@ -2,13 +2,13 @@ package Plantilla
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class AutorController {
+class AutorController{
 
     def createAutor() {
 
     }
 
-    def read() {
+    def read(long id) {
         def listaAutor = Autor.list()
         [preadA: listaAutor]
     }

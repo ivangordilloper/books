@@ -6,11 +6,9 @@ class InicioController {
     def home() {
 
     }
-    def iniciarSesion(){
-        def user = Usuario.findByUsername(params.username)
-       [sesionUsuario: user]
-
+    def iniciarSesion() {
     }
+
     def contacto(){
 
     }
@@ -21,7 +19,26 @@ class InicioController {
 
     }
     def iniciar(){
-        redirect (controller:"perfilUsuario", action:"usuario", id:1)
+            def user = Usuario.findByUsername(params.username)
+            def userC = user.getPassword()
+            def userC2 = params.password
+
+            if(userC == userC2){
+                redirect (controller:"perfilUsuario", action:"usuario", id:user.id)
+            }
+            else{
+                redirect (action:"iniciarSesion")
+            }
+            /*      if (user.validate()) {
+                      user.save()
+                      redirect action: "show", id: user.id
+                  } else {
+          // go and give them another crack at it in the original page
+                      render view: "edit", model: [user:user]
+                  }
+              */
+            //    [sesionUsuario: user]
+
     }
 
 }

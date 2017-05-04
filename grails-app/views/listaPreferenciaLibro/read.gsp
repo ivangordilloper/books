@@ -15,7 +15,7 @@
             <div>
                 <div class="box ">
 
-                    <h4>Listas de preferencia de libros </h4><a href="/listaPreferenciaLibro/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/listaPreferenciaLibro/createlistaPreferenciaLibro"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
+                    <h4>Listas de preferencia de libros </h4><a href="/listaPreferenciaLibro/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="${createLink(controller : 'listaPreferenciaLibro', action:'createlistaPreferenciaLibro', params: [id: idU])}"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
                     <br>
 
 
