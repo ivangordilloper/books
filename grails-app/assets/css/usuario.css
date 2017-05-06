@@ -1,31 +1,32 @@
 @media screen and (max-width: 1680px) {
     #main > header {
-        padding: 3em 0px 2em 0!important;
+        padding: 10em 0px 10em 0!important;
     }
 }
 @media screen and (max-width: 1200px) {
     #main > header {
-        padding: 3em 0px 2em 0!important;
+        padding: 10em 0px 10em 0!important;
     }
 }
 @media screen and (max-width: 980px) {
     #main > header {
-        padding: 3em 0px 2em 0!important;
+        padding: 10em 0px 10em 0!important;
 
-    .spotlight .image{
-        width: 100% !important;
+
     }
-    }
+
 }
 @media screen and (max-width: 500px) {
     #main > header {
-        padding: 3em 0px 2em 0!important;
+        padding: 10em 0px 10em 0!important;
     }
+
 }
 @media screen and (max-width: 1680px) {
     #main > header {
-        padding: 3em 0px 2em 0!important;
+        padding:10em 0px 10em 0!important;
     }
+
 }
 .swipbooks{
     height:250px!important;

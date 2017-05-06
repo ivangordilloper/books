@@ -2,13 +2,13 @@ package Plantilla
 
 class ListaPreferenciaLibroController {
 
-    def createlistaPreferenciaLibro() {
-
+    def createlistaPreferenciaLibro(long id) {
+        [idU: id]
     }
 
-    def read() {
-        def listaLibro = ListaPreferenciaLibro.list()
-        [lLibro: listaLibro]
+    def read(long id) {
+        def listaLibro = Usuario.findById(id).listasL
+        [lLibro: listaLibro, idU:id]
 
     }
 
@@ -25,13 +25,18 @@ class ListaPreferenciaLibroController {
     }
 
     def update(long id) {
+        def us = ListaPreferenciaLibro.findById(id)
+        def us2 = us.Usuario.getId()
         def lis = ListaPreferenciaLibro.findById(id)
         [lis: lis]
     }
 
     def delete(long id) {
-        def lista = ListaPreferenciaLibro.findById(id)
-        lista.delete()
+        def us = ListaPreferenciaLibro.findById(id)
+        def us2 = us.Usuario.getId()
+        def l = ListaPreferenciaLibro.findById(id).delete()
+        redirect(action: "read", id: us2)
+
     }
 
     def verListaPreferenciaLibro(long id) {
@@ -41,14 +46,13 @@ class ListaPreferenciaLibroController {
 
     }
 
-    def crear() {
+    def crear(long id) {
+        def idU = params.idUsuario
+        def u = Usuario.get(idU)
         def nombre = params.nombre
-        [nombre: nombre]
-        ListaPreferenciaLibro nuevalista = new ListaPreferenciaLibro(nombre: nombre).save()
-        // def usu = Usuario.findById()
-        //usu.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
-         nuevalista.addToLibros(Libro.findById(1))
-        redirect(action: "read")
+        [nombre: nombre, u:u]
+        u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
+        redirect(action: "read", params: [id:idU])
 
     }
 
@@ -57,6 +61,9 @@ class ListaPreferenciaLibroController {
         def listaA = ListaPreferenciaLibro.findById(idLista)
         listaA.nombre = params.nombre
         listaA.save()
-        redirect(action: "read")
+        def us = ListaPreferenciaLibro.findById(idLista)
+        def us2 = us.Usuario.getId()
+        redirect(action: "read", id: us2)
+
     }
 }

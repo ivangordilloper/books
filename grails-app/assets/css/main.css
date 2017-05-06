@@ -1936,7 +1936,7 @@
 		}
 
 		.icon.style2 {
-			color: #BFA79D;
+			color: #BFA79D!important;
 		}
 
 		.icon.style3 {
@@ -2810,7 +2810,7 @@ table.alt {
 			}
 
 		.wrapper.style2 {
-			background-color: #BFA79D;
+			background-color: #BFA79D!important;
 		}
 
 		.wrapper.style3 {

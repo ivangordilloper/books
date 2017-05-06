@@ -15,7 +15,7 @@
             <div>
                 <div class="box ">
 
-                    <h4>Listas de preferencia de autores </h4><a href="/listaPreferenciaAutor/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/listaPreferenciaAutor/createlistaPreferenciaAutor"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
+                    <h4>Listas de preferencia de autores </h4><a href="/listaPreferenciaAutor/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="${createLink(controller : 'listaPreferenciaAutor', action:'createlistaPreferenciaAutor', params: [id: idU])}"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
                     <br>
 
 
@@ -39,7 +39,7 @@
                                     <td style="padding: 5px; color:#666666">${lista.fechaCreacion.toString().substring(0,10)}</td>
                                     <td style="padding: 5px; color:#666666; align-items: center">${lista.autores.size()}</td>
                                     <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id:lista.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'update', params: [id:lista.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'update', params: [id:lista.id])}"><g:img dir="images" file="editar.png" align="right" class="image-list3" /></a></td>
                                     <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${lista.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
                                 </tr>
                             </g:each>

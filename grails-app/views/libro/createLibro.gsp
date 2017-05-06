@@ -42,7 +42,7 @@
                             </g:select>
                         </div>
                         <div class="12u 12u$(xsmall)">
-                            <g:field type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
+                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">

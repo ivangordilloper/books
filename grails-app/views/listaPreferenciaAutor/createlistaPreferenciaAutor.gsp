@@ -17,7 +17,7 @@
                 <h4>Nueva lista de preferencia de autores</h4>
 
                 <g:form method="post" action="crear">
-
+                    <g:hiddenField name="idUsuario" value="${idU}" />
                     <div class="row uniform">
 
                         <div class="12u 12u$(xsmall)">

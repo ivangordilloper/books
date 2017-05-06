@@ -8,7 +8,6 @@ class Autor {
     String generoLiterario
     String nacionalidad
     byte[] foto
-     // boolean publicable
 
     static constraints = {
         nombreCompleto size: 1..60, nullable: false
@@ -19,8 +18,8 @@ class Autor {
         foto nullable: true, maxSize: 2 * 1024 * 1024
 
     }
-    //Set libros = []
+
     static belongsTo = ListaPreferenciaAutor
-    static hasMany = [libros: Libro, llista: ListaPreferenciaAutor]
+    static hasMany = [libros: Libro, llista: ListaPreferenciaAutor, califA: CalificacionAutor, opinA: OpinionAutor]
 
 }

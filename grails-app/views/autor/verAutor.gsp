@@ -58,7 +58,7 @@
     }
 
     .nav2 li ul li ul{
-        right: -140px;
+        right: -14px;
         top: 0px;
     }
 
@@ -70,7 +70,7 @@
     <div class="wrapper style5 ver-libro">
         <div class="inner" style="padding-bottom: 0px">
             <section class="spotlight">
-                <div div class="image"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="400px" width="200px"/></div>
+                <div div class="image"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="400px" width="700px"/></div>
                     <div class="content">
                 <h2 style="font-size:15px;text-align: center; margin-top:50px; margin-bottom: 50px"></h2>
 
@@ -97,7 +97,7 @@
                     <div class="swiper-wrapper">
                         <!-- Slides -->
                     <g:each in="${lib}" var="libro">
-                    <div class="swiper-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${Libro.find(libro).titulo}</div></a>
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${Libro.find(libro).titulo}</div></a>
                         </div>
                     </g:each>
                     </div>
@@ -117,13 +117,13 @@
                 <div class="box" style="padding-top: 0px">
                   <div class="row uniform">
                             <ul class="nav2">
-                                <li>  <a>Agregar a lista de preferencia</a>
+                                <li>  <a>Agregar</a>
                                     <ul>
-                                        <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 1 </a> </li>
-                                        <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 2 </a> </li>
+                                        <li> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verLibro', params: [id:1])}"> Lista 1 </a> </li>
+                                        <li> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verLibro', params: [id:1])}"> Lista 2 </a> </li>
                                     </ul>
                                 </li>
-                                <li>  <a>Agregar a lista de preferencia</a>
+                                <li>  <a>Borrar</a>
                                     <ul>
                                         <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 1 </a> </li>
                                         <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 2 </a> </li>

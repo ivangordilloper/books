@@ -19,19 +19,23 @@ class LibroController {
         [libro:editarLibro, fecha:fecha2, autor: au, autorl: lautor]
     }
 
-    def read(){
+    def read(long id){
         def listaLibro = Libro.list()
         def listaAutores = Libro.list().autores
-
-        [libros: listaLibro,  aut: listaAutores]
+        def idU = id
+        [libros: listaLibro,  aut: listaAutores, idU:idU]
     }
 
     def verLibro(long id){
-        def editarLibro = Libro.findById(id)
+        def idL= this.getParams()
+        def idUsuario = idL.idU
+        def idLibro = idL.id
+        def editarLibro = Libro.findById(idLibro)
         def fecha = editarLibro.fechaPub.toString()
         def fecha2 = fecha.substring(0,10)
+        def listasP = Usuario.findById(idUsuario).listasL
 
-        [libro:editarLibro, fecha:fecha2]
+        [libro:editarLibro, fecha:fecha2, idU:idUsuario, listaL: listasP]
 
     }
 
