@@ -6,10 +6,11 @@ class PerfilUsuarioController {
 
     def usuario(long id) {
 
-        FOAFService.obtenDocumentos()
-        def libros = FOAFService.getRetorno()
+        FOAFService.obtenLibros()
+        def libros = FOAFService.getLibros()
         print libros
         def usuariosL = Usuario.findById(id)
+        FOAFService.libros.clear()
 
         def pal
         if(usuariosL.genero == 'F'){

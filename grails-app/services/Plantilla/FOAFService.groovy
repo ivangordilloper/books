@@ -29,15 +29,17 @@ class FOAFService {
     private static Stack<String> Emails  = null;
     private static String listaAmigos;
     private final static String nombreArchivo = "ivan"
-    def static retorno =[]
+    def static libros =[]
 
-    static getRetorno() {
-        return retorno
+    static getLibros() {
+        return libros
     }
 
-    static void setRetorno(def retorno) {
-        FOAFService.retorno.push(retorno)
+    static void setLibros(libros) {
+        FOAFService.libros = libros
     }
+
+
 
     public static String getListaAmigos() {
         return listaAmigos;
@@ -252,8 +254,8 @@ class FOAFService {
 
         return totalAmigos;
     }
-    public static void  obtenDocumentos(){
-        def retorno = []
+    public static void  obtenLibros(){
+        def libros = []
         Model m = ModelFactory.createDefaultModel();
         m.read("http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf");
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
@@ -272,13 +274,14 @@ class FOAFService {
             def topic = soln.get("topic");
 
             if(topic.toString().equals("book")) {
-                retorno.push(ptopic.toString().toInteger())
+
+                libros.push(ptopic.toString().toInteger())
 
             }
+            this.libros= libros
 
 
         }
-        setRetorno(retorno)
 
 
 
