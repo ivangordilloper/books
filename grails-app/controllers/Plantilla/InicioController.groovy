@@ -11,7 +11,6 @@ class InicioController {
 
     def contacto(){
 
-
     }
     def nosotros(){
 

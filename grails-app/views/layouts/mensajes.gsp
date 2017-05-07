@@ -156,7 +156,7 @@
                 <h4 class="modal-title">Mensaje de error</h4>
             </div>
             <div class="modal-body">
-                <p>Ocurri un error interno en el sistema al enviar el correo electrónico, por favor inténtelo de nuevo.</p>
+                <p>Ocurrió un error interno en el sistema al enviar el correo electrónico, por favor inténtelo de nuevo.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>

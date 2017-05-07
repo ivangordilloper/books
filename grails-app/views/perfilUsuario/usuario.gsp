@@ -201,8 +201,9 @@
                             var markerActual = new google.maps.Marker({
                                 position: pos,
                                 map: map,
-                                icon: icon
-                            })
+                                icon: icon,
+                                label: 'Tu estás aquí\n'
+                            });
 
                             map.setCenter(pos);
                             function callback(results, status) {
@@ -220,16 +221,25 @@
                                     label: labels[labelIndex++ % labels.length],
                                     position: place.geometry.location
                                 });
-                                google.maps.event.addListener(marker, 'click', function() {
-                                    infoWindow.setContent(place.name);
-                                    //infoWindow.setContent(place.address);
-                                    infoWindow.open(map, this);
+                                var service2 = new google.maps.places.PlacesService(map);
+                                var request = { reference: place.reference };
+                                service2.getDetails(request,function(details, status){
+                                    google.maps.event.addListener(marker, 'click', function() {
+                                        var contentString = '<div style="color:#000000"><b>' + place.name + '</b><br>' + details.formatted_address +
+                                                '</div>';
+
+                                        infoWindow.setContent(contentString);
+                                        //infoWindow.setContent(place.address);
+                                        infoWindow.open(map, this);
+                                    });
                                 });
+
+
                             }
                             var service = new google.maps.places.PlacesService(map);
                             service.nearbySearch({
                                 location: libreria,
-                                radius: 1000,
+                                radius: 10000,
                                 types: ['book_store']
                             }, callback);
                         }, function() {

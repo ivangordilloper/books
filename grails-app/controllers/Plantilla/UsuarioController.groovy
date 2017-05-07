@@ -3,7 +3,16 @@ package Plantilla
 class UsuarioController {
     def mailService
     def createUsuario() {
+    }
 
+    def validar(){
+        def token = params.token
+        def validar = Usuario.findByToken(token);
+        if(validar) {
+            [token: "hola"]
+            validar.setToken("Valido")
+        }else
+            [token: "error"]
     }
 
     def read(){
@@ -37,26 +46,26 @@ class UsuarioController {
         def genero = params.genero
         [apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
 
-
-
         def rol = "USUARIO"
-        def generof = params.generof
-        def libro1 = params.libro1
-        def libro2 = params.libro2
-        def libro3 = params.libro3
-        def autor1 = params.autor1
-        def autor2 = params.autor2
-        def autor3 = params.autor3
 
-        [generoFav:generof, libroFav1: libro1, libroFav2:libro2, libroFav3: libro3, autorFav1:autor1, autorFav2:autor2, autorFav3:autor3, rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
+        def generator = {
+            String alphabet, int n ->
+            new Random().with {
+                (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+            }
+        }
+        def token = generator( (('A'..'Z')+('0'..'9')).join(), 15 )
+        def username = "JayKay"
+        def uTok = "${username}${token}"
 
-        Usuario p = new Usuario( rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero).save()
-        Formulario pf = new Formulario(generoFav:generof, libroFav1: libro1, libroFav2:libro2, libroFav3: libro3, autorFav1:autor1, autorFav2:autor2, autorFav3:autor3, Usuario: p.id).save()
+        Usuario p = new Usuario( rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
         mailService.sendMail {
+            multipart true
             from "bookscomtt@gmail.com"
-            to correo
-            subject "New user"
-            text "A new user has been created"
+            to "ralvhe@gmail.com"
+            subject "Validación de nuevo usuario en Bookscom."
+            html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
+            inline 'logo', 'image/jpeg', new File('C:\\captura2.PNG')
         }
         //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
 

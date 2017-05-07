@@ -11,6 +11,7 @@ class Usuario {
     String genero
     String username
     String password
+    String token
     String rol
     //byte[] perfil
 
@@ -23,6 +24,7 @@ class Usuario {
         apellidoP size: 1..10, nullable: false
         apellidoM size: 1..10, nullable: false
         fechaNac nullable: false
+        token nullable: true
         telefono nullable:true
         correo size: 10..50, nullable: false, unique: true
         genero inList: ["M", "F"], nullable: true
