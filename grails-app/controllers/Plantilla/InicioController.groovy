@@ -8,6 +8,7 @@ class InicioController {
 
     }
     def iniciarSesion() {
+
     }
 
     def contacto(){
