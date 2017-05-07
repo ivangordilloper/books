@@ -13,6 +13,10 @@ class UsuarioController {
             validar.setToken("Valido")
         }else
             [token: "error"]
+
+            def autors = Autor.list()
+            def libros = Libro.list()
+            [autors:autors, libros: libros]
     }
 
     def read(){

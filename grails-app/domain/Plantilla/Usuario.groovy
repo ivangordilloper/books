@@ -16,7 +16,6 @@ class Usuario {
 
     //byte[] perfil
 
-    static hasOne = [uform: Formulario]
     static hasMany = [listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor, amigos: Usuario]
 
 

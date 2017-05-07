@@ -41,27 +41,27 @@ jQuery(document).ready(function($){
                                     <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor1" id="autor1" required="true"   from="${autor.nombreCompleto}"  >
+                                    <g:select name="autor1" id="autor1" required="true"   from="${autors.nombreCompleto}"  >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor2" id="autor2" required="true"   from="${autor.nombreCompleto}"  >
+                                    <g:select name="autor2" id="autor2" required="true"   from="${autors.nombreCompleto}"  >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor3" id="autor3" required="true"   from="${autor.nombreCompleto}"  >
+                                    <g:select name="autor3" id="autor3" required="true"   from="${autors.nombreCompleto}"  >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro1" id="libro1" required="true"   from="${libro.titulo}">
+                                    <g:select name="libro1" id="libro1" required="true"   from="${libros.titulo}">
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro2" id="libro2" required="true"   from="${libro.titulo}">
+                                    <g:select name="libro2" id="libro2" required="true"   from="${libros.titulo}">
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro3" id="libro3" required="true"   from="${libro.titulo}">
+                                    <g:select name="libro3" id="libro3" required="true"   from="${libros.titulo}">
                                     </g:select>
                                 </div>
                                 <li>

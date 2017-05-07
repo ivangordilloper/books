@@ -19,6 +19,8 @@ class InicioController {
     def tienda(){
 
     }
+
+
     def iniciar(){
             def user = Usuario.findByUsername(params.username)
             def userC = user.getPassword()
