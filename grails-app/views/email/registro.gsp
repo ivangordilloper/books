@@ -8,7 +8,7 @@
     <b>Buen día  ${pnombre}</b><br><br>
     Usted ha solicitado unirse a la red social más grande de lectores <b><l>Bookscom</l></b>.<br><br>
     Para continuar con su registro por favor dé click en el siguiente enlace que lo llevará al siguiente paso.
-    <br><g:createLink controller='usuario' absolute='true'/>${token}
+    <br><g:createLink controller='usuario' action="validar" absolute="true"/>${"?token="+token}
     <br>
     <br>
     <br>
