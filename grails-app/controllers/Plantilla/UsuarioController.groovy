@@ -9,8 +9,9 @@ class UsuarioController {
         def token = params.token
         def validar = Usuario.findByToken(token);
         if(validar) {
-            [token: "hola"]
             validar.setToken("Valido")
+            [libros: Libro.list(), autors: Autor.list()]
+
         }else
             [token: "error"]
 
@@ -68,7 +69,7 @@ class UsuarioController {
             to correo
             subject "Validación de nuevo usuario en Bookscom."
             html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
-            inline 'logo', 'image/jpeg', new File('C:\\captura2.PNG')
+            inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
         }
         //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
 
