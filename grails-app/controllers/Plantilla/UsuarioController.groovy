@@ -73,6 +73,8 @@ class UsuarioController {
             html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
             inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
         }
+        FOAFService.generaRdfUsuarioActual((String)correo, (String)nombre, (String)apellidoP, (String)apellidoM)
+
         //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
 
         redirect(controller: "inicio", action: "iniciarSesion")

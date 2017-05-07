@@ -4,13 +4,6 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <foaf:Person rdf:about="C:\Users\raid_\Documents\TT\books\grails-app\assets\modeloFOAFraid_ivan@hotmail.com.rdf">
-    <foaf:knows>
-      <foaf:Person>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFivan@hotmail.com.rdf"/>
-        <foaf:mbox rdf:resource="mailto:ivan@hotmail.com"/>
-        <foaf:name>Ivan Gordillo Perez</foaf:name>
-      </foaf:Person>
-    </foaf:knows>
     <foaf:Document rdf:parseType="Resource">
       <foaf:primaryTopic>1</foaf:primaryTopic>
       <foaf:topic>book</foaf:topic>

@@ -31,6 +31,15 @@ class FOAFService {
     private final static String nombreArchivo = "ivan"
     def static libros =[]
 
+    static getAutores() {
+        return autores
+    }
+
+    static void setAutores(autores) {
+        FOAFService.autores = autores
+    }
+    def static autores = []
+
     static getLibros() {
         return libros
     }
@@ -139,125 +148,46 @@ class FOAFService {
         }
     }
 
-    public static String agregarAmigo(String email,String nombres, String apP, String apM) throws Exception {
-        String rutaProcesarRDF = "C:\\Users\\raid_\\Documents\\TT\\books\\grails-app\\assets"
-        Model modelo = ModelFactory.createDefaultModel();
-        modelo.setNsPrefix("rdfs",RDFS.getURI());
-        modelo.setNsPrefix("foaf",FOAF.getURI());
-        modelo.setNsPrefix("vcard",VCARD.getURI());
+/*
+ * Get amigos by email from RDF
+ * 
+ */
 
-        String sujetoStr = rutaProcesarRDF.concat("\\modeloFOAF").concat(email).concat(".rdf") ;
+    public static ArrayList<String> getAmigosFOAF(String email){
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        ArrayList<String> uri = new ArrayList<>()
 
-        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr);
-
-        Resource sujeto = modelo.getResource(sujetoStr);
-
-        sujeto.addProperty(FOAF.name as Property, nombres.concat(" ")
-                .concat(apP).concat(" ")
-                .concat(apM));
-
-        sujeto.addProperty(FOAF.givenname,nombres);
-
-        sujeto.addProperty(FOAF.family_name,apP.concat(" ")
-                .concat(apP));
-
-        sujeto.addProperty(FOAF.mbox,modelo.createResource("mailto:".concat(email)));
-
-        sujeto.addProperty(RDF.type,FOAF.Person);
-        Resource book = modelo.createResource()
-        book.addProperty(FOAF.topic,"book")
-        book.addProperty(FOAF.primaryTopic,"1")
-        sujeto.addProperty(FOAF.Document as Property,book)
-        Resource book1 = modelo.createResource()
-        book1.addProperty(FOAF.topic,"book")
-        book1.addProperty(FOAF.primaryTopic,"1")
-        sujeto.addProperty(FOAF.Document as Property,book1)
-
-        Resource blankSubject = modelo.createResource();
-        blankSubject.addProperty(RDF.type,FOAF.Person);
-
-
-
-        String tmpNombreComp = getNombreCompletoAmigo();
-        String tmpEmailAmigo =  getEmailAmigo();
-//		String tmpSeeAlso = ConstantesComercioC2C.PREFIJO_SOURCE_FOAF.concat(amigoUsuario.getEmailAmigo()).concat(ConstantesComercioC2C.EXTENSION_NOMMODELO);
-
-
-        String tmpSeeAlso= "http://localhost:8080/assets/".concat("modeloFOAF").concat(tmpEmailAmigo).concat(".rdf");
-        String rutaEscribir = rutaProcesarRDF.concat("\\documentosRDF\\modeloFOAF").concat(email).concat(".rdf") ;
-
-        blankSubject.addProperty(FOAF.name, tmpNombreComp);
-        blankSubject.addProperty(FOAF.mbox, modelo.createResource("mailto:".concat(tmpEmailAmigo)));
-        blankSubject.addProperty(RDFS.seeAlso, modelo.createResource(tmpSeeAlso));
-
-
-
-        sujeto.addProperty(FOAF.knows, blankSubject);
-        System.out.println("Un amigo agregado...");
-
-        modelo.write(new PrintWriter(System.out), "RDF/XML-ABBREV");
-
-        serializaModelo(modelo, rutaEscribir);
-
-        listaAmigos = buscarAmigosFoaf(email);
-        print("hola")
-        listaAmigos = listaAmigos.replace("mailto:", "");
-        return "SUCCESS";
-    }
-
-    public static String buscarAmigosFoaf(String email){
-        String uriActual = null;
-        String emailActual = null;
-
-        URIs  = new Stack<String>();
-        Emails = new Stack<String>();
-
-        String rutaProcesarRDF = "http://localhost:8080/assets/";
-
-        String uriInicial= rutaProcesarRDF.concat("".concat("modeloFOAF").concat(email).concat(".rdf"));
-
-        URIs.push(uriInicial);
-        System.out.println("Se agrega dentro de la pila de uris uno nuevo: [" + uriInicial + "]");
-
-//		Emails.push("usuarioActual@dominio.com");
-//		System.out.println("Se agrega dentro de la pila de emails uno nuevo: [usuarioActual@dominio.com]");
-
-        while(!URIs.empty()){
-            uriActual = (String)(URIs.pop());
-            System.out.println("Se obtuvo dentro de la pila de uris uno nuevo: [" + uriActual + "]");
-
-//			if(!Emails.empty()){
-//				emailActual = (String)(Emails.pop());
-//				System.out.println("Se obtuvo dentro de la pila de emails uno nuevo: [" + emailActual + "]");
-//			}
-
-            if(uriActual !=null){
-                System.out.println("Procesando la URI: " + uriActual);
-
-                Model currentRDFDocument = ModelFactory.createDefaultModel();
-                try{
-                    currentRDFDocument.read(uriActual);
-                    obtenURIsAmigosBC(currentRDFDocument);
-
-                }catch(com.hp.hpl.jena.shared.DoesNotExistException e){
-                    System.out.println("No se pudo leer la URI: " + uriActual );
-                }
-            }
-        }
-
-
-        String totalAmigos = "";
-
-        while(!Emails.empty()){
-            totalAmigos = totalAmigos + " " + (String)(Emails.pop());
-        }
-
-        return totalAmigos;
-    }
-    public static void  obtenLibros(){
-        def libros = []
         Model m = ModelFactory.createDefaultModel();
-        m.read("http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf");
+        m.read(sujetoStr2);
+
+        String queryString =  " SELECT ?yo ?amigo ?email ?seeAlso " +
+                " WHERE {" +
+                "  ?yo <" + FOAF.knows + "> ?amigo. " +
+                "  optional { ?amigo <" + FOAF.mbox + "> ?email. }" +
+                "  optional { ?amigo <" + RDFS.seeAlso + "> ?seeAlso. }" +
+                "   }";
+
+        Query query = QueryFactory.create(queryString);
+        QueryExecution qe = QueryExecutionFactory.create(query, m);
+        ResultSet resultado = qe.execSelect();
+
+        while ( resultado.hasNext() ) {
+            QuerySolution soln = resultado.nextSolution();
+
+            Resource emailF = (Resource) soln.get("email");
+
+            Resource seeAlso = (Resource) soln.get("seeAlso");
+            uri.push(seeAlso.getURI())
+
+        }
+        return uri;
+    }
+
+    public static ArrayList<Integer>  obtenLibrosByEmail(String email){
+        ArrayList<Integer> libros = new ArrayList<>()
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        Model m = ModelFactory.createDefaultModel();
+        m.read(sujetoStr2);
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
                 " WHERE {" +
                 "  ?yo <" + FOAF.Document + "> ?document. " +
@@ -278,65 +208,158 @@ class FOAFService {
                 libros.push(ptopic.toString().toInteger())
 
             }
-            this.libros= libros
-
-
         }
-
-
-
+        return libros
     }
-    public static void obtenURIsAmigosBC(Model m){
 
-        String queryString =  " SELECT ?yo ?amigo ?email ?seeAlso " +
+
+    public static ArrayList<Integer>  obtenAutoresByEmail(String email){
+        ArrayList<Integer> autores = new ArrayList<>()
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        Model m = ModelFactory.createDefaultModel();
+        m.read(sujetoStr2);
+        String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
                 " WHERE {" +
-                "  ?yo <" + FOAF.knows + "> ?amigo. " +
-                "  optional { ?amigo <" + FOAF.mbox + "> ?email. }" +
-                "  optional { ?amigo <" + RDFS.seeAlso + "> ?seeAlso. }" +
+                "  ?yo <" + FOAF.Document + "> ?document. " +
+                "  optional { ?document <" + FOAF.topic + "> ?topic. }" +
+                "  optional { ?document <" + FOAF.primaryTopic + "> ?prymary. }" +
                 "   }";
 
         Query query = QueryFactory.create(queryString);
         QueryExecution qe = QueryExecutionFactory.create(query, m);
         ResultSet resultado = qe.execSelect();
-
         while ( resultado.hasNext() ) {
-            QuerySolution soln = resultado.nextSolution() ;
-            System.out.println("Procesando triple [" + soln.toString() + "]");
+            QuerySolution soln = resultado.nextSolution();
+            def ptopic = soln.get("prymary")
+            def topic = soln.get("topic");
 
-            Resource email = (Resource)soln.get("email");
-            if ( email != null ) {
-                if ( email.isLiteral() ) {
-                    System.out.println("Email es una literal");
-                } else if ( email.isResource() ) {
-                    System.out.println("Email es un recurso");
+            if(topic.toString().equals("autor")) {
 
+                autores.push(ptopic.toString().toInteger())
 
-                }
-            } else {
-                System.out.println("Para el triple actual no existe el valor del email!.");
-            }
-
-            Resource seeAlso = (Resource)soln.get("seeAlso");
-
-            if ( seeAlso != null ) {
-                if ( seeAlso.isLiteral() ) {
-                    System.out.println("seeAlso es una literal");
-                    URIs.push(seeAlso.getURI());
-                    System.out.println("Se agrego dentro de la pila de uris uno nuevo: [" + (String)seeAlso.getURI() + "]");
-                    Emails.push( email.toString());
-                    System.out.println("Se agrego dentro de la pila de emails uno nuevo: [" + email.toString() + "]");
-                } else if ( seeAlso.isResource() ) {
-                    System.out.println("seeAlso es un recurso");
-                    URIs.push(seeAlso.getURI());
-                    System.out.println("Se agrego dentro de la pila de uris uno nuevo: [" + (String)seeAlso.getURI() + "]");
-                    Emails.push( email.toString());
-                    System.out.println("Se agrego dentro de la pila de emails uno nuevo: [" + email.toString() + "]");
-                }
-            } else {
-                System.out.println("Para el triple actual no existe el valor de 'seeAlso'!.");
             }
         }
 
+        return autores
+    }
+    public static ArrayList<Integer>  obtenLibrosByURI(String URI){
+        ArrayList<Integer> libros = new ArrayList<>()
+        Model m = ModelFactory.createDefaultModel();
+        m.read(URI);
+        String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
+                " WHERE {" +
+                "  ?yo <" + FOAF.Document + "> ?document. " +
+                "  optional { ?document <" + FOAF.topic + "> ?topic. }" +
+                "  optional { ?document <" + FOAF.primaryTopic + "> ?prymary. }" +
+                "   }";
+
+        Query query = QueryFactory.create(queryString);
+        QueryExecution qe = QueryExecutionFactory.create(query, m);
+        ResultSet resultado = qe.execSelect();
+        while ( resultado.hasNext() ) {
+            QuerySolution soln = resultado.nextSolution();
+            def ptopic = soln.get("prymary")
+            def topic = soln.get("topic");
+
+            if(topic.toString().equals("book")) {
+
+                libros.push(ptopic.toString().toInteger())
+
+            }
+        }
+        return libros
+    }
+
+
+    public static ArrayList<Integer>  obtenAutoresByURI(String URI){
+        ArrayList<Integer> autores = new ArrayList<>()
+        Model m = ModelFactory.createDefaultModel();
+        m.read(URI);
+        String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
+                " WHERE {" +
+                "  ?yo <" + FOAF.Document + "> ?document. " +
+                "  optional { ?document <" + FOAF.topic + "> ?topic. }" +
+                "  optional { ?document <" + FOAF.primaryTopic + "> ?prymary. }" +
+                "   }";
+
+        Query query = QueryFactory.create(queryString);
+        QueryExecution qe = QueryExecutionFactory.create(query, m);
+        ResultSet resultado = qe.execSelect();
+        while ( resultado.hasNext() ) {
+            QuerySolution soln = resultado.nextSolution();
+            def ptopic = soln.get("prymary")
+            def topic = soln.get("topic");
+
+            if(topic.toString().equals("autor")) {
+
+                autores.push(ptopic.toString().toInteger())
+
+            }
+        }
+
+        return autores
+    }
+
+
+    public static void  setLibro(int id, String email){
+
+        String rutaProcesarRDF = "C:\\Users\\raid_\\Documents\\TT\\books\\grails-app\\assets\\"
+
+        String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+
+        def autores = []
+        Model m = ModelFactory.createDefaultModel();
+        m.read(sujetoStr2);
+
+        String sujetoStr = "http://localhost:8080/assets/modeloFOAFivan@hotmail.com.rdf";
+
+        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr);
+
+        Resource sujeto = m.getResource(sujetoStr);
+        Resource book = m.createResource()
+        book.addProperty(FOAF.topic,"book")
+        book.addProperty(FOAF.primaryTopic,id+"")
+        sujeto.addProperty(FOAF.Document as Property,book)
+
+
+        m.write(System.out, "RDF/XML-ABBREV");
+        serializaModelo(m,rutaSerializar)
+
 
     }
+
+    public static void  setAmigo(String email, String nombreC, String apP, String apM, String emailAmigo){
+
+        String rutaProcesarRDF = "C:\\Users\\raid_\\Documents\\TT\\books\\grails-app\\assets\\"
+
+        String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+
+        def autores = []
+        Model m = ModelFactory.createDefaultModel();
+        m.read(sujetoStr2);
+
+        String sujetoStr = "http://localhost:8080/assets/modeloFOAFivan@hotmail.com.rdf";
+
+        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr);
+
+        Resource sujeto = m.getResource(sujetoStr);
+        Resource person = m.createResource()
+        String tmpSeeAlso= "http://localhost:8080/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
+
+
+
+        person.addProperty(RDF.type,FOAF.Person)
+        person.addProperty(FOAF.name as Property, nombreC);
+        person.addProperty(FOAF.mbox, m.createResource("mailto:".concat(emailAmigo)));
+        person.addProperty(RDFS.seeAlso, m.createResource(tmpSeeAlso));
+
+        sujeto.addProperty(FOAF.knows, person)
+        m.write(System.out, "RDF/XML-ABBREV");
+        serializaModelo(m,rutaSerializar)
+
+
+    }
+
 }
