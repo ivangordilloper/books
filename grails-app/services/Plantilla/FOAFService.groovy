@@ -164,11 +164,11 @@ class FOAFService {
         sujeto.addProperty(RDF.type,FOAF.Person);
         Resource book = modelo.createResource()
         book.addProperty(FOAF.topic,"book")
-        book.addProperty(FOAF.primaryTopic,"ID=1")
+        book.addProperty(FOAF.primaryTopic,"1")
         sujeto.addProperty(FOAF.Document as Property,book)
         Resource book1 = modelo.createResource()
         book1.addProperty(FOAF.topic,"book")
-        book1.addProperty(FOAF.primaryTopic,"ID=1")
+        book1.addProperty(FOAF.primaryTopic,"1")
         sujeto.addProperty(FOAF.Document as Property,book1)
 
         Resource blankSubject = modelo.createResource();
@@ -273,6 +273,7 @@ class FOAFService {
 
             if(topic.toString().equals("book")) {
                 retorno.push(ptopic.toString().toInteger())
+
             }
 
 

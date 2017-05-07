@@ -7,6 +7,8 @@ class PerfilUsuarioController {
     def usuario(long id) {
 
         FOAFService.obtenDocumentos()
+        def libros = FOAFService.getRetorno()
+        print libros
         def usuariosL = Usuario.findById(id)
 
         def pal
@@ -23,9 +25,7 @@ class PerfilUsuarioController {
         //FOAFService.generaRdfUsuarioActual("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
         //FOAFService.generaRdfUsuarioActual("ivan@hotmail.com","Ivan","Gordillo","Perez")
         //FOAFService.generaRdfUsuarioActual("ivan2@hotmail.com","Ivan","Gordillo","Perez")
-        FOAFService foaf = new FOAFService()
-        foaf.obtenDocumentos()
-        print foaf.getRetorno()
+
 //
        //FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
        // FOAFService.setEmailAmigo("ivan@hotmail.com")
