@@ -11,14 +11,15 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
     <g:javascript>
 jQuery(document).ready(function($){
+
+        alert("${token}");
         var token = "${token}";
         if(token=='error'){
             $('#MSGE_16').modal('show');
         }
         else{
 
-        }
-        });
+        }});
     </g:javascript>
 </head>
 <body>

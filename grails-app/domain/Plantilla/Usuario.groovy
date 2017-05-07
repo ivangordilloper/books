@@ -18,7 +18,6 @@ class Usuario {
 
     static hasMany = [listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor, amigos: Usuario]
 
-
     static constraints = {
         nombre size: 1..10, nullable: false
         apellidoP size: 1..10, nullable: false
