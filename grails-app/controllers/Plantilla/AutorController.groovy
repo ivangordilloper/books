@@ -4,10 +4,16 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class AutorController{
 
+    def autor = Autor.list() {
+        [autor: autor]
+    }
     def createAutor() {
 
     }
-
+    def validar(){
+        def autor = Autor.list()
+        [autor: autor]
+    }
     def read(long id) {
         def listaAutor = Autor.list()
         [preadA: listaAutor]

@@ -2,11 +2,11 @@ package Plantilla
 class LibroController {
 
     def createLibro() {
-         def autor = Autor.list()
-
-         [autor: autor]
 
     }
+
+
+
 
     def update(long id){
         def editarLibro = Libro.findById(id)

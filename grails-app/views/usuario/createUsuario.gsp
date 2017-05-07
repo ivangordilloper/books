@@ -22,6 +22,7 @@
             <!-- Main -->
             <article id="main">
                 <header>
+                    <g:createLink controller='book' absolute='true'/>
                     <h2>Regístrate</h2>
                 </header>
                 <section class="wrapper style5">
@@ -77,27 +78,7 @@
                                                     <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
 
                                                 </div>
-                                                <div class="12u 12u$(xsmall)">
-                                                    <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="autor1" id="autor1" placeholder="Autor Favorito 1"/>
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="autor2" id="autor2" placeholder="Autor Favorito 2"/>
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="autor3" id="autor3" placeholder="Autor Favorito 3"/>
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="libro1" id="libro1" placeholder="Libro Favorito 1"/>
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="libro2" id="libro2" placeholder="Libro Favorito 2" />
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="text" name="libro3" id="libro3" placeholder="Libro Favorito 3"/>
-                                                </div>
+
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
                                                     <ul class="actions">
@@ -110,6 +91,7 @@
                                         </div>
 
                                     </g:uploadForm>
+
 
                             </div>
                         </section>
