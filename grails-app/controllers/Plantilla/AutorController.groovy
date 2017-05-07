@@ -4,9 +4,6 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class AutorController{
 
-    def autor = Autor.list() {
-        [autor: autor]
-    }
     def createAutor() {
 
     }

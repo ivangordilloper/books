@@ -9,14 +9,16 @@ class UsuarioController {
         def token = params.token
         def validar = Usuario.findByToken(token);
         if(validar) {
-            [token: "hola"]
             validar.setToken("Valido")
-        }else
-            [token: "error"]
-
             def autors = Autor.list()
             def libros = Libro.list()
-            [autors:autors, libros: libros]
+            [autors:autors, libros: libros, token:"valido"]
+        }else {
+            [utoken:"invalido"]
+            def autors = Autor.list()
+            def libros = Libro.list()
+            [autors:autors, libros: libros, token:"error"]
+        }
     }
 
     def read(){
