@@ -3,6 +3,7 @@ package Plantilla
 class InicioController {
     def mailService
     static defaultAction = "home"
+
     def home() {
 
     }
