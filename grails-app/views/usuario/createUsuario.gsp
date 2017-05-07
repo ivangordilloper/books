@@ -84,8 +84,6 @@
                                                     <ul class="actions">
                                                         <li >
                                                             <g:submitButton name="submit" value="Regístrate" class="special"/>
-
-                                                        <button type="button" id="cancelar" class="special">Cancelar</button></li>
                                                     </ul>
                                                 </div>
 

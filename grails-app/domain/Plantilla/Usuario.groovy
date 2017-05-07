@@ -13,6 +13,7 @@ class Usuario {
     String password
     String token
     String rol
+
     //byte[] perfil
 
     static hasOne = [uform: Formulario]
