@@ -11,30 +11,30 @@
             <foaf:name>Ivan Gordillo Perez</foaf:name>
             <foaf:Document rdf:parseType="Resource">
               <foaf:topic>book</foaf:topic>
-              <foaf:primaryTopic>2</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
             </foaf:Document>
             <foaf:Document rdf:parseType="Resource">
-              <foaf:primaryTopic>2</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
               <foaf:topic>book</foaf:topic>
             </foaf:Document>
             <foaf:givenname>Ivan</foaf:givenname>
             <foaf:Document rdf:parseType="Resource">
               <foaf:topic>book</foaf:topic>
-              <foaf:primaryTopic>2</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
             </foaf:Document>
             <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
             <foaf:Document rdf:parseType="Resource">
-              <foaf:primaryTopic>3</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
               <foaf:topic>autor</foaf:topic>
             </foaf:Document>
             <foaf:Document rdf:parseType="Resource">
-              <foaf:primaryTopic>2</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
               <foaf:topic>book</foaf:topic>
             </foaf:Document>
             <foaf:family_name>Gordillo Perez</foaf:family_name>
             <foaf:Document rdf:parseType="Resource">
               <foaf:topic>autor</foaf:topic>
-              <foaf:primaryTopic>3</foaf:primaryTopic>
+              <foaf:primaryTopic>1</foaf:primaryTopic>
             </foaf:Document>
           </foaf:Person>
         </rdfs:seeAlso>

@@ -41,7 +41,7 @@
     </foaf:knows>
     <foaf:Document rdf:parseType="Resource">
       <foaf:topic>book</foaf:topic>
-      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
     </foaf:Document>
     <foaf:knows>
       <foaf:Person>

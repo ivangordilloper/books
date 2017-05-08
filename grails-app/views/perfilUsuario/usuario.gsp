@@ -19,12 +19,18 @@
         <section class="spotlight swipbooks">
             <div class="image"><g:img dir="image" file="choose.jpg" alt="" /></div><div class="content">
             <div class="swiper-container">
+
                 <h4>Tal vez te gusten estos libros</h4>
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
 
-                    <div class="swiper-slide separator-slide"> <a  href="/usuario/libro"><g:img dir="images" file="book.png" class="image-slide"/><div class="text-book">Libro 1</div></a></div>
+
+                <g:each in="${libros1}" var="libro">
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+                    </div>
+                </g:each>
+
 
                 </div>
                 <!-- If we need pagination -->
@@ -46,9 +52,10 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-
-                    <div class="swiper-slide separator-slide"> <a  href="/usuario/libro"><g:img dir="images" file="book.png" class="image-slide"/><div class="text-book">Libro 1</div></a></div>
-
+                <g:each in="${autores1}" var="autor">
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'autor', action:'verAutor', params: [id:(autor.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${autor.nombreCompleto}</div></a>
+                    </div>
+                </g:each>
                 </div>
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
