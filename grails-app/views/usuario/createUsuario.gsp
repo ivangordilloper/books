@@ -81,7 +81,7 @@
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
                                                     <ul class="actions">
-                                                        <li >
+                                                        <li>
                                                             <g:submitButton name="submit" value="Regístrate" class="special"/>
                                                             <button type="button" id="cancelar" class="special">Cancelar</button></li>
                                                     </ul>

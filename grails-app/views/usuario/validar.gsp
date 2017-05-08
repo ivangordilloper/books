@@ -35,8 +35,6 @@ jQuery(document).ready(function($){
                     <div class="box">
                         <h4>Preferencias</h4>
                         <form method="post" action="#">
-
-                            ${token}
                             <div class="row uniform">
                                 <div class="12u 12u$(xsmall)">
                                     <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
@@ -65,9 +63,11 @@ jQuery(document).ready(function($){
                                     <g:select name="libro3" id="libro3" required="true"   from="${libros.titulo}">
                                     </g:select>
                                 </div>
-                                <li>
-                                    <g:submitButton name="submit" value="Regístrate" class="special"/>
-                                </li>
+                                <div class="12u$">
+                                    <ul class="actions">
+                                        <li><g:submitButton name="submit" value="Regístrate" class="special"/></li>
+                                    </ul>
+                                </div>
                             </div>
                         </form>
                     </div>
