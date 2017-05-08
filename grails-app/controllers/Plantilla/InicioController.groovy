@@ -14,6 +14,20 @@ class InicioController {
     def contacto(){
 
     }
+    def enviar(){
+        def nombre = params.nombreC
+        def correo = params.mail
+        def mensaje = params.mensaje
+        mailService.sendMail {
+            multipart true
+            from correo
+            to "bookscomtt@gmail.com"
+            subject "Se realizó una sugerencia y/o comentario."
+            html  view: "/email/sugerencia", model: [pNombre: nombre, pCorreo: correo, pMensaje: mensaje]
+            inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
+        }
+        redirect(controller: "inicio")
+    }
     def nosotros(){
 
     }

@@ -22,7 +22,6 @@
             <!-- Main -->
             <article id="main">
                 <header>
-                    <g:createLink controller='book' absolute='true'/>
                     <h2>Regístrate</h2>
                 </header>
                 <section class="wrapper style5">
@@ -84,6 +83,7 @@
                                                     <ul class="actions">
                                                         <li >
                                                             <g:submitButton name="submit" value="Regístrate" class="special"/>
+                                                            <button type="button" id="cancelar" class="special">Cancelar</button></li>
                                                     </ul>
                                                 </div>
 
@@ -104,11 +104,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <g:external dir="js" file="bootstrap.js"/>
-    <!-- Latest compiled and minified JavaScript -->
-        <g:external dir="js" file="angular/angular.min.js"/>
-        <g:external dir="js" file="angular/angular-messages.min.js"/>
-        <g:external dir="js" file="angular/angular.js"/>
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
         <div class="modal-dialog">
@@ -196,7 +191,7 @@
                     <h4 class="modal-title">Mensaje de error</h4>
                 </div>
                 <div class="modal-body">
-                    <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra direcci´on de correo electrónico.</p>
+                    <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -272,68 +267,10 @@
                             }
                         }
                     }
-
-
-
-                    console.log(isNombre(nombre));
-
-
-                    console.log(nombre);
-                    console.log(apellidoP);
-                    console.log(apellidoM);
-                    console.log(nombreUsuario);
-                    console.log(telefono);
-                    console.log(genero);
-                    console.log(fechaNac);
-                    console.log(email);
-                    console.log(email2);
-                    console.log(passwd);
-                    console.log(passwd2);
-
                     $(window).scrollTop(0);
                     return false;
                 });
             });
-            /*function validarPasswd() {
-
-                alert("Error");
-                return false;
-
-                var p1 = document.getElementById("passwd").value;
-                var p2 = document.getElementById("passwd2").value;
-                var p3 = document.getElementById("email").value;
-                var p4 = document.getElementById("email2").value;
-                var espacios = false;
-                var cont = 0;
-
-                while (!espacios && (cont < p1.length)) {
-                    if (p1.charAt(cont) == " ")
-                        espacios = true;
-                    cont++;
-                }
-
-                if (espacios) {
-                    alert ("La contraseña no puede contener espacios en blanco");
-
-                    return false;
-                }
-                if (p1 != p2) {
-                    alert("Las contraseñas deben de coincidir");
-                    return false;
-                }
-
-                if (p3 != p4) {
-                    alert("Los correos electrónicos deben de coincidir");
-                    return false;
-
-                } else {
-
-                    alert("Todo esta correcto");
-                    return true;
-                }}*/
-
-
-
         </script>
     </body>
 </body>

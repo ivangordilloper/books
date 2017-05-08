@@ -13,7 +13,7 @@ class PerfilUsuarioController {
         //FOAFService.setLibro(2, "ivan@hotmail.com");
         //FOAFService.setAmigo("ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
         //ArrayList<String> uri =  FOAFService.getAmigosFOAF("ivan@hotmail.com")
-        print uri
+        //print uri
         def pal
         if(usuariosL.genero == 'F'){
             pal = "Bienvenida"

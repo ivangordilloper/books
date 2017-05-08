@@ -201,8 +201,7 @@
                             var markerActual = new google.maps.Marker({
                                 position: pos,
                                 map: map,
-                                icon: icon,
-                                label: 'Tu estás aquí\n'
+                                icon: icon
                             });
 
                             map.setCenter(pos);
@@ -225,10 +224,9 @@
                                 var request = { reference: place.reference };
                                 service2.getDetails(request,function(details, status){
                                     google.maps.event.addListener(marker, 'click', function() {
-                                        var contentString = '<div style="color:#000000"><b>' + place.name + '</b><br>' + details.formatted_address +
-                                                '</div>';
+                                        var contentString = '<div><'
 
-                                        infoWindow.setContent(contentString);
+                                        infoWindow.setContent(place.name + '<br>' + details.formatted_address);
                                         //infoWindow.setContent(place.address);
                                         infoWindow.open(map, this);
                                     });
