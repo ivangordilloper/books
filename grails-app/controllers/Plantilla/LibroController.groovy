@@ -2,7 +2,8 @@ package Plantilla
 class LibroController {
 
     def createLibro() {
-
+        def autorL = Autor.list()
+        [autor: autorL]
     }
 
 
@@ -42,6 +43,7 @@ class LibroController {
     def crear(){
 
         def autorL = Autor.list()
+
         def titulo = params.titulo
         def editorial = params.editorial
         def autor = params.autores

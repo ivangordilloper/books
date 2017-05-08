@@ -92,7 +92,7 @@ class FOAFService {
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
 
-        String sujetoStr2 = "http://localhost:8086/assets/".concat("documentosRDF/modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr2);
 
@@ -312,18 +312,43 @@ class FOAFService {
         Model m = ModelFactory.createDefaultModel();
         m.read(sujetoStr2);
 
-        String sujetoStr = "http://localhost:8080/assets/modeloFOAFivan@hotmail.com.rdf";
 
-        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr);
+        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr2);
 
-        Resource sujeto = m.getResource(sujetoStr);
+        Resource sujeto = m.getResource(sujetoStr2);
         Resource book = m.createResource()
         book.addProperty(FOAF.topic,"book")
         book.addProperty(FOAF.primaryTopic,id+"")
         sujeto.addProperty(FOAF.Document as Property,book)
 
 
-        m.write(System.out, "RDF/XML-ABBREV");
+        //m.write(System.out, "RDF/XML-ABBREV");
+        serializaModelo(m,rutaSerializar)
+
+
+    }
+
+    public static void  setAutor(int id, String email){
+
+        String rutaProcesarRDF = "C:\\Users\\raid_\\Documents\\TT\\books\\grails-app\\assets\\"
+
+        String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+
+        def autores = []
+        Model m = ModelFactory.createDefaultModel();
+        m.read(sujetoStr2);
+
+        System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr2);
+        Resource sujeto = m.getResource(sujetoStr2);
+
+        Resource book = m.createResource()
+        book.addProperty(FOAF.topic,"autor")
+        book.addProperty(FOAF.primaryTopic,id+"")
+        sujeto.addProperty(FOAF.Document as Property,book)
+
+
+        //m.write(System.out, "RDF/XML-ABBREV");
         serializaModelo(m,rutaSerializar)
 
 
