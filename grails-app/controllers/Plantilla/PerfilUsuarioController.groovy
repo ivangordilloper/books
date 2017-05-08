@@ -6,14 +6,17 @@ class PerfilUsuarioController {
 
     def usuario(long id) {
         //FOAFService.obtenLibros()
-        //def libros = FOAFService.getLibros()
+        //def libros = FOAFService.obtenAutoresByEmail("raid_ivan@hotmail.com")
         //print libros
         def usuariosL = Usuario.findById(id)
         //FOAFService.libros.clear()
-        //FOAFService.setLibro(2, "ivan@hotmail.com");
-        //FOAFService.setAmigo("ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
-        //ArrayList<String> uri =  FOAFService.getAmigosFOAF("ivan@hotmail.com")
-        print uri
+        //FOAFService.setLibro(2, "raid_ivan@hotmail.com");
+        //FOAFService.setLibro(2, "raid_ivan@hotmail.com");
+        //FOAFService.setAutor(3, "raid_ivan@hotmail.com");
+
+        //FOAFService.setAmigo("raid_ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
+        //ArrayList<String> uri =  FOAFService.getAmigosFOAF("raid_ivan@hotmail.com")
+        //print uri
         def pal
         if(usuariosL.genero == 'F'){
             pal = "Bienvenida"
