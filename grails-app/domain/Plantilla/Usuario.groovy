@@ -1,39 +1,61 @@
 package Plantilla
 
-class Usuario {
+import grails.plugin.springsecurity.SpringSecurityService
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
 
-    String nombre
-    String apellidoP
-    String apellidoM
-    Date fechaNac = new Date()
-    int telefono
-    String correo
-    String genero
-    String username
-    String password
-    String token
-    String rol
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class Usuario implements Serializable {
 
-    //byte[] perfil
+	private static final long serialVersionUID = 1
 
-    static hasMany = [listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor, amigos: Usuario]
+	SpringSecurityService springSecurityService
 
-    static constraints = {
-        nombre size: 1..10, nullable: false
-        apellidoP size: 1..10, nullable: false
-        apellidoM size: 1..10, nullable: false
-        fechaNac nullable: false
-        token nullable: true
-        telefono nullable:true
-        correo size: 10..50, nullable: false, unique: true
-        genero inList: ["M", "F"], nullable: true
-        username size:1..10, nullable: false, unique: true
-        password size:1..10, nullable: false
-        rol inList: ["ADMINISTRADOR", "USUARIO"], nullable: false
-        uform blank: true, nullable: true
-        //perfil nullable: true, maxSize: 2 * 1024 * 1024
-
-    }
+	String username
+	String password
+	boolean enabled = true
+	boolean accountExpired
+	boolean accountLocked
+	boolean passwordExpired
+	String nombre
+	String apellidoP
+	String apellidoM
+	Date fechaNac = new Date()
+	int telefono
+	String correo
+	String genero
+	String token
 
 
+	Set<Role> getAuthorities() {
+		(UsuarioRole.findAllByUsuario(this) as List<UsuarioRole>)*.role as Set<Role>
+	}
+
+	def beforeInsert() {
+		encodePassword()
+	}
+
+	def beforeUpdate() {
+		if (isDirty('password')) {
+			encodePassword()
+		}
+	}
+
+	protected void encodePassword() {
+		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+	}
+
+	static transients = ['springSecurityService']
+
+	static constraints = {
+		password blank: false, password: true
+		username blank: false, unique: true
+	}
+
+	static mapping = {
+		password column: '`password`'
+	}
 }

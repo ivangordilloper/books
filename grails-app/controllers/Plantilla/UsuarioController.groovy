@@ -1,5 +1,9 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
+
+
+@Secured(['permitAll'])
 class UsuarioController {
     def mailService
     def createUsuario() {
@@ -53,7 +57,6 @@ class UsuarioController {
         def genero = params.genero
         [apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
 
-        def rol = "USUARIO"
 
         def generator = {
             String alphabet, int n ->
@@ -64,7 +67,8 @@ class UsuarioController {
         def token = generator( (('A'..'Z')+('0'..'9')).join(), 15 )
         def username = "JayKay"
         def uTok = "${username}${token}"
-        Usuario p = new Usuario( rol:rol, apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
+        Usuario p = new Usuario(  apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
+        UsuarioRole.create(p, Role.findById(2))
         mailService.sendMail {
             multipart true
             from "bookscomtt@gmail.com"

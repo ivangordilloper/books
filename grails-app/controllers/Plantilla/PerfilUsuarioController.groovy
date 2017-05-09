@@ -1,5 +1,9 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['permitAll'])
+
 class PerfilUsuarioController {
     def FOAFService
     static defaultAction = "usuario"

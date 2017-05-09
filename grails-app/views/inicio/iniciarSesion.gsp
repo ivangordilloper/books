@@ -19,7 +19,7 @@
                         <h4>Iniciar Sesión </h4>
 
                         <div id="login">
-                            <g:form method="post" action="iniciar">
+                            <form method="post" action="/login/authenticate">
 
                             <div class="row uniform">
 
@@ -42,7 +42,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </g:form>
+                        </form>
                         </div>
                         <script>
                             (function() {

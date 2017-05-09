@@ -1,5 +1,9 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['permitAll'])
+
 class InicioController {
     def mailService
     static defaultAction = "home"

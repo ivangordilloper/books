@@ -1,6 +1,9 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
+
+@Secured(['permitAll'])
 
 class AutorController{
 

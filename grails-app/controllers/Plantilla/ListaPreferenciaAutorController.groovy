@@ -1,5 +1,10 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
+
+
+@Secured(['permitAll'])
+
 class ListaPreferenciaAutorController {
 
     def createlistaPreferenciaAutor(long id) {

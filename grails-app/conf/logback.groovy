@@ -21,3 +21,6 @@ if (Environment.isDevelopmentMode() && targetDir) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+
+logger 'org.springframework.security', DEBUG, ['STDOUT'], false
+logger 'grails.plugin.springsecurity', DEBUG, ['STDOUT'], false

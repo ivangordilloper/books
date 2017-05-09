@@ -1,9 +1,16 @@
 package Plantilla
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['permitAll'])
+
 class PhotoUploadCommand{
     byte[] photo
     String loginId
 }
+
+@Secured(['permitAll'])
+
 class ImagenController {
 
   /*  def upload(PhotoUploadCommand puc){
