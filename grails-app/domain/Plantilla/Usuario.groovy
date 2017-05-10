@@ -58,4 +58,6 @@ class Usuario implements Serializable {
 	static mapping = {
 		password column: '`password`'
 	}
+
+	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor]
 }

@@ -6,6 +6,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['permitAll'])
 class UsuarioController {
     def mailService
+    def springSecurityService
+
     def createUsuario() {
     }
 
@@ -27,7 +29,9 @@ class UsuarioController {
     }
 
     def read(){
+        def usuarioL = springSecurityService.principal
         def listaUsuario = Usuario.list()
+
         // def listadoPersonas = Persona.list()
         [usuarios: listaUsuario]
     }

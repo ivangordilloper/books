@@ -6,47 +6,63 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class ListaPreferenciaLibroController {
 
+    def springSecurityService
+
+
     def createlistaPreferenciaLibro(long id) {
-        [idU: id]
+        def usuarioU = springSecurityService.principal
+        [idU: usuarioU]
     }
 
     def read(long id) {
-        def listaLibro = Usuario.findById(id).listasL
+        def usuarioU = springSecurityService.principal
+        def listaLibro = Usuario.findById(usuarioU.id).listasL
         [lLibro: listaLibro, idU:id]
 
     }
 
     def opinar(long id) {
+        def usuarioU = springSecurityService.principal
+        [idU: usuarioU]
 
     }
 
     def eliminarElemento(long id) {
+        def usuarioU = springSecurityService.principal
+        [idU: usuarioU]
 
     }
 
     def agregarElemento(long id) {
+        def usuarioU = springSecurityService.principal
+        [idU: usuarioU]
 
     }
 
     def update(long id) {
+        def usuarioU = springSecurityService.principal
         def us = ListaPreferenciaLibro.findById(id)
         def us2 = us.Usuario.getId()
         def lis = ListaPreferenciaLibro.findById(id)
-        [lis: lis]
+        [lis: lis, idU: usuarioU]
     }
 
     def delete(long id) {
-        def us = ListaPreferenciaLibro.findById(id)
+        def usuarioU = springSecurityService.principal
+        def us = ListaPreferenciaLibro.findById(usuarioU.id)
         def us2 = us.Usuario.getId()
         def l = ListaPreferenciaLibro.findById(id).delete()
-        redirect(action: "read", id: us2)
+        [idU: usuarioU]
+        redirect(action: "read")
 
     }
 
     def verListaPreferenciaLibro(long id) {
-        def editarLista = ListaPreferenciaLibro.findById(id)
+        def usuarioU = springSecurityService.principal
+        def editarLista = ListaPreferenciaLibro.findById(usuario.id)
         def listaAutor = Autor.list()
-        [llista: editarLista, lautor: listaAutor]
+
+        [llista: editarLista, lautor: listaAutor, idU:usuarioU]
 
     }
 
@@ -55,7 +71,7 @@ class ListaPreferenciaLibroController {
         def u = Usuario.get(idU)
         def nombre = params.nombre
         [nombre: nombre, u:u]
-        u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
+       // u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
         redirect(action: "read", params: [id:idU])
 
     }

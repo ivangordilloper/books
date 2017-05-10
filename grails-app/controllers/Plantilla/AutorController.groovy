@@ -7,6 +7,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class AutorController{
 
+    def springSecurityService
+
     def createAutor() {
 
     }
@@ -15,8 +17,9 @@ class AutorController{
         [autor: autor]
     }
     def read(long id) {
+        def usuarioU= springSecurityService.principal
         def listaAutor = Autor.list()
-        [preadA: listaAutor]
+        [preadA: listaAutor, idU: usuarioU]
     }
 
     def update(int id){

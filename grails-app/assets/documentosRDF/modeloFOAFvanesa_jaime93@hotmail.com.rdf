@@ -3,10 +3,10 @@
     xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <foaf:Person rdf:about="http://localhost:8081/assets/modeloFOAFraid.ivan.gor@gmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:raid.ivan.gor@gmail.com"/>
+  <foaf:Person rdf:about="http://localhost:8081/assets/modeloFOAFvanesa_jaime93@hotmail.com.rdf">
+    <foaf:mbox rdf:resource="mailto:vanesa_jaime93@hotmail.com"/>
     <foaf:family_name>Hola Hola</foaf:family_name>
-    <foaf:givenname>Ivan</foaf:givenname>
-    <foaf:name>Ivan Hola Hola</foaf:name>
+    <foaf:givenname>Hola</foaf:givenname>
+    <foaf:name>Hola Hola Hola</foaf:name>
   </foaf:Person>
 </rdf:RDF>
