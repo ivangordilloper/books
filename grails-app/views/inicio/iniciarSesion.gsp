@@ -38,7 +38,7 @@
                                     <ul class="actions">
                                         <li >  <g:submitButton name="submit" value="Iniciar Sesión" class="special" /></li>
 
-                                        <li><a href="resetpass.html">Has olvidado tu contraseña</a></li>
+                                        <li><a href="/inicio/recuperarContra">Has olvidado tu contraseña</a></li>
                                     </ul>
                                 </div>
                             </div>

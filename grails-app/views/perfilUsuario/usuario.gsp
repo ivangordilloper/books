@@ -48,7 +48,7 @@
         <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div>
         <div class="content">
             <div class="swiper-container">
-                <h4>Tal vez te gusten estos libros</h4>
+                <h4>Tal vez te gusten estos autores</h4>
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->

@@ -5,6 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['permitAll'])
 
 class LibroController {
+    def springSecurityService
 
     def createLibro() {
         def autorL = Autor.list()
@@ -13,7 +14,11 @@ class LibroController {
 
 
 
+    def librosCategoria(){
+            def libroC = Libro.list()
+        [libroC: libroC]
 
+    }
     def update(long id){
         def editarLibro = Libro.findById(id)
         def fecha = editarLibro.fechaPub.toString()
@@ -39,9 +44,13 @@ class LibroController {
         def editarLibro = Libro.findById(idLibro)
         def fecha = editarLibro.fechaPub.toString()
         def fecha2 = fecha.substring(0,10)
-        def listasP = Usuario.findById(idUsuario).listasL
+        //def listasP = Usuario.findById(idUsuario)
 
-        [libro:editarLibro, fecha:fecha2, idU:idUsuario, listaL: listasP]
+        def usuarioL = springSecurityService.principal
+        print usuarioL.id
+
+
+        [libro:editarLibro, fecha:fecha2]
 
     }
 

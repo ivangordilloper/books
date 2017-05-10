@@ -85,6 +85,16 @@
         position: relative;
     }
 
+    .comentarios{
+        height: 30px;
+    }
+    .cont-ima{
+        height: inherit;
+    }
+    .imagen-comen{
+        height: inherit;
+    }
+
 </style>
 
 </head>
@@ -138,6 +148,18 @@
             <br>
         </div>
 
+
+                <div class="row comentarios">
+                <div class="col-lg-1 col-lg-offset-2 cont-ima">
+                    <img class="imagen-comen" src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}"/>
+                </div>
+                <div class="col-lg-6">
+                    <g:textField name="opinion" />
+                </div>
+                <div class="col-lg-2">
+                    <input type="submit"/>
+                </div>
+                </div>
 
     </section>
 

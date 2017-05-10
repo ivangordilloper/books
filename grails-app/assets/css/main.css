@@ -2553,15 +2553,15 @@ table.alt {
 		}
 
 		.spotlight:nth-child(4) {
-			background-color: rgba(0, 0, 0, 0.3);
+			background-color: rgba(0, 0, 0, 0.3)!important;
 		}
 
 		.spotlight:nth-child(5) {
-			background-color: rgba(0, 0, 0, 0.375);
+			background-color: rgba(0, 0, 0, 0.375)!important;
 		}
 
 		.spotlight:nth-child(6) {
-			background-color: rgba(0, 0, 0, 0.45);
+			background-color: rgba(0, 0, 0, 0.45)!important;
 		}
 
 		.spotlight:nth-child(7) {

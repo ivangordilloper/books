@@ -16,7 +16,7 @@
             <div>
                 <div class="box ">
 
-                    <h4>libros registrados en BooksCom </h4><a href="/libro/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/libro/createLibro"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
+                    <h4>libros registrados en BooksCom </h4><a href="/libro/createLibro"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
                     <br>
 
 

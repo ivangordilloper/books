@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class PerfilUsuarioController {
     def FOAFService
     static defaultAction = "usuario"
-
+    def springSecurityService
     def usuario(long id) {
         //FOAFService.obtenLibros()
         def librosListaFOAF = FOAFService.obtenLibrosByEmail("raid_ivan@hotmail.com")
@@ -27,19 +27,25 @@ class PerfilUsuarioController {
         //ArrayList<String> uri =  FOAFService.getAmigosFOAF("raid_ivan@hotmail.com")
 
         //print uri
-        def pal
-        def libros = Libro.findAllByIdInList(librosListaFOAF)
-        def autores = Autor.findAllByIdInList(autoresListaFOAF)
 
-        print librosListaFOAF
-        print libros
-        if(usuariosL.genero == 'F'){
+        def pal
+        /*def libros = Libro.findAllByIdInList(librosListaFOAF)
+        def autores = Autor.findAllByIdInList(autoresListaFOAF)
+*/
+        def libros = Libro.findAllByIdInList([1])
+        def autores = Autor.findAllByIdInList([1])
+      //  print librosListaFOAF
+      //  print libros
+        def usuarioU= springSecurityService.principal
+        print usuarioU.id
+
+        if(usuarioU.id == 'F'){
             pal = "Bienvenida"
         }
         else {
             pal= "Bienvenido"
         }
-        [usuarioS: usuariosL, pal: pal, libros1:libros, autores1: autores]
+        [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores]
     }
 
     def FOAF(){

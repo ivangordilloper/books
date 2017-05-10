@@ -39,6 +39,13 @@ class InicioController {
 
     }
 
+    def recuperarContra(){
+
+    }
+
+    def mandarCorreo(){
+
+    }
 
     def iniciar(){
             def user = Usuario.findByUsername(params.username)
