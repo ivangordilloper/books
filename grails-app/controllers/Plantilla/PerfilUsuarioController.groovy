@@ -39,6 +39,7 @@ class PerfilUsuarioController {
         def usuarioU= springSecurityService.principal
         print usuarioU.id
 
+
         if(usuarioU.id == 'F'){
             pal = "Bienvenida"
         }
