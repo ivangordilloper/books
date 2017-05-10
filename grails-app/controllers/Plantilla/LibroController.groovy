@@ -39,7 +39,7 @@ class LibroController {
         def editarLibro = Libro.findById(idLibro)
         def fecha = editarLibro.fechaPub.toString()
         def fecha2 = fecha.substring(0,10)
-        def listasP = Usuario.findById(idUsuario).listasL
+        def listasP = Usuario.findById(idUsuario)
 
         [libro:editarLibro, fecha:fecha2, idU:idUsuario, listaL: listasP]
 

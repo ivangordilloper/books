@@ -28,8 +28,8 @@ class PerfilUsuarioController {
 
         //print uri
         def pal
-        def libros = Libro.findAllByIdInList(librosListaFOAF)
-        def autores = Autor.findAllByIdInList(autoresListaFOAF)
+        def libros = Libro.findAllByIdInList([1])
+        def autores = Autor.findAllByIdInList([1])
 
         print librosListaFOAF
         print libros
