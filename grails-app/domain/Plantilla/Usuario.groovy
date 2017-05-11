@@ -28,6 +28,7 @@ class Usuario implements Serializable {
 	String correo
 	String genero
 	String token
+	String idf
 
 
 	Set<Role> getAuthorities() {
