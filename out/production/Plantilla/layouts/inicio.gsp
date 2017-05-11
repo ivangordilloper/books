@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title> <g:layoutTitle/></title>
     <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <g:external dir="css" file="slides.css"/>
+    <g:external dir="css" file="swiper.min.css"/>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="style-user.css"/>
+    <g:external dir="css" file="letra.css"/>
 
     <g:layoutHead />
 
@@ -43,7 +48,7 @@
 <!-- Footer -->
 <footer id="footer">
     <ul class="copyright">
-        <li><a href="#" class="icon fa-twitter"></a></li>
+        <li><a href="#" class="fa fa-twitter-square"></a></li>
         <li><a href="https://www.facebook.com/BooksCom-227500564389966" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
         <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>

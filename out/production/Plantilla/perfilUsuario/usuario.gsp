@@ -12,19 +12,25 @@
     <!-- Main -->
     <article id="main">
         <header>
-            <h2>Bienvenido usuario</h2>
+            <h2>${pal} ${usuarioS.username}</h2>
         </header>
 
 
         <section class="spotlight swipbooks">
             <div class="image"><g:img dir="image" file="choose.jpg" alt="" /></div><div class="content">
             <div class="swiper-container">
+
                 <h4>Tal vez te gusten estos libros</h4>
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
 
-                    <div class="swiper-slide"> <a  href="/usuario/libro"><g:img dir="images" file="book.png" class="image-slide"/><div class="text-book">Libro 1</div></a></div>
+
+                <g:each in="${libros1}" var="libro">
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+                    </div>
+                </g:each>
+
 
                 </div>
                 <!-- If we need pagination -->
@@ -38,23 +44,18 @@
         </div>
         </section>
 
-    <section class="spotlight">
+    <section class="spotlight swipbooks">
         <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div>
         <div class="content">
-        <h2>Diviertete eligiendo tus libros favoritos
-        </h2>
-    </div>
-    </section>
-    <section class="spotlight white-back">
-        <div class="content listas-full">
             <div class="swiper-container">
-                <h4>Tal vez te gusten estos libros</h4>
+                <h4>Tal vez te gusten estos autores</h4>
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-
-                    <div class="swiper-slide separator-slide"> <a  href="/usuario/libro"><g:img dir="images" file="book.png" class="image-slide"/><div class="text-book">Libro 1</div></a></div>
-
+                <g:each in="${autores1}" var="autor">
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'autor', action:'verAutor', params: [id:(autor.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${autor.nombreCompleto}</div></a>
+                    </div>
+                </g:each>
                 </div>
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
@@ -64,6 +65,11 @@
 
                 <!-- If we need scrollbar -->
             </div>
+    </div>
+    </section>
+    <section class="spotlight white-back">
+        <div class="content listas-full">
+                <h4 style="text-align: center">Líbrerias cercanas a ti.</h4>
         </div>
     </section>
 
@@ -203,7 +209,7 @@
                                 position: pos,
                                 map: map,
                                 icon: icon
-                            })
+                            });
 
                             map.setCenter(pos);
                             function callback(results, status) {
@@ -221,16 +227,24 @@
                                     label: labels[labelIndex++ % labels.length],
                                     position: place.geometry.location
                                 });
-                                google.maps.event.addListener(marker, 'click', function() {
-                                    infoWindow.setContent(place.name);
-                                    //infoWindow.setContent(place.address);
-                                    infoWindow.open(map, this);
+                                var service2 = new google.maps.places.PlacesService(map);
+                                var request = { reference: place.reference };
+                                service2.getDetails(request,function(details, status){
+                                    google.maps.event.addListener(marker, 'click', function() {
+                                        var contentString = '<div><'
+
+                                        infoWindow.setContent(place.name + '<br>' + details.formatted_address);
+                                        //infoWindow.setContent(place.address);
+                                        infoWindow.open(map, this);
+                                    });
                                 });
+
+
                             }
                             var service = new google.maps.places.PlacesService(map);
                             service.nearbySearch({
                                 location: libreria,
-                                radius: 1000,
+                                radius: 10000,
                                 types: ['book_store']
                             }, callback);
                         }, function() {
