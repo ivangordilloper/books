@@ -41,6 +41,10 @@ class ListaPreferenciaAutorController {
 
     }
 
+    def verListaAutor(){
+
+    }
+
     def crear(long id) {
         def idU = params.idUsuario
         def u = Usuario.get(idU)

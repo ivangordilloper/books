@@ -39,6 +39,10 @@ class ListaPreferenciaLibroController {
 
     }
 
+    def verListaLibro(){
+
+    }
+
     def update(long id) {
         def usuarioU = springSecurityService.principal
         def us = ListaPreferenciaLibro.findById(id)

@@ -31,14 +31,12 @@
                     <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile"/><span>Administrador</span></a>
                     <div id="menu">
                         <ul>
-                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="/usuario/read">  Buscar usuario</a></li>
-                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="/libro/read">  Buscar libro</a></li>
-                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="/autor/read">  Buscar autor</a></li>
-                            <li><g:img src="images" file="tiendam.png" height="30px" align="left"></g:img><a href="/inicio/tienda"> Buscar tienda</a></li>
-                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaLibro/read">Ver lista libros</a></li>
-                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaAutor/read">Ver lista autores</a></li>
-                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="/usuario/read">Conectar con Facebook</a></li>
-                            <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>             </ul>
+                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Ver usuarios </a></li>
+                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'read')}">  Ver libros</a></li>
+                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'read')}">  Ver autores </a></li>
+                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'read')}">Ver lista libros</a></li>
+                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'read')}">Ver lista autores</a></li>
+                            <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
                     </div>
                 </li>
             </ul>

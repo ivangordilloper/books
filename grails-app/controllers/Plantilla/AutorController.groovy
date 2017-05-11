@@ -10,16 +10,27 @@ class AutorController{
     def springSecurityService
 
     def createAutor() {
+        def usuarioU= springSecurityService.principal
+
+        [idU: usuarioU]
 
     }
     def validar(){
         def autor = Autor.list()
         [autor: autor]
     }
+
+    def verCatalogoAutor(){
+        def usuarioU= springSecurityService.principal
+        def listaAutor = Autor.list()
+        [autorC: listaAutor, idU: usuarioU]
+
+    }
     def read(long id) {
         def usuarioU= springSecurityService.principal
         def listaAutor = Autor.list()
-        [preadA: listaAutor, idU: usuarioU]
+        def listaLibro = Libro.list()
+        [preadA: listaAutor, preadL:listaLibro, idU: usuarioU]
     }
 
     def update(int id){
@@ -60,6 +71,8 @@ class AutorController{
         redirect(action: "read")
     }
     def verAutor(long id){
+        def usuarioU= springSecurityService.principal
+
             def editarAutor = Autor.findById(id)
             //def libros = Libro.list(Libro.getBelongsTo() == id)
             def fecha = editarAutor.fechaNac.toString()
@@ -68,7 +81,7 @@ class AutorController{
 
            // def lib = Autor.listOrderByLautorb().lautorb
            // def libros = Libro.findAllByAutor(editarAutor).titulo
-            [autor:editarAutor, fecha:fecha2, lib: libE]
+            [autor:editarAutor, fecha:fecha2, lib: libE, idU: usuarioU]
 
     }
 

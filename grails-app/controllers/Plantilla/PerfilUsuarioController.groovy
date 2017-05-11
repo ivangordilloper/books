@@ -37,7 +37,7 @@ class PerfilUsuarioController {
       //  print librosListaFOAF
       //  print libros
         def usuarioU= springSecurityService.principal
-        print usuarioU.id
+        print usuarioU
 
 
         if(usuarioU.id == 'F'){
