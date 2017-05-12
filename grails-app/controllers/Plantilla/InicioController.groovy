@@ -55,6 +55,9 @@ class InicioController {
 
         def validar = Usuario.findByCorreo(correo)
 
+        def usuario = validar.getUsername()
+
+
         if(validar){
             validar.setPassword(contra);
             mailService.sendMail {
@@ -62,7 +65,7 @@ class InicioController {
                 from "bookscomtt@gmail.com"
                 to correo
                 subject "Reestablecimiento de contraseña."
-                html  view: "/email/recuperar", model: [pContra:contra]
+                html  view: "/email/recuperar", model: [pContra:contra, pUsuario:usuario]
                 inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
             }
             redirect(controller: "inicio")
