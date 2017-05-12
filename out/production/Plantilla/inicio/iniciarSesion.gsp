@@ -19,7 +19,7 @@
                         <h4>Iniciar Sesión </h4>
 
                         <div id="login">
-                            <g:form method="post" action="iniciar">
+                            <form method="post" action="/login/authenticate">
 
                             <div class="row uniform">
 
@@ -36,12 +36,13 @@
 
                                 <div class="12u$">
                                     <ul class="actions">
-                                        <li ><input type="submit" id="submit" value="Iniciar Sesión " class="special" onclick="redirect(${sesionUsuario})"/></li>
-                                        <li><a href="resetpass.html">Has olvidado tu contraseña</a></li>
+                                        <li >  <g:submitButton name="submit" value="Iniciar Sesión" class="special" /></li>
+
+                                        <li><a href="/inicio/recuperarContra">Has olvidado tu contraseña</a></li>
                                     </ul>
                                 </div>
                             </div>
-                        </g:form>
+                        </form>
                         </div>
                         <script>
                             (function() {

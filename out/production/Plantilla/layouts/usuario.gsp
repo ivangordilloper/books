@@ -26,7 +26,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/usuario/usuario">BooksCom</a></h1>
+        <h1><a href="../">BooksCom</a></h1>
         <nav id="nav">
             <ul>
 
@@ -35,20 +35,19 @@
                     <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>usuario</span></a>
                     <div id="menu">
                         <ul>
-                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="/usuario/read">  Buscar usuario</a></li>
-                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="/libro/read">  Buscar libro</a></li>
-                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="/autor/read">  Buscar autor</a></li>
-                            <li><g:img src="images" file="tiendam.png" height="30px" align="left"></g:img><a href="/inicio/tienda"> Buscar tienda</a></li>
-                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaLibro/read">Ver lista libros</a></li>
-                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaAutor/read">Ver lista autores</a></li>
-                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="/usuario/read">Conectar con Facebook</a></li>
+                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
+                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
+                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'read')}">  Buscar autor</a></li>
+                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'read')}">Ver lista libros</a></li>
+                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'read')}">Ver lista autores</a></li>
+                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
                             <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </nav>
-    </header>
+</header>
 </div>
 <g:layoutBody/>
 <!-- Footer -->
@@ -64,7 +63,48 @@
 
     </ul>
 </footer>
+
 </div>
+<!-- Scripts -->
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1246188562111122',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function validarUsuario() {
+        FB.getLoginStatus(function(response) {
+            if(response.status == 'connected') {
+                FB.api('/me?fields=id,name,email', function(response){
+                    alert('Hola ' + response.email);
+                    console.log(response)
+                });
+            } else if(response.status == 'not_authorized') {
+                alert('Debes autorizar la app!');
+            } else {
+                alert('Debes ingresar a tu cuenta de Facebook!');
+            }
+        });
+    }
+
+    function ingresar() {
+        FB.login(function(response){
+            validarUsuario();
+        }, {scope: 'public_profile, email'});
+    }
+</script>
 
 <!-- Mensajes -->
 <div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">

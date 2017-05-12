@@ -15,8 +15,10 @@ class LibroController {
 
 
     def librosCategoria(){
-            def libroC = Libro.list()
-        [libroC: libroC]
+        def libroC = Libro.list()
+        def usuarioU = springSecurityService.principal
+        def idU = usuarioU
+        [libroC: libroC, idU1:idU]
 
     }
     def update(long id){
@@ -36,6 +38,7 @@ class LibroController {
         def idU = id
         [libros: listaLibro,  aut: listaAutores, idU:idU]
     }
+
 
     def verLibro(long id){
         def idL= this.getParams()

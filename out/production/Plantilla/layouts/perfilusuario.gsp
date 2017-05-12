@@ -1,3 +1,4 @@
+<%@ page import="Plantilla.Usuario" %>
 <html>
 <head>
 
@@ -26,22 +27,21 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/usuario/usuario">BooksCom</a></h1>
+        <h1><a href="/inicio/home">BooksCom</a></h1>
         <nav id="nav">
             <ul>
 
                 <li class="special">
 
-                    <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>usuario</span></a>
+                    <a href="#menu" class="menuToggle"><g:img  src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>${Usuario.findById(usuarioS.id).username}</span></a>
                     <div id="menu">
                         <ul>
-                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="/usuario/read">  Buscar usuario</a></li>
-                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="/libro/read">  Buscar libro</a></li>
-                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="/autor/read">  Buscar autor</a></li>
-                            <li><g:img src="images" file="tiendam.png" height="30px" align="left"></g:img><a href="/inicio/tienda"> Buscar tienda</a></li>
-                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaLibro/read">Ver lista libros</a></li>
-                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="/listaPreferenciaAutor/read">Ver lista autores</a></li>
-                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="/usuario/read">Conectar con Facebook</a></li>
+                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
+                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
+                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'read')}">  Buscar autor</a></li>
+                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'read')}">Ver lista libros</a></li>
+                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'read')}">Ver lista autores</a></li>
+                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
                             <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
                         </ul>
                     </div>
@@ -67,6 +67,96 @@
 
 </div>
 <!-- Scripts -->
+
+<script>
+
+    var usuarios = []
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1246188562111122',
+            xfbml      : false,
+            version    : 'v2.9'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function validarUsuario() {
+
+        FB.getLoginStatus(function(response) {
+            if(response.status == 'connected') {
+                FB.api('/me?fields=id,name,email,friends{email,name}', function(response){
+                    alert('Hola ' + response.email);
+                    //console.log(response)
+                    getEmailFriends(response)
+                });
+            } else if(response.status == 'not_authorized') {
+                alert('Debes autorizar la app!');
+            } else {
+                alert('Debes ingresar a tu cuenta de Facebook!');
+            }
+        });
+    }
+
+    function ingresar() {
+        FB.login(function(response){
+            validarUsuario();
+        }, {scope: 'public_profile, email'});
+    }
+
+    function getEmailFriends(response){
+        var jsonObj ={};
+        console.log(response);
+        console.log("hola");
+
+        for (i in response.friends.data){
+            //console.log("hola");
+            var newUser = "user" + i;
+            var newValue = "value" + i;
+            jsonObj[i]=response.friends.data[i].id;
+
+
+
+        }
+        sendFriends(response.id, jsonObj)
+    }
+
+
+    function sendFriends(id, friends) {
+
+        var form = new FormData();
+        form.append("idUsuarioFB", id);
+        form.append("idAmigos", JSON.stringify(friends));
+        console.log(friends)
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8080/facebook/connect",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+    }
+
+    console.log(usuarios)
+</script>
 <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>

@@ -37,7 +37,7 @@
                     <div id="menu">
                         <ul>
                             <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
-                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'read')}">  Buscar libro</a></li>
+                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
                             <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'read')}">  Buscar autor</a></li>
                             <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'read')}">Ver lista libros</a></li>
                             <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'read')}">Ver lista autores</a></li>
@@ -69,11 +69,13 @@
 <!-- Scripts -->
 
 <script>
+
+    var usuarios = []
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '1246188562111122',
-            xfbml      : true,
-            version    : 'v2.6'
+            xfbml      : false,
+            version    : 'v2.9'
         });
     };
 
@@ -86,11 +88,13 @@
     }(document, 'script', 'facebook-jssdk'));
 
     function validarUsuario() {
+
         FB.getLoginStatus(function(response) {
             if(response.status == 'connected') {
-                FB.api('/me?fields=id,name,email', function(response){
+                FB.api('/me?fields=id,name,email,friends{email,name}', function(response){
                     alert('Hola ' + response.email);
-                    console.log(response)
+                    //console.log(response)
+                    getEmailFriends(response)
                 });
             } else if(response.status == 'not_authorized') {
                 alert('Debes autorizar la app!');
@@ -105,6 +109,53 @@
             validarUsuario();
         }, {scope: 'public_profile, email'});
     }
+
+    function getEmailFriends(response){
+        var jsonObj ={};
+        console.log(response);
+        console.log("hola");
+
+        for (i in response.friends.data){
+            //console.log("hola");
+            var newUser = "user" + i;
+            var newValue = "value" + i;
+            jsonObj[i]=response.friends.data[i].id;
+
+
+
+        }
+        sendFriends(response.id, jsonObj)
+    }
+
+
+    function sendFriends(id, friends) {
+
+        var form = new FormData();
+        form.append("idUsuarioFB", id);
+        form.append("idAmigos", JSON.stringify(friends));
+        console.log(friends)
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8080/facebook/connect",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+    }
+
+    console.log(usuarios)
 </script>
 <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>

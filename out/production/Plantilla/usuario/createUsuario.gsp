@@ -16,9 +16,7 @@
 
 </head>
 <body>
-<?
-echo "Hola";
-?>
+
     <body>
         <div id="inicio">
             <!-- Main -->
@@ -31,8 +29,9 @@ echo "Hola";
                         <section>
                             <div class="box">
                                     <h4>Regístrate</h4>
-                                    <form action="crear" method="post" id="myForm">
-                                        <div class="control-group">
+
+                                    <g:uploadForm action="crear" method="post" name="form" id="formRegister">
+                                        <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                             <div class="row uniform">
                                                 <div class="12u 12u$(xsmall) controls" id="divNombre">
                                                     <input  type="text" name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true"/>
@@ -47,6 +46,7 @@ echo "Hola";
                                                 </div>
                                                 <div class="12u 12u$(xsmall)" id="divUsuario">
                                                     <input type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
+
                                                 </div>
                                                 <div class="12u 12u$(xsmall)">
                                                     <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
@@ -71,24 +71,27 @@ echo "Hola";
                                                 <div class="6u 6u$(xsmall)" div="divContrasena">
                                                     <input type="text" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
 
+
                                                 </div>
                                                 <div class="6u 6u$(xsmall)">
                                                     <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
 
                                                 </div>
+
                                                 <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
                                                 <div class="12u$">
                                                     <ul class="actions">
-                                                        <li >
+                                                        <li>
                                                             <g:submitButton name="submit" value="Regístrate" class="special"/>
-
-                                                        <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                                            <button type="button" id="cancelar" class="special">Cancelar</button></li>
                                                     </ul>
                                                 </div>
 
                                             </div>
                                         </div>
-                                    </form>
+
+                                    </g:uploadForm>
+
 
                             </div>
                         </section>
@@ -101,11 +104,6 @@ echo "Hola";
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <g:external dir="js" file="bootstrap.js"/>
-    <!-- Latest compiled and minified JavaScript -->
-        <g:external dir="js" file="angular/angular.min.js"/>
-        <g:external dir="js" file="angular/angular-messages.min.js"/>
-        <g:external dir="js" file="angular/angular.js"/>
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
         <div class="modal-dialog">
@@ -193,7 +191,7 @@ echo "Hola";
                     <h4 class="modal-title">Mensaje de error</h4>
                 </div>
                 <div class="modal-body">
-                    <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra direcci´on de correo electrónico.</p>
+                    <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -269,68 +267,10 @@ echo "Hola";
                             }
                         }
                     }
-
-
-
-                    console.log(isNombre(nombre));
-
-
-                    console.log(nombre);
-                    console.log(apellidoP);
-                    console.log(apellidoM);
-                    console.log(nombreUsuario);
-                    console.log(telefono);
-                    console.log(genero);
-                    console.log(fechaNac);
-                    console.log(email);
-                    console.log(email2);
-                    console.log(passwd);
-                    console.log(passwd2);
-
                     $(window).scrollTop(0);
                     return false;
                 });
             });
-            /*function validarPasswd() {
-
-                alert("Error");
-                return false;
-
-                var p1 = document.getElementById("passwd").value;
-                var p2 = document.getElementById("passwd2").value;
-                var p3 = document.getElementById("email").value;
-                var p4 = document.getElementById("email2").value;
-                var espacios = false;
-                var cont = 0;
-
-                while (!espacios && (cont < p1.length)) {
-                    if (p1.charAt(cont) == " ")
-                        espacios = true;
-                    cont++;
-                }
-
-                if (espacios) {
-                    alert ("La contraseña no puede contener espacios en blanco");
-
-                    return false;
-                }
-                if (p1 != p2) {
-                    alert("Las contraseñas deben de coincidir");
-                    return false;
-                }
-
-                if (p3 != p4) {
-                    alert("Los correos electrónicos deben de coincidir");
-                    return false;
-
-                } else {
-
-                    alert("Todo esta correcto");
-                    return true;
-                }}*/
-
-
-
         </script>
     </body>
 </body>

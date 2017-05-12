@@ -24,7 +24,7 @@
                             <g:field  type="text" name="titulo" id="titulo" placeholder="Título" requiered="true" maxlength="20"/>
                         </div>
                         <div class="12u 12u$(xsmall)">
-                            <g:select name="autores" requiered="true"   from="${autor.nombreCompleto}"  >
+                            <g:select name="autores" required="true"   from="${autor.nombreCompleto}"  >
                             </g:select>
                         </div>
                         <div class="6u 12u$(xsmall)">
@@ -42,7 +42,7 @@
                             </g:select>
                         </div>
                         <div class="12u 12u$(xsmall)">
-                            <g:field type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
+                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">

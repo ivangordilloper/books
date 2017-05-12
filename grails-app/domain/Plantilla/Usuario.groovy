@@ -28,6 +28,7 @@ class Usuario implements Serializable {
 	String correo
 	String genero
 	String token
+	String idf
 
 
 	Set<Role> getAuthorities() {
@@ -58,4 +59,6 @@ class Usuario implements Serializable {
 	static mapping = {
 		password column: '`password`'
 	}
+
+	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor]
 }
