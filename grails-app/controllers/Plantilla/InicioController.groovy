@@ -14,6 +14,9 @@ class InicioController {
     def iniciarSesion() {
 
     }
+    def recuperarContra() {
+
+    }
 
     def contacto(){
 
@@ -39,8 +42,34 @@ class InicioController {
 
     }
 
-    def recuperarContra(){
+    def recuperarContrasena(){
+        def generator = {
+            String alphabet, int n ->
+                new Random().with {
+                    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+                }
+        }
+        def contra = generator( (('A'..'Z')+('0'..'9')).join(), 15 )
 
+        def correo = params.correo
+
+        def validar = Usuario.findByCorreo(correo)
+
+        if(validar){
+            validar.setPassword(contra);
+            mailService.sendMail {
+                multipart true
+                from "bookscomtt@gmail.com"
+                to correo
+                subject "Reestablecimiento de contraseña."
+                html  view: "/email/recuperar", model: [pContra:contra]
+                inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
+            }
+            redirect(controller: "inicio")
+        }
+        else{
+            redirect(controller: "inicio")
+        }
     }
 
     def mandarCorreo(){
