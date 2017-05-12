@@ -62,6 +62,7 @@ dependencies {
     profile "org.grails.profiles:web:3.1.1"
     runtime "org.grails.plugins:asset-pipeline"
     runtime "com.h2database:h2"
+    runtime 'org.grails.plugins:ajax-tags:1.0.0.RC1'
     runtime 'mysql:mysql-connector-java:5.1.36'
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"

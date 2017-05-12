@@ -1,5 +1,6 @@
 package Plantilla
 
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
 
@@ -8,7 +9,13 @@ class UsuarioController {
     def mailService
     def createUsuario() {
     }
-
+    def validarCorreo(){
+        def email = params.correo
+    }
+    def validarUsuario(){
+        def usuario = params.usuario
+        return usuario;
+    }
     def validar(){
         def token = params.token
         def validar = Usuario.findByToken(token);
