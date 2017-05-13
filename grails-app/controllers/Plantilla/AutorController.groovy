@@ -8,15 +8,14 @@ import org.springframework.dao.DataIntegrityViolationException
 class AutorController{
 
     def springSecurityService
-
+    def AutorService
     def createAutor() {
         def usuarioU= springSecurityService.principal
-
         [idU: usuarioU]
 
     }
     def validar(){
-        def autor = Autor.list()
+        def autor = AutorService.autorToList()
         [autor: autor]
     }
 
@@ -28,92 +27,37 @@ class AutorController{
     }
     def read(long id) {
         def usuarioU= springSecurityService.principal
-        def listaAutor = Autor.list()
-        def listaLibro = Libro.list()
-        [preadA: listaAutor, preadL:listaLibro, idU: usuarioU]
+        def listaAutor = AutorService.autorToList()
+        [preadA: listaAutor, idU: usuarioU]
     }
 
     def update(int id){
-        def editarAutor = Autor.findById(id)
-        def fecha = editarAutor.fechaNac.toString()
-        def fecha2 = fecha.substring(0,10)
-
-        [pupdateA:editarAutor, fecha:fecha2]
+        def editarAutor = AutorService.buscarAutorId(id)
+        def fecha = AutorService.formatoFecha(editarAutor.fechaNac.toString())
+        [pupdateA:editarAutor, fecha:fecha]
     }
 
     def crear() {
-
-        def nombre = params.nombre
-        def apellidoP = params.apellidoP
-        def apellidoM = params.apellidoM
-        def nombreC = nombre + " " + apellidoP + " " + apellidoM
-        def fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
-        def genero = params.genero
-        def generoLiterario = params.generoLiterario
-        def nacionalidad = params.nacionalidad
-        def foto1 = params.photo
-        byte[] foto = foto1.getBytes()
-
-
-        [foto:foto, nacionalidad: nacionalidad, fechaNac: fechaNac, nombreC: nombreC, genero: genero, generoLiterario: generoLiterario]
-        Autor p = new Autor(foto:foto, fechaNac: fechaNac, genero: genero, generoLiterario: generoLiterario, nacionalidad: nacionalidad, nombreCompleto: nombreC)
-        p.save(flush: true)
-/*
-        if (p?.foto) {
-            response.setContentLength(p.foto.size())
-            response.outputStream.write(p.foto)
-        } else {
-             response.sendError(404)
-        }
-        redirect(action: "read")
-    }
-*/
+        AutorService.createAutor(params)
         redirect(action: "read")
     }
     def verAutor(long id){
-        def usuarioU= springSecurityService.principal
 
-            def editarAutor = Autor.findById(id)
-            //def libros = Libro.list(Libro.getBelongsTo() == id)
-            def fecha = editarAutor.fechaNac.toString()
-            def fecha2 = fecha.substring(0,10)
-            def libE = editarAutor.libros.asList()
-
-           // def lib = Autor.listOrderByLautorb().lautorb
-           // def libros = Libro.findAllByAutor(editarAutor).titulo
-            [autor:editarAutor, fecha:fecha2, lib: libE, idU: usuarioU]
+            def editarAutor = AutorService.buscarAutorId(id)
+            def fecha =  AutorService.formatoFecha(editarAutor.fechaNac.toString())
+            def libE = AutorService.librosByAutor(editarAutor)
+            [autor:editarAutor, fecha:fecha, lib: libE]
 
     }
 
     def delete(int id){
-        def editarAutor = Autor.get(id)
-        def a = editarAutor.getLlista().id
-        if (a.size() == 0)
-           editarAutor.delete()
-        else {
-            def b = ListaPreferenciaAutor.findAllByIdInList(a)
-
-            b.each{
-                it.autores.remove(editarAutor)
-            }
-
-            editarAutor.delete(flush: true)
-        }
+        AutorService.deleteAutor(id)
         redirect (action: "read")
 
     }
 
     def actualizar(){
-        def id = params.idAutor
-        def editarAutor = Autor.findById(id)
-        editarAutor.nombreCompleto = params.nombre
-        editarAutor.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
-        editarAutor.genero = params.genero
-        editarAutor.generoLiterario = params.generoLiterario
-        editarAutor.nacionalidad = params.nacionalidad
-
-        editarAutor.save()
+        AutorService.editarAutor(params)
         redirect (action: "read")
-
     }
 }
