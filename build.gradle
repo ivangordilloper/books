@@ -69,6 +69,7 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile 'org.grails.plugins:mail:2.0.0.RC6'
     //compile 'org.grails.plugins:wschat:3.0.16'
+    compile "org.grails.plugins:modalbox:0.4"
     
 }
 

@@ -48,12 +48,12 @@ class LibroController {
         def editarLibro = Libro.findById(idLibro)
         def fecha = editarLibro.fechaPub.toString()
         def fecha2 = fecha.substring(0,10)
-        //def listasP = Usuario.findById(idUsuario)
-
+        def buscarLibro = Libro.findById(idLibro)
+        def opiniones = buscarLibro.opinL.asList()
         def usuarioL = springSecurityService.principal
 
 
-        [libro:editarLibro, fecha:fecha2, idU1: usuarioL]
+        [libro:editarLibro, fecha:fecha2, idU1: usuarioL, opiniones:opiniones]
 
     }
 
@@ -104,6 +104,20 @@ class LibroController {
 
          redirect (action: "read")
     }
+
+
+    def opinar(){
+        def lib = params.idLibro
+        def op = params.mandarO
+        def usuarioL = springSecurityService.principal
+        def idU = usuarioL.id
+        def opLibro = new OpinionLibro(opinionL: op, libro: lib, usuario:idU)
+        if(opLibro.validate()){
+            opLibro.save()
+        }
+
+        redirect (action: "verLibro", params: [id: lib])
+    }
     def actualizar(){
         def id = params.idLibro
         def editarLibro = Libro.findById(id)
@@ -128,5 +142,23 @@ class LibroController {
 
         redirect(action: "read")
 
+    }
+    def calificar(){
+        def usuarioL = springSecurityService.principal
+        def cal = params.stars
+        def idU = usuarioL.id
+        def libro1 = Libro.findById(params.id)
+
+        print cal
+
+        def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
+
+        if(!lc.save()){
+            lc.each {
+                print it
+            }
+        }
+
+        [idU1: usuarioL]
     }
 }

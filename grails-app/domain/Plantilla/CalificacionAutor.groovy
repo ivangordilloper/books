@@ -4,6 +4,7 @@ class CalificacionAutor {
 
     int calif
     Autor Autor
+    Usuario Usuario
 
     static constraints = {
         calif nullable: true

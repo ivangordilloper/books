@@ -1,6 +1,7 @@
 package Plantilla
 
 class OpinionLibro {
+
     String opinionL
     Libro Libro
     Usuario Usuario

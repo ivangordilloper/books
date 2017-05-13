@@ -1,6 +1,7 @@
 package Plantilla
 
 class OpinionAutor {
+
     String opinionA
     Autor Autor
     Usuario Usuario
