@@ -3,8 +3,6 @@
     <meta charset="UTF-8">
     <title>LIBRO</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
 
     <style type="text/css">
     header {
@@ -103,7 +101,7 @@
     <section class="main row">
         <article class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background: #0A122A; padding-bottom: 25px;">
 
-            <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: autor.id])}" height="350px" width="200px" style="padding-top: 60px"/>
+            <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="350px" width="200px" style="padding-top: 60px"/>
         </article>
         <article class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="background: #0A122A;; height: 375px">
             <div class="row">
@@ -211,8 +209,6 @@
             <h3></h3>
         </div>
     </footer>
-    <script src="js/jquery-3.2.1.min"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script>
         function sendStars(id, calificacion) {
 

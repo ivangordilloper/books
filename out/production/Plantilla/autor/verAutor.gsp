@@ -1,166 +1,247 @@
-<%@ page import="Plantilla.Autor; Plantilla.Libro" %>
-<html>
+<html lang=en>
 <head>
-    <title>VER AUTOR </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
-    <g:external dir="css" file="star-rating.css"/>
-    <g:external dir="css" file="stars.css"/>
-
+    <meta charset="UTF-8">
+    <title>LIBRO</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <style type="text/css">
+    header {
+        background: #0A122A;
 
-    *{
-        padding: 0px;
-        margin: 0px;
     }
-    .nav2 li a {
-        text-decoration: none;
-        padding: 10px 15px;
-        display: block;
-        background-color: #BC673F;
+    body{
+        background:#0B173B;
+
+    }
+
+    .nav2 li {
+        text-decoration: none!important;
+        padding: 5px 15px!important;
+        display: block!important;
         box-shadow: none !important;
         color: #ffffff !important;
+        border-radius: 20px;
+        background-color: orange!important;
 
     }
+
+    .nav2 li a {
+        text-decoration: none!important;
+        padding: 5px 15px!important;
+        display: block!important;
+        box-shadow: none !important;
+        border-radius: 20px;
+        right: -1400px!important;
+        color: #ffffff!important;
+    }
+
     ul, ol{
-        list-style: none;
+        list-style: none!important;
         padding: 0px!important;
         margin: 0px!important;
         box-shadow: none !important;
-        color: #ffffff !important;
     }
 
     .nav2 > li {
-        float:left;
+        float:right!important;
     }
 
     .nav2 li a:hover{
-        background-color: #F5B041;
+        color: #ffffff!important;
     }
 
     .nav2 li ul{
-        display: none;
-        position: absolute;
-        min-width: 140px;
+        display: none!important;
+        position: absolute!important;
+        min-width: 140px!important;
     }
 
     .nav2 li:hover >  ul{
-        display: block;
+        display: block!important;
     }
 
     .nav2 li ul li {
-        position: relative;
+        position: relative!important;
+        margin: 0px;
 
     }
 
-    .nav2 li ul li ul{
-        right: -14px;
-        top: 0px;
+    .extra{
+        padding-top-: 0px;
+        padding-bottom: 0px;
+        color: #0A122A;
     }
+    label {
+        color: grey;
+    }
+
+
+    label:hover{
+        color:orange!important;
+    }
+    label:hover ~ label{
+        color:orange;}
+    input[type = "radio"]{
+        display: none!important;
+    }
+    input[type = "radio"]:checked ~ label{
+        color:orange;}
 
     </style>
 </head>
 <body>
+<header>
+    <div class="container">
+        <h1 style="margin-top: 30px; text-align: center">${autor.nombreCompleto}</h1>
+    </div>
+</header>
 
-<div id="autor">
-    <div class="wrapper style5 ver-libro">
-        <div class="inner" style="padding-bottom: 0px">
-            <section class="spotlight">
-                <div div class="image"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="400px" width="700px"/></div>
-                    <div class="content">
-                <h2 style="font-size:15px;text-align: center; margin-top:50px; margin-bottom: 50px"></h2>
 
-                <h2 style="font-size:35px;text-align: center; position: relative;  margin: 5px">${autor.nombreCompleto}</h2>
-                        <div class="container4">
-                            <span class="star-rating col-sm-10">
-                                <input type="radio" name="rating" value="1" ><i></i>
-                                <input type="radio" name="rating" value="2"><i></i>
-                                <input type="radio" name="rating" value="3"><i></i>
-                                <input type="radio" name="rating" value="4"><i></i>
-                                <input type="radio" name="rating" value="5"><i></i>
-                            </span>
-                        </div>
-                <h4 style="font-size:15px;text-align: left; padding-top: 15px; padding-top:20px; margin: 5px">Fecha de Nacimiento</h4>
-                <p style="font-size:15px;text-align: left; margin: 2px">${fecha}</p>
-                <h4 style="font-size:15px;text-align: left; margin: 5px">Nacionalidad</h4>
-                <p style="font-size:15px;text-align: left; margin: 5px">${autor.nacionalidad}</p>
-                <h4 style="font-size:15px;text-align: left; margin: 5px">Género Literario</h4>
-                <p style="font-size:15px;text-align: left; margin: 5px">${autor.generoLiterario}</p>
-                        <h4 style="font-size:15px;text-align: left; margin: 5px">Libros</h4>
+<div class="container">
+    <section class="main row">
+        <article class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background: #0A122A; padding-bottom: 25px;">
 
-                <div class="swiper-container">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-                    <g:each in="${lib}" var="libro">
-                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${Libro.find(libro).titulo}</div></a>
-                        </div>
-                    </g:each>
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+            <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="350px" width="200px" style="padding-top: 60px"/>
+        </article>
+        <article class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="background: #0A122A;; height: 375px">
+            <div class="row">
 
-                    <!-- If we need scrollbar -->
+                <div class="clasificacion">
+                    <g:form action="calificar" method="post" style="padding-top: 10px; ">
+                        <g:field id="radio1" type="radio" onclick="sendStars(${autor.id}, 5);" class="hp" name="estrellas" value="5"></g:field><label for="radio1">★</label>
+                        <g:field id="radio2" type="radio" name="estrellas" value="4"></g:field><label for="radio2">★</label>
+                        <g:field id="radio3" type="radio" name="estrellas" value="3"></g:field><label for="radio3">★</label>
+                        <g:field id="radio4" type="radio" name="estrellas" value="2"></g:field><label for="radio4">★</label>
+                        <g:field id="radio5" type="radio" name="estrellas" value="1"></g:field><label for="radio5">★</label>
+
+                    </g:form>
                 </div>
 
             </div>
+            <div class="row">
+                <p>
+                    Género:  ${autor.nombreCompleto} <br/>
+                    Editorial: ${autor.nacionalidad} <br/>
+                    Fecha Publicación: ${autor.fechaNac} <br/>
+                </p>
+            </div>
 
-            </section>
-            <section class = "spotligth">
-                <div class="box" style="padding-top: 0px">
-                  <div class="row uniform">
-                            <ul class="nav2">
-                                <li>  <a>Agregar</a>
-                                    <ul>
-                                        <li> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verLibro', params: [id:1])}"> Lista 1 </a> </li>
-                                        <li> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verLibro', params: [id:1])}"> Lista 2 </a> </li>
-                                    </ul>
-                                </li>
-                                <li>  <a>Borrar</a>
-                                    <ul>
-                                        <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 1 </a> </li>
-                                        <li> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:1])}"> Lista 2 </a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
+            <div class="row">
+                <h1>Resumen</h1> <br/>
+                <p>
+                    ${autor.generoLiterario}
+                </p>
+            </div>
+
+
+        </article>
+
+    </section>
+    <div
+            class="row" style="background: #0A122A; padding-top: 20px"> </div>
+    <section class="row">
+
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <g:form action="opinar" method="post">
+                        <div class="input-group">
+                            <span class="input-group-addon">        <a href="${createLink(controller : 'usuario', action:'read', params: [id:autor.id])}">@</a></span>
+                            <g:field name="mandar" type="text" class="form-control" placeholder="Escribe tu opinión..."></g:field>
 
                         </div>
-
+                    </g:form>
                 </div>
-            </section>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <ul class="nav2" >
+                        <li> Agregar a lista de preferencia
+                            <ul>
+                                <li style="font-size: 15px"><a> Opcion 1</a> </li>
+                                <li style="font-size: 15px"><a> Opcion 2</a> </li>
+                            </ul>
 
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
         </div>
-</div>
-</div>
-<script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
-<script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
-<script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>
 
-<script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
 
-<g:javascript>
-    $(document).ready(function () {
-        //initialize swiper when document ready
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            direction: 'horizontal',
-            slidesPerView: 3,
-            paginationClickable: true,
-            spaceBetween: 30,
-            // Navigation arrows
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            loop: true,
-            keyboardControl: true,
-        })
-    });
-</g:javascript>
+
+        <!---<a href="#hola" class="more scrolly">Danos tu opinión...</a>-->
+    </section>
+    <div
+            class="row" style="padding-top: 10px"> </div>
+
+    <section id="hola">
+        <div class="row">
+            <div class="extra" style="height: 20px">
+                <h1> <a href="#opi" class="more scrolly" style="color: #ffffff">¿Qué opinan otros usuarios?</a> </h1>
+            </div>
+        </div>
+
+        <div
+                class="row" style="padding-top: 20px"> </div>
+
+
+    </section>
+
+    <section id="opi">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3 class="extra">Usuario</h3>
+                        <p>Mi opinion es que esta muy padre</p>
+                        <p>
+                            <a href="${createLink(controller : 'usuario', action:'read', params: [id:autor.id])}" class="btn btn-primary" role="button" style=" border-radius: 15px;background: orange; color: #ffffff; border-color: #985f0d">Ver usuario</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+
+        <div class="container">
+            <h3></h3>
+        </div>
+    </footer>
+    <script>
+        function sendStars(id, calificacion) {
+
+            var form = new FormData();
+            form.append("stars", calificacion);
+            form.append("id", id);
+
+
+            console.log(calificacion)
+            console.log(id)
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:8081/autor/calificar",
+                "method": "POST",
+                "headers": {
+                    "cache-control": "no-cache",
+                    "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+
+        }
+
+    </script>
+</div>
 </body>
 </html>

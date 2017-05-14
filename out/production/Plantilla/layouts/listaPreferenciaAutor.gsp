@@ -53,11 +53,13 @@
 <!-- Footer -->
 <footer id="footer">
     <ul class="icons">
-        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-        <li><a href="#" class="icon fa-envelope-o"><span class="label">Correo Electrónico</span></a></li>
+        <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
+        <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
+        <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
+        <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaLibro')}">Ver lista libros</a></li>
+        <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaAutor')}">Ver lista autores</a></li>
+        <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
+        <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
     </ul>
     <ul class="copyright">
 
