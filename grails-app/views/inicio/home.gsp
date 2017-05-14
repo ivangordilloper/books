@@ -44,7 +44,7 @@
             </div>
             </section>
             <section class="spotlight">
-            <div class="image"><g:img dir = "images" file = "libros1.png" alt="" /></div><div class="content">
+            <div class="image"><g:img dir = "images" file = "libros1.jpg" alt="" /></div><div class="content">
                 <h2>La importancia de los libros<br />
                 </h2>
                 <p>El libro es hoy uno de los representantes más claros y aún más importantes de la cultura, pese al avance de diferentes soportes tecnológicos que le han hecho perder parte de su popularidad. El libro es sin duda alguna una de las creaciones más relevantes del ser humano no sólo en lo que hace a la conservación si no también a la transmisión de la cultura, de la ciencia, de la historia, de la filosofía, etc. Esto es así ya que el libro aparece como una de las formas más comunes de registro de datos, información y otros numerosos elementos que en definitiva hacen a la identidad del ser humano como parte de la civilización.</p>
