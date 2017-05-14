@@ -7,6 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class ListaPreferenciaAutorController {
 
+    def springSecurityService
+
     def createlistaPreferenciaAutor(long id) {
         [idU: id]
 
@@ -46,7 +48,7 @@ class ListaPreferenciaAutorController {
     }
 
     def crear(long id) {
-        def idU = params.idUsuario
+        def idU = springSecurityService.principal.id
         def u = Usuario.get(idU)
         def nombre = params.nombre
         [nombre: nombre, u:u]

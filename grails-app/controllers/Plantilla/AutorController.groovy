@@ -42,11 +42,11 @@ class AutorController{
         redirect(action: "read")
     }
     def verAutor(long id){
-
-            def editarAutor = AutorService.buscarAutorId(id)
-            def fecha =  AutorService.formatoFecha(editarAutor.fechaNac.toString())
-            def libE = AutorService.librosByAutor(editarAutor)
-            [autor:editarAutor, fecha:fecha, lib: libE]
+        def usuario = springSecurityService.principal
+        Autor editarAutor = Autor.findById(id)
+        def fecha = editarAutor.fechaNac.toString()
+        def libE = AutorService.librosByAutor(editarAutor)
+        [autor:editarAutor, fecha:fecha, lib: libE, idU:usuario]
 
     }
 

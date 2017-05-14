@@ -6,9 +6,11 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class LibroController {
     def springSecurityService
+    def AutorService
+    def LibroService
 
     def createLibro() {
-        def autorL = Autor.list()
+        def autorL = AutorService.autorToList()
         def usuarioU = springSecurityService.principal
         [autor: autorL, idU1:usuarioU]
     }
@@ -16,27 +18,25 @@ class LibroController {
 
 
     def librosCategoria(){
-        def libroCi = Libro.list()
+        def libroCi = LibroService.libroToList()
         def usuarioU = springSecurityService.principal
         def idU = usuarioU
         [libroC: libroCi, idU1:idU]
 
     }
     def update(long id){
-        def editarLibro = Libro.findById(id)
-        def fecha = editarLibro.fechaPub.toString()
-        def fecha2 = fecha.substring(0,10)
-        def autorL = editarLibro.getAutores()
+        def editarLibro = LibroService.libroById(id)
+        def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
+        def autorL = LibroService.getAutoresByLibro(editarLibro)
         def au = Autor.findById(editarLibro.autores.id)
-        def lautor = Autor.list()
-
-        [libro:editarLibro, fecha:fecha2, autor: au, autorl: lautor]
+        def lautor = AutorService.autorToList()
+        [libro:editarLibro, fecha:fecha, autor: au, autorl: lautor]
     }
 
     def read(long id){
         def usuarioU = springSecurityService.principal
-        def listaLibro = Libro.list()
-        def listaAutores = Libro.list().autores
+        def listaLibro = LibroService.libroToList()
+        def listaAutores = LibroService.getListAutores()
         [libros: listaLibro,  aut: listaAutores, idU1:usuarioU]
     }
 
@@ -45,120 +45,38 @@ class LibroController {
         def idL= this.getParams()
         def idUsuario = idL.idU
         def idLibro = idL.id
-        def editarLibro = Libro.findById(idLibro)
-        def fecha = editarLibro.fechaPub.toString()
-        def fecha2 = fecha.substring(0,10)
-        def buscarLibro = Libro.findById(idLibro)
-        def opiniones = buscarLibro.opinL.asList()
+        def editarLibro = LibroService.libroById(idLibro)
+        def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
+        def buscarLibro =  LibroService.libroById(idLibro)
+        def opiniones = LibroService.opinionesByLibro(buscarLibro)
         def usuarioL = springSecurityService.principal
-
-
-        [libro:editarLibro, fecha:fecha2, idU1: usuarioL, opiniones:opiniones]
+        [libro:editarLibro, fecha:fecha, idU1: usuarioL, opiniones:opiniones]
 
     }
 
     def crear(){
-
-        def autorL = Autor.list()
-
-        def titulo = params.titulo
-        def editorial = params.editorial
-        def autor = params.autores
-        def a = Autor.findByNombreCompleto(autor)
-        def pais = params.pais
-        def portada1 = params.portada
-        byte[] portada = portada1.getBytes()
-        def fechaPub = Date.parse('yyyy-MM-dd', params.fechaPub)
-        def resumen = params.resumen
-        def generoLiterario = params.generoLiterario
-
-        [portada: portada, autor: autor, titulo: titulo, editorial:editorial, generoLiterario:generoLiterario, pais:pais, fechaPub:fechaPub, resumen:resumen ]
-
-        Libro p = new Libro(portada: portada, editorial:editorial,generoLiterario:generoLiterario, fechaPub:fechaPub, pais:pais, resumen:resumen,titulo: titulo)
-        p.save()
-        //failOnError: true
-        a.addToLibros(p)
+        LibroService.crearLibro(params)
         redirect(action: "read")
     }
 
     def delete(long id){
-        def libroE = Libro.get(id)
-        def autorL = libroE.getAutores()
-        if (autorL.size() == 0)
-            libroE.delete()
-            else {
-            def au = Autor.findById(libroE.autores.id)
-            au.libros.remove(libroE)
-            def a = libroE.getLlista().id
-                    if(a.size() ==0){
-                        libroE.delete()
-                    }
-                        else{
-                            def b = ListaPreferenciaLibro.findAllByIdInList(a)
-                            b.each{
-                                it.libros.remove(libroE)
-                            }
-                        libroE.delete()
-                    }
-        }
-
-         redirect (action: "read")
+        LibroService.deleteLibro(id)
+        redirect (action: "read")
     }
 
 
     def opinar(){
-        def lib = params.idLibro
-        def op = params.mandarO
         def usuarioL = springSecurityService.principal
         def idU = usuarioL.id
-        def opLibro = new OpinionLibro(opinionL: op, libro: lib, usuario:idU)
-        if(opLibro.validate()){
-            opLibro.save()
-        }
-
-        redirect (action: "verLibro", params: [id: lib])
+        redirect (action: "verLibro", params: [id: params.idLibro])
     }
     def actualizar(){
-        def id = params.idLibro
-        def editarLibro = Libro.findById(id)
-        def autorL = Autor.list()
-        editarLibro.titulo = params.titulo
-        editarLibro.editorial = params.editorial
-        def autor = params.autores
-        def a = Autor.findByNombreCompleto(autor)
-        editarLibro.pais = params.pais
-        def portada1 = params.portada
-        byte[] portada = portada1.getBytes()
-
-        if (portada1 != null) {
-            editarLibro.portada = portada1.getBytes()
-
-        }
-        editarLibro.fechaPub = Date.parse('yyyy-MM-dd', params.fechaPub)
-        editarLibro.resumen = params.resumen
-        editarLibro.generoLiterario = params.generoLiterario
-        editarLibro.save()
-        a.addToLibros(editarLibro)
-
+        LibroService.updateLibro(params)
         redirect(action: "read")
-
     }
     def calificar(){
+        LibroService.calificarLibro(params)
         def usuarioL = springSecurityService.principal
-        def cal = params.stars
-        def idU = usuarioL.id
-        def libro1 = Libro.findById(params.id)
-
-        print cal
-
-        def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
-
-        if(!lc.save()){
-            lc.each {
-                print it
-            }
-        }
-
         [idU1: usuarioL]
     }
 }

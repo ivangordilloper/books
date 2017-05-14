@@ -20,6 +20,11 @@
 
 
 </head>
+<style type="text/css">
+    body{
+        background: #0B173B;
+    }
+</style>
 <body>
 
 <!-- Page Wrapper -->
@@ -38,9 +43,9 @@
                         <ul>
                             <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
                             <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
-                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'read')}">  Buscar autor</a></li>
-                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'read')}">Ver lista libros</a></li>
-                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'read')}">Ver lista autores</a></li>
+                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
+                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaLibro')}">Ver lista libros</a></li>
+                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaAutor')}">Ver lista autores</a></li>
                             <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
                             <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
                         </ul>

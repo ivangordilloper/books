@@ -7,9 +7,7 @@ class AutorService {
 
     def buscarAutorId(id) {
         return  Autor.findById(id)
-
     }
-
     def autorToList(){
         return  Autor.list()
     }

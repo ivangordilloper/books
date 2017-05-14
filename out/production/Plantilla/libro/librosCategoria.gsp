@@ -1,7 +1,12 @@
 <html>
 <head>
-    <title> USUARIO </title>
+    <title> LIBRO </title>
+
+     <g:meta name="info.app.grailsVersion"/>
     <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="usuario.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <g:external dir="css" file="usuario.css"/>
 
     <g:external dir="css" file="swiper.min.css"/>
@@ -12,7 +17,7 @@
             padding:0;
         }
         body {
-            background-color: #122b40;
+            background-color: #3c2d26;
             color:#ffffff;
         }
 
@@ -27,8 +32,8 @@
             margin-right: 10px;
         }
            .vaneX{
-                padding-top: 10px;
-               padding-bottom: 10px;
+                padding-top: 30px;
+               padding-bottom: 0px;
                padding-left:  400px;!important;
 
            }
@@ -43,10 +48,10 @@
         }
        </style>
 </head>
-<div>
+<body>
 <div id="libro">
 
-</div>
+
 <Form action="read" method="post" name="form" >
     <div class="row uniform vaneX">
         <div class="6u 6u$(xsmall)">
@@ -59,7 +64,8 @@
         </ul>
     </div>
     </div>
-<Form>
+</Form>
+<div>
 <section class="spotlight swipbooks vane">
     <div class ="image vaneI" > Obras literarias en donde el autor usa un narrador para "contar" una historia real o ficticia.scripción.
     <br/>Tipos: Cuento, Novela, Mito, Leyenda, Fábula, Crónica, Apólogo, Epístola, Ensayo y Epopeya.</div><div class="content">
@@ -71,8 +77,8 @@
         <!-- Slides -->
 
 
-            <g:each in="${libros1}" var="libro">
-                <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libroC.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+            <g:each in="${libroC}" var="libro">
+                <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
                 </div>
             </g:each>
 
@@ -102,8 +108,8 @@
         <!-- Slides -->
 
 
-            <g:each in="${libros1}" var="libro">
-                <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libroC.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+            <g:each in="${libroC}" var="libro">
+                <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
                 </div>
             </g:each>
 
@@ -134,8 +140,8 @@
             <!-- Slides -->
 
 
-                <g:each in="${libros1}" var="libro">
-                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libroC.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+                <g:each in="${libroC}" var="libro">
+                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
                     </div>
                 </g:each>
 
@@ -152,7 +158,7 @@
     </div>
     </section>
 
-
+</div>
 </div>
 </body>
 </html>
