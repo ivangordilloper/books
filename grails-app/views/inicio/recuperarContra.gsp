@@ -19,7 +19,7 @@
                         <h4>Recuperar contraseña </h4>
 
                         <div id="login">
-                            <Form action="recuperarContrasena" method="post">
+                            <Form action="recuperarContra" method="post">
                                 <div class="row uniform">
                                     <h8>Escribe tu correo electrónico.</h8>
                                     <div class="12u 12u$(xsmall)" id="divCorreo">

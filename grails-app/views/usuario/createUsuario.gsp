@@ -22,6 +22,7 @@
                 <section>
                     <div class="box">
                         <h4>Regístrate</h4>
+
                         <g:uploadForm action="crear" method="post" name="form" id="formRegister">
                             <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                 <div class="row uniform">
@@ -45,7 +46,13 @@
                                         <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
                                     </div>
                                     <div class="6u 6u$(xsmall)">
-                                        <input type='date' name= "fechaNac" id="fechaNac"  placeholder="Fecha de Nacimiento" required="true"/>
+                                        <div class='input-group date' id='datetimepicker9'>
+                                            <input type='text' class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar">
+                                                </span>
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="6u 6u$(xsmall)">
                                         <g:select name="genero" id="genero"  from="${['M', 'F']}">
@@ -152,10 +159,62 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="MSGA_05" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Mensaje de alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p>Se te ha enviará un enlace de validación al correo electrónico proporcionado.  </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
 <!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js" async defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script type="text/javascript" async defer>
+    function validarCorreoBD(email){
+        var retVal;
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "<g:createLink controller="usuario" action="validarCorreoBD" />",
+            data: { correo: email }, // parameters
+            success: function (data) {
+                retVal = data;
+            },
+            error: function () { alert("Data not deleted"); }
+        });
+        return retVal;
+    }
+    function validarUsuarioBD(usuarioP){
+        var retVal;
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "<g:createLink controller="usuario" action="validarUsuarioBD" />",
+            data: { usuario:usuarioP}, // parameters
+            success: function (data) {
+                retVal = data;
+            },
+            error: function () { alert("Data not deleted"); }
+        });
+        return retVal;
+    }
+    usuario: nombreUsuario
     jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
+        $(function () {
+            $('#datetimepicker9').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY-MM-DD'
+            });
+        });
         $('#cancelar').click(function () {
             $('#MSGC_01').modal('show');
         });
@@ -244,8 +303,23 @@
                                     //return true;
                 }
                 if(indicador == '5'){
+                    var validar = validarUsuarioBD(nombreUsuario);
+                    var validar2 = validarCorreoBD(email);
 
-                    return true;
+                    if(validar == 'true'){
+                        if(validar2 == 'true'){
+                            $('#MSGA_05').modal('show');
+                            return true;
+                        }
+                        else{
+                            $('#MSGE_10').modal('show');
+                            return false;
+                        }
+                    }
+                    else{
+                        $('#MSGE_03').modal('show');
+                        return false;
+                    }
                 }
                 else{
                     $(window).scrollTop(3);

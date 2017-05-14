@@ -3,8 +3,8 @@
     xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFralvhes@gmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:ralvhes@gmail.com"/>
+  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFralvhesss@gmail.com.rdf">
+    <foaf:mbox rdf:resource="mailto:ralvhesss@gmail.com"/>
     <foaf:family_name>Alvarado Hernandez</foaf:family_name>
     <foaf:givenname>Rodrigo</foaf:givenname>
     <foaf:name>Rodrigo Alvarado Hernandez</foaf:name>

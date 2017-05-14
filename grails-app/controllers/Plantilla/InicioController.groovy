@@ -1,6 +1,8 @@
 package Plantilla
 
 import grails.plugin.springsecurity.annotation.Secured
+import grails.converters.JSON
+import net.minidev.json.JSONObject
 
 @Secured(['permitAll'])
 
@@ -41,7 +43,23 @@ class InicioController {
     def tienda(){
 
     }
+    def prueba(){
 
+    }
+    def obtenerJson(){
+        HashMap jsonMap = new HashMap()
+        //List libros = Libro.list()
+        def libros = Libro.list()
+
+        def autores = Autor.list();
+        //List autores = Libro.list().autores
+        jsonMap.libros = libros.collect{libro -> return [name:libro.titulo, id: libro.id]}
+        jsonMap.autores = autores.collect{autor -> return [name:autor.nombreCompleto]}
+        render jsonMap as JSON
+        //println jsonMap
+        //return jsonMap
+        [jsonMap: jsonMap]
+    }
     def recuperarContrasena(){
         def generator = {
             String alphabet, int n ->

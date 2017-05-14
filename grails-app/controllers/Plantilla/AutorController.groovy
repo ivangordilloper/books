@@ -10,6 +10,9 @@ class AutorController{
     def springSecurityService
 
     def createAutor() {
+        def usuarioU = springSecurityService.principal
+        def idU1 = usuarioU
+        [idU:idU1]
 
     }
     def validar(){

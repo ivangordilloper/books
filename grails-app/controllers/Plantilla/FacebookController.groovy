@@ -41,8 +41,6 @@ class FacebookController {
                 def user = Usuario.findByIdf((String) amigosJ.get(key))
                 emails.push(user.correo)
                 FOAFService.setAmigo(userP.correo,user.nombre, user.apellidoP, user.apellidoM, user.correo )
-
-
             }
             print emails
 

@@ -9,7 +9,9 @@ class LibroController {
 
     def createLibro() {
         def autorL = Autor.list()
-        [autor: autorL]
+        def usuarioU = springSecurityService.principal
+        def idU1 = usuarioU
+        [autor: autorL, idU1:idU1]
     }
 
 
@@ -35,8 +37,11 @@ class LibroController {
     def read(long id){
         def listaLibro = Libro.list()
         def listaAutores = Libro.list().autores
-        def idU = id
-        [libros: listaLibro,  aut: listaAutores, idU:idU]
+        //def idU = id
+
+        def usuarioU = springSecurityService.principal
+        def idU1 = usuarioU
+        [libros: listaLibro,  aut: listaAutores, idU1:idU1]
     }
 
 

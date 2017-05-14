@@ -11,12 +11,25 @@ class UsuarioController {
 
     def createUsuario() {
     }
-    def validarCorreo(){
+    def validarCorreoBD(){
         def email = params.correo
+        def validar = Usuario.findByCorreo(email);
+        if(!validar){
+            render true;
+        }
+        else{
+            render false;
+        }
     }
-    def validarUsuario(){
+    def validarUsuarioBD(){
         def usuario = params.usuario
-        return usuario;
+        def validar = Usuario.findByUsername(usuario);
+        if(!validar){
+            render true;
+        }
+        else{
+            render false;
+        }
     }
     def validar(){
         def token = params.token
@@ -122,5 +135,6 @@ class UsuarioController {
         render (view: "verUsuario")
 
     }
+
 
 }
