@@ -207,9 +207,21 @@
         </div>
     </div>
 </div>
-
-
-
+<div class="modal fade" id="MSGA_15" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Mensaje de alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p>Se ha enviado tu comentario y/o sugerencia a Bookscom. Gracias por ayudar a mejorar la comunidad.  </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <g:external dir="js" file="bootstrap.js"/>
@@ -221,66 +233,10 @@
             $('#MSGC_01').modal('show');
         });
         $("form").submit(function() {
-            regNombres= /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
-            function isNombre(str) {
-                return regNombres.test( str );
-            }
-            var nombre = $('#nombre').val();
-            var apellidoP = $('#apellidoP').val();
-            var apellidoM = $('#apellidoM').val();
-            var nombreUsuario = $('#nombreUsuario').val();
-            var telefono = $('#telefono').val();
-            var genero = $('#genero').val();
-            var fechaNac = $('#fechaNac').val();
-            var email = $('#email').val();
-            var email2 = $('#email2').val();
-            var passwd = $('#passwd').val();
-            var passwd2 = $('#passwd2').val();
-            if(!nombre.length || !apellidoP.length || !apellidoM.length || !nombreUsuario.length || !telefono.length || !fechaNac.length || !email.length || !email2.length || !passwd.length || !passwd2.length){
-                $('#MSGE_02').modal('show');
-            }
-            else{
-                if(!isNombre(nombre)) {
-                    var errname = $("#divNombre");
-                    errname.addClass('alert alert-danger');
-                }
-                else{
-                    var errname = $("#divNombre");
-                    errname.removeClass('alert alert-danger');
-                    if(!isNombre(apellidoP)) {
-                        var errname = $("#divApellidoP");
-                        errname.addClass('alert alert-danger');
-                    }
-                    else{
-                        var errname = $("#divApellidoP");
-                        errname.removeClass('alert alert-danger');
-                        if(!isNombre(apellidoP)) {
-                            var errname = $("#divApellidoM");
-                            errname.addClass('alert alert-danger');
-                        }
-                        else{
-                            //----Nombre de usuario validado en el sistema.
-                            if(email != email2){
-                                $('#MSGE_071').modal('show');
-                            }
-                            else{
-                                //Validar correo electornico en el sistema.
-                                if(passwd != passwd2){
-                                    $('#MSGE_07').modal('show');
-                                }
-                                else{
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            $(window).scrollTop(0);
-            return false;
+            $('#MSGA_15').modal('show');
+            return true;
         });
     });
 </script>
-
 </body>
 </html>
