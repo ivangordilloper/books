@@ -10,20 +10,6 @@
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="modals.css"/>
 </head>
-<body>
-<div id="inicio">
-    <!-- Main -->
-    <article id="main">
-        <header>
-            <h2>Regístrate</h2>
-        </header>
-        <section class="wrapper style5">
-            <div class="inner">
-                <section>
-                    <div class="box">
-                        <h4>Regístrate</h4>
-
-
     <body>
 
 
@@ -102,36 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="6u 6u$(xsmall)">
-                                        <g:select name="genero" id="genero"  from="${['M', 'F']}">
-                                        </g:select>
-                                    </div>
-                                    <div class="12u 12u$(xsmall)" id="divCorreo">
-                                        <input class="inputEmail" type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
-                                        <div id="errorEmail1" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="12u 12u$(xsmall)" id="divCorreo2">
-                                        <input class="inputEmail2" type="email" name="correo2" id="email2" placeholder="Confirma Correo Electrónico"  maxlength="50" required="true"/>
-                                        <div id="errorEmail2" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)" div="divContrasena">
-                                        <input class="inputContrasena1" type="password" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
-                                        <div id="errorContrasena1" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)" div="divContrasena2">
-                                        <g:field class="inputContrasena2" type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
-                                        <div id="errorContrasena2" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
-                                    <div class="12u$">
-                                        <ul class="actions">
-                                            <li>
-                                                <g:submitButton name="submit" value="Regístrate" class="special"/>
-                                                <button type="button" id="cancelar" class="special">Cancelar</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                         </g:uploadForm>
                     </div>
                 </section>
