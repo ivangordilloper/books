@@ -13,6 +13,7 @@ class AutorController{
         def usuarioU= springSecurityService.principal
         [idU: usuarioU]
 
+
     }
     def validar(){
         def autor = AutorService.autorToList()

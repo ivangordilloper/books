@@ -12,8 +12,6 @@
         </header>
         <section class="wrapper style5">
             <div class="inner">
-
-
                 <section>
                     <div class="box">
                         <header>

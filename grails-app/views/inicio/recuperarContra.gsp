@@ -19,9 +19,9 @@
                         <h4>Recuperar contraseña </h4>
 
                         <div id="login">
-                            <Form action="mandarCorreo" method="post">
+                            <Form action="recuperarContra" method="post">
                                 <div class="row uniform">
-                                    <h8>Escribe tu correo electróico.</h8>
+                                    <h8>Escribe tu correo electrónico.</h8>
                                     <div class="12u 12u$(xsmall)" id="divCorreo">
                                         <input type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
 
@@ -30,7 +30,6 @@
                                         <ul class="actions">
                                             <li >  <g:submitButton name="submit" value="Enviar correo" class="special" /></li>
 
-                                            <li><a href="/iniciar/recuperarContra">¿No te llega el correo?, Intenta de nuevo</a></li>
                                         </ul>
                                     </div>
                                 </div>

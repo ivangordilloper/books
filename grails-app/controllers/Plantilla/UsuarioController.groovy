@@ -1,5 +1,6 @@
 package Plantilla
 
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
 
@@ -10,7 +11,26 @@ class UsuarioController {
 
     def createUsuario() {
     }
-
+    def validarCorreoBD(){
+        def email = params.correo
+        def validar = Usuario.findByCorreo(email);
+        if(!validar){
+            render true;
+        }
+        else{
+            render false;
+        }
+    }
+    def validarUsuarioBD(){
+        def usuario = params.usuario
+        def validar = Usuario.findByUsername(usuario);
+        if(!validar){
+            render true;
+        }
+        else{
+            render false;
+        }
+    }
     def validar(){
         def token = params.token
         def validar = Usuario.findByToken(token);
@@ -73,14 +93,14 @@ class UsuarioController {
         def uTok = "${username}${token}"
         Usuario p = new Usuario( idf: "no", apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
         UsuarioRole.create(p, Role.findById(2))
-        /*mailService.sendMail {
+        mailService.sendMail {
             multipart true
             from "bookscomtt@gmail.com"
             to correo
             subject "Validación de nuevo usuario en Bookscom."
             html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
             inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
-        }*/
+        }
         FOAFService.generaRdfUsuarioActual((String)correo, (String)nombre, (String)apellidoP, (String)apellidoM)
 
         //redirect (controller: "perfilUsuario", action: "usuario", params: [us:lista])
@@ -115,5 +135,6 @@ class UsuarioController {
         render (view: "verUsuario")
 
     }
+
 
 }
