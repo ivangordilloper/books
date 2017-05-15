@@ -14,7 +14,6 @@
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="style-user.css"/>
     <g:external dir="css" file="letra.css"/>
-
     <g:layoutHead />
 
 </head>

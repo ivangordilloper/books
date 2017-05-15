@@ -7,6 +7,7 @@ class Autor {
     String genero
     String generoLiterario
     String nacionalidad
+    String bio
     byte[] foto
 
     static constraints = {
@@ -16,6 +17,7 @@ class Autor {
         generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
         nacionalidad size: 1..20, nullable: true
         foto nullable: true, maxSize: 2 * 1024 * 1024
+        bio nullable: true, size: 1..1000
 
     }
 

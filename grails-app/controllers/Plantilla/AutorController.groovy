@@ -33,9 +33,10 @@ class AutorController{
     }
 
     def update(int id){
+        def usuarioU= springSecurityService.principal
         def editarAutor = AutorService.buscarAutorId(id)
         def fecha = AutorService.formatoFecha(editarAutor.fechaNac.toString())
-        [pupdateA:editarAutor, fecha:fecha]
+        [pupdateA:editarAutor, fecha:fecha, idU: usuarioU]
     }
 
     def crear() {

@@ -3,7 +3,6 @@
     <title> USUARIO </title>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="usuario.css"/>
-
     <g:external dir="css" file="swiper.min.css"/>
     <g:external dir="css" file="slides.css"/>
 </head>
@@ -24,8 +23,6 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-
-
                 <g:each in="${libros1}" var="libro">
                     <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
                     </div>
