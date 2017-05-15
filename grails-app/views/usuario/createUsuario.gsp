@@ -23,35 +23,83 @@
                     <div class="box">
                         <h4>Regístrate</h4>
 
-                        <g:uploadForm action="crear" method="post" name="form" id="formRegister">
-                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
-                                <div class="row uniform">
-                                    <div class="12u 12u$(xsmall) controls" id="divNombre">
-                                        <input class="inputNombre" type="text"  name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true" minlength="2" maxlength="20"/>
-                                        <div id="errorNombre" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)" id="divApellidoP">
-                                        <input class="inputApellidoP" type="text" name="apellidoP" id="apellidoP" value=""  placeholder="Apellido Paterno" maxlength="20" required="true"/>
-                                        <div id="errorApellidoP" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)" id="divApellidoM">
-                                        <input class="inputApellidoM" type="text" name="apellidoM" id="apellidoM" value="" placeholder="Apellido Materno"  maxlength="20" required="true"/>
-                                        <div id="errorApellidoM" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="12u 12u$(xsmall)" id="divUsuario">
-                                        <input class="inputUsuario" type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
-                                        <div id="errorUsuario" style="display:none; color:#FF0000;"></div>
-                                    </div>
-                                    <div class="12u 12u$(xsmall)">
-                                        <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)">
-                                        <div class='input-group date' id='datetimepicker9'>
-                                            <input type='text' class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar">
-                                                </span>
-                                            </span>
+
+    <body>
+
+
+        <div id="inicio">
+            <!-- Main -->
+            <article id="main">
+                <header>
+
+                    <h2>Regístrate</h2>
+
+
+                </header>
+                <section class="wrapper style5">
+                    <div class="inner">
+                        <section>
+                            <div class="box">
+                                    <h4>Regístrate</h4>
+
+                                    <g:uploadForm action="crear" method="post" name="form" id="formRegister">
+                                        <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+                                            <div class="row uniform">
+                                                <div class="12u 12u$(xsmall) controls" id="divNombre">
+                                                    <input  type="text" name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true"/>
+                                                    </div>
+                                                <div class="6u 6u$(xsmall)" id="divApellidoP">
+                                                    <input type="text" name="apellidoP" id="apellidoP" value=""  placeholder="Apellido Paterno" required="true"/>
+
+                                                </div>
+                                                <div class="6u 6u$(xsmall)" id="divApellidoM">
+                                                    <input type="text" name="apellidoM" id="apellidoM" value="" placeholder="Apellido Materno"  maxlength="10" required="true"/>
+
+                                                </div>
+                                                <div class="12u 12u$(xsmall)" id="divUsuario">
+                                                    <input type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
+
+                                                </div>
+                                                <div class="12u 12u$(xsmall)">
+                                                    <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
+
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <input type='date' name= "fechaNac" id="fechaNac"  placeholder="Fecha de Nacimiento" required="true"/>
+
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:select name="genero" id="genero"  from="${['M', 'F']}">
+                                                    </g:select>
+                                                </div>
+                                                <div class="12u 12u$(xsmall)" id="divCorreo">
+                                                    <input type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
+
+                                                </div>
+                                                <div class="12u 12u$(xsmall)">
+                                                    <input type="email" name="correo2" id="email2" placeholder="Confirma Correo Electrónico"  maxlength="50" required="true"/>
+
+                                                </div>
+                                                <div class="6u 6u$(xsmall)" div="divContrasena">
+                                                    <input type="text" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
+
+
+                                                </div>
+                                                <div class="6u 6u$(xsmall)">
+                                                    <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
+
+                                                </div>
+
+                                                <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
+                                                <div class="12u$">
+                                                    <ul class="actions">
+                                                        <li>
+                                                            <g:submitButton name="submit" value="Regístrate" class="special"/>
+                                                            <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="6u 6u$(xsmall)">
