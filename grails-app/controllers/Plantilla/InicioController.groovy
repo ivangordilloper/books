@@ -1,6 +1,8 @@
 package Plantilla
 
 import grails.plugin.springsecurity.annotation.Secured
+import grails.converters.JSON
+import net.minidev.json.JSONObject
 
 @Secured(['permitAll'])
 
@@ -12,6 +14,9 @@ class InicioController {
 
     }
     def iniciarSesion() {
+
+    }
+    def recuperarContra() {
 
     }
 
@@ -38,9 +43,54 @@ class InicioController {
     def tienda(){
 
     }
+    def prueba(){
 
-    def recuperarContra(){
+    }
+    def obtenerJson(){
+        HashMap jsonMap = new HashMap()
+        //List libros = Libro.list()
+        def libros = Libro.list()
 
+        def autores = Autor.list();
+        //List autores = Libro.list().autores
+        jsonMap.libros = libros.collect{libro -> return [name:libro.titulo, id: libro.id]}
+        jsonMap.autores = autores.collect{autor -> return [name:autor.nombreCompleto]}
+        render jsonMap as JSON
+        //println jsonMap
+        //return jsonMap
+        [jsonMap: jsonMap]
+    }
+    def recuperarContrasena(){
+        def generator = {
+            String alphabet, int n ->
+                new Random().with {
+                    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+                }
+        }
+        def contra = generator( (('A'..'Z')+('0'..'9')).join(), 15 )
+
+        def correo = params.correo
+
+        def validar = Usuario.findByCorreo(correo)
+
+        def usuario = validar.getUsername()
+
+
+        if(validar){
+            validar.setPassword(contra);
+            mailService.sendMail {
+                multipart true
+                from "bookscomtt@gmail.com"
+                to correo
+                subject "Reestablecimiento de contraseña."
+                html  view: "/email/recuperar", model: [pContra:contra, pUsuario:usuario]
+                inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
+            }
+            redirect(controller: "inicio")
+        }
+        else{
+            redirect(controller: "inicio")
+        }
     }
 
     def mandarCorreo(){
