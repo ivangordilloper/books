@@ -23,6 +23,36 @@ apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin: 'asset-pipeline'
 
+assets {
+    minifyJs = true
+    minifyCss = true
+    enableSourceMaps = true
+    configOptions = [:]
+
+    minifyOptions = [
+            languageMode: 'ES5',
+            targetLanguage: 'ES5', //Can go from ES6 to ES5 for those bleeding edgers
+            optimizationLevel: 'SIMPLE',
+            angularPass: true // Can use @ngInject annotation for Angular Apps
+    ]
+
+    includes = []
+    excludes = ['**/*.less'] //Example Exclude GLOB pattern
+
+    //for plugin packaging
+    packagePlugin=false //set to true if this is a library
+
+    //developmentRuntime can be turned off
+    developmentRuntime=true
+
+    //if you want to customize the jar task this task runs on you can specify a jarTaskName
+    jarTaskName=null
+
+    // Can add custom asset locations (directories or individual jar files)
+    from '/grails-app/assests/css'
+}
+
+
 ext {
     grailsVersion = project.grailsVersion
     gradleWrapperVersion = project.gradleWrapperVersion
