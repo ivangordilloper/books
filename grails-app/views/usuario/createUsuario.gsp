@@ -18,11 +18,16 @@
 <body>
 
     <body>
+
+
         <div id="inicio">
             <!-- Main -->
             <article id="main">
                 <header>
+
                     <h2>Regístrate</h2>
+
+
                 </header>
                 <section class="wrapper style5">
                     <div class="inner">

@@ -3,12 +3,8 @@
    <title> INICIAR SESIÓN </title>
 </head>
 <body>
-<div id="inicio">
-
     <article id="main">
-        <header>
-            <h2>Iniciar Sesión </h2>
-        </header>
+
         <section class="wrapper style5">
             <div class="inner">
 
@@ -16,9 +12,11 @@
                 <section>
                     <div class="box">
 
-                        <h4>Iniciar Sesión </h4>
-
                         <div id="login">
+                            <div class="cointainer">
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <h4>Iniciar Sesión </h4>
                             <form method="post" action="/login/authenticate">
 
                             <div class="row uniform">
@@ -29,20 +27,26 @@
                                 <div class="12u 12u$(xsmall)">
                                     <input type="password" name="password" id="password" required value="" placeholder="Contraseña" />
                                 </div>
+                                <div class="12u 12u$(xsmall)">
                                 <p id="remember_me_holder">
                                     <input type="checkbox" class="chk" name="remember-me" id="remember_me" />
                                     <label for="remember_me">Recuérdame</label>
                                 </p>
+                                </div>
 
-                                <div class="12u$">
-                                    <ul class="actions">
-                                        <li >  <g:submitButton name="submit" value="Iniciar Sesión" class="special" /></li>
-
-                                        <li><a href="/inicio/recuperarContra">Has olvidado tu contraseña</a></li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                    <g:submitButton name="submit" value="Iniciar Sesión" class="special" />
+                                     </div>
+                                    <div class="col-xs-12- col-sm-6 ">
+                                      <a href="/inicio/recuperarContra">Olvidé mi contraseña</a></li>
+                                    </div>
                                 </div>
                             </div>
                         </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <script>
                             (function() {
