@@ -47,3 +47,11 @@ grails {
 				 "mail.smtp.socketFactory.fallback":"false"]
 	}
 }
+
+
+
+grails.resources.mappers.baseurl.enabled = true
+grails.resources.mappers.bundle.excludes = ['**/*']
+grails.resources.mappers.baseurl.default = "http://ec2-34-208-56-255.us-west-2.compute.amazonaws.com:8080"
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+
