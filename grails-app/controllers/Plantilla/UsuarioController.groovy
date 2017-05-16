@@ -9,12 +9,14 @@ class UsuarioController {
     def mailService
     def springSecurityService
 
+    def passwordEncoder
+
     def createUsuario() {
     }
     def validarCorreoBD(){
         def email = params.correo
         def validar = Usuario.findByCorreo(email);
-        if(!validar){
+        if(validar){
             render true;
         }
         else{
@@ -24,7 +26,22 @@ class UsuarioController {
     def validarUsuarioBD(){
         def usuario = params.usuario
         def validar = Usuario.findByUsername(usuario);
-        if(!validar){
+        if(validar){
+            render true;
+        }
+        else{
+            render false;
+        }
+    }
+    def validarPasswordBD(){
+        def validate
+        def usuario = params.usuario
+        def passwd = params.password
+        def validar = Usuario.findByUsername(usuario);
+        def obtenerPassword = validar.password
+
+        validate = passwordEncoder.isPasswordValid(obtenerPassword, passwd, null)
+        if(validate){
             render true;
         }
         else{

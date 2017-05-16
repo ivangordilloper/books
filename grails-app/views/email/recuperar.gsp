@@ -6,7 +6,7 @@
     <b>Buenos días</b><br><br>
     Usted ha solicitado reestablecer su contraseña para <b><l>Bookscom</l></b>.<br><br>
     Su nombre de usuario es: <br>
-    <br><b>${pUsuario}<<br><br>
+    <br><b>${pUsuario}<br><br>
     Su nueva contraseña es:<br>
     <br><b>${pContra}</b>
     <br>

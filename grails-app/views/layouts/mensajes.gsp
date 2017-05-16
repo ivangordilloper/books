@@ -68,6 +68,21 @@
         </div>
     </div>
 </div>
+<div class="modal fade" data-keyboard="false" id="MSGE_12" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-error">
+                <h4 class="modal-title">Mensaje de error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Correo electrónico no registrado en el sistema.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" data-keyboard="false" id="MSGE_07" role="dialog">
     <div class="modal-dialog">
@@ -92,7 +107,7 @@
                 <h4 class="modal-title">Mensaje de error</h4>
             </div>
             <div class="modal-body">
-                <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra direcci´on de correo electrónico.</p>
+                <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -108,7 +123,7 @@
                 <h4 class="modal-title">Mensaje de error</h4>
             </div>
             <div class="modal-body">
-                <p>Correo no registrado, por favor revise que haya escrito el correo correctamente.</p>
+                <p>Usuario no registrado, por favor revise que haya escrito el usuario correctamente.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -468,7 +483,21 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="MSGA_15" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Mensaje de alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p>Se ha enviado tu comentario y/o sugerencia a Bookscom. Gracias por ayudar a mejorar la comunidad.  </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
