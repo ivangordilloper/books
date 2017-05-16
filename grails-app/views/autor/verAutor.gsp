@@ -225,7 +225,7 @@
                         </div>
 
                         <div class="col-xs-4 col-sm-8 col-md-4 col-lg-6">
-                            <div id="resumen">${libro.resumen.toString().substring(0,10)}. </div>
+                            <div id="resumen">${libro.resumen.toString().substring(0,1)}. </div>
                         </div>
 
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -276,7 +276,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/autor/calificar",
+            "url": "http://localhost:8080/autor/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
