@@ -92,7 +92,7 @@ class FOAFService {
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
 
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr2);
 
@@ -154,7 +154,7 @@ class FOAFService {
  */
 
     public static ArrayList<String> getAmigosFOAF(String email){
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         ArrayList<String> uri = new ArrayList<>()
 
         Model m = ModelFactory.createDefaultModel();
@@ -185,7 +185,7 @@ class FOAFService {
 
     public static ArrayList<Integer>  obtenLibrosByEmail(String email){
         ArrayList<Integer> libros = new ArrayList<>()
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         Model m = ModelFactory.createDefaultModel();
         m.read(sujetoStr2);
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
@@ -215,7 +215,7 @@ class FOAFService {
 
     public static ArrayList<Integer>  obtenAutoresByEmail(String email){
         ArrayList<Integer> autores = new ArrayList<>()
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         Model m = ModelFactory.createDefaultModel();
         m.read(sujetoStr2);
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
@@ -306,7 +306,7 @@ class FOAFService {
         String rutaProcesarRDF = "grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -333,7 +333,7 @@ class FOAFService {
         String rutaProcesarRDF = "grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -359,7 +359,7 @@ class FOAFService {
         String rutaProcesarRDF = "grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://localhost:8081/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -370,7 +370,7 @@ class FOAFService {
 
         Resource sujeto = m.getResource(sujetoStr2);
         Resource person = m.createResource()
-        String tmpSeeAlso= "http://localhost:8080/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
+        String tmpSeeAlso= "http://localhost:8081/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
 
 
 

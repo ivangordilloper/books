@@ -49,6 +49,12 @@ class PerfilUsuarioController {
         [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores]
     }
 
+    def p(){
+        def usuario = params.usuario
+        def passwd = params.password
+        def validar = Usuario.findByNombre("12345");
+        def validarpasswd = validar.password.toString()
+    }
     def FOAF(){
         //FOAFService.generaRdfUsuarioActual("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
         //FOAFService.generaRdfUsuarioActual("ivan@hotmail.com","Ivan","Gordillo","Perez")

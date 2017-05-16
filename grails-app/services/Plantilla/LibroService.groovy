@@ -69,9 +69,10 @@ class LibroService {
 
     }
     def opinarLibro(params){
-        def lib = params.idLibro
+        def idL = params.idLibro
         def op = params.mandarO
-        def opLibro = new OpinionLibro(opinionL: op, libro: lib, usuario:idU)
+        def idU = params.idUsuario
+        def opLibro = new OpinionLibro(opinionL: op, libro: idL, usuario:idU)
         if(opLibro.validate()){
             opLibro.save()
         }
@@ -104,7 +105,7 @@ class LibroService {
     def calificarLibro(params){
         def cal = params.stars
         def idU = usuarioL.id
-        def libro1 = Libro.findById(params.id)
+        def libro1 = params.idLibro
         def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
         if(!lc.save()){
             lc.each {

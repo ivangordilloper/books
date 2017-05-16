@@ -3,7 +3,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title> <g:layoutTitle/></title>
+    <title> Bookscom</title>
     <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -35,13 +35,13 @@
                     <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>${idU1.username}</span></a>
                     <div id="menu">
                         <ul>
-                            <li><g:img src="images" file="amigom.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
-                            <li><g:img src="images" file="libro1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
-                            <li><g:img src="images" file="autor1m.png" height="30px" align="left"> </g:img><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
-                            <li><g:img src="images" file="librosm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaLibro')}">Ver lista libros</a></li>
-                            <li><g:img src="images" file="autorm.png" height="30px" align="left"></g:img><a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaAutor')}">Ver lista autores</a></li>
-                            <li><g:img src="images" file="fbm.png" height="30px" align="left"></g:img><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
-                            <li><g:img src="images" file="confm.png" height="30px" align="left"></g:img><a href="/usuario/read">Configuracion</a></li>
+                            <li><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
+                            <li><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
+                            <li><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
+                            <li><a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaLibro')}">Ver lista libros</a></li>
+                            <li><a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaAutor')}">Ver lista autores</a></li>
+                            <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
+                            <li><a href="/usuario/read">Configuracion</a></li>
 
                         </ul>
                     </div>

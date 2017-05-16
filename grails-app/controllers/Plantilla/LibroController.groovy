@@ -26,12 +26,15 @@ class LibroController {
 
     }
     def update(long id){
+        def usuarioU = springSecurityService.principal
+        def idU = usuarioU
         def editarLibro = LibroService.libroById(id)
         def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
         def autorL = LibroService.getAutoresByLibro(editarLibro)
-        def au = Autor.findById(editarLibro.autores.id)
+        def au = AutorService.buscarAutorId(editarLibro.autores.id)
+        //def au = Autor.findById(editarLibro.autores.id)
         def lautor = AutorService.autorToList()
-        [libro:editarLibro, fecha:fecha, autor: au, autorl: lautor]
+        [libro:editarLibro, fecha:fecha, autor: au, autorl: lautor, idU1: idU]
     }
 
     def read(long id) {
@@ -46,12 +49,22 @@ class LibroController {
         def idL= this.getParams()
         def idUsuario = idL.idU
         def idLibro = idL.id
+        def lista = LibroService.libroToList()
         def editarLibro = LibroService.libroById(idLibro)
         def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
         def buscarLibro =  LibroService.libroById(idLibro)
         def opiniones = LibroService.opinionesByLibro(buscarLibro)
         def usuarioL = springSecurityService.principal
-        [libro:editarLibro, fecha:fecha, idU1: usuarioL, opiniones:opiniones]
+
+        //mandarServicio
+        def genero = editarLibro.generoLiterario
+        def listaLibr = Libro.findAllByGeneroLiterario(genero)
+
+        def autorL = editarLibro.autores
+        Autor editarAutor = Autor.findById(editarLibro.id)
+        def libE = AutorService.librosByAutor(editarAutor)
+
+        [libro:editarLibro, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
 
     }
 
@@ -69,10 +82,12 @@ class LibroController {
     def opinar(){
         def usuarioL = springSecurityService.principal
         def idU = usuarioL.id
+        LibroService.opinarLibro(params)
         redirect (action: "verLibro", params: [id: params.idLibro])
     }
     def actualizar(){
-        LibroService.updateLibro(params)
+        def usuarioU = springSecurityService.principal
+        def idU = usuarioU
         redirect(action: "read")
     }
     def calificar(){

@@ -1,247 +1,348 @@
-<html lang=en>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>LIBRO</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title> Bookscom </title>
 
     <style type="text/css">
-    header {
-        background: #0A122A;
-
-    }
     body{
-        background:#0B173B;
-
+        background: #ffffff!important;
+        color: black;
+    }
+    form .stars {
+        background: url('${resource(dir: "images/css", file: "stars.png")}') repeat-x 0 0;
+        width: 150px;
+        margin: 0 auto;
     }
 
-    .nav2 li {
-        text-decoration: none!important;
-        padding: 5px 15px!important;
-        display: block!important;
-        box-shadow: none !important;
-        color: #ffffff !important;
-        border-radius: 20px;
-        background-color: orange!important;
-
+    form .stars input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        background-color: white;
+        color: white;
+        filter: alpha(opacity=0)!important;
+    }
+    form .stars input[type="radio"].star-5:checked ~ span {
+        width: 100%;
+    }
+    form .stars input[type="radio"].star-4:checked ~ span {
+        width: 80%;
+    }
+    form .stars input[type="radio"].star-3:checked ~ span {
+        width: 60%;
+    }
+    form .stars input[type="radio"].star-2:checked ~ span {
+        width: 40%;
+    }
+    form .stars input[type="radio"].star-1:checked ~ span {
+        width: 20%;
+    }
+    form .stars label {
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin: 0!important;
+        padding: 0!important;
+        text-indent: -999em;
+        float: left;
+        position: relative;
+        z-index: 10;
+        background: transparent!important;
+        cursor: pointer;
+    }
+    form .stars label:hover ~ span {
+        background-position: 0 -30px;
+    }
+    form .stars label.star-5:hover ~ span {
+        width: 100% !important;
+    }
+    form .stars label.star-4:hover ~ span {
+        width: 80% !important;
+    }
+    form .stars label.star-3:hover ~ span {
+        width: 60% !important;
+    }
+    form .stars label.star-2:hover ~ span {
+        width: 40% !important;
+    }
+    form .stars label.star-1:hover ~ span {
+        width: 20% !important;
+    }
+    form .stars span {
+        display: block;
+        width: 0;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 30px;
+        background: url('${resource(dir: "images/css", file: "stars.png")}') repeat-x 0 -60px!important;
+        -webkit-transition: -webkit-width 0.5s;
+        -moz-transition: -moz-width 0.5s;
+        -ms-transition: -ms-width 0.5s;
+        -o-transition: -o-width 0.5s;
+        transition: width 0.5s;
     }
 
-    .nav2 li a {
-        text-decoration: none!important;
-        padding: 5px 15px!important;
-        display: block!important;
-        box-shadow: none !important;
-        border-radius: 20px;
-        right: -1400px!important;
-        color: #ffffff!important;
-    }
-
-    ul, ol{
-        list-style: none!important;
-        padding: 0px!important;
-        margin: 0px!important;
-        box-shadow: none !important;
-    }
-
-    .nav2 > li {
-        float:right!important;
-    }
-
-    .nav2 li a:hover{
-        color: #ffffff!important;
-    }
-
-    .nav2 li ul{
-        display: none!important;
-        position: absolute!important;
-        min-width: 140px!important;
-    }
-
-    .nav2 li:hover >  ul{
-        display: block!important;
-    }
-
-    .nav2 li ul li {
-        position: relative!important;
+    .dropbtn {
+        background-color: #BC673F;
+        color: white;
+        box-shadow: none;
+        font-size: 15px;
         margin: 0px;
-
+        padding: 1px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+    hr{
+        margin: 1px;
+        border-color: #BC673F;
+        size: 1px;
     }
 
-    .extra{
-        padding-top-: 0px;
-        padding-bottom: 0px;
-        color: #0A122A;
-    }
-    label {
-        color: grey;
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #DEB887;
     }
 
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
 
-    label:hover{
-        color:orange!important;
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 60px;
+        width: 155px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
     }
-    label:hover ~ label{
-        color:orange;}
-    input[type = "radio"]{
-        display: none!important;
+
+    .dropdown-content a {
+        color: black;
+        padding: 2px;
+        text-decoration: none!important;
+        display: block;
     }
-    input[type = "radio"]:checked ~ label{
-        color:orange;}
+
+    .dropdown a:hover {background-color: #f1f1f1}
+
+    .show {display:block;}
 
     </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1 style="margin-top: 30px; text-align: center">${autor.nombreCompleto}</h1>
-    </div>
-</header>
-
-
 <div class="container">
-    <section class="main row">
-        <article class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background: #0A122A; padding-bottom: 25px;">
 
-            <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" height="350px" width="200px" style="padding-top: 60px"/>
-        </article>
-        <article class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="background: #0A122A;; height: 375px">
-            <div class="row">
+    <!--una-->
+    <div class="row" style="height: 50px;">
 
-                <div class="clasificacion">
-                    <g:form action="calificar" method="post" style="padding-top: 10px; ">
-                        <g:field id="radio1" type="radio" onclick="sendStars(${autor.id}, 5);" class="hp" name="estrellas" value="5"></g:field><label for="radio1">★</label>
-                        <g:field id="radio2" type="radio" name="estrellas" value="4"></g:field><label for="radio2">★</label>
-                        <g:field id="radio3" type="radio" name="estrellas" value="3"></g:field><label for="radio3">★</label>
-                        <g:field id="radio4" type="radio" name="estrellas" value="2"></g:field><label for="radio4">★</label>
-                        <g:field id="radio5" type="radio" name="estrellas" value="1"></g:field><label for="radio5">★</label>
+    </div> <!--una-->
 
-                    </g:form>
+
+    <!--dos-->
+    <div class="row">
+
+        <!--dos.uno-->
+        <div class="col-sm-6 col-md-2">
+            <section>
+                <div class="row">
+                    <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}"  style="margin-top:15px; background-size:100%auto; height: 150px; width: 180px;"/>
                 </div>
 
-            </div>
-            <div class="row">
-                <p>
-                    Género:  ${autor.nombreCompleto} <br/>
-                    Editorial: ${autor.nacionalidad} <br/>
-                    Fecha Publicación: ${autor.fechaNac} <br/>
-                </p>
-            </div>
-
-            <div class="row">
-                <h1>Resumen</h1> <br/>
-                <p>
-                    ${autor.generoLiterario}
-                </p>
-            </div>
-
-
-        </article>
-
-    </section>
-    <div
-            class="row" style="background: #0A122A; padding-top: 20px"> </div>
-    <section class="row">
-
-        <div class="row">
-            <div class="container">
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <g:form action="opinar" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">        <a href="${createLink(controller : 'usuario', action:'read', params: [id:autor.id])}">@</a></span>
-                            <g:field name="mandar" type="text" class="form-control" placeholder="Escribe tu opinión..."></g:field>
-
+                <div class="row">
+                    <br/>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
+                        <div id="myDropdown" class="dropdown-content" style="font-size: 15px">
+                            <a href="#home">Agregar a mis autores favoritos</a>
+                            <a href="#about">Ediar mis autores favoritos</a>
+                            <a href="#contact">Ver mi lista de autores</a>
                         </div>
-                    </g:form>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <ul class="nav2" >
-                        <li> Agregar a lista de preferencia
-                            <ul>
-                                <li style="font-size: 15px"><a> Opcion 1</a> </li>
-                                <li style="font-size: 15px"><a> Opcion 2</a> </li>
-                            </ul>
-
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!---<a href="#hola" class="more scrolly">Danos tu opinión...</a>-->
-    </section>
-    <div
-            class="row" style="padding-top: 10px"> </div>
-
-    <section id="hola">
-        <div class="row">
-            <div class="extra" style="height: 20px">
-                <h1> <a href="#opi" class="more scrolly" style="color: #ffffff">¿Qué opinan otros usuarios?</a> </h1>
-            </div>
-        </div>
-
-        <div
-                class="row" style="padding-top: 20px"> </div>
-
-
-    </section>
-
-    <section id="opi">
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3 class="extra">Usuario</h3>
-                        <p>Mi opinion es que esta muy padre</p>
-                        <p>
-                            <a href="${createLink(controller : 'usuario', action:'read', params: [id:autor.id])}" class="btn btn-primary" role="button" style=" border-radius: 15px;background: orange; color: #ffffff; border-color: #985f0d">Ver usuario</a>
-                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-    </section>
-    <footer>
+                <div class="row" style="height: 30px"></div>
+                <div class="row" style="height: 5px">
+                    <p style="color:gray; margin-bottom:1px; font-size:14px; text-align: center; padding-left: 40px">Califica este libro</p>
+                    <form id="ratingsForm">
+                        <div class="stars">
+                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 1)" class="star-1" id="star-1" />
+                            <label class="star-1" for="star-1">1</label>
+                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 2)" class="star-2" id="star-2" />
+                            <label class="star-2" onclick="sendStars(${autor.id}, 2)" for="star-2">2</label>
+                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 3)" class="star-3" id="star-3" />
+                            <label class="star-3" for="star-3">3</label>
+                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 4)" class="star-4" id="star-4" />
+                            <label class="star-4" for="star-4">4</label>
+                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 5)" class="star-5" id="star-5" />
+                            <label class="star-5" for="star-5">5</label>
+                            <span></span>
+                        </div>
+                    </form>
+                </div>
 
-        <div class="container">
-            <h3></h3>
-        </div>
-    </footer>
-    <script>
-        function sendStars(id, calificacion) {
+            </section>
+        </div> <!--dos.uno-->
+        <!--dos.dos-->
+        <div class="col-sm-12 col-md-10">
+            <section>
+                <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${autor.nombreCompleto}</i> </p>
+                <div class="row" style="margin-bottom: 0px">
+                    <div> ${autor.nacionalidad}, ${autor.fechaNac.toString().substring(0,4)} </div>
+                    <div> <% def count1=5 %>
+                        <g:each in="${1..count1}" var="b" >
+                            <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                        </g:each>
+                    </div>
+                </div>
 
-            var form = new FormData();
-            form.append("stars", calificacion);
-            form.append("id", id);
+                <p style="text-align: justify; margin: 2px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                <br/>
+            </section>
+
+            <section>
+                <h3 style="margin-top: 10px; color:#D2691E; font-size: 15px;">Libros de ${autor.nombreCompleto}</h3>
+                <hr style="margin: 1px; color: darkorange; margin-bottom: 10px"/>
+            </section>
+
+            <section id="opi">
+                <g:each in="${lib}" var="libro">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" style="margin:10px; height: 60px; width: 40px;" />
+                        </div>
 
 
-            console.log(calificacion)
-            console.log(id)
+                        <div class="col-xs-4 col-sm-8 col-md-4 col-lg-2">
+                                <p style="font-size: 15px; color: black; margin: 0px; padding-top: 1px">
+                                <b style="color: black; margin: 0px; padding-top: 0px">${libro.titulo}<br/></b>
+                                <i> ${libro.fechaPub.toString().substring(0,10)} </i></p>
+                    <% def count=1 %>
+                    <g:each in="${0..count}" var="c" >
+                        <span style="font-size:150%;color:#BC673F;">&starf;</span>
+                    </g:each>
+                        </div>
 
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "http://localhost:8081/autor/calificar",
-                "method": "POST",
-                "headers": {
-                    "cache-control": "no-cache",
-                    "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
-                },
-                "processData": false,
-                "contentType": false,
-                "mimeType": "multipart/form-data",
-                "data": form
-            }
+                        <div class="col-xs-4 col-sm-8 col-md-4 col-lg-6">
+                            <div id="resumen">${libro.resumen.toString().substring(0,10)}. </div>
+                        </div>
 
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <p>LISTAS</p>
+                        </div>
 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <hr style="border-color: #faf2cc"/>
+                        </div>
+                    </div>
+
+                </g:each>
+
+            </section>
+
+
+
+
+
+        </div>   <!--dos.dos-->
+
+
+    </div> <!--dos-->
+
+<!--tres-->
+    <div class="row" style="height: 100px;">
+
+    </div> <!--tres-->
+
+</div>
+
+
+
+<script>
+    function sendStars(id, calificacion) {
+
+        var form = new FormData();
+        form.append("stars", calificacion);
+        form.append("id", id);
+
+
+        console.log(calificacion)
+        console.log(id)
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8081/autor/calificar",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
         }
 
-    </script>
-</div>
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+    }
+
+</script>
+
+<!-- Scripts -->
+<script>
+    /* When the user clicks on the button,
+     toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    /* When the user clicks on the button,
+     toggle between hiding and showing the dropdown content */
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+<script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
+
 </body>
 </html>

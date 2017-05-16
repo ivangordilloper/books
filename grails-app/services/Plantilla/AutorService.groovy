@@ -14,6 +14,10 @@ class AutorService {
     def formatoFecha(fecha){
         return fecha.substring(0,10)
     }
+    def opinionesByAutor(buscarAutor){
+        return buscarAutor.opinL.asList()
+    }
+
     def createAutor(params){
         def nombre = params.nombre
         def apellidoP = params.apellidoP
@@ -32,6 +36,19 @@ class AutorService {
     def librosByAutor(editarAutor){
         return editarAutor.libros.asList()
     }
+
+    def opinarLibro(params){
+        def idA = params.idLibro
+        def op = params.mandarO
+        def idU = params.idUsuario
+        def opAutor = new OpinionLibro(opinionL: op, autor: idA, usuario:idU)
+        if(opAutor.validate()){
+            opAutor.save()
+        }
+
+    }
+
+
     def deleteAutor(id){
         def editarAutor = Autor.get(id)
         def a = editarAutor.getLlista().id

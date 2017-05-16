@@ -1,277 +1,379 @@
-<html lang=en>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>LIBRO</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title> Bookscom </title>
+    <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="usuario.css"/>
+    <g:external dir="css" file="swiper.min.css"/>
+    <g:external dir="css" file="slides.css"/>
+
 
     <style type="text/css">
-    header {
-        background: #0A122A;
+        body{
+            background: #ffffff;
+            color: black;
+        }
+         form .stars {
+            background: url('${resource(dir: "images/css", file: "stars.png")}') repeat-x 0 0;
+            width: 150px;
+            margin: 0 auto;
+        }
 
-    }
-    body{
-        background:#0A122A;
+        form .stars input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            background-color: white;
+            color: white;
+            filter: alpha(opacity=0)!important;
+        }
+        form .stars input[type="radio"].star-5:checked ~ span {
+            width: 100%;
+        }
+        form .stars input[type="radio"].star-4:checked ~ span {
+            width: 80%;
+        }
+        form .stars input[type="radio"].star-3:checked ~ span {
+            width: 60%;
+        }
+        form .stars input[type="radio"].star-2:checked ~ span {
+            width: 40%;
+        }
+        form .stars input[type="radio"].star-1:checked ~ span {
+            width: 20%;
+        }
+        form .stars label {
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin: 0!important;
+            padding: 0!important;
+            text-indent: -999em;
+            float: left;
+            position: relative;
+            z-index: 10;
+            background: transparent!important;
+            cursor: pointer;
+        }
+        form .stars label:hover ~ span {
+            background-position: 0 -30px;
+        }
+        form .stars label.star-5:hover ~ span {
+            width: 100% !important;
+        }
+        form .stars label.star-4:hover ~ span {
+            width: 80% !important;
+        }
+        form .stars label.star-3:hover ~ span {
+            width: 60% !important;
+        }
+        form .stars label.star-2:hover ~ span {
+            width: 40% !important;
+        }
+        form .stars label.star-1:hover ~ span {
+            width: 20% !important;
+        }
+        form .stars span {
+            display: block;
+            width: 0;
+            position: relative;
+            top: 0;
+            left: 0;
+            height: 30px;
+            background: url('${resource(dir: "images/css", file: "stars.png")}') repeat-x 0 -60px!important;
+            -webkit-transition: -webkit-width 0.5s;
+            -moz-transition: -moz-width 0.5s;
+            -ms-transition: -ms-width 0.5s;
+            -o-transition: -o-width 0.5s;
+            transition: width 0.5s;
+        }
 
-    }
+        .dropbtn {
+            background-color: #BC673F;
+            color: white;
+            box-shadow: none;
+            font-size: 15px;
+            margin: 0px;
+            padding: 1px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        hr{
+            margin: 1px;
+            border-color: #BC673F;
+            size: 1px;
+        }
 
-    .nav2 li {
-        text-decoration: none!important;
-        padding: 5px 15px!important;
-        display: block!important;
-        box-shadow: none !important;
-        color: #ffffff !important;
-        border-radius: 4px;
-        background-color: #BC673F!important;
-        box-shadow: none !important;
-        color: #ffffff !important;
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #DEB887;
+        }
 
-    }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-    .nav2 li a {
-        text-decoration: none!important;
-        padding: 5px 15px!important;
-        display: block!important;
-        box-shadow: none !important;
-        border-radius: 20px;
-        right: -1400px!important;
-        color: #ffffff!important;
-    }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 60px;
+            width: 155px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
 
-    ul, ol{
-        list-style: none!important;
-        padding: 0px!important;
-        margin: 0px!important;
-        box-shadow: none !important;
-    }
+        .dropdown-content a {
+            color: black;
+            padding: 5px;
+            text-decoration: none!important;
+            display: block;
+        }
 
-    .nav2 > li {
-        float:right!important;
-    }
+        .dropdown a:hover {background-color: #f1f1f1}
 
-    .nav2 li a:hover{
-        color: #ffffff!important;
-    }
-
-    .nav2 li ul{
-        display: none!important;
-        position: absolute!important;
-        min-width: 140px!important;
-    }
-
-    .nav2 li:hover >  ul{
-        display: block!important;
-    }
-
-    .nav2 li ul li {
-        position: relative!important;
-        margin: 0px;
-
-    }
-
-    .extra{
-        padding-top-: 0px;
-        padding-bottom: 0px;
-        color: #0A122A;
-    }
-    label {
-        color: grey;
-    }
-
-
-    label:hover{
-        color:orange!important;
-    }
-    label:hover ~ label{
-        color:orange;}
-    input[type = "radio"]{
-        display: none!important;
-    }
-    input[type = "radio"]:checked ~ label{
-        color:orange;}
+        .show {display:block;}
 
     </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1 style="margin-top: 30px; text-align: center">${libro.titulo} ${libro.autores.nombreCompleto}</h1>
-    </div>
-</header>
-
-
 <div class="container">
-    <section class="main row">
-        <article class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding-bottom: 25px;">
 
-                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" height="350px" width="200px" style="padding-top: 60px"/>
-        </article>
-        <article class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="background: #0B173B; height: 375px">
-            <div class="row">
+    <!--una-->
+    <div class="row" style="height: 50px;">
 
-                <div class="clasificacion">
-                <g:form action="calificar" method="post" style="padding-top: 10px; ">
-                        <g:field id="radio1" type="radio" onclick="sendStars(${libro.id}, 5);" class="hp" name="estrellas" value="5"></g:field><label for="radio1">★</label>
-                        <g:field id="radio2" type="radio" name="estrellas" value="4"></g:field><label for="radio2">★</label>
-                        <g:field id="radio3" type="radio" name="estrellas" value="3"></g:field><label for="radio3">★</label>
-                        <g:field id="radio4" type="radio" name="estrellas" value="2"></g:field><label for="radio4">★</label>
-                        <g:field id="radio5" type="radio" name="estrellas" value="1"></g:field><label for="radio5">★</label>
-
-                </g:form>
-                </div>
-
-            </div>
-            <div class="row">
-                <p>
-               Género:  ${libro.generoLiterario} <br/>
-               Editorial: ${libro.editorial}, ${libro.pais} <br/>
-               Fecha Publicación: ${fecha} <br/>
-                </p>
-            </div>
-
-            <div class="row">
-                <h1>Resumen</h1> <br/>
-                <p>
-                ${libro.resumen}
-                 </p>
-            </div>
+    </div> <!--una-->
 
 
-        </article>
-
-    </section>
-<div class="row" style="padding-top: 20px">
-   <section class="row">
-
-        <div class="row">
-            <div class="container">
-
-                    <g:form action="opinar" method="post">
-
-                            <g:hiddenField name="idLibro" value="${libro.id}" />
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <g:field name="mandarO" id = "hola" type="text" class="form-control" required= "true" placeholder="Escribe tu opinión..."></g:field>
-                            <div>
-                                <dialog></dialog>
-                            </div>
-
-                            <section>
-                                <dialog></dialog>
-                            </section>
-
-                            <dialog></dialog>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <g:submitButton name="submit"  class="special"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <ul class="nav2" >
-                                <li> Agregar a lista de preferencia
-                                    <ul>
-                                        <li style="font-size: 15px"><a> Opcion 1</a> </li>
-                                        <li style="font-size: 15px"><a> Opcion 2</a> </li>
-                                    </ul>
-
-                                </li>
-
-                            </ul>
-                        </div>
-
-
-
-                    </g:form>
-
-
-
-            </div>
-        </div>
-
-
-
-        <!---<a href="#hola" class="more scrolly">Danos tu opinión...</a>-->
-    </section>
-    <div
-            class="row" style="padding-top: 10px"> </div>
-
-    <section id="hola">
-        <div class="row">
-            <div class="extra" style="height: 20px">
-               <h1> <a href="#opi" class="more scrolly" style="color: #ffffff">¿Qué opinan otros usuarios?</a> </h1>
-            </div>
-        </div>
-
-        <div
-                class="row" style="padding-top: 20px"> </div>
-
-
-    </section>
-
-<section id="opi">
+    <!--dos-->
     <div class="row">
-<g:each in="${opiniones}" var="opinion">
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-            <div class="thumbnail">
-                <div class="caption">
+
+                <!--dos.uno-->
+                <div class="col-sm-6 col-md-2">
+                    <section>
+                        <div class="row">
+                            <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="margin-top:15px; background-size:100%auto; height: 250px; width: 180px;"/>
+                        </div>
+
+                        <div class="row">
+                            <br/>
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="#home">Lista 1</a>
+                                    <a href="#about">Lista 2</a>
+                                    <a href="#contact">Lista 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div> <!--dos.uno-->
+                <!--dos.dos-->
+                <div class="col-sm-12 col-md-6">
+                <section>
+                    <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${libro.titulo}</i> </p>
+                    <div class="row" style="margin-bottom: 0px">
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <form id="ratingsForm">
+                            <div class="stars">
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 1)" class="star-1" id="star-1" />
+                                <label class="star-1" for="star-1">1</label>
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 2)" class="star-2" id="star-2" />
+                                <label class="star-2" onclick="sendStars(${libro.id}, 2)" for="star-2">2</label>
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 3)" class="star-3" id="star-3" />
+                                <label class="star-3" for="star-3">3</label>
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 4)" class="star-4" id="star-4" />
+                                <label class="star-4" for="star-4">4</label>
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 5)" class="star-5" id="star-5" />
+                                <label class="star-5" for="star-5">5</label>
+                                <span></span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <p style="text-align: justify; margin: 2px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                    <br/>
+                    <hr style="margin: 1px"/>
+                    <p style="font-size: 15px"> ${libro.editorial}, ${libro.pais} <br/>
+                        Publicado el ${fecha} <br/> Género ${libro.generoLiterario}</p>
+                </section>
+
+                <section>
+                    <h3 style="margin-top: 10px; color:#D2691E; font-size: 15px;">¿Qué opinas del libro?</h3>
+                    <hr style="margin: 1px; color: darkorange; margin-bottom: 10px"/>
+                </section>
+
+                <section>
+                    <g:form action="opinar" method="post">
+                        <g:hiddenField name="idLibro" value="${libro.id}" />
+                        <g:hiddenField name="idUsuario" value="${idU1.id}" />
+                        <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <g:field name="mandarO" style="padding-top: 3px; height:70px; width: 340px; margin:0px" type="text" class="form-control" required= "true" placeholder="Escribe tu opinión..."></g:field>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                            <g:submitButton name="submit"  class="special" value="Opinar"/>
+                        </div>
+                        </div>
+                    </g:form>
+                </section>
+
+    <section id="opi">
+                                <g:each in="${opiniones}" var="opinion">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}" style="margin:10px; background-radius:50%; border-radius: 50%; background-size:100%auto; height: 40px; width: 40px;" />
+                                                 </div>
+                                         </div>
+                                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <p style="font-size: 15px; color: black; margin: 0px">
+                                                <b style="font-size: 20px; color: #BC673F; margin: 0px">${opinion.usuario.username} :</b>
+                                                <i>"${opinion.opinionL}"</i></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <hr style="border-color: #faf2cc"/>
+                                        </div>
+                                     </div>
+
+                                </g:each>
+
+    </section>
+
+
+</div>   <!--dos.dos-->
+                <!--dos.tres-->
+                <div class="col-sm-12 col-md-4">
+                <section>
+                    <h3 style="color:#D2691E; font-size: 15px; padding-top: 10px">LIBROS RELACIONADOS <br/> </h3>
+                    <hr/>
+                    <!-- Libros relacionados por GeneroLiterario-->
+                    <div class="row" style="margin-top: 10px">
+                        <% def count=1 %>
+                        <g:each in="${0..count}" var="c" >
+                            <g:if test="${listaG[c].id.equals(libro.id)}">
+                            </g:if>
+                            <g:else>
+                                <div class="col-sm-3">
+                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/>
+                                </div>
+                            </g:else>
+                        </g:each>
+                    </div> <!-- Libros relacionados por GeneroLiterario-->
+
+
+                    <h3 style="color:#D2691E; font-size: 15px; padding-top: 30px">ACERCA DE ${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )} <br/> </h3>
+                    <hr/>
                     <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}" height="70px" width="70px"/>
-                        </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <h3 class="extra">${opinion.usuario.username}</h3>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <p>${opinion.opinionL}</p>
+                        <div class="col-md-8" style="margin-top: 10px; font-size: 15px">
+                            <div> Nacionalidad: ${Plantilla.Autor.findById(libro.autores.id).nacionalidad}</div>
+                            <div> Nacimiento: ${Plantilla.Autor.findById(libro.autores.id).getFechaNac().toString().substring(0,10)}</div>
+                            <div> Género: ${Plantilla.Autor.findById(libro.autores.id).generoLiterario}</div>
+                       </div>
+                        <div class="col-md-4">
+                            <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: libro.autores.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-</g:each>
-    </div>
 
-</section>
-<footer>
-
-    <div class="container">
-        <h3></h3>
-    </div>
-</footer>
-<script src="js/jquery-3.2.1.min"></script>
-<script src="js/bootstrap.min.js"></script>
-    <script>
-        function sendStars(id, calificacion) {
-
-            var form = new FormData();
-            form.append("stars", calificacion);
-            form.append("id", id);
+                    <div class="row">
+                        <p style="text-align: justify">"Lorem ipsum dolor sit amet, consectetur adipiscing elit ,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    </div>
 
 
-            console.log(calificacion)
-            console.log(id)
 
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "http://localhost:8081/libro/calificar",
-                "method": "POST",
-                "headers": {
-                    "cache-control": "no-cache",
-                    "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
-                },
-                "processData": false,
-                "contentType": false,
-                "mimeType": "multipart/form-data",
-                "data": form
+
+                    <h3 style="color:#D2691E; font-size: 15px; padding-top: 10px">LIBROS DE ${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )} <br/> </h3>
+                    <hr/>
+                    <!-- Libros relacionados por mismo Autor-->
+                    <div class="row" style="margin-top: 10px">
+                        <% def count2=1 %>
+                        <g:each in="${0..count2}" var="c" >
+                            <g:if test="${listaAI[c].id.equals(libro.id)}">
+                            </g:if>
+                            <g:else>
+                                <div class="col-sm-3">
+                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/>
+                                </div>
+                            </g:else>
+                        </g:each>
+                    </div> <!-- Libros relacionados por mismoAutor-->
+
+                </section>
+                </div> <!--dos.tres-->
+
+    </div> <!--dos-->
+
+    <!--tres-->
+    <div class="row" style="height: 100px;">
+
+    </div> <!--tres-->
+
+</div>
+
+
+<!-- Scripts -->
+<script>
+    /* When the user clicks on the button,
+     toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
+        }
+    }
+</script>
 
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
+<script>
+    function sendStars(id, calificacion) {
 
+        var form = new FormData();
+        form.append("stars", calificacion);
+        form.append("id", id);
+
+
+        console.log(calificacion)
+        console.log(id)
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8081/libro/calificar",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
         }
 
-    </script>
-</div>
-</div>
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+    }
+
+</script>
+
+<script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>
+<script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
+
 </body>
 </html>
