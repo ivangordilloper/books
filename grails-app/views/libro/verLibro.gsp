@@ -173,18 +173,18 @@
                 <section>
                     <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${libro.titulo}</i> </p>
                     <div class="row" style="margin-bottom: 0px">
-                        <p style="padding: 1px; margin-left: 28px"> por <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b> </p>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
                         <form id="ratingsForm">
                             <div class="stars">
                                 <input type="radio" name="star" onclick="sendStars(${libro.id}, 1)" class="star-1" id="star-1" />
                                 <label class="star-1" for="star-1">1</label>
-                                <input type="radio" name="star" class="star-2" id="star-2" />
-                                <label class="star-2" for="star-2">2</label>
-                                <input type="radio" name="star" class="star-3" id="star-3" />
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 2)" class="star-2" id="star-2" />
+                                <label class="star-2" onclick="sendStars(${libro.id}, 2)" for="star-2">2</label>
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 3)" class="star-3" id="star-3" />
                                 <label class="star-3" for="star-3">3</label>
-                                <input type="radio" name="star" class="star-4" id="star-4" />
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 4)" class="star-4" id="star-4" />
                                 <label class="star-4" for="star-4">4</label>
-                                <input type="radio" name="star" class="star-5" id="star-5" />
+                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 5)" class="star-5" id="star-5" />
                                 <label class="star-5" for="star-5">5</label>
                                 <span></span>
                             </div>
@@ -314,8 +314,6 @@
 </div>
 
 
-
-
 <!-- Scripts -->
 <script>
     /* When the user clicks on the button,
@@ -323,11 +321,9 @@
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn')) {
-
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -339,6 +335,7 @@
         }
     }
 </script>
+
 <script>
     function sendStars(id, calificacion) {
 
@@ -353,7 +350,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/autor/calificar",
+            "url": "http://localhost:8081/libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

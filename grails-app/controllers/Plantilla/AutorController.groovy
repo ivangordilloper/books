@@ -9,6 +9,7 @@ class AutorController{
 
     def springSecurityService
     def AutorService
+
     def createAutor() {
         def usuarioU= springSecurityService.principal
         [idU: usuarioU]
@@ -26,6 +27,8 @@ class AutorController{
         [autorC: listaAutor, idU: usuarioU]
 
     }
+
+
     def read(long id) {
         def usuarioU= springSecurityService.principal
         def listaAutor = AutorService.autorToList()
@@ -45,10 +48,14 @@ class AutorController{
     }
     def verAutor(long id){
         def usuario = springSecurityService.principal
-        Autor editarAutor = Autor.findById(id)
-        def fecha = editarAutor.fechaNac.toString()
+        def editarAutor = Autor.findById(id)
         def libE = AutorService.librosByAutor(editarAutor)
-        [autor:editarAutor, fecha:fecha, lib: libE, idU:usuario]
+       // def opiniones = AutorService.opinionesByAutor(editarAutor)
+       // def opiniones = OpinionAutor.findById()
+
+        //[autor:editarAutor, fecha:fecha, lib: libE, idU:usuario, opiniones:opiniones]
+        [autor:editarAutor, lib: libE, idU:usuario]
+
 
     }
 
