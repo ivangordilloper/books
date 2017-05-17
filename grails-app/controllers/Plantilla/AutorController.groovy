@@ -49,12 +49,13 @@ class AutorController{
     def verAutor(long id){
         def usuario = springSecurityService.principal
         def editarAutor = Autor.findById(id)
-        def libE = AutorService.librosByAutor(editarAutor)
+       // def libE = AutorService.librosByAutor(editarAutor)
        // def opiniones = AutorService.opinionesByAutor(editarAutor)
        // def opiniones = OpinionAutor.findById()
 
+        render "${id}"
         //[autor:editarAutor, fecha:fecha, lib: libE, idU:usuario, opiniones:opiniones]
-        [autor:editarAutor, lib: libE, idU:usuario]
+        [autor:editarAutor, idU:usuario]
 
 
     }

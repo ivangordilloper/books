@@ -173,7 +173,7 @@
                 <section>
                     <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${libro.titulo}</i> </p>
                     <div class="row" style="margin-bottom: 0px">
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: 2])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
                         <form id="ratingsForm">
                             <div class="stars">
                                 <input type="radio" name="star" onclick="sendStars(${libro.id}, 1)" class="star-1" id="star-1" />
