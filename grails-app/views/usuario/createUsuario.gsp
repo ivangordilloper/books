@@ -10,85 +10,80 @@
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="modals.css"/>
 </head>
-    <body>
+<body>
+<div id="inicio">
+    <!-- Main -->
+    <article id="main">
+        <header>
+            <h2>Regístrate</h2>
+        </header>
+        <section class="wrapper style5">
+            <div class="inner">
+                <section>
+                    <div class="box">
+                        <h4>Regístrate</h4>
 
-
-        <div id="inicio">
-            <!-- Main -->
-            <article id="main">
-                <header>
-
-                    <h2>Regístrate</h2>
-
-
-                </header>
-                <section class="wrapper style5">
-                    <div class="inner">
-                        <section>
-                            <div class="box">
-                                    <h4>Regístrate</h4>
-
-                                    <g:uploadForm action="crear" method="post" name="form" id="formRegister">
-                                        <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
-                                            <div class="row uniform">
-                                                <div class="12u 12u$(xsmall) controls" id="divNombre">
-                                                    <input  type="text" name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true"/>
-                                                    </div>
-                                                <div class="6u 6u$(xsmall)" id="divApellidoP">
-                                                    <input type="text" name="apellidoP" id="apellidoP" value=""  placeholder="Apellido Paterno" required="true"/>
-
-                                                </div>
-                                                <div class="6u 6u$(xsmall)" id="divApellidoM">
-                                                    <input type="text" name="apellidoM" id="apellidoM" value="" placeholder="Apellido Materno"  maxlength="10" required="true"/>
-
-                                                </div>
-                                                <div class="12u 12u$(xsmall)" id="divUsuario">
-                                                    <input type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
-
-                                                </div>
-                                                <div class="12u 12u$(xsmall)">
-                                                    <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
-
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <input type='date' name= "fechaNac" id="fechaNac"  placeholder="Fecha de Nacimiento" required="true"/>
-
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:select name="genero" id="genero"  from="${['M', 'F']}">
-                                                    </g:select>
-                                                </div>
-                                                <div class="12u 12u$(xsmall)" id="divCorreo">
-                                                    <input type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
-
-                                                </div>
-                                                <div class="12u 12u$(xsmall)">
-                                                    <input type="email" name="correo2" id="email2" placeholder="Confirma Correo Electrónico"  maxlength="50" required="true"/>
-
-                                                </div>
-                                                <div class="6u 6u$(xsmall)" div="divContrasena">
-                                                    <input type="text" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
-
-
-                                                </div>
-                                                <div class="6u 6u$(xsmall)">
-                                                    <g:field type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
-
-                                                </div>
-
-                                                <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
-                                                <div class="12u$">
-                                                    <ul class="actions">
-                                                        <li>
-                                                            <g:submitButton name="submit" value="Regístrate" class="special"/>
-                                                            <button type="button" id="cancelar" class="special">Cancelar</button></li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
+                        <g:uploadForm action="crear" method="post" name="form" id="formRegister">
+                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+                                <div class="row uniform">
+                                    <div class="12u 12u$(xsmall) controls">
+                                        <input class="inputNombre" type="text"  name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true" minlength="2" maxlength="20"/>
+                                        <div id="errorNombre" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="6u 6u$(xsmall)">
+                                        <input class="inputApellidoP" type="text" name="apellidoP" id="apellidoP" value=""  placeholder="Apellido Paterno" maxlength="20" required="true"/>
+                                        <div id="errorApellidoP" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="6u 6u$(xsmall)" >
+                                        <input class="inputApellidoM" type="text" name="apellidoM" id="apellidoM" value="" placeholder="Apellido Materno"  maxlength="20" required="true"/>
+                                        <div id="errorApellidoM" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="12u 12u$(xsmall)">
+                                        <input class="inputUsuario" type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
+                                        <div id="errorUsuario" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="12u 12u$(xsmall)">
+                                        <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
+                                    </div>
+                                    <div class="6u 6u$(xsmall)">
+                                        <div class='input-group date' id='datetimepicker9'>
+                                            <input type='text' class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar">
+                                                </span>
+                                            </span>
                                         </div>
                                     </div>
-
+                                    <div class="6u 6u$(xsmall)">
+                                        <g:select name="genero" id="genero"  from="${['M', 'F']}">
+                                        </g:select>
+                                    </div>
+                                    <div class="12u 12u$(xsmall)">
+                                        <input class="inputEmail" type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
+                                        <div id="errorEmail1" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="12u 12u$(xsmall)">
+                                        <input class="inputEmail2" type="email" name="correo2" id="email2" placeholder="Confirma Correo Electrónico"  maxlength="50" required="true"/>
+                                        <div id="errorEmail2" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="6u 6u$(xsmall)">
+                                        <input class="inputContrasena1" type="password" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
+                                        <div id="errorContrasena1" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="6u 6u$(xsmall)">
+                                        <g:field class="inputContrasena2" type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
+                                        <div id="errorContrasena2" style="display:none; color:#FF0000;"></div>
+                                    </div>
+                                    <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
+                                    <div class="12u$">
+                                        <ul class="actions">
+                                            <li>
+                                                <g:submitButton name="submit" value="Regístrate" class="special"/>
+                                                    <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </g:uploadForm>
                     </div>
                 </section>
@@ -178,89 +173,88 @@
             </div>
         </div>
     </div>
-<!-- Latest compiled JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js" async defer></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js" async defer></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-<script type="text/javascript" async defer>
-    function validarCorreoBD(email){
-        var retVal;
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: "<g:createLink controller="usuario" action="validarCorreoBD" />",
-            data: { correo: email }, // parameters
-            success: function (data) {
-                retVal = data;
-            },
-            error: function () { alert("Data not deleted"); }
-        });
-        return retVal;
-    }
-    function validarUsuarioBD(usuarioP){
-        var retVal;
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: "<g:createLink controller="usuario" action="validarUsuarioBD" />",
-            data: { usuario:usuarioP}, // parameters
-            success: function (data) {
-                retVal = data;
-            },
-            error: function () { alert("Data not deleted"); }
-        });
-        return retVal;
-    }
-    usuario: nombreUsuario
-    jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
-        $(function () {
-            $('#datetimepicker9').datetimepicker({
-                viewMode: 'years',
-                format: 'YYYY-MM-DD'
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" async defer>
+        function validarCorreoBD(email){
+            var retVal;
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "<g:createLink controller="usuario" action="validarCorreoBD" />",
+                data: { correo: email }, // parameters
+                success: function (data) {
+                    retVal = data;
+                },
+                error: function () {  }
             });
-        });
-        $('#cancelar').click(function () {
-            $('#MSGC_01').modal('show');
-        });
-        $("form").submit(function() {
-            regNombres= /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
-            function isNombre(str) {
-                return regNombres.test( str );
-            }
-            var nombre = $('#nombre').val();
-            var apellidoP = $('#apellidoP').val();
-            var apellidoM = $('#apellidoM').val();
-            var nombreUsuario = $('#nombreUsuario').val();
-            var telefono = $('#telefono').val();
-            var genero = $('#genero').val();
-            var fechaNac = $('#fechaNac').val();
-            var email = $('#email').val();
-            var email2 = $('#email2').val();
-            var passwd = $('#passwd').val();
-            var passwd2 = $('#passwd2').val();
-            var indicador = 0;
-            if(!nombre.length || !apellidoP.length || !apellidoM.length || !nombreUsuario.length || !telefono.length || !fechaNac.length || !email.length || !email2.length || !passwd.length || !passwd2.length){
-                $('#MSGE_02').modal('show');
-            }
-            else{
-                if(!isNombre(nombre)) {
-                    $('#errorNombre').show();
-                    $('#errorNombre').html("El formato del campo nombre es incorrecto.");
-                    $('.inputNombre').attr('style','border:1px solid #ff0000');
+            return retVal;
+        }
+        function validarUsuarioBD(usuarioP){
+            var retVal;
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "<g:createLink controller="usuario" action="validarUsuarioBD" />",
+                data: { usuario:usuarioP}, // parameters
+                success: function (data) {
+                    retVal = data;
+                },
+                error: function () {  }
+            });
+            return retVal;
+        }
+        jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
+            $(function () {
+                $('#datetimepicker9').datetimepicker({
+                    viewMode: 'years',
+                    format: 'YYYY-MM-DD'
+                });
+            });
+            $('#cancelar').click(function () {
+                $('#MSGC_01').modal('show');
+            });
+            $("form").submit(function() {
+                regNombres= /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
+                function isNombre(str) {
+                    return regNombres.test( str );
                 }
-                else {
-                    indicador++;
-                    $('.inputNombre').removeAttr('style');
-                    $('#errorNombre').hide();
+                var nombre = $('#nombre').val();
+                var apellidoP = $('#apellidoP').val();
+                var apellidoM = $('#apellidoM').val();
+                var nombreUsuario = $('#nombreUsuario').val();
+                var telefono = $('#telefono').val();
+                var genero = $('#genero').val();
+                var fechaNac = $('#fechaNac').val();
+                var email = $('#email').val();
+                var email2 = $('#email2').val();
+                var passwd = $('#passwd').val();
+                var passwd2 = $('#passwd2').val();
+                var indicador = 0;
+                if(!nombre.length || !apellidoP.length || !apellidoM.length || !nombreUsuario.length || !telefono.length || !fechaNac.length || !email.length || !email2.length || !passwd.length || !passwd2.length){
+                    $('#MSGE_02').modal('show');
                 }
-                if(!isNombre(apellidoP)) {
-                    $('#errorApellidoP').show();
-                    $('#errorApellidoP').html("El formato del campo apellido paterno es incorrecto.");
-                    $('.inputApellidoP').attr('style','border:1px solid #ff0000');
-                }
-                else
-                    indicador++;
+                else{
+                    if(!isNombre(nombre)) {
+                        $('#errorNombre').show();
+                        $('#errorNombre').html("El formato del campo nombre es incorrecto.");
+                        $('.inputNombre').attr('style','border:1px solid #ff0000');
+                    }
+                    else {
+                        indicador++;
+                        $('.inputNombre').removeAttr('style');
+                        $('#errorNombre').hide();
+                    }
+                    if(!isNombre(apellidoP)) {
+                        $('#errorApellidoP').show();
+                        $('#errorApellidoP').html("El formato del campo apellido paterno es incorrecto.");
+                        $('.inputApellidoP').attr('style','border:1px solid #ff0000');
+                    }
+                    else
+                        indicador++;
                     $('.inputApellidoP').removeAttr('style');
                     $('#errorApellidoP').hide();
                 }
@@ -274,7 +268,7 @@
                     $('.inputApellidoM').removeAttr('style');
                     $('#errorApellidoM').hide();
                 }
-                            //----Nombre de usuario validado en el sistema.
+                //----Nombre de usuario validado en el sistema.
                 if(email != email2){
                     $('#errorEmail1').show();
                     $('#errorEmail2').show();
@@ -290,7 +284,7 @@
                     $('#errorEmail1').hide();
                     $('#errorEmail2').hide();
                 }
-                                //Validar correo electornico en el sistema.
+                //Validar correo electornico en el sistema.
                 if(passwd != passwd2){
                     $('.inputContrasena1').attr('style','border:1px solid #ff0000');
                     $('.inputContrasena2').attr('style','border:1px solid #ff0000');
@@ -305,14 +299,15 @@
                     $('.inputContrasena2').removeAttr('style');
                     $('#errorContrasena1').hide();
                     $('#errorContrasena2').hide();
-                                    //return true;
+                    //return true;
                 }
                 if(indicador == '5'){
                     var validar = validarUsuarioBD(nombreUsuario);
                     var validar2 = validarCorreoBD(email);
-
-                    if(validar == 'true'){
-                        if(validar2 == 'true'){
+                    alert(validar);
+                    alert(validar2);
+                    if(validar == 'false'){
+                        if(validar2 == 'false'){
                             $('#MSGA_05').modal('show');
                             return true;
                         }
@@ -330,8 +325,8 @@
                     $(window).scrollTop(3);
                     return false;
                 }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

@@ -59,12 +59,12 @@ class LibroController {
         //mandarServicio
         def genero = editarLibro.generoLiterario
         def listaLibr = Libro.findAllByGeneroLiterario(genero)
-
         def autorL = editarLibro.autores
-        Autor editarAutor = Autor.findById(editarLibro.id)
+        def editarAutor = Autor.findById(editarLibro.id)
         def libE = AutorService.librosByAutor(editarAutor)
+        def listas = Usuario.findById(usuarioL.id).listasL
 
-        [libro:editarLibro, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
+        [ libro:editarLibro, listas:listas, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
 
     }
 

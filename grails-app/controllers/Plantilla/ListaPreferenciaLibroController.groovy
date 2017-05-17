@@ -33,9 +33,16 @@ class ListaPreferenciaLibroController {
 
     }
 
-    def agregarElemento(long id) {
+    def agregarElemento() {
         def usuarioU = springSecurityService.principal
+        def  id= params.lista
+        def idLibro = params.libro
+
+        ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
+
+      //  Usuario.findById(usuarioU.id).listasL.add(lib)
         [idU: usuarioU]
+       // redirect (controller: "Libro", action:"verLibro", params: [id: idLibro])
 
     }
 

@@ -104,13 +104,11 @@ class LibroService {
     }
     def calificarLibro(params){
         def cal = params.stars
-        def idU = usuarioL.id
-        def libro1 = params.idLibro
+        def idU = params.id
+        def libro1 = params.id
         def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
-        if(!lc.save()){
-            lc.each {
-                print it
-            }
+        if(lc.validate()){
+            lc.save()
         }
     }
 }
