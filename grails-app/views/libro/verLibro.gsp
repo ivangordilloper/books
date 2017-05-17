@@ -160,11 +160,34 @@
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
                                 <div id="myDropdown" class="dropdown-content">
-                                    <a href="#home">Lista 1</a>
-                                    <a href="#about">Lista 2</a>
-                                    <a href="#contact">Lista 3</a>
+                                   <!-- <g:each in="${listas}" var="lista">
+                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'agregarElemento', params: [id: lista.id , idLi: libro.id ])}" style="font-size: 15px;">${lista.nombre}</a>
+                                    </g:each>-->
+                                    <g:each in="${listas}" var="lista">
+                                        <a onclick="agregar(lista.id, libro.id)" style="font-size: 15px;">${lista.nombre}</a>
+                                    </g:each>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row" style="height: 30px"></div>
+                        <div class="row" style="height: 5px">
+                            <p style="color:gray; margin-bottom:1px; font-size:14px; text-align: center; padding-left: 40px">Califica este libro</p>
+                            <form id="ratingsForm">
+                                <div class="stars">
+                                    <input type="radio" name="star" onclick="sendStars(${libro.id}, 1)" class="star-1" id="star-1" />
+                                    <label class="star-1" for="star-1">1</label>
+                                    <input type="radio" name="star" onclick="sendStars(${libro.id}, 2)" class="star-2" id="star-2" />
+                                    <label class="star-2" onclick="sendStars(${libro.id}, 2)" for="star-2">2</label>
+                                    <input type="radio" name="star" onclick="sendStars(${libro.id}, 3)" class="star-3" id="star-3" />
+                                    <label class="star-3" for="star-3">3</label>
+                                    <input type="radio" name="star" onclick="sendStars(${libro.id}, 4)" class="star-4" id="star-4" />
+                                    <label class="star-4" for="star-4">4</label>
+                                    <input type="radio" name="star" onclick="sendStars(${libro.id}, 5)" class="star-5" id="star-5" />
+                                    <label class="star-5" for="star-5">5</label>
+                                    <span></span>
+                                </div>
+                            </form>
                         </div>
                     </section>
                 </div> <!--dos.uno-->
@@ -172,29 +195,21 @@
                 <div class="col-sm-12 col-md-6">
                 <section>
                     <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${libro.titulo}</i> </p>
+
                     <div class="row" style="margin-bottom: 0px">
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
-                        <form id="ratingsForm">
-                            <div class="stars">
-                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 1)" class="star-1" id="star-1" />
-                                <label class="star-1" for="star-1">1</label>
-                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 2)" class="star-2" id="star-2" />
-                                <label class="star-2" onclick="sendStars(${libro.id}, 2)" for="star-2">2</label>
-                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 3)" class="star-3" id="star-3" />
-                                <label class="star-3" for="star-3">3</label>
-                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 4)" class="star-4" id="star-4" />
-                                <label class="star-4" for="star-4">4</label>
-                                <input type="radio" name="star" onclick="sendStars(${libro.id}, 5)" class="star-5" id="star-5" />
-                                <label class="star-5" for="star-5">5</label>
-                                <span></span>
-                            </div>
-                        </form>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <div> <% def count1=5 %>
+                            <g:each in="${1..count1}" var="b" >
+                                <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                            </g:each>
+                        </div>
+                        <p style="font-size: 15px; color: darkred;"> (10 votos)</p>
                     </div>
 
                     <p style="text-align: justify; margin: 2px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
                     <br/>
                     <hr style="margin: 1px"/>
-                    <p style="font-size: 15px"> ${libro.editorial}, ${libro.pais} <br/>
+                    <p style="font-size: 15px; padding: 0px; margin: 0px"> ${libro.editorial}, ${libro.pais} <br/>
                         Publicado el ${fecha} <br/> Género ${libro.generoLiterario}</p>
                 </section>
 
@@ -364,6 +379,37 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+        });
+
+    }
+
+</script>
+
+<script>
+    function agregar(id, idL) {
+
+        var form = new FormData();
+        form.append("lista", id);
+        form.append("libro", idL);
+
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8081/listaPrefernciaLibro/agregarElemento",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+          //  console.log(response);
         });
 
     }

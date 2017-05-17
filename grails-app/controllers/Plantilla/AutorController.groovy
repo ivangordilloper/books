@@ -53,8 +53,8 @@ class AutorController{
        // def opiniones = AutorService.opinionesByAutor(editarAutor)
        // def opiniones = OpinionAutor.findById()
 
-        //[autor:editarAutor, fecha:fecha, lib: libE, idU:usuario, opiniones:opiniones]
         [autor:editarAutor, lib: libE, idU:usuario]
+        //[autor:editarAutor, idU:usuario]
 
 
     }
