@@ -28,7 +28,11 @@
 <script type="text/javascript">
 // jQuery Document
 
+$( document ).ready(function() {
+    loadLog();
+    setInterval(loadLog, 1000); //300000 MS == 5 minutes
 
+});
 
 function clear() {
 
