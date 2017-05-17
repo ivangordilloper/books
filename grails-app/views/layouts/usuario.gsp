@@ -107,23 +107,6 @@
 </script>
 
 <!-- Mensajes -->
-<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-has-warning">
-                <h4 class="modal-title">Mensaje de confirmación</h4>
-            </div>
-            <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar la solicitud de cita?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-warning" onclick="window.location = '../';" data-dismiss="modal">Sí</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Scripts -->
 <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>

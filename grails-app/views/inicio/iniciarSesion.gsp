@@ -10,7 +10,8 @@
 </head>
 <body>
     <article id="main">
-        <section class="wrapper style5">
+        <header><h2>Iniciar Sesión</h2></header>
+        <section class="wrapper style5" style="padding-top: 30px; margin-top: 1px;">
             <div class="inner">
                 <section>
                     <div class="box">
@@ -18,7 +19,6 @@
                             <div class="cointainer">
                                 <div class="row">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <h4>Iniciar Sesión </h4>
                                         <form method="post" action="/login/authenticate">
                                             <div class="row uniform">
                                             <div class="12u 12u$(xsmall)">
@@ -36,11 +36,14 @@
 
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6">
-                                                <g:submitButton name="submit" value="Iniciar Sesión" class="special" />
+
                                                  </div>
-                                                <div class="col-xs-12- col-sm-6 ">
-                                                  <a href="/inicio/recuperarContra">Olvidé mi contraseña</a></li>
+                                                <div class="12u$">
+                                                    <g:submitButton name="submit" value="Iniciar Sesión" class="special" />
+                                                    <a href="/inicio/recuperarContra" style="margin-left: 30px;">Olvidé mi contraseña</a></li>
                                                 </div>
+                                                <div class="col-xs-12- col-sm-6 ">
+                                                  </div>
                                             </div>
                                         </div>
                                     </form>
@@ -57,6 +60,9 @@
         </section>
     </article>
 <div class="modal fade" data-keyboard="false" id="MSGE_01" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
@@ -72,6 +78,9 @@
     </div>
 </div>
 <div class="modal fade" data-keyboard="false" id="MSGE_11" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
@@ -87,6 +96,9 @@
     </div>
 </div>
 <div class="modal fade" id="MSGA_02" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
@@ -101,7 +113,25 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Mensaje de confirmación</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro de que desea cancelar el inicio de sesión?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning" onclick="window.location = '../';" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" async defer>
     function validarUsuario(usuarioP){
         var retVal;
@@ -133,7 +163,9 @@
     }
 
     jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
-
+        $('#cancelar').click(function () {
+            $('#MSGC_01').modal('show');
+        });
         $("form").submit(function() {
             var username = $('#username').val();
             var passwd = $('#password').val();
