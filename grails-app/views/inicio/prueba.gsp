@@ -38,8 +38,14 @@
                                            placeholder="Filter by" autofocus>
                                 </form>
                                 <ul>
-                                    <li data-ng-repeat="element in busqueda.libros | filter:query ">{{element.name}} </li>
+                                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">{{element.name}} </li>
+                                    <li class="animate-repeat" ng-if="results.length === 0">
+                                        <strong>No results found...</strong>
+                                    </li>
+
                                 </ul>
+
+
                                 <ul>
                                     <li data-ng-repeat="element in busqueda.autores | filter:query ">{{element.name}} </li>
                                 </ul>

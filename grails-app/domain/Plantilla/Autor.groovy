@@ -10,6 +10,8 @@ class Autor {
     String bio
     byte[] foto
 
+
+
     static constraints = {
         nombreCompleto size: 1..60, nullable: false
         fechaNac nullable: false
@@ -18,7 +20,6 @@ class Autor {
         nacionalidad size: 1..20, nullable: true
         foto nullable: true, maxSize: 2 * 1024 * 1024
         bio nullable: true, size: 1..1000
-
     }
 
     static belongsTo = ListaPreferenciaAutor

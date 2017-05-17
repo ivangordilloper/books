@@ -80,6 +80,7 @@
                 var labelIndex = 0;
 
                 function initMap() {
+                    var myLatLng = {lat: 19.5045912, lng: -99.146815};
                     map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 14,
                         styles: [
@@ -189,14 +190,14 @@
                             }
                         ]
                     });
-                    infoWindow = new google.maps.InfoWindow({map: map});
+                    infoWindow = new google.maps.InfoWindow({map: map}); //lat: , lng:
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function(position) {
                             pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
+                                lat: 19.5045912,
+                                lng: -99.146815
                             };
-                            var libreria = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                            var libreria = new google.maps.LatLng(19.5045912,-99.146815);
                             var icon = {
                                 url: "/assets/marcador.png", // url
                                 origin: new google.maps.Point(0,0), // origin
@@ -241,7 +242,7 @@
                             var service = new google.maps.places.PlacesService(map);
                             service.nearbySearch({
                                 location: libreria,
-                                radius: 10000,
+                                radius: 1000,
                                 types: ['book_store']
                             }, callback);
                         }, function() {
