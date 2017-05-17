@@ -307,6 +307,24 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="MSGA_031" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Mensaje de alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p>Los datos han sido actualizados de manera exitosa.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="MSGA_04" role="dialog">
     <div class="modal-dialog">

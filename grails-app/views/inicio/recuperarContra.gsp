@@ -25,22 +25,24 @@
                             <Form action="recuperarContrasena" method="post">
                                 <div class="row uniform">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <h4>Recupera tu contraseña </h4>
 
-                                        <h8>Escribe tu correo electróico.</h8>
-
+                                        <h4>Escribe tu correo electrónico.</h4>
                                     <div class="12u 12u$(xsmall)" id="divCorreo" style="padding-top: 10px; padding-bottom: 10px">
                                         <input type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
 
                                     </div>
+                                        <br>
+
                                     <div class="12u$(xsmal)">
                                         <ul class="actions">
                                             <li >  <g:submitButton name="submit" value="Enviar correo" class="special" />
-                                                <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                                <button type="button" id="cancelar" class="special" style="width: 255px;">Cancelar</button></li>
                                         </ul>
                                     </div>
                                 </div>
                                 </div>
+
+
                             </form>
     </div>
 
@@ -109,7 +111,7 @@
             success: function (data) {
                 retVal = data;
             },
-            error: function () { alert("Data not deleted"); }
+            error: function () { }
         });
         return retVal;
     }
@@ -119,7 +121,6 @@
         });
         $("form").submit(function() {
             var correo = $('#email').val();
-            alert(correo);
             var validateCorreo = validarCorreoBD(correo);
             if(validateCorreo == 'true'){
                 $('#MSGA_04').modal('show');
