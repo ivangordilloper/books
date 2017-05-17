@@ -13,60 +13,75 @@
         <header>
             <h2>${pal} ${usuarioS.username}</h2>
         </header>
+</article>
 
+    <div style="background: white; color: black">
+        <div class="container">
+            <div class="row" style="height: 20px">
 
-        <section class="spotlight swipbooks">
-            <div class="image"><g:img dir="image" file="choose.jpg" alt="" /></div><div class="content">
-            <div class="swiper-container">
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                 <!--   <h1 style="color: #BC673F;">Listas de preferencia </h1>
+                    <hr style="padding:0px; margin:0px; border-color: #BC673F;"/> -->
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                <g:img dir="images" file="lista.png"  style="margin:10px; width: 90px"/>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                                <p style="padding-top: 20px"><b><i style="color: black">Nombre de lista</i></b></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                <g:img dir="images" file="lista.png"  style="margin:10px; width: 90px"/>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                                <p style="padding-top: 20px"><b><i style="color: black">Nombre de lista</i></b></p>
+                            </div>
+                        </div>
 
-                <h4>Tal vez te gusten estos libros</h4>
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                <g:each in="${libros1}" var="libro">
-                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'libro', action:'verLibro', params: [id:(libro.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${libro.titulo}</div></a>
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <g:img dir="images" file="lista.png"  style="margin:10px; width: 90px"/>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                                    <p style="padding-top: 20px; margin: 0px;"><b><i style="color: black">Nombre de lista</i></b></p>
+                                    <p style="padding-top:0px; margin: 0px;">Creación: 10/09/2017</p>
+                                    <p style="padding-top:0px; margin: 0px;">Libros: 10</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="row">
+                            <a href="/listaPreferenciaLibro/createlistaPreferenciaLibro" style="margin-left: 15px; padding: 0px">Agregar lista de preferencia</a>
+
+                        </div>
                     </div>
-                </g:each>
+                    </div>
 
 
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
 
-                <!-- If we need scrollbar -->
+
+            </div>
+
+            <div class="row" style="padding-top: 0px; margin-top: 0px">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <br/>
             </div>
         </div>
-        </section>
-
-    <section class="spotlight swipbooks">
-        <div class="image"><g:img dir="images" file="libros4.png" alt="" /></div>
-        <div class="content">
-            <div class="swiper-container">
-                <h4>Tal vez te gusten estos autores</h4>
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                <g:each in="${autores1}" var="autor">
-                    <div class="swiper-slide separator-slide"> <a  href="${createLink(controller : 'autor', action:'verAutor', params: [id:(autor.id)])}" ><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}" class="image-slide" style=" background-size:100%auto; height: 90px; width: 90px;"/><div class="text-book">${autor.nombreCompleto}</div></a>
-                    </div>
-                </g:each>
-                </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- If we need scrollbar -->
-            </div>
-    </div>
-    </section>
     <section class="spotlight white-back">
         <div class="content listas-full">
-                <h4 style="text-align: center">Líbrerias cercanas a ti.</h4>
+                <h4 style="text-align: center; color: white">Líbrerias cercanas a ti.</h4>
         </div>
     </section>
 
@@ -258,7 +273,7 @@
         </section>
 
 
-
+</div>
 
 
         <div id="example" class="modal hide fade in" style="display: none;">
@@ -283,7 +298,7 @@
 										...
 							</div>
 						-->
-    </article>
+
     <!-- Scripts -->
     <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
     <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>

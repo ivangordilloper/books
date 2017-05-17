@@ -3,10 +3,7 @@
     <title> Bookscom </title>
 
     <style type="text/css">
-    body{
-        background: #ffffff!important;
-        color: black;
-    }
+
     form .stars {
         background: url('${resource(dir: "images/css", file: "stars.png")}') repeat-x 0 0;
         width: 150px;
@@ -129,15 +126,25 @@
 
     .show {display:block;}
 
+    body{
+        background: #ffffff!important;
+        color: black;
+    }
     </style>
 </head>
 <body>
+
 <div class="container">
+
 
     <!--una-->
     <div class="row" style="height: 50px;">
 
     </div> <!--una-->
+
+    <div class="row">
+
+    </div>
 
 
     <!--dos-->
@@ -209,31 +216,28 @@
             <section id="opi">
                 <g:each in="${lib}" var="libro">
                     <div class="row">
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" style="margin:10px; height: 60px; width: 40px;" />
-                        </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-2">
+                                        <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}" style="margin-bottom:5px; margin-top: 5px;  height: 90px; width: 60px;" />
+                                </div>
+                                <div class="col-xs-4 col-sm-8 col-md-4 col-lg-3">
+                                        <p style="font-size: 15px; color: black; margin: 0px; padding-top: 1px">
+                                        <b style="color: black; margin: 0px; padding-top: 0px">${libro.titulo}<br/></b>
+                                        <i> ${libro.fechaPub.toString().substring(0,10)} </i></p>
+                            <% def count=1 %>
+                            <g:each in="${0..count}" var="c" >
+                                <span style="font-size:150%;color:#BC673F;">&starf;</span>
+                            </g:each>
+                                </div>
 
-
-                        <div class="col-xs-4 col-sm-8 col-md-4 col-lg-2">
-                                <p style="font-size: 15px; color: black; margin: 0px; padding-top: 1px">
-                                <b style="color: black; margin: 0px; padding-top: 0px">${libro.titulo}<br/></b>
-                                <i> ${libro.fechaPub.toString().substring(0,10)} </i></p>
-                    <% def count=1 %>
-                    <g:each in="${0..count}" var="c" >
-                        <span style="font-size:150%;color:#BC673F;">&starf;</span>
-                    </g:each>
-                        </div>
-
-                        <div class="col-xs-4 col-sm-8 col-md-4 col-lg-6">
-                            <div id="resumen">${libro.resumen.toString().substring(0,1)}. </div>
-                        </div>
-
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <p>LISTAS</p>
-                        </div>
+                                <div class="col-xs-4 col-sm-8 col-md-4 col-lg-5">
+                                    <!--${libro.resumen.toString().substring(0,10)}. -->
+                                    <div id="resumen" style="text-align: justify">   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris  </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: libro.id])}" > ver libro</a>
+                                </div>
 
                     </div>
-
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <hr style="border-color: #faf2cc"/>

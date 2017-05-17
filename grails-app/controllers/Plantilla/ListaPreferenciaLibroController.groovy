@@ -17,7 +17,7 @@ class ListaPreferenciaLibroController {
     def read(long id) {
         def usuarioU = springSecurityService.principal
         def listaLibro = Usuario.findById(usuarioU.id).listasL
-        [lLibro: listaLibro, idU:id]
+        [lLibro: listaLibro, idU: usuarioU]
 
     }
 
@@ -33,9 +33,16 @@ class ListaPreferenciaLibroController {
 
     }
 
-    def agregarElemento(long id) {
+    def agregarElemento() {
         def usuarioU = springSecurityService.principal
+        def  id= params.lista
+        def idLibro = params.libro
+
+        ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
+
+      //  Usuario.findById(usuarioU.id).listasL.add(lib)
         [idU: usuarioU]
+       // redirect (controller: "Libro", action:"verLibro", params: [id: idLibro])
 
     }
 
@@ -71,12 +78,13 @@ class ListaPreferenciaLibroController {
     }
 
     def crear(long id) {
-        def idU = params.idUsuario
-        def u = Usuario.get(idU)
+        def usuarioU = springSecurityService.principal
+        def u = Usuario.findById(usuarioU.id)
         def nombre = params.nombre
-        [nombre: nombre, u:u]
-       // u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
-        redirect(action: "read", params: [id:idU])
+
+        [nombre: nombre,idU: usuarioU]
+         u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
+         redirect(action: "read")
 
     }
 
