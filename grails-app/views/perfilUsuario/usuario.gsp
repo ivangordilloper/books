@@ -330,7 +330,8 @@
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
         </section>
-
+        <br/>
+        <br/>
     </div>  <!-- Fin div contenedor -->
 </div> <!--Fin Div blanco-->
 
