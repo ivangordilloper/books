@@ -67,7 +67,6 @@
                     <h1 style="color: #BC673F;">Mis autores favoritos</h1>
                     <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
                     <div class="swiper-container">
-
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper" style="padding-top: 10px">
                             <!-- Slides -->
@@ -88,7 +87,6 @@
                         </div>
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
-
                         <!-- If we need scrollbar -->
                     </div>
 

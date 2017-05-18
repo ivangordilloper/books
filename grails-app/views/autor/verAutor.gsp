@@ -136,7 +136,6 @@
 
 <div class="container">
 
-
     <!--una-->
     <div class="row" style="height: 50px;">
 
@@ -145,7 +144,6 @@
     <div class="row">
 
     </div>
-
 
     <!--dos-->
     <div class="row">
@@ -257,7 +255,7 @@
 
     </div> <!--dos-->
 
-<!--tres-->
+    <!--tres-->
     <div class="row" style="height: 100px;">
 
     </div> <!--tres-->
