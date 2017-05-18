@@ -18,8 +18,8 @@ class Autor {
         genero inList: ["M", "F"], nullable: true
         generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
         nacionalidad size: 1..20, nullable: true
-        foto nullable: true, maxSize: 2 * 1024 * 1024
-        bio nullable: true, size: 1..1000
+        foto nullable: true, maxSize: 2 * 2048 * 2048
+        bio nullable: true, maxSize: 2000
     }
 
     static belongsTo = ListaPreferenciaAutor

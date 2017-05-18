@@ -21,19 +21,21 @@
                 <g:uploadForm method="post" action="crear">
                     <div class="row uniform">
                         <div class="12u 12u$(xsmall)">
-                            <g:field  type="text" name="titulo" id="titulo" placeholder="Título" required="true" maxlength="20"/>
+                            <g:field  type="text" name="titulo" id="titulo" placeholder="Título" required="true" maxlength="50"/>
                         </div>
                         <div class="12u 12u$(xsmall)">
                             <g:select name="autores" required="true"   from="${autor.nombreCompleto}"  >
                             </g:select>
                         </div>
+                        <div class="12u 12u$(xsmall)">
+                            <g:field  type="text" name="isbn" id="isbn" placeholder="ISBN" required="true" maxlength="50"/>
+                        </div>
                         <div class="6u 12u$(xsmall)">
-                            <g:field type="text" name="editorial" id="editorial" placeholder="Editorial" maxlength="20" required="true"/>
+                            <g:field type="text" name="editorial" id="editorial" placeholder="Editorial" maxlength="50" required="true"/>
                         </div>
                         <div class="6u 6u$(xsmall)">
-                            <g:field type="text" name="pais" id="pais" value=""  placeholder="País" maxlength="20" required="true"/>
+                            <g:field type="text" name="pais" id="pais" value=""  placeholder="País" maxlength="50" required="true"/>
                         </div>
-
                         <div class="6u 6u$(xsmall)">
                             <g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación" required="true"/>
                         </div>
@@ -42,7 +44,7 @@
                             </g:select>
                         </div>
                         <div class="12u 12u$(xsmall)">
-                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="100" required="true"/>
+                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="450" required="true"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">

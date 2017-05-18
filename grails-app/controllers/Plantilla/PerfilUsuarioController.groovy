@@ -8,14 +8,15 @@ class PerfilUsuarioController {
     def FOAFService
     static defaultAction = "usuario"
     def springSecurityService
+
     def usuario(long id) {
         //FOAFService.obtenLibros()
         def librosListaFOAF = FOAFService.obtenLibrosByEmail("raid_ivan@hotmail.com")
         def autoresListaFOAF = FOAFService.obtenAutoresByEmail("raid_ivan@hotmail.com")
-        //print libros
-        def usuariosL = Usuario.findById(id)
-        //FOAFService.libros.clear()
+        def usuarioU= springSecurityService.principal
+        def usuario = Usuario.findById(usuarioU.id)
 
+        //FOAFService.libros.clear()
         //FOAFService.setLibro(2, "ivan@hotmail.com");
         //FOAFService.setAmigo("ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
         //ArrayList<String> uri =  FOAFService.getAmigosFOAF("ivan@hotmail.com")
@@ -26,27 +27,25 @@ class PerfilUsuarioController {
         //FOAFService.setAmigo("raid_ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
         //ArrayList<String> uri =  FOAFService.getAmigosFOAF("raid_ivan@hotmail.com")
 
-        //print uri
-
         def pal
         /*def libros = Libro.findAllByIdInList(librosListaFOAF)
         def autores = Autor.findAllByIdInList(autoresListaFOAF)
-*/
+        */
         def libros = Libro.findAllByIdInList([1])
         def autores = Autor.findAllByIdInList([1])
-      //  print librosListaFOAF
-      //  print libros
-        def usuarioU= springSecurityService.principal
-        print usuarioU
 
 
-        if(usuarioU.id == 'F'){
+        def listaLibros = usuario.listasL.collect()
+
+        if(usuario.genero == 'F'){
             pal = "Bienvenida"
         }
         else {
             pal= "Bienvenido"
         }
-        [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores]
+
+
+        [usuarioS: usuario, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros]
     }
 
     def p(){
@@ -61,10 +60,10 @@ class PerfilUsuarioController {
         //FOAFService.generaRdfUsuarioActual("ivan2@hotmail.com","Ivan","Gordillo","Perez")
 
 //
-       //FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
-       // FOAFService.setEmailAmigo("raid_ivan@hotmail.com")
-       // FOAFService.agregarAmigo("ivan@hotmail.com","Ivan","Gordillo","Perez")
-       // FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
+        //FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
+        // FOAFService.setEmailAmigo("raid_ivan@hotmail.com")
+        // FOAFService.agregarAmigo("ivan@hotmail.com","Ivan","Gordillo","Perez")
+        // FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
         //FOAFService.setEmailAmigo("ivan2@hotmail.com")
         //FOAFService.agregarAmigo("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
     }

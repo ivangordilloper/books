@@ -21,7 +21,7 @@
                     <div class="row uniform">
 
                         <div class="12u 12u$(xsmall)">
-                            <g:field  type="text" name="nombre" id="nombre" placeholder="Nombre de la lista" requiered="true" maxlength="20"/>
+                            <g:field  type="text" name="nombre" id="nombre" placeholder="Nombre de la lista" requiered="true" maxlength="30"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">
