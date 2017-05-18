@@ -1,9 +1,18 @@
+<html>
+<head>
+    <title> Bookscom </title>
 
-<body id="chat">
+
+</head>
+
+<body class="chat" id="chat">
+<div id="page-wrapper">
 
 <div class="row padd"></div>
 
 <div id="row">
+    <section id="one" class="wrapper style1 special" style="    padding-top: 73px;
+    height: 519px;">
     <div id="row menu">
         <div class="col-lg-4 col-lg-offset-4">
         <p class="welcome">Welcome, ${user.nombre}<b></b></p><div style="clear:both"></div>
@@ -23,6 +32,7 @@
 
         </div>
     </div>
+    </section>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript">
@@ -30,7 +40,6 @@
 
 $( document ).ready(function() {
     loadLog();
-    setInterval(loadLog, 1000); //300000 MS == 5 minutes
 
 });
 
@@ -103,5 +112,5 @@ function loadLog(){
 
 }
 </script>
-
+</div>
 </body>
