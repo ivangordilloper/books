@@ -36,13 +36,17 @@ class LibroService {
         def a = Autor.findByNombreCompleto(autor)
         def pais = params.pais
         def portada1 = params.portada
+        def isbn = params.isbn
         byte[] portada = portada1.getBytes()
         def fechaPub = Date.parse('yyyy-MM-dd', params.fechaPub)
         def resumen = params.resumen
         def generoLiterario = params.generoLiterario
-        [portada: portada, autor: autor, titulo: titulo, editorial:editorial, generoLiterario:generoLiterario, pais:pais, fechaPub:fechaPub, resumen:resumen ]
-        Libro p = new Libro(portada: portada, editorial:editorial,generoLiterario:generoLiterario, fechaPub:fechaPub, pais:pais, resumen:resumen,titulo: titulo)
+        [portada: portada,isbn:isbn, autor: autor, titulo: titulo, editorial:editorial, generoLiterario:generoLiterario, pais:pais, fechaPub:fechaPub, resumen:resumen ]
+        Libro p = new Libro(portada: portada, isbn:isbn, editorial:editorial,generoLiterario:generoLiterario, fechaPub:fechaPub, pais:pais, resumen:resumen,titulo: titulo)
         p.save(flush:true)
+        p.errors.allErrors.each {
+            print it
+        }
         a.addToLibros(p)
     }
 

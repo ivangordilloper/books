@@ -60,5 +60,6 @@ class Usuario implements Serializable {
 		password column: '`password`'
 	}
 
-	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro, listasA: ListaPreferenciaAutor]
+	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro]
+	static hasOne = [ListaA: ListaPreferenciaAutor]
 }

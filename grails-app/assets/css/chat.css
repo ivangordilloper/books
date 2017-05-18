@@ -1,10 +1,14 @@
 /* CSS Document */
 body {
-    font:12px arial;
     color: #222;
-    text-align:center;
     }
+#chatbox{
+    font:12px arial!important;
+    text-align:center;
+    color: #222!important;
 
+
+}
 form, p, span {
     margin:0;
     padding:0; }
@@ -54,8 +58,10 @@ p{
 
 .logout { float:right; }
 
-.msgln { margin:0 0 2px 0; }
-
+.msgln { margin:0 0 2px 0;
+    color: #222222;;}
+.msgln b { margin:0 0 2px 0;
+    color: #222222!important;}
 .submit{
     padding-left: 10px !important;
     width: inherit;

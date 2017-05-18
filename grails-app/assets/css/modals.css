@@ -38,6 +38,8 @@ textarea { resize: none; }
 	-moz-border-radius-topright: 5px;
 }
 .modal-has-warning {
+	-moz-text-decoration-color: red; /* Code for Firefox */
+	text-decoration-color: red;
 	background-color: #f0ad4e;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;

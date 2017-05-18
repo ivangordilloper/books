@@ -24,10 +24,10 @@
                             <g:field  type="text" name="nombre" id="nombre" placeholder="Nombre" required="true" maxlength="10"/>
                         </div>
                         <div class="6u 12u$(xsmall)">
-                            <g:field  type="text" name="apellidoP" id="apellidoP" placeholder="ApellidoP" required="true" maxlength="10" />
+                            <g:field  type="text" name="apellidoP" id="apellidoP" placeholder="Apellido Paterno" required="true" maxlength="10" />
                         </div>
                         <div class="6u 12u$(xsmall)">
-                            <g:field type="text" name="apellidoM" id="apellidoM" placeholder="ApellidoM" maxlength="10" required="true"/>
+                            <g:field type="text" name="apellidoM" id="apellidoM" placeholder="Apellido Materno" maxlength="10"/>
                         </div>
                         <div class="6u 6u$(xsmall)">
                             <g:field  type="date" name="fechaNac" id="fechaNac" value=""  placeholder="Fecha nacimiento" required="true"/>

@@ -202,7 +202,7 @@
                     </div>
                 </div>
 
-                <p style="text-align: justify; margin: 2px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                <p style="text-align: justify; margin: 2px">${autor.bio}</p>
                 <br/>
             </section>
 
@@ -229,7 +229,7 @@
 
                                 <div class="col-xs-4 col-sm-8 col-md-4 col-lg-5">
                                     <!--${libro.resumen.toString().substring(0,10)}. -->
-                                    <div id="resumen" style="text-align: justify">   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris  </div>
+                                    <div id="resumen" style="text-align: justify">  ${libro.resumen.substring(0, 200)} ... </div>
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: libro.id])}" > ver libro</a>

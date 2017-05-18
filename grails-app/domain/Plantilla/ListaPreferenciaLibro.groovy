@@ -11,5 +11,5 @@ class ListaPreferenciaLibro {
     }
 
     static hasMany = [libros: Libro]
-    static belongsTo = Usuario
+
 }

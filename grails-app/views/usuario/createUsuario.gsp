@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <script ></script>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="modals.css"/>
@@ -47,7 +48,7 @@
                                     </div>
                                     <div class="6u 6u$(xsmall)">
                                         <div class='input-group date' id='datetimepicker9'>
-                                            <input type='text' class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
+                                            <input type='text' placeholder="Fecha de Nacimiento" class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar">
                                                 </span>
@@ -319,8 +320,6 @@
                 if(indicador == '5'){
                     var validar = validarUsuarioBD(nombreUsuario);
                     var validar2 = validarCorreoBD(email);
-                    alert(validar);
-                    alert(validar2);
                     if(validar == 'false'){
                         if(validar2 == 'false'){
                             $('#MSGA_05').modal('show');

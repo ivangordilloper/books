@@ -160,11 +160,8 @@
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
                                 <div id="myDropdown" class="dropdown-content">
-                                   <!-- <g:each in="${listas}" var="lista">
-                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'agregarElemento', params: [id: lista.id , idLi: libro.id ])}" style="font-size: 15px;">${lista.nombre}</a>
-                                    </g:each>-->
                                     <g:each in="${listas}" var="lista">
-                                        <a onclick="agregar(lista.id, libro.id)" style="font-size: 15px;">${lista.nombre}</a>
+                                        <a onclick="agregar(1, 1)" style="font-size: 15px;"> ${lista.nombre} </a>
                                     </g:each>
                                 </div>
                             </div>
@@ -206,7 +203,7 @@
                         <p style="font-size: 15px; color: darkred;"> (10 votos)</p>
                     </div>
 
-                    <p style="text-align: justify; margin: 2px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                    <p style="text-align: justify; margin: 2px">${libro.resumen}</p>
                     <br/>
                     <hr style="margin: 1px"/>
                     <p style="font-size: 15px; padding: 0px; margin: 0px"> ${libro.editorial}, ${libro.pais} <br/>
@@ -292,9 +289,10 @@
                             <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: libro.autores.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/>
                         </div>
                     </div>
+                    <br>
 
                     <div class="row">
-                        <p style="text-align: justify">"Lorem ipsum dolor sit amet, consectetur adipiscing elit ,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        <p style="text-align: justify"> ${libro.autores.bio.toString().substring(1, libro.autores.bio.toString().length()-1)}</p>
                     </div>
 
 
@@ -304,7 +302,7 @@
                     <hr/>
                     <!-- Libros relacionados por mismo Autor-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count2=1 %>
+                        <% def count2=3 %>
                         <g:each in="${0..count2}" var="c" >
                             <g:if test="${listaAI[c].id.equals(libro.id)}">
                             </g:if>
@@ -396,7 +394,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/listaPrefernciaLibro/agregarElemento",
+            "url": "/listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

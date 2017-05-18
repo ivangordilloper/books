@@ -1,3 +1,4 @@
+
 <head>
     <title> Bookscom</title>
     <g:external dir="css" file="main.css"/>
@@ -21,66 +22,66 @@
         <div class="row" style="height: 70px">
         </div> <!--Fila 1 : Vacia-->
 
-        <!--Fila 2 : 3 columnas-->
+    <!--Fila 2 : 3 columnas-->
         <div class="row">
             <!--Fila 2.1 -->
-           <div class="col-sm-6 col-md-2">
+            <div class="col-sm-6 col-md-2">
                 <section>
                     <div class="row">
                         <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}"  style="margin-top:15px; background-size:100%auto; height: 250px; width: 180px;"/>
                     </div>
 
                     <br/>
-                 </section>
+                </section>
             </div>  <!--Fila 2.1 -->
 
-            <!--Fila 2.2 -->
+        <!--Fila 2.2 -->
             <div class="col-sm-12 col-md-8">
                 <section>
                     <h1 style="color: #BC673F;">Listas de preferencia </h1>
                     <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
                     <div style="height: 10px"></div>
                     <g:each in="${listaLibros}" var="lista">
-                    <div class="row">
+                        <div class="row">
 
-                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                            <g:img dir="images" file="lista.png"  style="margin:15px; width: 80px"/>
-                        </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <g:img dir="images" file="lista.png"  style="margin:15px; width: 80px"/>
+                            </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            <p style="padding-top:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
-                            <p style="padding-top:0px; margin: 0px;">Creación: ${lista.fechaCreacion.toString().substring(0,10)}</p>
-                            <p style="padding-top:0px; margin: 0px;">Libros: ${lista.libros.size()}</p>
-                        </div>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <p style="padding-top:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
+                                <p style="padding-top:0px; margin: 0px;">Creación: ${lista.fechaCreacion.toString().substring(0,10)}</p>
+                                <p style="padding-top:0px; margin: 0px;">Libros: ${lista.libros.size()}</p>
+                            </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                            <div class="dropdown">
-                               <div id="myDropdown" class="dropdown-content">
-                                    <a style="font-size: 13px;">Ver</a>
-                                    <a style="font-size: 13px;">Editar</a>
-                                    <a style="font-size: 13px;">Eliminar</a>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="dropdown">
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <a style="font-size: 13px;">Ver</a>
+                                        <a style="font-size: 13px;">Editar</a>
+                                        <a style="font-size: 13px;">Eliminar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </g:each>
                 </section>
 
             </div> <!--Fila 2.2 -->
 
-            <!--Fila 2.3 -->
+        <!--Fila 2.3 -->
             <div class="col-sm-12 col-md-2">
                 <section>
                     <h1 style="color: #BC673F;">Amigos () </h1>
                     <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
                 </section>
             </div> <!--Fila 2.3 -->
-         </div> <!--Fila 2 : 3 columnas-->
+        </div> <!--Fila 2 : 3 columnas-->
 
 
-        <!--Fila 3: Recomendaciones-->
+    <!--Fila 3: Recomendaciones-->
         <div class="row">
-        <br/>
+            <br/>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h1 style="color: #BC673F;">Bookscom te recomienda</h1>
                 <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
@@ -91,11 +92,11 @@
 
                         <div class="swiper-slide separator-slide">
                             <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                    <div> <% def count1=5 %>
-                        <g:each in="${1..count1}" var="b" >
-                            <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
-                        </g:each>
-                    </div>
+                            <div> <% def count1=5 %>
+                                <g:each in="${1..count1}" var="b" >
+                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
+                                </g:each>
+                            </div>
                         </div>
                         <div class="swiper-slide separator-slide">
                             <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
@@ -126,17 +127,17 @@
                     <!-- If we need pagination -->
                     <div class="swiper-pagination"></div>
                     <!-- If we need scrollbar -->
+                </div>
             </div>
         </div>
-    </div>
 
         <div class="row" style="height: 10px">
         </div>
 
         <div class="row" style="padding: 0px">
             <div class="col-sm-12 col-md-12">
-            <h1 style="color: #BC673F;">Librerías cercanas a ti </h1>
-            <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
+                <h1 style="color: #BC673F;">Librerías cercanas a ti </h1>
+                <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
             </div>
         </div>
 

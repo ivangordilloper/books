@@ -12,10 +12,10 @@ class Libro {
     String generoLiterario
 
     static constraints = {
-        titulo size: 1..20, nullable: false
-        editorial size: 1..20, nullable: false
+        titulo maxSize: 255, nullable: false
+        editorial maxSize: 255, nullable: false
         pais size: 1..20, blank: true, nullable: true
-        resumen size: 1..1000, nullable: true
+        resumen maxSize: 2000, nullable: true
         fechaPub nullable: true
         portada nullable: true, maxSize: 2 * 1024 * 1024
         generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false

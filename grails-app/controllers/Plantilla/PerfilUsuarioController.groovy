@@ -60,10 +60,10 @@ class PerfilUsuarioController {
         //FOAFService.generaRdfUsuarioActual("ivan2@hotmail.com","Ivan","Gordillo","Perez")
 
 //
-       //FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
-       // FOAFService.setEmailAmigo("raid_ivan@hotmail.com")
-       // FOAFService.agregarAmigo("ivan@hotmail.com","Ivan","Gordillo","Perez")
-       // FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
+        //FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
+        // FOAFService.setEmailAmigo("raid_ivan@hotmail.com")
+        // FOAFService.agregarAmigo("ivan@hotmail.com","Ivan","Gordillo","Perez")
+        // FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
         //FOAFService.setEmailAmigo("ivan2@hotmail.com")
         //FOAFService.agregarAmigo("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
     }

@@ -55,6 +55,9 @@
 
 </div>
 <div class="modal fade" data-keyboard="false" id="MSGE_12" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
@@ -70,6 +73,9 @@
     </div>
 </div>
 <div class="modal fade" id="MSGA_04" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
@@ -85,6 +91,9 @@
     </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
