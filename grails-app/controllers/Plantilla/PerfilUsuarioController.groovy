@@ -45,7 +45,7 @@ class PerfilUsuarioController {
         }
 
 
-        [usuarioS: usuario, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros]
+        [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros]
     }
 
     def p(){

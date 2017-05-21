@@ -18,7 +18,7 @@
         <header>
             <h2>Regístrate</h2>
         </header>
-        <section class="wrapper style5">
+        <section class="wrapper style5" style="padding-top: 0px; margin-top: 0px;">
             <div class="inner">
                 <section>
                     <div class="box">
@@ -27,26 +27,29 @@
                         <g:uploadForm action="crear" method="post" name="form" id="formRegister">
                             <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                 <div class="row uniform">
-                                    <div class="12u 12u$(xsmall) controls">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <input class="inputNombre" type="text"  name="nombre" id="nombre" value="" placeholder="Nombres(s)" required="true" minlength="2" maxlength="20"/>
                                         <div id="errorNombre" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="6u 6u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input class="inputApellidoP" type="text" name="apellidoP" id="apellidoP" value=""  placeholder="Apellido Paterno" maxlength="20" required="true"/>
                                         <div id="errorApellidoP" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="6u 6u$(xsmall)" >
+                                    <div class="col-xs-12 col-sm-6 col-md-6" >
                                         <input class="inputApellidoM" type="text" name="apellidoM" id="apellidoM" value="" placeholder="Apellido Materno"  maxlength="20" required="true"/>
                                         <div id="errorApellidoM" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="12u 12u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input class="inputUsuario" type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
                                         <div id="errorUsuario" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="12u 12u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
                                     </div>
-                                    <div class="6u 6u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        Fecha de nacimiento:<g:field  type="date" name="fechaNac" id="fechaNac" required="true"/>
+                                    </div>
+                                   <!-- <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class='input-group date' id='datetimepicker9'>
                                             <input type='text' placeholder="Fecha de Nacimiento" class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
                                             <span class="input-group-addon">
@@ -54,33 +57,47 @@
                                                 </span>
                                             </span>
                                         </div>
-                                    </div>
-                                    <div class="6u 6u$(xsmall)">
-                                        <g:select name="genero" id="genero"  from="${['M', 'F']}">
+                                    </div> -->
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        Género: <g:select name="genero" id="genero"  from="${['M', 'F']}">
                                         </g:select>
                                     </div>
-                                    <div class="12u 12u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input class="inputEmail" type="email" name="correo" id="email"  placeholder="Correo Electrónico" maxlength="50" required="true"/>
                                         <div id="errorEmail1" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="12u 12u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input class="inputEmail2" type="email" name="correo2" id="email2" placeholder="Confirma Correo Electrónico"  maxlength="50" required="true"/>
                                         <div id="errorEmail2" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="6u 6u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <input class="inputContrasena1" type="password" name="contrasenia" id="passwd"  placeholder="Contraseña" maxlength="10" required="true"/>
                                         <div id="errorContrasena1" style="display:none; color:#FF0000;"></div>
                                     </div>
-                                    <div class="6u 6u$(xsmall)">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
                                         <g:field class="inputContrasena2" type="password" name="contrasenia2" id="passwd2" placeholder="Confirma Contraseña" maxlength="10" required="true"/>
                                         <div id="errorContrasena2" style="display:none; color:#FF0000;"></div>
                                     </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <input name="perfil" type="file" style="color: #0A122A;"/>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="6u 1u$(xsmall) g-recaptcha" data-sitekey="6Ld4sQoUAAAAAPZzWmOrDXOoHKsY64Hdf7a8rsHS"></div>
-                                    <div class="12u$">
+                                   </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
                                         <ul class="actions">
                                             <li>
                                                 <g:submitButton name="submit" value="Regístrate" class="special"/>
-                                                    <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                          </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                        <ul class="actions">
+                                            <li>
+                                                <button type="button" id="cancelar" class="special">Cancelar</button></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -105,10 +122,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
-                <h4 class="modal-title">Mensaje de confirmación</h4>
+                <p class="modal-title">Mensaje de confirmación</p>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar el registro?</p>
+                <p style="color: grey; text-align: justify">¿Está seguro de que desea cancelar el registro?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
@@ -124,10 +141,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <p class="modal-title">Mensaje de error</p>
             </div>
             <div class="modal-body">
-                <p>Falta al menos un dato obligatorio para realizar la operación.</p>
+                <p style="color: grey; text-align: justify">Falta al menos un dato obligatorio para realizar la operación.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -142,10 +159,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <p class="modal-title">Mensaje de error</p>
             </div>
             <div class="modal-body">
-                <p>Nombre de usuario en uso, por favor escribe otro.</p>
+                <p style="color: grey; text-align: justify">Nombre de usuario en uso, por favor escribe otro.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -161,10 +178,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <p class="modal-title">Mensaje de error</p>
             </div>
             <div class="modal-body">
-                <p>El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
+                <p style="color: grey; text-align: justify">El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -179,10 +196,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
-                <h4 class="modal-title">Mensaje de alerta</h4>
+                <p class="modal-title">Mensaje de alerta</p>
             </div>
             <div class="modal-body">
-                <p>Se te ha enviará un enlace de validación al correo electrónico proporcionado.  </p>
+                <p style="color: grey; text-align: justify">Se te ha enviará un enlace de validación al correo electrónico proporcionado.  </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
@@ -342,5 +359,6 @@
             });
         });
     </script>
+</div>
 </body>
 </html>

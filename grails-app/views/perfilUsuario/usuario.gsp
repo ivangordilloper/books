@@ -1,4 +1,4 @@
-
+<html>
 <head>
     <title> Bookscom</title>
     <g:external dir="css" file="main.css"/>
@@ -15,136 +15,255 @@
 
 </style>
 <body>
-<div style="background: white; color: black">
+<div style="background:white; color: black; font-size: 15px">
     <div class="container">
 
         <!--Fila 1 : Vacia-->
         <div class="row" style="height: 70px">
         </div> <!--Fila 1 : Vacia-->
 
-    <!--Fila 2 : 3 columnas-->
+         <!--Fila 2 : 3 columnas-->
         <div class="row">
             <!--Fila 2.1 -->
             <div class="col-sm-6 col-md-2">
-                <section>
+                    <div class="container">
                     <div class="row">
-                        <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}"  style="margin-top:15px; background-size:100%auto; height: 250px; width: 180px;"/>
+                        <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id ])}"  style="height: 200px; width: 200px;"/>
                     </div>
-
-                    <br/>
-                </section>
+                    </div>
             </div>  <!--Fila 2.1 -->
 
-        <!--Fila 2.2 -->
-            <div class="col-sm-12 col-md-8">
+             <!--Fila 2.2 -->
+            <div class="col-sm-12 col-md-10">
                 <section>
-                    <h1 style="color: #BC673F;">Listas de preferencia </h1>
-                    <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
-                    <div style="height: 10px"></div>
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
+                        <li><a data-toggle="tab" href="#amigos">Amigos</a></li>
+                        <li><a data-toggle="tab" href="#preferencia">Listas de preferencia</a></li>
+                        <li><a data-toggle="tab" href="#recomendaciones">Recomendaciones</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="perfil" class="tab-pane active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-8 col-md-10">
+                            <table class="table table-striped" style="color: #2E3842;">
+                                <thead>
+                                <tr>
+                                    <th style="color: #2E3842;">Perfil</th>
+                                    <th style="color: #2E3842;"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> Nombre </td>
+                                        <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).nombre}</i></b></p>
+                                        </td>
+                                    </tr>
+                                <tr>
+                                    <td> Apellido paterno </td>
+                                    <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).apellidoP}</i></b></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Apellido materno</td>
+                                    <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).apellidoM}</i></b></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Nombre de usuario</td>
+                                    <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).username}</i></b></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Correo electrónico</td>
+                                    <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).correo}</i></b></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Fecha nacimiento</td>
+                                    <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).fechaNac.toString().substring(0,10)}</i></b></p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                                </div>
+                                </div>
+                            <div class="row">
+                                <ul class="actions">
+                                    <li><a href="/usuario/update" class="button special">Editar perfil</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div id="amigos" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Some content in menu 1.</p>
+                        </div>
+
+
+                        <div id="preferencia" class="tab-pane fade">
+
+                    <table class="table table-striped" style="color: #2E3842;">
+                        <thead>
+                        <tr>
+                            <th style="color: #2E3842;">Libros</th>
+                            <th style="color: #2E3842;"></th>
+                            <th style="color: #2E3842;"></th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <g:each in="${listaLibros}" var="lista">
+                            <tr>
+                                <td> <g:img dir="images" file="lista.png"  style="margin:15px; width: 50px"/></td>
+                                <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
+                                    <p style="padding:0px;line-height:15px; margin: 0px;">Creación: ${lista.fechaCreacion.toString().substring(0,10)}</p>
+                                    <p style="padding:0px;line-height:25px; margin: 0px;">Libros: ${lista.libros.size()}</p>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <div id="myDropdown" class="dropdown-content">
+                                            <a style="font-size: 13px;">Ver</a>
+                                            <a style="font-size: 13px;">Editar</a>
+                                            <a style="font-size: 13px;">Eliminar</a>
+                                        </div>
+                                    </div>
+
+                        </td>
+                    </tr>
+                        </g:each>
+                    </tbody>
+                    </table>
+                        <br/>
+                <table class="table table-striped" style="color: #2E3842;">
+                    <thead>
+                    <tr>
+                        <th style="color: #2E3842;">Autores</th>
+                        <th style="color: #2E3842;"></th>
+                        <th style="color: #2E3842;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <g:each in="${listaLibros}" var="lista">
-                        <div class="row">
-
-                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                                <g:img dir="images" file="lista.png"  style="margin:15px; width: 80px"/>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                <p style="padding-top:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
-                                <p style="padding-top:0px; margin: 0px;">Creación: ${lista.fechaCreacion.toString().substring(0,10)}</p>
-                                <p style="padding-top:0px; margin: 0px;">Libros: ${lista.libros.size()}</p>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <tr>
+                            <td> <g:img dir="images" file="lista.png"  style="margin:15px; width: 50px"/></td>
+                            <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
+                                <p style="padding:0px;line-height:15px; margin: 0px;">Creación: ${lista.fechaCreacion.toString().substring(0,10)}</p>
+                                <p style="padding:0px;line-height:25px; margin: 0px;">Libros: ${lista.libros.size()}</p>
+                            </td>
+                            <td>
                                 <div class="dropdown">
-                                    <div id="myDropdown" class="dropdown-content">
+                                    <div id="myDropdown2" class="dropdown-content">
                                         <a style="font-size: 13px;">Ver</a>
                                         <a style="font-size: 13px;">Editar</a>
                                         <a style="font-size: 13px;">Eliminar</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+
+                            </td>
+                        </tr>
                     </g:each>
+                    </tbody>
+                </table>
+
+
+
+
+                        </div>
+
+                        <div id="recomendaciones" class="tab-pane fade">
+                            <table class="table table-striped" style="color: #2E3842;">
+                                <thead>
+                                <tr>
+                                    <th style="color: #2E3842;">Recomendaciones</th>
+                                    <th style="color: #2E3842;"></th>
+                                    <th style="color: #2E3842;"></th>
+                                </tr>
+                                </thead>
+                            </table>
+
+                            <div class="row">
+                                <div class="col-xs-10 col-sm-10 col-md-12">
+                                <div class="swiper-container">
+                                    <!-- Additional required wrapper -->
+                                    <div class="swiper-wrapper" style="padding-top: 10px">
+                                        <!-- Slides -->
+
+                                        <div class="swiper-slide separator-slide">
+                                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
+                                            <div> <% def count1=5 %>
+                                                <g:each in="${1..count1}" var="b" >
+                                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
+                                                </g:each>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide separator-slide">
+                                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
+                                            <div> <% def count2=5 %>
+                                                <g:each in="${1..count2}" var="b" >
+                                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
+                                                </g:each>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide separator-slide">
+                                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
+                                            <div> <% def count3=5 %>
+                                                <g:each in="${1..count3}" var="b" >
+                                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
+                                                </g:each>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide separator-slide">
+                                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
+                                            <div> <% def count4=5 %>
+                                                <g:each in="${1..count4}" var="b" >
+                                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
+                                                </g:each>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- If we need pagination -->
+                                    <div class="swiper-pagination"></div>
+                                    <!-- If we need scrollbar -->
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div style="height: 10px"></div>
+                    </div>
                 </section>
 
             </div> <!--Fila 2.2 -->
 
-        <!--Fila 2.3 -->
-            <div class="col-sm-12 col-md-2">
-                <section>
-                    <h1 style="color: #BC673F;">Amigos () </h1>
-                    <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
-                </section>
-            </div> <!--Fila 2.3 -->
         </div> <!--Fila 2 : 3 columnas-->
 
 
-    <!--Fila 3: Recomendaciones-->
-        <div class="row">
-            <br/>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1 style="color: #BC673F;">Bookscom te recomienda</h1>
-                <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
-                <div class="swiper-container">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 10px">
-                        <!-- Slides -->
-
-                        <div class="swiper-slide separator-slide">
-                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                            <div> <% def count1=5 %>
-                                <g:each in="${1..count1}" var="b" >
-                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
-                                </g:each>
-                            </div>
-                        </div>
-                        <div class="swiper-slide separator-slide">
-                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                            <div> <% def count2=5 %>
-                                <g:each in="${1..count2}" var="b" >
-                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
-                                </g:each>
-                            </div>
-                        </div>
-                        <div class="swiper-slide separator-slide">
-                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                            <div> <% def count3=5 %>
-                                <g:each in="${1..count3}" var="b" >
-                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
-                                </g:each>
-                            </div>
-                        </div>
-                        <div class="swiper-slide separator-slide">
-                            <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                            <div> <% def count4=5 %>
-                                <g:each in="${1..count4}" var="b" >
-                                    <span style="font-size:100%;color:darkgoldenrod;">&starf;</span>
-                                </g:each>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-            </div>
+    <!--Fila 3: Librerías-->
+        <div class="row" style="height: 0px">
         </div>
-
-        <div class="row" style="height: 10px">
-        </div>
-
         <div class="row" style="padding: 0px">
             <div class="col-sm-12 col-md-12">
-                <h1 style="color: #BC673F;">Librerías cercanas a ti </h1>
-                <hr style="padding:0px; margin:0px; border-color: #BC673F;"/>
+                <table class="table table-striped" style="color: #2E3842;">
+                    <thead>
+                    <tr>
+                        <th style="color: #2E3842;">Librerías cercanas a ti</th>
+                        <th style="color: #2E3842;"></th>
+                        <th style="color: #2E3842;"></th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
-
-        <div class="row" style="height: 10px">
+        <div class="row" style="height: 0px">
         </div>
-
-        <!--Fila 4: Librerías-->
         <section class="spotlight" >
             <div id="map" class="maps"></div>
             <script>
@@ -337,6 +456,8 @@
 </div> <!--Fin Div blanco-->
 
 <!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>

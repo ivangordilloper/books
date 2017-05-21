@@ -70,9 +70,9 @@ class ListaPreferenciaLibroController {
 
     }
 
-    def verListaPreferenciaLibro(long id) {
+    def verListaPreferenciaLibro() {
         def usuarioU = springSecurityService.principal
-        def editarLista = ListaPreferenciaLibro.findById(usuario.id)
+        def editarLista = ListaPreferenciaLibro.findById(usuarioU.id)
         def listaAutor = Autor.list()
 
         [llista: editarLista, lautor: listaAutor, idU:usuarioU]

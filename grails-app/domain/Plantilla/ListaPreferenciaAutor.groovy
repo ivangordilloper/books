@@ -11,6 +11,6 @@ class ListaPreferenciaAutor {
     }
 
     static hasMany = [autores: Autor]
-    static belongsTo = Usuario
+//    static belongsTo = Usuario
 
 }

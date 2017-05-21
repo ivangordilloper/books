@@ -27,10 +27,35 @@
 </style>
 <body>
 
+<!-- Page Wrapper -->
+<div id="page-wrapper">
 
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="../">BooksCom</a></h1>
+        <nav id="nav">
+            <ul>
 
+                <li class="special">
 
+                    <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>${usuarioS.username}</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li> <a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
+                            <li><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
+                            <li><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
+                            <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
+                            <li><a href="/usuario/read">Configuracion</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <g:layoutBody/>
+
+
 <!-- Footer -->
 <footer id="footer">
     <ul class="icons">

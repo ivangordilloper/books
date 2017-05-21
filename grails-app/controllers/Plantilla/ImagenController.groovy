@@ -42,6 +42,16 @@ class ImagenController {
         }
     }
 
+    def renderImageU(long  id) {
+        def user = Usuario.findById(id)
+        if (user?.perfil) {
+            response.setContentLength(user.perfil.size())
+            response.outputStream.write(user.perfil)
+        } else {
+            response.sendError(404)
+        }
+    }
+
     def renderImageL(long  id) {
         def user = Libro.findById(id)
         if (user?.portada) {

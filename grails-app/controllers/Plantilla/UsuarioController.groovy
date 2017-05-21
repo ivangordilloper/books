@@ -96,7 +96,9 @@ class UsuarioController {
         def correo = params.correo
         def contrasenia = params.contrasenia
         def genero = params.genero
-        [apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
+        def perfil2 = params.perfil
+        byte[] perfil = perfil2.getBytes()
+        [perfil:perfil, apellidoM: apellidoM, apellidoP: apellidoP, contrasenia: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, nombreUsuario: nombreUsuario, telefono: telefono, genero: genero]
 
 
         def generator = {
@@ -108,8 +110,15 @@ class UsuarioController {
         def token = generator( (('A'..'Z')+('0'..'9')).join(), 15 )
         def username = "JayKay"
         def uTok = "${username}${token}"
-        Usuario p = new Usuario( idf: "no", apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
+       // ListaPreferenciaAutor pre= new ListaPreferenciaAutor(nombre: "Mis autores favoritos").save()
+
+        Usuario p = new Usuario( idf: "no", perfil:perfil, apellidoM: apellidoM, apellidoP: apellidoP, password: contrasenia, correo: correo,  fechaNac: fechaNac, nombre: nombre, username: nombreUsuario, telefono: telefono, genero: genero, token: uTok).save()
         UsuarioRole.create(p, Role.findById(2))
+        ListaPreferenciaAutor la = new ListaPreferenciaAutor(nombre: "Mis autores favoritos", Usuario: p.id).save()
+
+
+
+
         mailService.sendMail {
             multipart true
             from "bookscomtt@gmail.com"

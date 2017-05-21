@@ -29,6 +29,7 @@ class Usuario implements Serializable {
 	String genero
 	String token
 	String idf
+	byte[] perfil
 
 
 	Set<Role> getAuthorities() {
@@ -54,6 +55,8 @@ class Usuario implements Serializable {
 	static constraints = {
 		password blank: false, password: true
 		username blank: false, unique: true
+		perfil nullable: true, maxSize: 2 * 2048 * 2048
+
 	}
 
 	static mapping = {
@@ -61,5 +64,5 @@ class Usuario implements Serializable {
 	}
 
 	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro]
-	static hasOne = [ListaA: ListaPreferenciaAutor]
+	//static hasOne = [ListaA: ListaPreferenciaAutor]
 }
