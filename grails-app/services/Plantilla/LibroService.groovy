@@ -41,8 +41,10 @@ class LibroService {
         def fechaPub = Date.parse('yyyy-MM-dd', params.fechaPub)
         def resumen = params.resumen
         def generoLiterario = params.generoLiterario
-        [portada: portada,isbn:isbn, autor: autor, titulo: titulo, editorial:editorial, generoLiterario:generoLiterario, pais:pais, fechaPub:fechaPub, resumen:resumen ]
-        Libro p = new Libro(portada: portada, isbn:isbn, editorial:editorial,generoLiterario:generoLiterario, fechaPub:fechaPub, pais:pais, resumen:resumen,titulo: titulo)
+        def subGenero =  params.subGenero
+
+        [portada: portada, isbn:isbn, autor: autor, titulo: titulo, editorial:editorial, subGenero: subGenero, generoLiterario:generoLiterario, pais:pais, fechaPub:fechaPub, resumen:resumen ]
+        Libro p = new Libro(subGenero: subGenero, portada: portada, isbn:isbn, editorial:editorial,generoLiterario:generoLiterario, fechaPub:fechaPub, pais:pais, resumen:resumen,titulo: titulo)
         p.save(flush:true)
         p.errors.allErrors.each {
             print it

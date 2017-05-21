@@ -93,11 +93,11 @@
         <section id="cta" class="wrapper style4">
             <div class="inner">
                 <header>
-                    <h2>TT2016-A0005</h2>
+                    <h2>TT2016-A005</h2>
                     <p>¿Quieres saber más acerca de BOOKSCOM?</p>
                 </header>
                 <ul class="actions vertical">
-                    <li><a href="/inicio/nosotros" class="button fit">Nosotros</a></li>
+                    <li><a href="/inicio/nosotros" class="button fit">Conoce más</a></li>
                 </ul>
             </div>
         </section>

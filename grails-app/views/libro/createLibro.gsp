@@ -10,51 +10,67 @@
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="modals.css"/>
 </head>
-<body id="libro">
+<style>
+input[type=file].hidden {
+    color: transparent;
+}
+</style>
+<body>
 <!-- Main -->
 
-<section class="wrapper style5">
+<section class="wrapper style5" style="padding-top: 0px; margin-top: 0px;">
     <div class="inner">
         <section>
             <div class="box">
                 <h4>Agregar Libro</h4>
                 <g:uploadForm method="post" action="crear">
                     <div class="row uniform">
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
                             <g:field  type="text" name="titulo" id="titulo" placeholder="Título" required="true" maxlength="50"/>
                         </div>
-                        <div class="12u 12u$(xsmall)">
-                            <g:select name="autores" required="true"   from="${autor.nombreCompleto}"  >
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <g:select name="autores" required="true" from="${autor.nombreCompleto}"  >
                             </g:select>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
                             <g:field  type="text" name="isbn" id="isbn" placeholder="ISBN" required="true" maxlength="50"/>
                         </div>
-                        <div class="6u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
                             <g:field type="text" name="editorial" id="editorial" placeholder="Editorial" maxlength="50" required="true"/>
                         </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:field type="text" name="pais" id="pais" value=""  placeholder="País" maxlength="50" required="true"/>
-                        </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación" required="true"/>
-                        </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:select name="generoLiterario"  value="Género literario" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}" required="true">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Selecciona género literario:<g:select name="pais" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" required="true">
                             </g:select>
                         </div>
-                        <div class="12u 12u$(xsmall)">
-                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="450" required="true"/>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación" required="true"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Selecciona género literario:<g:select name="generoLiterario" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" required="true">
+                            </g:select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Selecciona subgénero literario:<g:select name="subGenero" from="${["Elegía", "Canción", "Oda", "Satira", "Égloga", "Cantar de gesta", "Romance", "Novela", "Cuento", "Poema épico", "Tragedia", "Comedia", "Tragicomedia", "Drama histórico", "Drama social", "Leyenda", "Ensayo", "Crítica"]}" required="true">
+                            </g:select>
                         </div>
 
-                        <div class="12u 12u$(xsmall)">
-                            Portada: <input name="portada" type="file" required="true"/>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <g:textArea type="text" name="resumen" id="resumen" value=""  placeholder="Resumen" maxlength="1000" required="true"/>
                         </div>
 
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <input name="portada" type="file" style="color: #0A122A;"/>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-4 col-md-3">
                             <ul class="actions vertical">
                                 <li ><g:submitButton name="submit" value="Regístrar" class="special" />
-                                    <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                 </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3">
+                            <ul class="actions vertical">
+                                <li ><button type="button" id="cancelar" class="special">Cancelar</button></li>
                             </ul>
                         </div>
                     </div>

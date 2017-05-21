@@ -66,10 +66,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <p class="modal-title">Errror</p>
             </div>
             <div class="modal-body">
-                <p>El usuario y contraseña son incorrectos.</p>
+                <p style="color: grey;">El usuario y contraseña son incorrectos.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -84,10 +84,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <p class="modal-title">Error</p>
             </div>
             <div class="modal-body">
-                <p>Usuario no registrado, por favor revise que haya escrito el usuario correctamente.</p>
+                <p  style="color: grey; text-align: justify">Usuario no registrado, por favor revise que haya escrito el usuario correctamente.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -102,10 +102,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
-                <h4 class="modal-title">Mensaje de alerta</h4>
+                <p class="modal-title">Alerta</p>
             </div>
             <div class="modal-body">
-                <p>Bienvenido(a) <span id="nombreUsuario"></span></p>
+                <p style="color: grey; text-align: justify">Bienvenido(a) <span id="nombreUsuario"></span></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal" >Aceptar</button>
@@ -120,10 +120,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
-                <h4 class="modal-title">Mensaje de confirmación</h4>
+                <p class="modal-title">Mensaje de confirmación</p>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar el inicio de sesión?</p>
+                <p style="color: grey; text-align: justify">¿Está seguro de que desea cancelar el inicio de sesión?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>

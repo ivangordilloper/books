@@ -13,11 +13,11 @@ class Autor {
 
 
     static constraints = {
-        nombreCompleto size: 1..60, nullable: false
+        nombreCompleto maxSize: 40, nullable: false
         fechaNac nullable: false
         genero inList: ["M", "F"], nullable: true
-        generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
-        nacionalidad size: 1..20, nullable: true
+        generoLiterario inList: ["Épico", "Lírico", "Dramático", "Historia", "Didáctica"], nullable: false
+        nacionalidad maxSize: 40, nullable: true
         foto nullable: true, maxSize: 2 * 2048 * 2048
         bio nullable: true, maxSize: 2000
     }

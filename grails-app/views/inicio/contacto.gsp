@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> CONTACTO </title>
+    <title> BOOKSCOM </title>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="usuario.css"/>
     <g:external dir="css" file="swiper.min.css"/>

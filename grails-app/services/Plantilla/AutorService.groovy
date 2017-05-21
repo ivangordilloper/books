@@ -28,9 +28,10 @@ class AutorService {
         def generoLiterario = params.generoLiterario
         def nacionalidad = params.nacionalidad
         def foto1 = params.photo
+        def bio = params.bio
         byte[] foto = foto1.getBytes()
-        [foto:foto, nacionalidad: nacionalidad, fechaNac: fechaNac, nombreC: nombreC, genero: genero, generoLiterario: generoLiterario]
-        Autor p = new Autor(foto:foto, fechaNac: fechaNac, genero: genero, generoLiterario: generoLiterario, nacionalidad: nacionalidad, nombreCompleto: nombreC)
+        [foto:foto, bio:bio, nacionalidad: nacionalidad, fechaNac: fechaNac, nombreC: nombreC, genero: genero, generoLiterario: generoLiterario]
+        Autor p = new Autor(foto:foto, bio:bio, fechaNac: fechaNac, genero: genero, generoLiterario: generoLiterario, nacionalidad: nacionalidad, nombreCompleto: nombreC)
         p.save(flush: true)
     }
     def librosByAutor(editarAutor){

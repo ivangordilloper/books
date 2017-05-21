@@ -7,7 +7,7 @@
 <body id="autor">
 <!-- Main -->
 
-<section class="wrapper style5">
+<section class="wrapper style5" style="padding-top: 0px; margin-top: 0px;">
     <div class="inner">
 
 
@@ -20,39 +20,50 @@
 
                     <div class="row uniform">
 
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                             <g:field  type="text" name="nombre" id="nombre" placeholder="Nombre" required="true" maxlength="10"/>
                         </div>
-                        <div class="6u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
                             <g:field  type="text" name="apellidoP" id="apellidoP" placeholder="Apellido Paterno" required="true" maxlength="10" />
                         </div>
-                        <div class="6u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
                             <g:field type="text" name="apellidoM" id="apellidoM" placeholder="Apellido Materno" maxlength="10"/>
                         </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:field  type="date" name="fechaNac" id="fechaNac" value=""  placeholder="Fecha nacimiento" required="true"/>
-                        </div>
-                        <div class="6u 6u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
                             <g:field  type="text" name="nacionalidad" id="nacionalidad" value=""  placeholder="Nacionalidad" maxlength="15" required="true"/>
                         </div>
-
-                        <div class="6u 6u$(xsmall)">
-                            <g:select name="genero"  value="Género" from="${['M', 'F']}">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <g:field  type="date" name="fechaNac" id="fechaNac" value=""  placeholder="Fecha nacimiento" required="true"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            Selecciona género:<g:select name="genero"  value="Género" from="${['M', 'F']}">
                             </g:select>
                         </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:select name="generoLiterario"  value="Género" required="true" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}">
+
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            Selecciona género literario:<g:select name="generoLiterario" required="true" from="${['Épico', 'Lírico', 'Dramático']}">
                             </g:select>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <g:textArea type="text" name="bio" id="bio" value=""  placeholder="Biografía" maxlength="1000" required="true"/>
+                        </div>
 
-                                Fotografia: <input name="photo" type="file" required ="true"/>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <input name="photo" type="file" required ="true"/>
 
                         </div>
 
-                        <div class="12u 12u$(xsmall)">
+
+                        <div class="col-xs-6 col-sm-4 col-md-3">
                             <ul class="actions vertical">
                                 <li ><g:submitButton name="submit" value="Regístrar" class="special" />
+                                    </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-3">
+                            <ul class="actions vertical">
+                                <li >
                                     <button type="button" id="cancelar" class="special">Cancelar</button></li>
                             </ul>
 
