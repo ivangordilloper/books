@@ -3,10 +3,82 @@
     xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <foaf:Person rdf:about="http://localhost:8081/assets/modeloFOAFraid_ivan@hotmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
-    <foaf:family_name>Gordillo Perez</foaf:family_name>
-    <foaf:givenname>Ivan</foaf:givenname>
+  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf">
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
     <foaf:name>Ivan Gordillo Perez</foaf:name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:givenname>Ivan</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:family_name>Gordillo Perez</foaf:family_name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
   </foaf:Person>
 </rdf:RDF>
