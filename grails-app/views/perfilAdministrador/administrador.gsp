@@ -11,10 +11,10 @@
 
     <section class="spotlight">
         <div class="image"><g:img src="images" file="store.png" alt="" /></div><div class="content">
-        <h4>Tiendas</h4>
+        <h4>Usuarios</h4>
         <div class="12u 12u$(medium)">
             <ul class="actions vertical">
-                <li><a href="/usuario/usuario" class="button special fit">Más</a></li>
+                <li><a href="/usuario/read" class="button special fit">Más</a></li>
             </ul>
         </div>
 
@@ -27,7 +27,7 @@
         <h4>Autores</h4>
         <div class="12u 12u$(medium)">
             <ul class="actions vertical">
-                <li><a href="AgregarAutor" class="button special fit">Más</a></li>
+                <li><a href="/autor/read" class="button special fit">Más</a></li>
             </ul>
         </div>
 
@@ -40,7 +40,7 @@
         <h4>Libros</h4>
         <div class="12u 12u$(medium)">
             <ul class="actions vertical">
-                <li><a href="AgregarLibro" class="button special fit">Más</a></li>
+                <li><a href="/libro/read" class="button special fit">Más</a></li>
             </ul>
         </div>
     </div>
