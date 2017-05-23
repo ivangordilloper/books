@@ -20,11 +20,11 @@
                     <g:hiddenField name="idUsuario" value="${idU}" />
                     <div class="row uniform">
 
-                        <div class="12u 12u$(xsmall)">
-                            <g:field  type="text" name="nombre" id="nombre" placeholder="Nombre de la lista" requiered="true" maxlength="30"/>
+                        <div class="col-xs-4 col-md-4">
+                            <g:field  type="text" name="nombre" id="nombre"  requiered="true" maxlength="30"/>
                         </div>
 
-                        <div class="12u 12u$(xsmall)">
+                        <div class="col-xs-4 col-md-4">
                             <ul class="actions vertical">
                                 <li ><g:submitButton name="submit" value="Crear" class="special" /></li>
                             </ul>

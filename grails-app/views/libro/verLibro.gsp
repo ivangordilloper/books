@@ -194,13 +194,62 @@
                     <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${libro.titulo}</i> </p>
 
                     <div class="row" style="margin-bottom: 0px">
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: libro.autores.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
-                        <div> <% def count1=5 %>
-                            <g:each in="${1..count1}" var="b" >
-                                <span style="font-size:200%;color:#FFD700;">&starf;</span>
-                            </g:each>
+                        <g:each in="${libro.autores}" var="b" >
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: b.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        </g:each>
+                        <div>
+
+                            <g:if test="${cuentaE.equals("1")}">
+                                <% def count1= 1 %>
+                                <g:each in="${1..count1}" var="b" >
+                                    <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                                </g:each>
+                                <% def count11= 4 %>
+                                <g:each in="${1..count11}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro;">&starf;</span>
+                                </g:each>
+                            </g:if>
+
+                            <g:if test="${cuentaE.equals("2")}">
+                                <% def count2= 2 %>
+                                <g:each in="${1..count2}" var="b" >
+                                    <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                                </g:each>
+                                <% def count21= 3 %>
+                                <g:each in="${1..count21}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro">&starf;</span>
+                                </g:each>
+                            </g:if>
+                            <g:if test="${cuentaE.equals("3")}">
+                                <% def count3= 3 %>
+                                <g:each in="${1..count3}" var="b" >
+                                    <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                                </g:each>
+                                <% def count31= 2 %>
+                                <g:each in="${1..count31}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro;">&starf;</span>
+                                </g:each>
+                            </g:if>
+                            <g:if test="${cuentaE.equals("4")}">
+                                <% def count4= 4 %>
+                                <g:each in="${1..count4}" var="b" >
+                                    <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                                </g:each>
+                                <% def count41= 1 %>
+                                <g:each in="${1..count41}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro;">&starf;</span>
+                                </g:each>
+                            </g:if>
+                            <g:if test="${cuentaE.equals("5")}">
+                                <% def count5= 5 %>
+                                <g:each in="${1..count5}" var="b" >
+                                    <span style="font-size:200%;color:#FFD700;">&starf;</span>
+                                </g:each>
+                            </g:if>
+
+
                         </div>
-                        <p style="font-size: 15px; color: darkred;"> (10 votos)</p>
+                        <p style="font-size: 15px; color: darkred;"> (${numeroCal} votos)</p>
                     </div>
 
                     <p style="text-align: justify; margin: 2px">${libro.resumen}</p>
@@ -235,7 +284,7 @@
                                     <div class="row">
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: 1])}" style="margin:10px; background-radius:50%; border-radius: 50%; background-size:100%auto; height: 40px; width: 40px;" />
+                                                    <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: idU1.id])}" style="margin:0px; padding:0px; background-radius:50%; border-radius: 50%; background-size:100%auto; height: 40px; width: 40px;" />
                                                  </div>
                                          </div>
                                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -264,13 +313,13 @@
                     <hr/>
                     <!-- Libros relacionados por GeneroLiterario-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count=1 %>
+                        <% def count=listaG.collect().size()-1 %>
                         <g:each in="${0..count}" var="c" >
                             <g:if test="${listaG[c].id.equals(libro.id)}">
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/>
+                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
                                 </div>
                             </g:else>
                         </g:each>
@@ -279,21 +328,26 @@
 
                     <h3 style="color:#D2691E; font-size: 15px; padding-top: 30px">ACERCA DE ${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )} <br/> </h3>
                     <hr/>
+                    <g:each in="${libro.autores}" var="b" >
                     <div class="row">
                         <div class="col-md-8" style="margin-top: 10px; font-size: 15px">
-                            <div> Nacionalidad: ${Plantilla.Autor.findById(libro.autores.id).nacionalidad}</div>
-                            <div> Nacimiento: ${Plantilla.Autor.findById(libro.autores.id).getFechaNac().toString().substring(0,10)}</div>
-                            <div> Género: ${Plantilla.Autor.findById(libro.autores.id).generoLiterario}</div>
+                            <div> Nacionalidad: ${Plantilla.Autor.findById(b.id).nacionalidad}</div>
+                            <div> Nacimiento: ${Plantilla.Autor.findById(b.id).getFechaNac().toString().substring(0,10)}</div>
+                            <div> Género: ${Plantilla.Autor.findById(b.id).generoLiterario}</div>
                        </div>
                         <div class="col-md-4">
-                            <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: libro.autores.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/>
+                            <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:b.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: b.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/></a>
                         </div>
                     </div>
+                    </g:each>
                     <br>
 
+<g:each in="${libro.autores}" var="b2" >
                     <div class="row">
-                        <p style="text-align: justify"> ${libro.autores.bio.toString().substring(1, libro.autores.bio.toString().length()-1)}</p>
+                        <p style="text-align: justify"> ${b2.bio.toString().substring(1, b2.bio.toString().length()-1)}</p>
                     </div>
+</g:each>
+
 
 
 
@@ -302,13 +356,13 @@
                     <hr/>
                     <!-- Libros relacionados por mismo Autor-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count2=3 %>
+                        <% def count2= listaAI.collect().size()-1%>
                         <g:each in="${0..count2}" var="c" >
                             <g:if test="${listaAI[c].id.equals(libro.id)}">
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/>
+                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/> </a>
                                 </div>
                             </g:else>
                         </g:each>
@@ -363,7 +417,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/libro/calificar",
+            "url": "http://localhost:8081/libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -394,7 +448,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "/listaPreferenciaLibro/agregarElemento",
+            "url": "http://localhost:8081/listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -407,7 +461,7 @@
         }
 
         $.ajax(settings).done(function (response) {
-          //  console.log(response);
+           console.log(response);
         });
 
     }

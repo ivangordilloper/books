@@ -46,25 +46,47 @@ class LibroController {
 
 
     def verLibro(long id){
-        def idL= this.getParams()
-        def idUsuario = idL.idU
-        def idLibro = idL.id
+        def idL= id
+        //def idLibro = idL.id
         def lista = LibroService.libroToList()
-        def editarLibro = LibroService.libroById(idLibro)
+        def editarLibro = LibroService.libroById(idL)
         def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
-        def buscarLibro =  LibroService.libroById(idLibro)
-        def opiniones = LibroService.opinionesByLibro(buscarLibro)
+
+        def opiniones = LibroService.opinionesByLibro(editarLibro)
         def usuarioL = springSecurityService.principal
 
         //mandarServicio
         def genero = editarLibro.generoLiterario
         def listaLibr = Libro.findAllByGeneroLiterario(genero)
         def autorL = editarLibro.autores
-        def editarAutor = Autor.findById(editarLibro.id)
+        def editarAutor = Autor.findById(autorL.id)
         def libE = AutorService.librosByAutor(editarAutor)
         def listas = Usuario.findById(usuarioL.id).listasL
+        def calificaciones = CalificacionLibro.list()
+        def numeroCal = calificaciones.collect().count{
+            it.Libro.equals(editarLibro)
+        }
 
-        [ libro:editarLibro, listas:listas, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
+        def cal2 = editarLibro.califL.calif
+        def cal3 = cal2.sum()
+        def promedio = cal3 / numeroCal
+        def cuentaE
+
+        if (promedio>= 5){
+            cuentaE ="5"
+        }else if(promedio>=4 && promedio<5) {
+            cuentaE= "4"
+        }else if(promedio>=3 && promedio<4){
+            cuentaE= "3"
+        }else if (promedio>= 2 && promedio <3){
+            cuentaE= "2"
+        }else if (promedio>=1 && promedio<2){
+            cuentaE="1"
+        }
+
+      // render "${cuentaE}"
+
+        [ editarAutor: editarAutor, cuentaE:cuentaE, libro:editarLibro, promedio: promedio, listas:listas,numeroCal: numeroCal, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
 
     }
 
