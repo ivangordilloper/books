@@ -146,7 +146,7 @@
                                 <tr>
                                     <th style="color: #2E3842;">Libros</th>
                                     <th style="color: #2E3842;"></th>
-                                    <th style="color: #2E3842;"><a onclick="myFunction()"><g:img dir="images" file="mas.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
+                                    <th style="color: #2E3842;"><a onclick="hideblock()"><g:img dir="images" file="mas.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -469,7 +469,7 @@
 <script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
 
 <script>
-    function myFunction() {
+    function hideblock() {
         var x = document.getElementById('myDIV');
         if (x.style.display === 'none') {
             x.style.display = 'block';

@@ -41,11 +41,7 @@ body{
                     <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>${usuarioS.username}</span></a>
                     <div id="menu">
                         <ul>
-                            <li> <a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
-                            <li><a href="${createLink(controller : 'perfilUsuario', action:'librosCategoria')}">  Buscar libro</a></li>
-                            <li><a href="${createLink(controller : 'chat', action:'index')}">  Comunidad</a></li>
-                            <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
-                            <li><a href="/usuario/read">Configuracion</a></li>
+                            <li><a href="/logout">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </li>
