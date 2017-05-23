@@ -10,7 +10,8 @@ import java.nio.file.Files
 class ChatController {
     def springSecurityService
     def index() {
-        [user:[nombre:'ivan'],idU1:springSecurityService.principal]
+        def usuario = springSecurityService.principal
+        [user:[nombre:'ivan'],usuarioS:usuario]
     }
 
     def log(){

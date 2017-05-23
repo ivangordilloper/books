@@ -27,15 +27,12 @@ class PerfilAdministradorController {
         def listaLibros = usuario.listasL.collect()
 
 
-        if(usuario.genero == 'F'){
-            pal = "Bienvenida"
-        }
-        else {
-            pal= "Bienvenido"
-        }
+        [listaA: lista, usuarioS: usuarios, listaUsuario: listaUsuarios, libros1:libros, autores1: autores, listaLibros:listaLibros, listaAmigos: listaAmigos]
 
+    }
 
-        [listaA: lista, usuarioS: usuarios, pal: pal, listaUsuario: listaUsuarios, libros1:libros, autores1: autores, listaLibros:listaLibros, listaAmigos: listaAmigos]
-
+    def update(){
+        def user = springSecurityService.principal
+        [user:user, usuarioS: user]
     }
 }

@@ -96,12 +96,12 @@ class LibroController {
 
     def crear(){
         LibroService.crearLibro(params)
-        redirect(action: "read")
+        redirect(controller: "perfilAdministrador", action: "administrador")
     }
 
     def delete(long id){
         LibroService.deleteLibro(id)
-        redirect (action: "read")
+        redirect (controller: "perfilAdministrador", action: "administrador")
     }
 
 
@@ -114,7 +114,7 @@ class LibroController {
     def actualizar(){
         def usuarioU = springSecurityService.principal
         def idU = usuarioU
-        redirect(action: "read")
+        redirect(controller: "perfilAdministrador", action: "administrador")
     }
     def calificar(){
         LibroService.calificarLibro(params)

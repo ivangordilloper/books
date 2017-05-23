@@ -155,18 +155,6 @@
                             <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="margin-top:15px; background-size:100%auto; height: 250px; width: 180px;"/>
                         </div>
 
-                        <div class="row">
-                            <br/>
-                            <div class="dropdown">
-                                <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                    <g:each in="${listas}" var="lista">
-                                        <a onclick="agregar(1, 1)" style="font-size: 15px;"> ${lista.nombre} </a>
-                                    </g:each>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="row" style="height: 30px"></div>
                         <div class="row" style="height: 5px">
                             <p style="color:gray; margin-bottom:1px; font-size:14px; text-align: center; padding-left: 40px">Califica este libro</p>

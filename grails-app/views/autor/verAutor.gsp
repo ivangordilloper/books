@@ -155,17 +155,6 @@
                     <img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: autor.id])}"  style="margin-top:15px; background-size:100%auto; height: 150px; width: 180px;"/>
                 </div>
 
-                <div class="row">
-                    <br/>
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
-                        <div id="myDropdown" class="dropdown-content" style="font-size: 15px">
-                            <a href="#home">Agregar a mis autores favoritos</a>
-                            <a href="#about">Ediar mis autores favoritos</a>
-                            <a href="#contact">Ver mi lista de autores</a>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row" style="height: 30px"></div>
                 <div class="row" style="height: 5px">
