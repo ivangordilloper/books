@@ -33,6 +33,7 @@ class AutorService {
         [foto:foto, bio:bio, nacionalidad: nacionalidad, fechaNac: fechaNac, nombreC: nombreC, genero: genero, generoLiterario: generoLiterario]
         Autor p = new Autor(foto:foto, bio:bio, fechaNac: fechaNac, genero: genero, generoLiterario: generoLiterario, nacionalidad: nacionalidad, nombreCompleto: nombreC)
         p.save(flush: true)
+
     }
     def librosByAutor(editarAutor){
         return editarAutor.libros.asList()

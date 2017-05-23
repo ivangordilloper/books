@@ -10,16 +10,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
     <g:javascript>
-jQuery(document).ready(function($){
-
-        alert("${token}");
-        var token = "${token}";
-        if(token=='error'){
-            $('#MSGE_16').modal('show');
-        }
-        else{
-
-        }});
+    jQuery(document).ready(function($){
+            var token = "${token}";
+            if(token=='error'){
+                $('#MSGE_16').modal('show');
+            }
+            else{
+                $('#MSGA_031').modal('show');
+            }});
     </g:javascript>
 </head>
 <body>
@@ -78,16 +76,37 @@ jQuery(document).ready(function($){
     </article>
 </div>
 <div class="modal fade" data-keyboard="false" id="MSGE_16" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
+                <h4 class="modal-title">Error</h4>
             </div>
             <div class="modal-body">
-                <p>El enlace de validación es incorrecto. Veriﬁque que esté bien conformado. </p>
+                <p style="color: black; text-align: justify">El enlace de validación es incorrecto. Veriﬁque que esté bien conformado. </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="MSGA_031" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">Enlace de validación válido.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
             </div>
         </div>
     </div>

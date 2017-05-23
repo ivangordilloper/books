@@ -1,8 +1,12 @@
 <html>
 <head>
     <title> Nuevo Autor </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <script ></script>
     <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="book.css"/>
+    <g:external dir="css" file="modals.css"/>
 </head>
 <body id="autor">
 <!-- Main -->
@@ -56,8 +60,8 @@
 
                         <div class="col-xs-6 col-sm-4 col-md-3">
                             <ul class="actions vertical">
-                                <li ><g:submitButton name="submit" value="Regístrar" class="special" />
-                                    </li>
+                                <li ><g:submitButton name="submit" value="Regístrar" class="special" required="true"/>
+                                </li>
                             </ul>
 
                         </div>
@@ -89,14 +93,32 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
-                <h4 class="modal-title">Mensaje de confirmación</h4>
+                <h4 class="modal-title">Confirmación</h4>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar el registro de autor?</p>
+                <p style="color: black; text-align: justify">¿Está seguro de que desea cancelar el registro de autor?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
                 <button type="button" class="btn btn-warning" onclick="window.location = '../autor/read';" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="MSGA_031" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Mensaje de alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">Los datos han sido registrados de manera exitosa.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
             </div>
         </div>
     </div>
@@ -110,10 +132,11 @@
         $('#cancelar').click(function () {
             $('#MSGC_01').modal('show');
         });
-    });
     $("form").submit(function() {
+        $('#MSGA_031').modal('show');
+        return true;
 
-
+    });
     });
 </script>
 

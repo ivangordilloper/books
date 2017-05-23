@@ -6,8 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
-    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <script ></script>
+    <g:external dir="css" file="bootstrap-datetimepicker.css"/>    <script ></script>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="modals.css"/>
 </head>
@@ -40,7 +39,7 @@
                                         <div id="errorApellidoM" style="display:none; color:#FF0000;"></div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <input class="inputUsuario" type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true"/>
+                                        <input class="inputUsuario" type="text" name="nombreUsuario" id="nombreUsuario" value="" placeholder="Nombre de usuario" required="true" maxlength="10"/>
                                         <div id="errorUsuario" style="display:none; color:#FF0000;"></div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -49,15 +48,6 @@
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         Fecha de nacimiento:<g:field  type="date" name="fechaNac" id="fechaNac" required="true"/>
                                     </div>
-                                   <!-- <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class='input-group date' id='datetimepicker9'>
-                                            <input type='text' placeholder="Fecha de Nacimiento" class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar">
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div> -->
 
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         Género: <g:select name="genero" id="genero"  from="${['M', 'F']}">
@@ -80,7 +70,7 @@
                                         <div id="errorContrasena2" style="display:none; color:#FF0000;"></div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-6">
-                                        <input name="perfil" type="file" style="color: #0A122A;"/>
+                                        Foto de perfil:<input name="perfil" required ="true" type="file" style="color: #0A122A;" width="300" height="300"/>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -122,10 +112,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
-                <p class="modal-title">Mensaje de confirmación</p>
+                <h4 class="modal-title">Confirmación.</h4>
             </div>
             <div class="modal-body">
-                <p style="color: grey; text-align: justify">¿Está seguro de que desea cancelar el registro?</p>
+                <p style="color: black; text-align: justify">¿Está seguro de que desea cancelar el registro?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
@@ -141,10 +131,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <p class="modal-title">Mensaje de error</p>
+                <h4 class="modal-title">Error.</h4>
             </div>
             <div class="modal-body">
-                <p style="color: grey; text-align: justify">Falta al menos un dato obligatorio para realizar la operación.</p>
+                <p style="color: black; text-align: justify">Falta al menos un dato obligatorio para realizar la operación.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -159,10 +149,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <p class="modal-title">Mensaje de error</p>
+                <h4 class="modal-title">Error.</h4>
             </div>
             <div class="modal-body">
-                <p style="color: grey; text-align: justify">Nombre de usuario en uso, por favor escribe otro.</p>
+                <p style="color: black; text-align: justify">Nombre de usuario en uso, por favor escribe otro.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -178,10 +168,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-error">
-                <p class="modal-title">Mensaje de error</p>
+                <h4 class="modal-title">Error.</h4>
             </div>
             <div class="modal-body">
-                <p style="color: grey; text-align: justify">El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
+                <p style="color: black; text-align: justify">El correo electrónico ya está asociado a otra cuenta. Por favor introduzca otra dirección de correo electrónico.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
@@ -196,10 +186,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
-                <p class="modal-title">Mensaje de alerta</p>
+                <h4 class="modal-title">Alerta.</h4>
             </div>
             <div class="modal-body">
-                <p style="color: grey; text-align: justify">Se te ha enviará un enlace de validación al correo electrónico proporcionado.  </p>
+                <p style="color: black; text-align: justify">Se te enviará un enlace de validación al correo electrónico proporcionado.  </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
@@ -267,27 +257,23 @@
                 var passwd = $('#passwd').val();
                 var passwd2 = $('#passwd2').val();
                 var indicador = 0;
-                if(!nombre.length || !apellidoP.length || !apellidoM.length || !nombreUsuario.length || !telefono.length || !fechaNac.length || !email.length || !email2.length || !passwd.length || !passwd2.length){
-                    $('#MSGE_02').modal('show');
+                if(!isNombre(nombre)) {
+                    $('#errorNombre').show();
+                    $('#errorNombre').html("El formato del campo nombre es incorrecto.");
+                    $('.inputNombre').attr('style','border:1px solid #ff0000');
                 }
-                else{
-                    if(!isNombre(nombre)) {
-                        $('#errorNombre').show();
-                        $('#errorNombre').html("El formato del campo nombre es incorrecto.");
-                        $('.inputNombre').attr('style','border:1px solid #ff0000');
-                    }
-                    else {
-                        indicador++;
-                        $('.inputNombre').removeAttr('style');
-                        $('#errorNombre').hide();
-                    }
-                    if(!isNombre(apellidoP)) {
-                        $('#errorApellidoP').show();
-                        $('#errorApellidoP').html("El formato del campo apellido paterno es incorrecto.");
-                        $('.inputApellidoP').attr('style','border:1px solid #ff0000');
-                    }
-                    else
-                        indicador++;
+                else {
+                    indicador++;
+                    $('.inputNombre').removeAttr('style');
+                    $('#errorNombre').hide();
+                }
+                if(!isNombre(apellidoP)) {
+                    $('#errorApellidoP').show();
+                    $('#errorApellidoP').html("El formato del campo apellido paterno es incorrecto.");
+                    $('.inputApellidoP').attr('style','border:1px solid #ff0000');
+                }
+                else {
+                    indicador++;
                     $('.inputApellidoP').removeAttr('style');
                     $('#errorApellidoP').hide();
                 }

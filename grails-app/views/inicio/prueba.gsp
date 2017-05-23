@@ -29,7 +29,7 @@
         <section class="wrapper style5">
             <div class="inner">
                 <section>
-                    <div class="box">
+                    <div class="box" style="padding-left: 200px;">
 
                         <div ng-app="HelloUserApp">
                             <div ng-controller="HelloUserController">
@@ -38,16 +38,25 @@
                                            placeholder="Filter by" autofocus>
                                 </form>
                                 <ul>
-                                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">{{element.name}} </li>
-                                    <li class="animate-repeat" ng-if="results.length === 0">
-                                        <strong>No results found...</strong>
+                                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+
+                                        <img ng-src="../imagen/renderImageL/{{element.id}}"height="72" width="42" />
+
+                                        <a ng-href="../libro/verLibro/{{element.id}}">
+                                        {{element.name}}
+                                        </a>
                                     </li>
-
+                                    <!--<li class="animate-repeat" ng-if="results.length === 0">
+                                        <strong>No results found...</strong>
+                                    </li>-->
                                 </ul>
-
-
                                 <ul>
-                                    <li data-ng-repeat="element in busqueda.autores | filter:query ">{{element.name}} </li>
+                                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                                        <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
+                                        <a ng-href="../autor/verAutor/{{element.id}}">
+                                            {{element.name}}
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

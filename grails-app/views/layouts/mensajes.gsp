@@ -180,21 +180,6 @@
     </div>
 </div>
 
-<div class="modal fade" data-keyboard="false" id="MSGE_16" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-has-error">
-                <h4 class="modal-title">Mensaje de error</h4>
-            </div>
-            <div class="modal-body">
-                <p>:El enlace de validación es incorrecto. Veriﬁque que esté bien conformado. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" data-keyboard="false" id="MSGE_17" role="dialog">
     <div class="modal-dialog">

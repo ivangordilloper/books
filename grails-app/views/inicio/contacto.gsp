@@ -192,13 +192,16 @@
 </div>
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-warning">
-                <h4 class="modal-title">Mensaje de confirmación</h4>
+                <h4 class="modal-title">Confirmación</h4>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar el registro?</p>
+                <p style="color: black; text-align: justify">¿Está seguro de que desea cancelar la sugerencia?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
@@ -208,13 +211,16 @@
     </div>
 </div>
 <div class="modal fade" id="MSGA_15" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">
-                <h4 class="modal-title">Mensaje de alerta</h4>
+                <h4 class="modal-title">Alerta</h4>
             </div>
             <div class="modal-body">
-                <p>Se ha enviado tu comentario y/o sugerencia a Bookscom. Gracias por ayudar a mejorar la comunidad.  </p>
+                <p style="color: black; text-align: justify">Se ha enviado tu comentario y/o sugerencia a Bookscom. Gracias por ayudar a mejorar la comunidad.  </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>

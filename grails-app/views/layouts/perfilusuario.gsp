@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <g:external dir="js" file="angular.min.js"/>
+    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
+
     <g:external dir="css" file="slides.css"/>
     <g:external dir="css" file="swiper.min.css"/>
     <g:external dir="css" file="main.css"/>
@@ -33,7 +36,49 @@
     <!-- Header -->
     <header id="header">
         <h1><a href="../">BooksCom</a></h1>
+
+
+        <div ng-app="HelloUserApp">
+            <div ng-controller="HelloUserController">
+                <form class="form-inline">
+                    <div style="margin-left: 65%; margin-right: 12%;">
+                    <input ng-model="query" type="text"
+                           placeholder="Filter by" autofocus onkeypress="myFunction()" style="background-color : #ffffff;">
+                </div>
+                </form>
+                <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; background-color: #ffffff; color: #000000;">
+                <ul>
+                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+
+                        <img ng-src="../imagen/renderImageL/{{element.id}}"height="72" width="42" />
+
+                        <a ng-href="../libro/verLibro/{{element.id}}">
+                            {{element.name}}
+                        </a>
+                    </li>
+                    <!--<li class="animate-repeat" ng-if="results.length === 0">
+                                        <strong>No results found...</strong>
+                                    </li>-->
+                </ul>
+                <ul>
+                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                        <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
+                        <a ng-href="../autor/verAutor/{{element.id}}">
+                            {{element.name}}
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <div id="livesearch"> </div>
         <nav id="nav">
+
             <ul>
 
                 <li class="special">
@@ -72,7 +117,13 @@
 
 </div>
 <!-- Scripts -->
-
+<script>
+    function myFunction() {
+        $("#busqueda").css('display', '');
+        var prueba = $("#obtenerValor").val();
+        alert(prueba);
+    }
+</script>
 <script>
 
     var usuarios = []

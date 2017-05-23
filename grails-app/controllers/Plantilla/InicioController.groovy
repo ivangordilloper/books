@@ -54,7 +54,7 @@ class InicioController {
         def autores = Autor.list();
         //List autores = Libro.list().autores
         jsonMap.libros = libros.collect{libro -> return [name:libro.titulo, id: libro.id]}
-        jsonMap.autores = autores.collect{autor -> return [name:autor.nombreCompleto]}
+        jsonMap.autores = autores.collect{autor -> return [name:autor.nombreCompleto, id: autor.id]}
         render jsonMap as JSON
         //println jsonMap
         //return jsonMap

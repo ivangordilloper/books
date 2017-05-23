@@ -88,10 +88,10 @@ input[type=file].hidden {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-has-warning">
-                    <h4 class="modal-title">Mensaje de confirmación</h4>
+                    <h4 class="modal-title">Confirmación</h4>
                 </div>
                 <div class="modal-body">
-                    <p>¿Está seguro de que desea cancelar el registro de libro?</p>
+                    <p style="color: black; text-align: justify">¿Está seguro de que desea cancelar el registro de libro?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
@@ -107,10 +107,10 @@ input[type=file].hidden {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-has-success">
-                    <h4 class="modal-title">Mensaje de alerta</h4>
+                    <h4 class="modal-title">Alerta</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Los datos han sido actualizados de manera exitosa.</p>
+                    <p style="color: black; text-align: justify">Los datos han sido registrados de manera exitosa.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>

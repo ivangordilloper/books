@@ -25,14 +25,34 @@
                 <g:uploadForm method="post" action="actualizar">
                     <g:hiddenField name="idLibro" value="${libro.id}" />
                     <div class="row uniform">
-
-                        <div class="12u 12u$(xsmall)">
-                            <g:field  type="text" name="titulo" id="titulo" value = "${libro.titulo}" placeholder="Título" required="true" maxlength="20"/>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <g:field  type="text" name="titulo" id="titulo" value = "${libro.titulo}" placeholder="Título" required="true" maxlength="50"/>
                         </div>
-                        <div class="12u 12u$(xsmall)">
+
+                        <div class="col-xs-12 col-sm-6 col-md-6">
                             <g:select name="autores" required="true" from="${autorl.nombreCompleto}"  >
                             </g:select>
                         </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <g:field  type="text" name="isbn" id="isbn" value ="${libro.isbn}" placeholder="ISBN" required="true" maxlength="50"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <g:field type="text" name="editorial" id="editorial" value="${libro.editorial}" placeholder="Editorial" maxlength="50" required="true"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Selecciona género literario:<g:select name="pais" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" value="${libro.generoLiterario}" required="true">
+                            </g:select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value="${libro.fechaPub}"  placeholder="Fecha Publicación" required="true"/>
+                        </div>
+                        
+
+
+
+
+
+
                         <div class="6u 12u$(xsmall)">
                             <g:field type="text" name="editorial" id="editorial"  value="${libro.editorial}" placeholder="Editorial" maxlength="20" required="true"/>
                         </div>
