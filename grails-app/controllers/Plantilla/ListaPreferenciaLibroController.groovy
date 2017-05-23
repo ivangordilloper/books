@@ -35,12 +35,13 @@ class ListaPreferenciaLibroController {
 
     def agregarElemento() {
         def usuarioU = springSecurityService.principal
+        def user = Usuario.findById(usuarioU.id)
         def  id= params.lista
         def idLibro = params.libro
 
         //render "${id} ${idLibro}"
         ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
-
+        FOAFService.setLibro(idLibro as int,user.correo)
       //  Usuario.findById(usuarioU.id).listasL.add(lib)
        // [idU: usuarioU]
        // redirect (controller: "Libro", action:"verLibro", params: [id: idLibro])

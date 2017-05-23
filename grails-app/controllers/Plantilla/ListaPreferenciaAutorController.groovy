@@ -16,10 +16,11 @@ class ListaPreferenciaAutorController {
 
     def agregarElemento(){
         def usuarioL = springSecurityService.principal
+        def user = Usuario.findById(usuarioL.id)
         def ele = params.autorI
         def li = Usuario.findById(usuarioL.id).listaA
         def lii = li.autores.add(Autor.findById(ele))
-
+        FOAFService.setAutor(ele as int,user.correo)
         redirect(controller:"perfilUsuario", action: "usuario")
         [idU1: usuarioL]
 
