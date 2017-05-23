@@ -8,278 +8,105 @@
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
 </head>
-<style type="text/css">
-.linea{
-    margin: 1px;
-    color: #BC673F;
-    size: 1px;
-}
 
-</style>
 <body>
 
 <div style="background:white; color: black; font-size: 15px">
     <div class="container">
-
         <!--Fila 1 : Vacia-->
         <div class="row" style="height: 70px">
         </div> <!--Fila 1 : Vacia-->
 
-         <!--Fila 2 : Recomendaciones-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Recomendaciones</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
+        <!--Recomendaciones-->
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+            <!-- Swipper-->
+            <div class="swiper-container" style="padding:0px;">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                     <!-- Slides -->
+                     <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Dramático")}" var="libro">
+                                 <div class="swiper-slide separator-slide">
+                                     <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
+                                     <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
+                                     <% def promedio = libro.califL.calif.collect().sum() / libro.califL.size()
+                                             def cuentaE
 
-            </div>
-        </div>
+                                             if (promedio>= 5){
+                                                 cuentaE ="5"
+                                             }else if(promedio>=4 && promedio<5) {
+                                                 cuentaE= "4"
+                                             }else if(promedio>=3 && promedio<4){
+                                                 cuentaE= "3"
+                                             }else if (promedio>= 2 && promedio <3){
+                                                 cuentaE= "2"
+                                             }else if (promedio>=1 && promedio<2){
+                                                 cuentaE="1"
+                                             }
+                                     %>
+                                     <div style="text-align: center">
+                                     <g:if test="${cuentaE.equals("1")}">
+                                         <% def count1= 1 %>
+                                         <g:each in="${1..count1}" var="b" >
+                                             <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                         </g:each>
+                                         <% def count11= 4 %>
+                                         <g:each in="${1..count11}" var="b" >
+                                             <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                         </g:each>
+                                     </g:if>
 
-        <div class="row"  style="padding: 0px; margin: 0px">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="swiper-container">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper" style="padding-top: 10px">
-                            <!-- Slides -->
-
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <g:img dir="images" file="book.png"  style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;"/>
-                            </div>
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <g:img dir="images" file="book.png"  style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;"/>
-                            </div>
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <g:img dir="images" file="book.png"  style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;"/>
-                            </div>
-                            <div class="swiper-slide separator-slide">
-                                <g:img dir="images" file="book.png"  style="width: 100px; height: 150px;"/>
-                            </div>
-
-                        </div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination"></div>
-                        <!-- If we need scrollbar -->
-                    </div>
-
+                                     <g:if test="${cuentaE.equals("2")}">
+                                         <% def count2= 2 %>
+                                         <g:each in="${1..count2}" var="b" >
+                                             <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                         </g:each>
+                                         <% def count21= 3 %>
+                                         <g:each in="${1..count21}" var="b" >
+                                             <span style="font-size:150%;color:gainsboro">&starf;</span>
+                                         </g:each>
+                                     </g:if>
+                                     <g:if test="${cuentaE.equals("3")}">
+                                         <% def count3= 3 %>
+                                         <g:each in="${1..count3}" var="b" >
+                                             <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                         </g:each>
+                                         <% def count31= 2 %>
+                                         <g:each in="${1..count31}" var="b" >
+                                             <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                         </g:each>
+                                     </g:if>
+                                     <g:if test="${cuentaE.equals("4")}">
+                                         <% def count4= 4 %>
+                                         <g:each in="${1..count4}" var="b" >
+                                             <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                         </g:each>
+                                         <% def count41= 1 %>
+                                         <g:each in="${1..count41}" var="b" >
+                                             <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                         </g:each>
+                                     </g:if>
+                                     <g:if test="${cuentaE.equals("5")}">
+                                         <% def count5= 5 %>
+                                         <g:each in="${1..count5}" var="b" >
+                                             <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                         </g:each>
+                                     </g:if>
+                                 </div>
+                                 </div>
+                     </g:each>
                 </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- If we need scrollbar -->
             </div>
-       <!--Fila 2 : Recomendaciones-->
-
-       <!--Fila 3 : Épico-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Obras literarías de género Épico</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
-
             </div>
-        </div>
-
-        <div class="row"  style="padding: 0px; margin: 0px">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="swiper-container" style="padding: 0px; margin: 0px">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 5px; margin:5px;">
-                    <!-- Slides -->
-                        <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("'Epico")}" var="libro">
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 200px; width: 150px"/>
-                                <p style="text-align: center">${libro.titulo}</p>
-                                <p style="text-align: center">${libro.califL}</p>
-                            </div>
-                        </g:each>
+        </div> <!--Recomendaciones-->
 
 
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-
-            </div>
-        </div>
-
-
-       <!--Fila 4 : Dramatico-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Obras literarías de género Dramático</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="row"  style="padding: 0px; margin: 0px">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="swiper-container" style="padding: 0px; margin: 0px">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 5px; margin:5px;">
-                        <!-- Slides -->
-                         <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Dramático")}" var="libro">
-                             <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                 <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 200px; width: 150px"/></a>
-                                 <p style="text-align: center">${libro.titulo}</p>
-                                 <p style="text-align: center">${libro.califL}</p>
-                             </div>
-                        </g:each>
-
-
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-
-            </div>
-        </div>
-
-
-        <!--Fila 5 : Didáctico-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Obras literarías de género Didáctico</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="row"  style="padding: 0px; margin: 0px">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="swiper-container" style="padding: 0px; margin: 0px">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 5px; margin:5px;">
-                    <!-- Slides -->
-                        <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Didáctico")}" var="libro">
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 200px; width: 150px"/>
-                                <p style="text-align: center">${libro.titulo}</p>
-                                <p style="text-align: center">${libro.califL}</p>
-                            </div>
-                        </g:each>
-
-
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-
-            </div>
-        </div>
-
-        <!--Fila 6 : Histórico-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Obras literarías de género Histórico</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="row"  style="padding: 0px; margin: 0px">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="swiper-container" style="padding: 0px; margin: 0px">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 5px; margin:5px;">
-                    <!-- Slides -->
-                        <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Historia")}" var="libro">
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 200px; width: 150px"/>
-                                <p style="text-align: center">${libro.titulo}</p>
-                                <p style="text-align: center">${libro.califL}</p>
-                            </div>
-                        </g:each>
-
-
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-
-            </div>
-        </div>
-
-        <!--Fila 7 : Lírico-->
-        <div class="row" style="padding: 0px; margin: 0px">
-            <div class="col-sm-12 col-md-12">
-                <table class="table table-striped" style="color: #2E3842;">
-                    <thead>
-                    <tr>
-                        <th style="color: #2E3842;">Obras literarías de género Lírico</th>
-                        <th style="color: #2E3842;"></th>
-                        <th style="color: #2E3842;"></th>
-                    </tr>
-                    </thead>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="row"  style="padding: 0px; margin: 0px">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="swiper-container" style="padding: 0px; margin: 0px">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="padding-top: 5px; margin:5px;">
-                    <!-- Slides -->
-                        <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Lírico")}" var="libro">
-                            <div class="swiper-slide separator-slide" style="width: 100px; height: 150px; margin: 0px!important; padding: 0px!important;">
-                                <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 200px; width: 150px"/>
-                                <p style="text-align: center">${libro.titulo}</p>
-                                <p style="text-align: center">${libro.califL}</p>
-                            </div>
-                        </g:each>
-
-
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need scrollbar -->
-                </div>
-
-            </div>
-        </div>
-
-
-
-        <br/>
-        <br/>
     </div>  <!-- Fin div contenedor -->
-</div> <!--Fin Div blanco-->
 
+</div>
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

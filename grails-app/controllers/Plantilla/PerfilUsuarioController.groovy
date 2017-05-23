@@ -68,7 +68,8 @@ class PerfilUsuarioController {
     def librosCategoria(){
         def libroCi = LibroService.libroToList()
         def usuarioU = springSecurityService.principal
-        [libroC: libroCi, usuarioS:usuarioU]
+        def calificaciones = CalificacionLibro.list()
+        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones]
 
     }
 

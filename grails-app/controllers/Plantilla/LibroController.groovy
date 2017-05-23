@@ -70,7 +70,6 @@ class LibroController {
         def cal2 = editarLibro.califL.calif
         def cal3 = cal2.sum()
         def promedio = cal3 / numeroCal
-        promedio = 2
         def cuentaE
 
         if (promedio>= 5){

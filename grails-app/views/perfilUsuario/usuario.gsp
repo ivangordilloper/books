@@ -17,11 +17,11 @@
 
 </style>
 <body>
-<div style="background:white; color: black; font-size: 15px">
+<div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
     <div class="container">
 
         <!--Fila 1 : Vacia-->
-        <div class="row" style="height: 70px">
+        <div class="row" style="height: 45px">
         </div> <!--Fila 1 : Vacia-->
 
          <!--Fila 2 : 3 columnas-->
@@ -30,11 +30,19 @@
             <div class="col-sm-6 col-md-2">
                     <div class="container">
                         <div class="row">
-                            <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${usuarioS.username}</i> </p>
+                            <p style="margin-bottom:1px; color: black; font-size: 35px"><i></i> </p>
+                            <br/>
                         </div>
                     <div class="row">
-                        <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id ])}"  style="height: 200px; width: 200px;"/>
+                        <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id ])}"  style="height: 170px; width: 170px;"/>
                     </div>
+                            <div class="row">
+                                <br/>
+                                <div class="dropdown">
+                                    <button class="special" style="width: 155px; font-size: 10px;">Editar foto</button>
+                                </div>
+                            </div>
+
 
                     </div>
             </div>  <!--Fila 2.1 -->

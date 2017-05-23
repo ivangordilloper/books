@@ -79,7 +79,8 @@ class UsuarioController {
         [usuarioBusqueda:usuarioBusqueda, idU: usuario]
     }
     def update(long id){
-        def editarUsuario = Usuario.findById(id)
+        def usuario = springSecurityService.principal
+        def editarUsuario = Usuario.findById(usuario.id)
         def fecha = editarUsuario.fechaNac.toString()
         def fecha2 = fecha.substring(0,10)
         [user:editarUsuario, fecha:fecha2]
