@@ -66,10 +66,14 @@ class LibroController {
         def numeroCal = calificaciones.collect().count{
             it.Libro.equals(editarLibro)
         }
-
+        def promedio
         def cal2 = editarLibro.califL.calif
         def cal3 = cal2.sum()
-        def promedio = cal3 / numeroCal
+        if(numeroCal) {
+            promedio = cal3 / numeroCal
+        }else{
+            promedio = 1
+        }
         def cuentaE
 
         if (promedio>= 5){
