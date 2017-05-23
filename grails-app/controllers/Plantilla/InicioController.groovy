@@ -50,11 +50,12 @@ class InicioController {
         HashMap jsonMap = new HashMap()
         //List libros = Libro.list()
         def libros = Libro.list()
-
+        def usuarios = Usuario.list()
         def autores = Autor.list();
         //List autores = Libro.list().autores
         jsonMap.libros = libros.collect{libro -> return [name:libro.titulo, id: libro.id]}
         jsonMap.autores = autores.collect{autor -> return [name:autor.nombreCompleto, id: autor.id]}
+        jsonMap.usuarios = usuarios.collect{usuario -> return [name:usuario.nombre+" "+usuario.apellidoP+" "+usuario.apellidoM, id: usuario.id]}
         render jsonMap as JSON
         //println jsonMap
         //return jsonMap
