@@ -88,11 +88,10 @@
                     <div id="menu">
                         <ul>
                             <li><a href="/perfilUsuario/usuario">Mi perfil</a></li>
-                            <li> <a href="${createLink(controller : 'usuario', action:'read')}">  Buscar amigos</a></li>
                             <li><a href="${createLink(controller : 'perfilUsuario', action:'librosCategoria')}">  Buscar libros</a></li>
                             <li><a href="${createLink(controller : 'chat', action:'index')}">  Comunidad</a></li>
                             <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
-                            <li><a href="#">Cerrar sesión</a></li>
+                            <li><a href="/logout">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </li>

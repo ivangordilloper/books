@@ -44,7 +44,7 @@ class AutorController{
 
     def crear() {
         AutorService.createAutor(params)
-        redirect(action: "read")
+        redirect (controller: "perfilAdministrador", action: "administrador")
     }
     def verAutor(long id){
         def usuario = springSecurityService.principal
@@ -62,12 +62,12 @@ class AutorController{
 
     def delete(int id){
         AutorService.deleteAutor(id)
-        redirect (action: "read")
+        redirect (controller: "perfilAdministrador", action: "administrador")
 
     }
 
     def actualizar(){
         AutorService.editarAutor(params)
-        redirect (action: "read")
+        redirect (controller: "perfilAdministrador", action: "administrador")
     }
 }

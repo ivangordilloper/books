@@ -25,7 +25,7 @@ input[type=file].hidden {
                 <h4>Agregar Libro</h4>
                 <g:uploadForm method="post" action="crear">
                     <div class="row uniform">
-                        <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                             <g:field  type="text" name="titulo" id="titulo" placeholder="Título" required="true" maxlength="50"/>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -39,8 +39,7 @@ input[type=file].hidden {
                             <g:field type="text" name="editorial" id="editorial" placeholder="Editorial" maxlength="50" required="true"/>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6">
-                            Selecciona género literario:<g:select name="pais" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" required="true">
-                            </g:select>
+                            <g:field type="text" name="pais" id="editorial" placeholder="País" maxlength="50" required="true"/>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación" required="true"/>
@@ -49,9 +48,9 @@ input[type=file].hidden {
                             Selecciona género literario:<g:select name="generoLiterario" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" required="true">
                             </g:select>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            Selecciona subgénero literario:<g:select name="subGenero" from="${["Elegía", "Canción", "Oda", "Satira", "Égloga", "Cantar de gesta", "Romance", "Novela", "Cuento", "Poema épico", "Tragedia", "Comedia", "Tragicomedia", "Drama histórico", "Drama social", "Leyenda", "Ensayo", "Crítica"]}" required="true">
-                            </g:select>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <g:field type="text" name="pais" id="subGenero" placeholder="Subgénero" maxlength="50" required="true"/>
+
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -95,7 +94,7 @@ input[type=file].hidden {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-warning" onclick="window.location = '../libro/read';" data-dismiss="modal">Sí</button>
+                    <button type="button" class="btn btn-warning" onclick="window.location = '/perfilAdministrador/administrador';" data-dismiss="modal">Sí</button>
                 </div>
             </div>
         </div>
@@ -113,7 +112,7 @@ input[type=file].hidden {
                     <p style="color: black; text-align: justify">Los datos han sido registrados de manera exitosa.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../perfilAdministrador/administrador';">Aceptar</button>
                 </div>
             </div>
         </div>
