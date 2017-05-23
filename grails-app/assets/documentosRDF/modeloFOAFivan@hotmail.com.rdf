@@ -10,7 +10,7 @@
     <foaf:name>Ivan Gordillo Perez</foaf:name>
     <foaf:knows>
       <foaf:Person>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
         <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
         <foaf:name>Ivan Gordillo Perez</foaf:name>
       </foaf:Person>
@@ -24,17 +24,17 @@
       <foaf:topic>book</foaf:topic>
     </foaf:Document>
   </foaf:Person>
-  <rdf:Description rdf:about="http://localhost:8080/assets/modeloFOAFivan@hotmail.com.rdf">
+  <rdf:Description rdf:about="http://localhost:8081/assets/modeloFOAFivan@hotmail.com.rdf">
     <foaf:knows>
       <foaf:Person>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
         <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
         <foaf:name>Ivan Gordillo</foaf:name>
       </foaf:Person>
     </foaf:knows>
     <foaf:knows>
       <foaf:Person>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
         <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
         <foaf:name>Ivan Gordillo</foaf:name>
       </foaf:Person>
@@ -47,7 +47,7 @@
       <foaf:Person>
         <foaf:name>Ivan Gordillo</foaf:name>
         <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
       </foaf:Person>
     </foaf:knows>
   </rdf:Description>

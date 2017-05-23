@@ -28,14 +28,16 @@
         <div class="tab-content">
             <div id="recomendaciones" class="tab-pane active">
                 <!--Dramático-->
+
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <!-- Swipper-->
                         <div class="swiper-container" style="padding:0px;">
+
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper">
                             <!-- Slides -->
-                                <g:each in="${Plantilla.Libro.findAllByGeneroLiterario("Dramático")}" var="libro">
+                                <g:each in="${libroFOAF}" var="libro">
                                     <div class="swiper-slide separator-slide">
                                         <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
                                         <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
@@ -111,8 +113,97 @@
                             <!-- If we need scrollbar -->
                         </div>
                     </div>
-                </div> <!--Recomendaciones-->
-            </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <!-- Swipper-->
+                        <div class="swiper-container" style="padding:0px;">
+
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                            <!-- Slides -->
+                                <g:each in="${libroFOAF}" var="libro">
+                                    <div class="swiper-slide separator-slide">
+                                        <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
+                                        <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
+                                        <% def promedio = libro.califL.calif.collect().sum() / libro.califL.size()
+                                        def cuentaE
+
+                                        if (promedio>= 5){
+                                            cuentaE ="5"
+                                        }else if(promedio>=4 && promedio<5) {
+                                            cuentaE= "4"
+                                        }else if(promedio>=3 && promedio<4){
+                                            cuentaE= "3"
+                                        }else if (promedio>= 2 && promedio <3){
+                                            cuentaE= "2"
+                                        }else if (promedio>=1 && promedio<2){
+                                            cuentaE="1"
+                                        }
+                                        %>
+                                        <div style="text-align: center">
+                                            <g:if test="${cuentaE.equals("1")}">
+                                                <% def count1= 1 %>
+                                                <g:each in="${1..count1}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count11= 4 %>
+                                                <g:each in="${1..count11}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+
+                                            <g:if test="${cuentaE.equals("2")}">
+                                                <% def count2= 2 %>
+                                                <g:each in="${1..count2}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count21= 3 %>
+                                                <g:each in="${1..count21}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("3")}">
+                                                <% def count3= 3 %>
+                                                <g:each in="${1..count3}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count31= 2 %>
+                                                <g:each in="${1..count31}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("4")}">
+                                                <% def count4= 4 %>
+                                                <g:each in="${1..count4}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count41= 1 %>
+                                                <g:each in="${1..count41}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("5")}">
+                                                <% def count5= 5 %>
+                                                <g:each in="${1..count5}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                        </div>
+                                    </div>
+                                </g:each>
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                            <!-- If we need scrollbar -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--Recomendaciones-->
         </div>
 
     </div>  <!-- Fin div contenedor -->

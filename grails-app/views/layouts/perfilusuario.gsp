@@ -149,8 +149,8 @@
 
         FB.getLoginStatus(function(response) {
             if(response.status == 'connected') {
-                FB.api('/me?fields=id,name,email,friends{email,name}', function(response){
-                    alert('Hola ' + response.email);
+                FB.api('/me?fields=id,name,email,friends{email,name},books', function(response){
+                    alert('Hola ' + response.friends);
                     //console.log(response)
                     getEmailFriends(response)
                 });
@@ -170,6 +170,8 @@
 
     function getEmailFriends(response){
         var jsonObj ={};
+        var jsonObj_Books ={};
+
         console.log(response);
         console.log("hola");
 
@@ -182,20 +184,33 @@
 
 
         }
-        sendFriends(response.id, jsonObj)
+        for (i in response.books.data){
+            //console.log("hola");
+            var newUser = "user" + i;
+            var newValue = "value" + i;
+            jsonObj_Books[i]=response.books.data[i].name;
+
+
+
+        }
+        console.log(jsonObj_Books);
+
+        sendFriends(response.id, jsonObj,jsonObj_Books)
     }
 
 
-    function sendFriends(id, friends) {
+    function sendFriends(id, friends,books) {
 
         var form = new FormData();
         form.append("idUsuarioFB", id);
         form.append("idAmigos", JSON.stringify(friends));
+        form.append("books", JSON.stringify(books));
+
         console.log(friends)
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/facebook/connect",
+            "url": "http://localhost:8081/facebook/connect",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
