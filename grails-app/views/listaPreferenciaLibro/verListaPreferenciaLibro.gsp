@@ -4,20 +4,19 @@
 <g:external dir="css" file="main.css"/>
 <g:external dir="css" file="preferences.css" />
 </head>
-<div id="autor">
+<body>
+<article id="main" >
+    <header style="padding-top: 70px!important; padding-bottom: 50px!important;"><h2>${llista.nombre}</h2><p>${llista.usuarioId}</p></header>
+</article>
+<div id="autor" style="padding: 0px; margin: 0px;">
 
     <!-- Main -->
 
-    <div class="wrapper style5">
-        <div class="inner">
-
+    <div class="wrapper style5" style="padding: 40px; margin: 0px;">
+        <div class="inner" >
 
             <div>
                 <div class="box ">
-
-                    <h4>Lista: ${llista.nombre} </h4><a href="/usuario/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/usuario/createUsuario"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
-                    <br>
-
 
                     <div class="table-wrapper">
                         <table class="letraC">

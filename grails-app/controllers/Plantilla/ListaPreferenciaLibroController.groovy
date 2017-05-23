@@ -38,6 +38,7 @@ class ListaPreferenciaLibroController {
         def  id= params.lista
         def idLibro = params.libro
 
+        //render "${id} ${idLibro}"
         ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
 
       //  Usuario.findById(usuarioU.id).listasL.add(lib)
@@ -63,16 +64,16 @@ class ListaPreferenciaLibroController {
     def delete(long id) {
         def usuarioU = springSecurityService.principal
         def us = ListaPreferenciaLibro.findById(usuarioU.id)
-        def us2 = us.Usuario.getId()
         def l = ListaPreferenciaLibro.findById(id).delete()
         [idU: usuarioU]
-        redirect(action: "read")
+        redirect(controller:"perfilUsuario", action: "usuario")
 
     }
 
-    def verListaPreferenciaLibro() {
+    def verListaPreferenciaLibro(long id) {
         def usuarioU = springSecurityService.principal
-        def editarLista = ListaPreferenciaLibro.findById(usuarioU.id)
+        def editarLista = ListaPreferenciaLibro.findById(id)
+       // def editarLista = Usuario.findById(usuarioU.id).listasL
         def listaAutor = Autor.list()
 
         [llista: editarLista, lautor: listaAutor, idU:usuarioU]
@@ -86,7 +87,7 @@ class ListaPreferenciaLibroController {
 
         [nombre: nombre,idU: usuarioU]
          u.addToListasL(new ListaPreferenciaLibro(nombre: nombre))
-         redirect(action: "read")
+        redirect(controller:"perfilUsuario", action: "usuario")
 
     }
 
@@ -97,7 +98,7 @@ class ListaPreferenciaLibroController {
         listaA.save()
         def us = ListaPreferenciaLibro.findById(idLista)
         def us2 = us.Usuario.getId()
-        redirect(action: "read", id: us2)
+        redirect(controller:"perfilUsuario", action: "usuario")
 
     }
 }

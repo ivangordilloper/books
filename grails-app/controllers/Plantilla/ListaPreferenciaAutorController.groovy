@@ -14,6 +14,16 @@ class ListaPreferenciaAutorController {
 
     }
 
+    def agregarElemento(){
+        def usuarioL = springSecurityService.principal
+        def ele = params.autorI
+        def li = Usuario.findById(usuarioL.id).listaA
+        def lii = li.autores.add(Autor.findById(ele))
+
+        redirect(controller:"perfilUsuario", action: "usuario")
+        [idU1: usuarioL]
+
+    }
     def read(long id) {
         def listaAutor = Usuario.findById(id).listasA
         [lAutor: listaAutor, idU:id]

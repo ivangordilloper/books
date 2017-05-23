@@ -8,7 +8,9 @@ import grails.plugin.springsecurity.annotation.Secured
 class UsuarioController {
     def mailService
     def springSecurityService
-
+    def AutorService
+    def LibroService
+    def FOAFService
     def passwordEncoder
 
     def createUsuario() {
@@ -53,10 +55,10 @@ class UsuarioController {
         def validar = Usuario.findByToken(token);
         if(validar) {
             validar.setToken("Valido")
-
+            validar.enabled = true;
             def autors = Autor.list()
             def libros = Libro.list()
-            [autors:autors, libros: libros, token:"valido"]
+            [autors:autors, email:validar.correo, libros: libros, token:"valido"]
         }else {
             [utoken:"invalido"]
             def autors = Autor.list()
@@ -64,7 +66,23 @@ class UsuarioController {
             [autors:autors, libros: libros, token:"error"]
         }
     }
+    def setFOAF(){
 
+        def genero = params.generof
+        def autores = [params.autor1, params.autor2, params.autor3]
+        def libros = [params.libro1, params.libro2,params.libro3]
+        def email = params.email
+        libros.each {
+            FOAFService.setLibro(it.toString().toInteger(), email)
+        }
+        autores.each {
+            FOAFService.setAutor(it.toString().toInteger(), email)
+        }
+        redirect(controller: "inicio", action: "iniciarSesion")
+
+
+
+    }
     def read(){
         def usuarioL = springSecurityService.principal
         def listaUsuario = Usuario.list()
@@ -74,16 +92,67 @@ class UsuarioController {
     }
 
     def verUsuario(int id){
-        def editarUsuario = Usuario.findById(id)
+        def usuarioBusqueda = Usuario.findById(id)
+        def usuario = springSecurityService.principal
+        [usuarioBusqueda:usuarioBusqueda, idU: usuario]
+    }
+    def update(long id){
+        def editarUsuario
+        if(id){
+            editarUsuario = Usuario.findById(id)
+        }else{
+            def usuario = springSecurityService.principal
+            editarUsuario = Usuario.findById(usuario.id)
+        }
+
         def fecha = editarUsuario.fechaNac.toString()
         def fecha2 = fecha.substring(0,10)
         [user:editarUsuario, fecha:fecha2]
     }
-    def update(long id){
-        def editarUsuario = Usuario.findById(id)
-        def fecha = editarUsuario.fechaNac.toString()
-        def fecha2 = fecha.substring(0,10)
-        [user:editarUsuario, fecha:fecha2]
+
+    def verLibro(long id){
+        def idL= id
+        //def idLibro = idL.id
+        def lista = LibroService.libroToList()
+        def editarLibro = LibroService.libroById(idL)
+        def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
+
+        def opiniones = LibroService.opinionesByLibro(editarLibro)
+        def usuarioL = springSecurityService.principal
+
+        //mandarServicio
+        def genero = editarLibro.generoLiterario
+        def listaLibr = Libro.findAllByGeneroLiterario(genero)
+        def autorL = editarLibro.autores
+        def editarAutor = Autor.findById(autorL.id)
+        def libE = AutorService.librosByAutor(editarAutor)
+        def listas = Usuario.findById(usuarioL.id).listasL
+        def calificaciones = CalificacionLibro.list()
+        def numeroCal = calificaciones.collect().count{
+            it.Libro.equals(editarLibro)
+        }
+
+        def cal2 = editarLibro.califL.calif
+        def cal3 = cal2.sum()
+        def promedio = cal3 / numeroCal
+        def cuentaE
+
+        if (promedio>= 5){
+            cuentaE ="5"
+        }else if(promedio>=4 && promedio<5) {
+            cuentaE= "4"
+        }else if(promedio>=3 && promedio<4){
+            cuentaE= "3"
+        }else if (promedio>= 2 && promedio <3){
+            cuentaE= "2"
+        }else if (promedio>=1 && promedio<2){
+            cuentaE="1"
+        }
+
+        // render "${cuentaE}"
+
+        [ editarAutor: editarAutor, cuentaE:cuentaE, libro:editarLibro, promedio: promedio, listas:listas,numeroCal: numeroCal, fecha:fecha, idU1: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
+
     }
 
     def crear(){

@@ -7,7 +7,7 @@ class ListaPreferenciaAutor {
     Usuario Usuario
 
     static constraints = {
-        nombre size: 255, nullable: false, unique: true
+        nombre size: 255, nullable: false
     }
 
     static hasMany = [autores: Autor]

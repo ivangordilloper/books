@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Bookscom </title>
+    <title>LIBRO</title>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="usuario.css"/>
     <g:external dir="css" file="swiper.min.css"/>
@@ -137,7 +137,8 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div style="background: white; color: black;">
+<div class="container" >
 
     <!--una-->
     <div class="row" style="height: 50px;">
@@ -161,7 +162,7 @@
                                 <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
                                 <div id="myDropdown" class="dropdown-content">
                                     <g:each in="${listas}" var="lista">
-                                        <a onclick="agregar(1, 1)" style="font-size: 15px;"> ${lista.nombre} </a>
+                                        <a onclick="agregar(${lista.id}, ${libro.id})" style="font-size: 15px;"> ${lista.nombre} </a>
                                     </g:each>
                                 </div>
                             </div>
@@ -195,7 +196,7 @@
 
                     <div class="row" style="margin-bottom: 0px">
                         <g:each in="${libro.autores}" var="b" >
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: b.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'perfilUsuario', action:'verAutor', params: [id: b.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
                         </g:each>
                         <div>
 
@@ -267,7 +268,7 @@
                 <section>
                     <g:form action="opinar" method="post">
                         <g:hiddenField name="idLibro" value="${libro.id}" />
-                        <g:hiddenField name="idUsuario" value="${idU1.id}" />
+                        <g:hiddenField name="idUsuario" value="${usuarioS.id}" />
                         <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                             <g:field name="mandarO" style="padding-top: 3px; height:70px; width: 340px; margin:0px" type="text" class="form-control" required= "true" placeholder="Escribe tu opinión..."></g:field>
@@ -284,7 +285,7 @@
                                     <div class="row">
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                                    <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: idU1.id])}" style="margin:0px; padding:0px; background-radius:50%; border-radius: 50%; background-size:100%auto; height: 40px; width: 40px;" />
+                                                    <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: opinion.usuario.id])}" style="margin:0px; padding:0px; background-radius:50%; border-radius: 50%; background-size:100%auto; height: 40px; width: 40px;" />
                                                  </div>
                                          </div>
                                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -319,7 +320,7 @@
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
+                                    <a href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
                                 </div>
                             </g:else>
                         </g:each>
@@ -356,13 +357,13 @@
                     <hr/>
                     <!-- Libros relacionados por mismo Autor-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count2= listaAI.collect().size()-1%>
-                        <g:each in="${0..count2}" var="c" >
+                        <% def count30= listaAI.collect().size()-1%>
+                        <g:each in="${0..count30}" var="c" >
                             <g:if test="${listaAI[c].id.equals(libro.id)}">
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/> </a>
+                                    <a href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/> </a>
                                 </div>
                             </g:else>
                         </g:each>
@@ -380,7 +381,7 @@
 
 </div>
 
-
+</div>
 <!-- Scripts -->
 <script>
     /* When the user clicks on the button,

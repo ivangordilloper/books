@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Bookscom </title>
+    <title> Bookscom | Autor</title>
 
     <style type="text/css">
 
@@ -160,9 +160,9 @@
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
                         <div id="myDropdown" class="dropdown-content" style="font-size: 15px">
-                            <a href="#home">Agregar a mis autores favoritos</a>
-                            <a href="#about">Ediar mis autores favoritos</a>
-                            <a href="#contact">Ver mi lista de autores</a>
+                            <g:each in="${lista}" var="lista1">
+                            <a onclick="agregarA(${autor.id})">${lista1.nombre}</a>
+                            </g:each>
                         </div>
                     </div>
                 </div>
@@ -298,7 +298,34 @@
         }
     }
 </script>
+<script>
+    function agregarA(id) {
 
+        var form = new FormData();
+        form.append("autorI", id);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8081/listaPreferenciaAutor/agregarElemento",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+    }
+
+</script>
 <script>
     /* When the user clicks on the button,
      toggle between hiding and showing the dropdown content */

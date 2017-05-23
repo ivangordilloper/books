@@ -8,6 +8,8 @@ class PerfilUsuarioController {
     def FOAFService
     static defaultAction = "usuario"
     def springSecurityService
+    def AutorService
+    def LibroService
 
     def usuario(long id) {
         //FOAFService.obtenLibros()
@@ -15,6 +17,13 @@ class PerfilUsuarioController {
         def autoresListaFOAF = FOAFService.obtenAutoresByEmail("raid_ivan@hotmail.com")
         def usuarioU= springSecurityService.principal
         def usuario = Usuario.findById(usuarioU.id)
+        def lista = usuario.listaA
+        def listaAmigos = usuario.amigos
+        //def listaA = ListaPreferenciaAutor.list()
+        //def li = listaA.id
+
+
+
 
         //FOAFService.libros.clear()
         //FOAFService.setLibro(2, "ivan@hotmail.com");
@@ -37,6 +46,7 @@ class PerfilUsuarioController {
 
         def listaLibros = usuario.listasL.collect()
 
+
         if(usuario.genero == 'F'){
             pal = "Bienvenida"
         }
@@ -45,15 +55,62 @@ class PerfilUsuarioController {
         }
 
 
-        [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros]
+        [listaA: lista, usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros, listaAmigos: listaAmigos]
     }
 
-    def p(){
+   /* def p(){
         def usuario = params.usuario
         def passwd = params.password
         def validar = Usuario.findByNombre("12345");
         def validarpasswd = validar.password.toString()
+    }*/
+
+    def librosCategoria(){
+        def libroCi = LibroService.libroToList()
+        def usuarioU = springSecurityService.principal
+        def calificaciones = CalificacionLibro.list()
+        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones]
+
     }
+
+    def update(){
+        def user = springSecurityService.principal
+        [user:user, usuarioS: user]
+    }
+
+    def actualizar(){
+
+        def user = springSecurityService.principal
+        def editarUsuario = Usuario.findById(user.id)
+        editarUsuario.nombre = params.nombre
+        editarUsuario.apellidoP = params.apellidoP
+        editarUsuario.apellidoM = params.apellidoM
+        editarUsuario.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
+        editarUsuario.telefono = Integer.parseInt(params.telefono)
+        //Bloquear que no se pueda cambiar
+        //editarUsuario.username = params.nombreUsuario
+        editarUsuario.correo = params.correo
+        editarUsuario.password = params.contrasenia
+        editarUsuario.genero = params.genero
+        editarUsuario.save()
+        [usuarioS: user]
+        render (view: "usuario")
+
+    }
+
+    def verAutor(long id){
+        def usuario = springSecurityService.principal
+        def editarAutor = Autor.findById(id)
+        def libE = editarAutor.libros
+        //def lista = ListaPreferenciaAutor.findByUsuario(usuario)
+        def listas = Usuario.findById(usuario.id).listaA
+
+        [autor:editarAutor, lista:listas, lib: libE, usuarioS: usuario]
+        //[autor:editarAutor, idU:usuario]
+
+
+    }
+
     def FOAF(){
         //FOAFService.generaRdfUsuarioActual("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
         //FOAFService.generaRdfUsuarioActual("ivan@hotmail.com","Ivan","Gordillo","Perez")
@@ -66,6 +123,51 @@ class PerfilUsuarioController {
         // FOAFService.setNombreCompletoAmigo("Ivan Gordillo Perez")
         //FOAFService.setEmailAmigo("ivan2@hotmail.com")
         //FOAFService.agregarAmigo("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
+    }
+
+    def verLibro(long id){
+        def idL= id
+        //def idLibro = idL.id
+        def lista = LibroService.libroToList()
+        def editarLibro = LibroService.libroById(idL)
+        def fecha = LibroService.formatoFecha(editarLibro.fechaPub.toString())
+
+        def opiniones = LibroService.opinionesByLibro(editarLibro)
+        def usuarioL = springSecurityService.principal
+
+        //mandarServicio
+        def genero = editarLibro.generoLiterario
+        def listaLibr = Libro.findAllByGeneroLiterario(genero)
+        def autorL = editarLibro.autores
+        def editarAutor = Autor.findById(autorL.id)
+        def libE = AutorService.librosByAutor(editarAutor)
+        def listas = Usuario.findById(usuarioL.id).listasL
+        def calificaciones = CalificacionLibro.list()
+        def numeroCal = calificaciones.collect().count{
+            it.Libro.equals(editarLibro)
+        }
+
+        def cal2 = editarLibro.califL.calif
+        def cal3 = cal2.sum()
+        def promedio = cal3 / numeroCal
+        def cuentaE
+
+        if (promedio>= 5){
+            cuentaE ="5"
+        }else if(promedio>=4 && promedio<5) {
+            cuentaE= "4"
+        }else if(promedio>=3 && promedio<4){
+            cuentaE= "3"
+        }else if (promedio>= 2 && promedio <3){
+            cuentaE= "2"
+        }else if (promedio>=1 && promedio<2){
+            cuentaE="1"
+        }
+
+        // render "${cuentaE}"
+
+        [ editarAutor: editarAutor, cuentaE:cuentaE, libro:editarLibro, promedio: promedio, listas:listas,numeroCal: numeroCal, fecha:fecha, usuarioS: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
+
     }
 
 }
