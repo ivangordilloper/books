@@ -10,6 +10,7 @@ class UsuarioController {
     def springSecurityService
     def AutorService
     def LibroService
+    def FOAFService
     def passwordEncoder
 
     def createUsuario() {
@@ -54,10 +55,10 @@ class UsuarioController {
         def validar = Usuario.findByToken(token);
         if(validar) {
             validar.setToken("Valido")
-
+            validar.enabled = true;
             def autors = Autor.list()
             def libros = Libro.list()
-            [autors:autors, libros: libros, token:"valido"]
+            [autors:autors, email:validar.correo, libros: libros, token:"valido"]
         }else {
             [utoken:"invalido"]
             def autors = Autor.list()
@@ -65,7 +66,23 @@ class UsuarioController {
             [autors:autors, libros: libros, token:"error"]
         }
     }
+    def setFOAF(){
 
+        def genero = params.generof
+        def autores = [params.autor1, params.autor2, params.autor3]
+        def libros = [params.libro1, params.libro2,params.libro3]
+        def email = params.email
+        libros.each {
+            FOAFService.setLibro(it.toString().toInteger(), email)
+        }
+        autores.each {
+            FOAFService.setAutor(it.toString().toInteger(), email)
+        }
+        redirect(controller: "inicio", action: "iniciarSesion")
+
+
+
+    }
     def read(){
         def usuarioL = springSecurityService.principal
         def listaUsuario = Usuario.list()
@@ -80,8 +97,14 @@ class UsuarioController {
         [usuarioBusqueda:usuarioBusqueda, idU: usuario]
     }
     def update(long id){
-        def usuario = springSecurityService.principal
-        def editarUsuario = Usuario.findById(usuario.id)
+        def editarUsuario
+        if(id){
+            editarUsuario = Usuario.findById(id)
+        }else{
+            def usuario = springSecurityService.principal
+            editarUsuario = Usuario.findById(usuario.id)
+        }
+
         def fecha = editarUsuario.fechaNac.toString()
         def fecha2 = fecha.substring(0,10)
         [user:editarUsuario, fecha:fecha2]

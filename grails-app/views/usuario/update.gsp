@@ -72,7 +72,7 @@
                             <div class="12u$">
                                 <ul class="actions">
                                     <li ><g:submitButton name="submit" value="Regístrate" class="special"/>
-                                        <button type="button" id="cancelar" class="special">Cancelar</button></li>
+                                        <button type="button" id="cancelar" onclick="window.location.replace('/perfilUsuario/usuario')" class="special">Cancelar</button></li>
                                 </ul>
 
                             </div>
@@ -222,6 +222,10 @@
                 return false;
             }
         });
+    });
+
+    $('#cancelar').onclick(function () {
+        window.location('perfilUsuario/usuario');
     });
 </script>
 

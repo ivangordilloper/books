@@ -1,3 +1,4 @@
+<%@ page import="Plantilla.Autor" %>
 <html>
 <head>
     <title> CONTACTO </title>
@@ -34,40 +35,46 @@ jQuery(document).ready(function($){
                 <section>
                     <div class="box">
                         <h4>Preferencias</h4>
-                        <form method="post" action="#">
+                        <form method="post" action="/usuario/setFOAF">
                             <div class="row uniform">
                                 <div class="12u 12u$(xsmall)">
                                     <g:field type="text" name="generof" id="generof" placeholder="Género Literario Favorito" required="true" />
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor1" id="autor1" required="true"   from="${autors.nombreCompleto}"  >
+                                    <g:select name="autor1" id="autor1" required="true" from="${autors}" optionKey="id" optionValue="nombreCompleto" >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor2" id="autor2" required="true"   from="${autors.nombreCompleto}"  >
+                                    <g:select name="autor2" id="autor2" required="true"    from="${autors}" optionKey="id" optionValue="nombreCompleto" >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="autor3" id="autor3" required="true"   from="${autors.nombreCompleto}"  >
+                                    <g:select name="autor3" id="autor3" required="true"   from="${autors}" optionKey="id" optionValue="nombreCompleto" >
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro1" id="libro1" required="true"   from="${libros.titulo}">
+                                    <g:select name="libro1" id="libro1" required="true"    from="${libros}" optionKey="id" optionValue="titulo">
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro2" id="libro2" required="true"   from="${libros.titulo}">
+                                    <g:select name="libro2" id="libro2" required="true"   from="${libros}" optionKey="id" optionValue="titulo">
                                     </g:select>
                                 </div>
                                 <div class="6u 6u$(xsmall)">
-                                    <g:select name="libro3" id="libro3" required="true"   from="${libros.titulo}">
+                                    <g:select name="libro3" id="libro3" required="true"   from="${libros}" optionKey="id" optionValue="titulo">
                                     </g:select>
+                                </div>
+                                <div class="12u$">
+                                    <ul class="actions">
+                                        <li><input type="hidden" name="email" value="${email}" class="special"/></li>
+                                    </ul>
                                 </div>
                                 <div class="12u$">
                                     <ul class="actions">
                                         <li><g:submitButton name="submit" value="Regístrate" class="special"/></li>
                                     </ul>
                                 </div>
+
                             </div>
                         </form>
                     </div>
