@@ -119,10 +119,6 @@
 
                             </table>
                                 </div>
-
-
-
-
                         <div id="preferencia" class="tab-pane active">
                             <div id="myDIV" style="padding-top: 5px; display: none;">
                                 <div class="container">
@@ -202,7 +198,7 @@
                                             <div id="myDropdown2" class="dropdown-content">
                                                 <a style="font-size: 13px;">Ver</a>
                                                 <a style="font-size: 13px;">Editar</a>
-                                                <a style="font-size: 13px;">Eliminar</a>
+                                                <a style="font-size: 13px; color: white;">............</a>
                                             </div>
                                         </div>
 
@@ -415,6 +411,7 @@
                                 </div>
                         </div>
                         <div id="amigos" class="tab-pane fade">
+
                             <table class="table table-striped" style="color: #2E3842;">
                                 <thead>
                                 <tr>
@@ -423,29 +420,21 @@
                                     <th style="color: #2E3842;"></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <g:each in="${listaAmigos}" var="amigo">
-                                    <tr>
-                                        <td><img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
-                                        <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${amigo.username}</i></b></p>
-                                            <p style="padding:0px;line-height:15px; margin: 0px;">Creación: ${amigo.listasL.size()}</p>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <div id="myDropdown3" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
-
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-
-                                </g:each>
-                                </tbody>
                             </table>
+                               <div style="height: 5px">
+                               </div>
+                            <g:each in="${Plantilla.Usuario.list()}" var="amigo">
+                                    <div class="col-xs-3 col-sm-3 col-md-3" >
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>
+                                            <div class="panel-body" style="padding-top: 8px; padding-bottom:8px; margin: 0px;"><p style="padding:0px; margin: 0px; text-align: center;"><b><i style="color: black; text-align: center; padding-bottom: 2px;">${amigo.username} (${amigo.listasL.size()} listas) </i></b></p>
+                                                    <a class="special" style="width: 155px; font-size: 10px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
+                                                    <a class="special" style="width: 155px; font-size: 10px;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </g:each>
+
                         </div>
 
                     <div style="height: 10px"></div>

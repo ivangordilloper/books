@@ -38,8 +38,8 @@ class ListaPreferenciaLibroController {
         def  id= params.lista
         def idLibro = params.libro
 
-        render "${id} ${idLibro}"
-        //ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
+        //render "${id} ${idLibro}"
+        ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
 
       //  Usuario.findById(usuarioU.id).listasL.add(lib)
        // [idU: usuarioU]

@@ -20,7 +20,7 @@ class Libro {
         portada nullable: true, maxSize: 2 * 1024 * 1024
         generoLiterario inList: ["Épico", "Lírico", "Dramático", "Historia", "Didáctica"], nullable: false
         isbn maxSize: 40, nullable: true
-        subGenero nullable: true,  inList: ["Elegía", "Canción", "Oda", "Satira", "Égloga", "Cantar de gesta", "Romance", "Novela", "Cuento", "Poema épico", "Tragedia", "Comedia", "Tragicomedia", "Drama histórico", "Drama social", "Leyenda", "Ensayo", "Crítica"]
+        subGenero nullable: true,  inList: ["Elegía", "Canción", "Oda", "Sátira", "Égloga", "Cantar de gesta", "Romance", "Novela", "Cuento", "Poema épico", "Tragedia", "Comedia", "Tragicomedia", "Drama histórico", "Drama social", "Leyenda", "Ensayo", "Crítica"]
     }
 
     static belongsTo = [Autor, ListaPreferenciaLibro]
