@@ -423,7 +423,7 @@
                             </table>
                                <div style="height: 5px">
                                </div>
-                            <g:each in="${Plantilla.Usuario.list()}" var="amigo">
+                            <g:each in="${listaAmigos}" var="amigo">
                                     <div class="col-xs-3 col-sm-3 col-md-3" >
                                         <div class="panel panel-default">
                                             <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>

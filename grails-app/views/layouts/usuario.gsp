@@ -26,7 +26,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/perfilAdministrador/administrador">BooksCom</a></h1>
+        <h1><a href="/inicio">BooksCom</a></h1>
         <nav id="nav">
             <ul>
 

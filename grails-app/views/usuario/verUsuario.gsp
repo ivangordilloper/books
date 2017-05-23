@@ -144,7 +144,7 @@ hr{
     <header style="padding-top: 50px!important;padding-bottom: 40px!important; margin: 0px;">
         <p><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioBusqueda.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/>
         <p style="margin: 0px; padding: 0px"><h2 style="margin: 0px; padding: 0px">${usuarioBusqueda.username}</h2></p>
-        <button onclick="myFunction()" class="special">Agregar</button>
+        <button onclick="agregarAmigo(${usuarioBusqueda.id})" class="special">Agregar</button>
     </header>
 </article>
 
@@ -256,7 +256,7 @@ hr{
                     <div class="col-xs-3 col-md-3">
                         <img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/>
                         <p style="text-align: center; padding-left: 16px;"> ${amigo.username}</p>
-                        <button onclick="myFunction()" class="special" style="font-size: 10px; ">Agregar</button>
+                        <button onclick="agregarAmigo()" class="special" style="font-size: 10px; ">Agregar</button>
                     </div>
                 </div>
 
@@ -268,6 +268,35 @@ hr{
 
 </div>
 <!-- Scripts -->
+<script>
+    function agregarAmigo(id) {
+        var form = new FormData();
+        form.append("idAmigo", id);
+
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8081/usuario/agregarAmigo",
+            "method": "POST",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            alert(response);
+        });
+
+
+    }
+
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>

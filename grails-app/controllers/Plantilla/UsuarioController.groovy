@@ -231,5 +231,13 @@ class UsuarioController {
 
     }
 
+    def agregarAmigo(long id){
+        def usuarioL = springSecurityService.principal
+        def idAmigo = params.idAmigo
+        def usuario = Usuario.findById(usuarioL.id)
+        usuario.amigos.add(Usuario.findById(idAmigo))
+        render("Amigo agregado")
+    }
+
 
 }
