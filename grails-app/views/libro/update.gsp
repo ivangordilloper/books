@@ -46,7 +46,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value="${libro.fechaPub}"  placeholder="Fecha Publicación" required="true"/>
                         </div>
-                        
+
 
 
 
