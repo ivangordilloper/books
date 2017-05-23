@@ -8,6 +8,8 @@ class PerfilUsuarioController {
     def FOAFService
     static defaultAction = "usuario"
     def springSecurityService
+    def AutorService
+    def LibroService
 
     def usuario(long id) {
         //FOAFService.obtenLibros()
@@ -15,6 +17,13 @@ class PerfilUsuarioController {
         def autoresListaFOAF = FOAFService.obtenAutoresByEmail("raid_ivan@hotmail.com")
         def usuarioU= springSecurityService.principal
         def usuario = Usuario.findById(usuarioU.id)
+        def lista = usuario.listaA
+        def listaAmigos = usuario.amigos
+        //def listaA = ListaPreferenciaAutor.list()
+        //def li = listaA.id
+
+
+
 
         //FOAFService.libros.clear()
         //FOAFService.setLibro(2, "ivan@hotmail.com");
@@ -37,6 +46,7 @@ class PerfilUsuarioController {
 
         def listaLibros = usuario.listasL.collect()
 
+
         if(usuario.genero == 'F'){
             pal = "Bienvenida"
         }
@@ -45,15 +55,48 @@ class PerfilUsuarioController {
         }
 
 
-        [usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros]
+        [listaA: lista, usuarioS: usuarioU, pal: pal, libros1:libros, autores1: autores, listaLibros:listaLibros, listaAmigos: listaAmigos]
     }
 
-    def p(){
+   /* def p(){
         def usuario = params.usuario
         def passwd = params.password
         def validar = Usuario.findByNombre("12345");
         def validarpasswd = validar.password.toString()
+    }*/
+
+    def librosCategoria(){
+        def libroCi = LibroService.libroToList()
+        def usuarioU = springSecurityService.principal
+        [libroC: libroCi, usuarioS:usuarioU]
+
     }
+
+    def update(){
+        def user = springSecurityService.principal
+        [user:user, usuarioS: user]
+    }
+
+    def actualizar(){
+
+        def user = springSecurityService.principal
+        def editarUsuario = Usuario.findById(user.id)
+        editarUsuario.nombre = params.nombre
+        editarUsuario.apellidoP = params.apellidoP
+        editarUsuario.apellidoM = params.apellidoM
+        editarUsuario.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
+        editarUsuario.telefono = Integer.parseInt(params.telefono)
+        //Bloquear que no se pueda cambiar
+        //editarUsuario.username = params.nombreUsuario
+        editarUsuario.correo = params.correo
+        editarUsuario.password = params.contrasenia
+        editarUsuario.genero = params.genero
+        editarUsuario.save()
+        [usuarioS: user]
+        render (view: "usuario")
+
+    }
+
     def FOAF(){
         //FOAFService.generaRdfUsuarioActual("raid_ivan@hotmail.com","Ivan","Gordillo","Perez")
         //FOAFService.generaRdfUsuarioActual("ivan@hotmail.com","Ivan","Gordillo","Perez")

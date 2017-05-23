@@ -52,17 +52,22 @@ class Usuario implements Serializable {
 
 	static transients = ['springSecurityService']
 
-	static constraints = {
-		password blank: false, password: true
-		username blank: false, unique: true
-		perfil nullable: true, maxSize: 2 * 2048 * 2048
 
-	}
+
+
 
 	static mapping = {
 		password column: '`password`'
 	}
 
 	static hasMany = [amigos: Usuario, listasL: ListaPreferenciaLibro]
-	//static hasOne = [ListaA: ListaPreferenciaAutor]
+	static hasOne = [listaA: ListaPreferenciaAutor]
+
+	static constraints = {
+		password blank: false, password: true
+		username blank: false, unique: true
+		perfil nullable: true, maxSize: 2 * 2048 * 2048
+		listaA nullable: true
+	}
+
 }

@@ -42,8 +42,8 @@
                     <div id="menu">
                         <ul>
                             <li> <a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
-                            <li><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
-                            <li><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
+                            <li><a href="${createLink(controller : 'perfilUsuario', action:'librosCategoria')}">  Buscar libro</a></li>
+                            <li><a href="${createLink(controller : 'chat', action:'index')}">  Comunidad</a></li>
                             <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
                             <li><a href="/usuario/read">Configuracion</a></li>
                         </ul>

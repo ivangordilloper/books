@@ -49,7 +49,8 @@ class AutorController{
     def verAutor(long id){
         def usuario = springSecurityService.principal
         def editarAutor = Autor.findById(id)
-        def libE = AutorService.librosByAutor(editarAutor)
+        def libE = editarAutor.libros
+       // def libE = AutorService.librosByAutor(editarAutor)
        // def opiniones = AutorService.opinionesByAutor(editarAutor)
        // def opiniones = OpinionAutor.findById()
 

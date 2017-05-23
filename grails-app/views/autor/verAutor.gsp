@@ -169,22 +169,6 @@
 
                 <div class="row" style="height: 30px"></div>
                 <div class="row" style="height: 5px">
-                    <p style="color:gray; margin-bottom:1px; font-size:14px; text-align: center; padding-left: 40px">Califica este libro</p>
-                    <form id="ratingsForm">
-                        <div class="stars">
-                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 1)" class="star-1" id="star-1" />
-                            <label class="star-1" for="star-1">1</label>
-                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 2)" class="star-2" id="star-2" />
-                            <label class="star-2" onclick="sendStars(${autor.id}, 2)" for="star-2">2</label>
-                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 3)" class="star-3" id="star-3" />
-                            <label class="star-3" for="star-3">3</label>
-                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 4)" class="star-4" id="star-4" />
-                            <label class="star-4" for="star-4">4</label>
-                            <input type="radio" name="star" onclick="sendStars(${autor.id}, 5)" class="star-5" id="star-5" />
-                            <label class="star-5" for="star-5">5</label>
-                            <span></span>
-                        </div>
-                    </form>
                 </div>
 
             </section>
@@ -195,11 +179,6 @@
                 <p style="margin-bottom:1px; color: black; font-size: 35px"><i>${autor.nombreCompleto}</i> </p>
                 <div class="row" style="margin-bottom: 0px">
                     <div> ${autor.nacionalidad}, ${autor.fechaNac.toString().substring(0,4)} </div>
-                    <div> <% def count1=5 %>
-                        <g:each in="${1..count1}" var="b" >
-                            <span style="font-size:200%;color:#FFD700;">&starf;</span>
-                        </g:each>
-                    </div>
                 </div>
 
                 <p style="text-align: justify; margin: 2px">${autor.bio}</p>
@@ -229,7 +208,7 @@
 
                                 <div class="col-xs-4 col-sm-8 col-md-4 col-lg-5">
                                     <!--${libro.resumen.toString().substring(0,10)}. -->
-                                    <div id="resumen" style="text-align: justify">  ${libro.resumen.substring(0, 200)} ... </div>
+                                    <div id="resumen" style="text-align: justify">  ${libro.resumen.substring(0, 10)} ... </div>
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: libro.id])}" > ver libro</a>
