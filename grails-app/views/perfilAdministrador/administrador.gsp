@@ -7,6 +7,7 @@
     <g:external dir="css" file="slides.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
+    <g:external dir="css" file="modals.css"/>
 </head>
 <style type="text/css">
 .linea{
@@ -142,9 +143,8 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="myDropdown1" class="dropdown-content">
-                                                            <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                            <a href="${createLink(controller : 'usuario', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
-
+                                                            <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></a>
+                                                            <p class="deleteUsuario" id="${lista.id}" style="margin-top: 14px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></p>
                                                         </div>
                                                     </div>
 
@@ -194,7 +194,6 @@
                                                     <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
                                                     <a href="${createLink(controller : 'libro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
                                                     <a href="${createLink(controller : 'libro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
-
                                                 </div>
                                             </div>
 
@@ -513,8 +512,46 @@
         }
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<g:external dir="js" file="bootstrap.js"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Confirmación.</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">¿Está seguro de que deseas eliminar el usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning delete" id="deleteClick" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script type="text/javascript" async defer>
+    jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
+        $('#cancelar').click(function () {
+            $('#MSGC_01').modal('show');
+        });
+        $(document).on("click","p.deleteUsuario",function(e){
+            $("#deleteClick").attr("onclick","window.location = '../usuario/delete/"+ $(this).attr("id") + "'");
+            $('#MSGC_01').modal('show');
+        });
+    });
+</script>
 
 </body>
 </html>

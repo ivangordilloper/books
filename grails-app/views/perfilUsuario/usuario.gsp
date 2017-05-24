@@ -7,6 +7,7 @@
     <g:external dir="css" file="slides.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
+
 </head>
 <style type="text/css">
 .linea{
