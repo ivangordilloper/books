@@ -14,6 +14,19 @@ class ListaPreferenciaAutorController {
 
     }
 
+    def eliminarElemento(long id) {
+        def usuarioU = springSecurityService.principal
+        def listaU = params.idLista
+        def elemento = params.id
+
+
+        def elemento2 = ListaPreferenciaAutor.findById(listaU).autores.remove(Autor.findById(elemento))
+
+        [usuarioS: usuarioU]
+        redirect(controller:"perfilUsuario", action: "usuario")
+
+    }
+
     def agregarElemento(){
         def usuarioL = springSecurityService.principal
         def user = Usuario.findById(usuarioL.id)
@@ -48,9 +61,11 @@ class ListaPreferenciaAutorController {
     }
 
     def verListaPreferenciaAutor(long id) {
+        def idU = springSecurityService.principal
         def editarLista = ListaPreferenciaAutor.findById(id)
         def listaAutor = Libro.list()
-        [llista: editarLista, llibro: listaAutor]
+
+        [llista: editarLista, llibro: listaAutor, usuarioS: idU]
 
     }
 
