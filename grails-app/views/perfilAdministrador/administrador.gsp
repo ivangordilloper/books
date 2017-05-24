@@ -1,12 +1,6 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"angular.min.js")}" async defer></script>
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -29,27 +23,6 @@
 </style>
 <body>
 
-<div id="page-wrapper">
-
-    <!-- Header -->
-    <header id="header">
-        <h1><a href="/perfilAdministrador/administrador">BooksCom</a></h1>
-        <nav id="nav">
-            <ul>
-
-                <li class="special">
-
-                    <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${usuarioS.username}</span></a>
-                    <div id="menu">
-                        <ul>
-                            <li><a href="/logout">Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
-</div>
 <div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
     <div class="container">
 
