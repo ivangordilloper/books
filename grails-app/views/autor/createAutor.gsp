@@ -141,7 +141,7 @@
     });
 
     $('#photo').bind('change', function() {
-        if(this.files[0].size/1024>1000) {
+        if(this.files[0].size/1024>126) {
             alert("Imagen muy grande");
             disable();
         }else{
