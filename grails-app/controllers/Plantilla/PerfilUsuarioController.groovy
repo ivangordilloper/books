@@ -180,5 +180,11 @@ class PerfilUsuarioController {
         [ editarAutor: editarAutor, cuentaE:cuentaE, libro:editarLibro, promedio: promedio, listas:listas,numeroCal: numeroCal, fecha:fecha, usuarioS: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
 
     }
+    def opinar(){
+        def usuarioL = springSecurityService.principal
+        def idU = usuarioL.id
+        LibroService.opinarLibro(params)
+        redirect (action: "verLibro", params: [id: params.idLibro])
+    }
 
 }
