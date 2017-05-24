@@ -9,9 +9,9 @@
     <g:external dir="css" file="modals.css"/>
 </head>
 <body>
-    <article id="main">
-        <header><h2>Iniciar Sesión</h2></header>
-        <section class="wrapper style5" style="padding-top: 30px; margin-top: 1px;">
+<article id="main" >
+    <header style="padding-top: 130px!important; padding-bottom: 110px!important;"><h2>Iniciar Sesión</h2></header>
+        <section class="wrapper style5" style="padding-top: 10px; margin-top: 1px;">
             <div class="inner">
                 <section>
                     <div class="box">
