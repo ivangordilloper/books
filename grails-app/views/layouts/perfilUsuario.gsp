@@ -64,7 +64,7 @@
                 <ul>
                     <li data-ng-repeat="element in busqueda.autores | filter:query ">
                         <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
-                        <a ng-href="/perfilUsuario/verAutor/{{element.id}}">
+                        <a ng-href="../perfilUsuario/verAutor/{{element.id}}">
                             {{element.name}}
                         </a>
                     </li>

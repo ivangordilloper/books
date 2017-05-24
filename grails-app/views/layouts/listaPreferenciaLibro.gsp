@@ -37,7 +37,7 @@ body{
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="../">BooksCom</a></h1>
+        <h1><a href="/perfilUsuario/usuario">BooksCom</a></h1>
 
 
         <div ng-app="HelloUserApp">

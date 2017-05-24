@@ -1,13 +1,10 @@
 <html>
 <head>
     <title>LIBRO</title>
-    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
-    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
-
-    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
-    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
-    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
-
+    <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="usuario.css"/>
+    <g:external dir="css" file="swiper.min.css"/>
+    <g:external dir="css" file="slides.css"/>
 
 
     <style type="text/css">
@@ -199,7 +196,7 @@
 
                     <div class="row" style="margin-bottom: 0px">
                         <g:each in="${libro.autores}" var="b" >
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'perfilUsuario', action:'verAutor', params: [id: b.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="/perfilUsuario/verAutor/${b.id}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
                         </g:each>
                         <div>
 
@@ -340,7 +337,7 @@
                             <div> Género: ${Plantilla.Autor.findById(b.id).generoLiterario}</div>
                        </div>
                         <div class="col-md-4">
-                            <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:b.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: b.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/></a>
+                            <a href="/perfilUsuario/verAutor/${b.id}" ><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: b.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/></a>
                         </div>
                     </div>
                     </g:each>
@@ -421,7 +418,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "${application["IPSOURCE"]}libro/calificar",
+            "url": "http://localhost:8081/libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -452,7 +449,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "${application["IPSOURCE"]}listaPreferenciaLibro/agregarElemento",
+            "url": "http://localhost:8081/listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

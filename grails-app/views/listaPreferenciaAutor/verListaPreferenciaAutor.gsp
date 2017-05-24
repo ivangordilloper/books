@@ -1,48 +1,52 @@
 <html>
 <head>
-    <title> LISTA AUTORES </title>
-<g:external dir="css" file="main.css"/>
-<g:external dir="css" file="preferences.css" />
+    <title> Bookscom | Lista Autores</title>
+    <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="preferences.css" />
 </head>
-<div id="autor">
+<body>
+<article id="main" >
+    <header style="padding-top: 70px!important; padding-bottom: 50px!important;"><h2>${llista.nombre}</h2><p>${llista.usuarioId}</p></header>
+</article>
+<div id="autor" style="padding: 0px; margin: 0px;">
 
     <!-- Main -->
 
-    <div class="wrapper style5">
-        <div class="inner">
-
+    <div class="wrapper style5" style="padding: 40px; margin: 0px;">
+        <div class="inner" >
 
             <div>
                 <div class="box ">
-
-                    <h4>Lista: ${llista.nombre} </h4><a href="/usuario/read"><g:img dir="images" file="lupa.png" align="right" class="img-config3"/></a><a href="/usuario/createUsuario"><g:img dir="images" file="mas.png" align="right" class="img-config2"/></a>
-                    <br>
-
 
                     <div class="table-wrapper">
                         <table class="letraC">
                             <thead>
                             <tr>
+
                                 <th></th>
-                                <th style="text-align:center;" >Género literario</th>
+                                <th style="text-align:center;" >Género</th>
                                 <th style="text-align:center;">Autor</th>
                                 <th style="text-align:center;">Nacionalidad</th>
                                 <th style="text-align:center;">Libro</th>
-                                <th style="text-align:center;" colspan="3">Acciones</th>
+                                <th style="text-align:center;" colspan="3"></th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            <g:each in="${llista}" var="lista">
+                            <g:each in="${llista.autores}" var="lista">
                                 <tr>
-                                    <td style="padding-top: 10px"><g:img dir="images" file="book.png"  class="image-list2"/></td>
-                                    <td style="padding: 5px; color:#666666">${lista.autores.generoLiterario}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.autores.nombreCompleto}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.autores.nacionalidad}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.autores.libros}</td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:lista.autores.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'listaPreferenciaAutor', action:'opinar', params: [id:lista.autores.id])}"><g:img dir="images" file="opinion.png" align="right" class="image-list3" /></a></td>
-                                    <td style="padding: 5px; color:#666666"> <g:link action="delete" id="${lista.autores.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>
+                                    <td style="padding-top: 10px"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: lista.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
+                                    <td style="padding: 5px; color:#666666">${lista.generoLiterario}</td>
+                                    <td style="padding: 5px; color:#666666">${lista.nombreCompleto}</td>
+                                    <td style="padding: 5px; color:#666666">${lista.nacionalidad}</td>
+                                    <td style="padding: 5px; color:#666666">
+                                     ${lista.libros.titulo.toString().substring(1,lista.libros.titulo.toString().length()-1)}
+                                        <%def id = lista.id as int%>
+
+
+                                    </td>
+                                    <td style="padding: 5px; color:#666666"> <a href="/perfilUsuario/verAutor/${id}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="/listaPreferenciaAutor/eliminarElemento?id=${id}&idLista=${llista.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></a></td>
                                 </tr>
                             </g:each>
 
@@ -60,7 +64,6 @@
     </section>
     </div>
 </div>
-</section>
 
 </body>
 </html>

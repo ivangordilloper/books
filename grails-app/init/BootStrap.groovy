@@ -13,7 +13,10 @@ class BootStrap {
         //UsuarioRole.create(ivan2,user);
         //UsuarioRole.create(ivan,admin);
 
-        servletContext["IPSOURCE"] = "http://www.bookscomtt.com/"
+        //SERVIDOR         servletContext["IPSOURCE"] = "http://www.bookscomtt.com/"
+
+        servletContext["IPSOURCE"] = "http://localhost:8081/"
+
 
     }
     def destroy = {
