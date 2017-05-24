@@ -12,12 +12,14 @@
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <g:external dir="js" file="angular.min.js"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
 
-    <g:external dir="css" file="slides.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="style-user.css"/>
-    <g:external dir="css" file="letra.css"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
+   
     <g:layoutHead />
 
 
