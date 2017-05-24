@@ -58,7 +58,7 @@ input[type=file].hidden {
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-6">
-                            <input name="portada" type="file" style="color: #0A122A;" required="true"/>
+                            <input name="portada" id="portada" type="file" style="color: #0A122A;" required="true"/>
                         </div>
 
                         <div class="col-xs-6 col-sm-4 col-md-3">
@@ -133,6 +133,10 @@ input[type=file].hidden {
 
 
             });
+
+        $('#portada').bind('change', function() {
+            alert('This file size is: ' + this.files[0].size/1024 + "KB");
+        });
 
     </script>
 
