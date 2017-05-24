@@ -28,6 +28,28 @@
 
 </style>
 <body>
+
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="/perfilAdministrador/administrador">BooksCom</a></h1>
+        <nav id="nav">
+            <ul>
+
+                <li class="special">
+
+                    <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${usuarioS.username}</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/logout">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
     <div class="container">
 
