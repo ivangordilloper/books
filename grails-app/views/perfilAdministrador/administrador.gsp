@@ -612,7 +612,7 @@
         });
 
         $(document).on("click","p.deleteA",function(e){
-            $("#deleteAutor").attr("onclick","window.location = '../libro/delete/"+ $(this).attr("id") + "'");
+            $("#deleteAutor").attr("onclick","window.location = '../autor/delete/"+ $(this).attr("id") + "'");
             $('#MSGC_013').modal('show');
         });
 

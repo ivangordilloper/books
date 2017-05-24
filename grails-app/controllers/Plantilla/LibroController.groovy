@@ -120,8 +120,8 @@ class LibroController {
         redirect(controller: "perfilAdministrador", action: "administrador")
     }
     def calificar(){
-        LibroService.calificarLibro(params)
         def usuarioL = springSecurityService.principal
+        LibroService.calificarLibro(params,usuarioL.id)
         [idU1: usuarioL]
     }
 }

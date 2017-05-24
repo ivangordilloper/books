@@ -15,7 +15,7 @@ class BootStrap {
 
         //SERVIDOR         servletContext["IPSOURCE"] = "http://www.bookscomtt.com/"
 
-        servletContext["IPSOURCE"] ="http://www.bookscomtt.com/"
+        servletContext["IPSOURCE"] ="http://localhost:8080/"
 
 
     }

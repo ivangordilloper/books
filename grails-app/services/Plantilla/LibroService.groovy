@@ -102,9 +102,9 @@ class LibroService {
         a.addToLibros(editarLibro)
 
     }
-    def calificarLibro(params){
+    def calificarLibro(params, idUser){
         def cal = params.stars
-        def idU = params.id
+        def idU = idUser
         def libro1 = params.id
         def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
         if(lc.validate()){
