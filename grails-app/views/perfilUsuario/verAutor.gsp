@@ -1,6 +1,12 @@
 <html>
 <head>
     <title> Bookscom | Autor</title>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
 
     <style type="text/css">
 
@@ -158,7 +164,7 @@
                 <div class="row">
                     <br/>
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
+                        <button onclick="agregarAutor()" class="dropbtn" style="width: 155px">Agregar</button>
                         <div id="myDropdown" class="dropdown-content" style="font-size: 15px">
                             <g:each in="${lista}" var="lista1">
                             <a onclick="agregarA(${autor.id})">${lista1.nombre}</a>
@@ -257,7 +263,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/autor/calificar",
+            "url": "${application["IPSOURCE"]}autor/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -281,7 +287,7 @@
 <script>
     /* When the user clicks on the button,
      toggle between hiding and showing the dropdown content */
-    function myFunction() {
+    function agregarAutor() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
     // Close the dropdown if the user clicks outside of it
@@ -307,7 +313,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/listaPreferenciaAutor/agregarElemento",
+            "url": "${application["IPSOURCE"]}listaPreferenciaAutor/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

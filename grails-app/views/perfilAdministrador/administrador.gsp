@@ -1,13 +1,22 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
+<<<<<<< HEAD
     <g:external dir="js" file="angular.min.js"/>
     <g:external dir="css" file="modals.css"/>
+=======
+    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"angular.min.js")}" async defer></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
+
+>>>>>>> f406aa7de64f4f9c4f2a21135153116e73a9bb15
 </head>
 <style type="text/css">
 .linea{
@@ -18,6 +27,7 @@
 
 </style>
 <body>
+
 <div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
     <div class="container">
 
@@ -55,9 +65,9 @@
                     <ul class="nav nav-tabs">
 
                         <li ><a data-toggle="tab" href="#perfil">Perfil</a></li>
-                        <li><a data-toggle="tab" href="#amigos">Autores</a></li>
-                        <li class="active"><a data-toggle="tab" href="#preferencia">Libros</a></li>
-                        <li ><a data-toggle="tab" href="#librerias">Usuarios</a></li>
+                        <li><a data-toggle="tab" href="#autores">Autores</a></li>
+                        <li class="active"><a data-toggle="tab" href="#libros">Libros</a></li>
+                        <li ><a data-toggle="tab" href="#usuario">Usuarios</a></li>
 
                     </ul>
 
@@ -67,7 +77,7 @@
                                 <thead>
                                 <tr>
                                     <th style="color: #2E3842;">Perfil</th>
-                                    <th style="color: #2E3842;"><a href="${createLink(controller : 'perfilUsuario', action:'update')}" ><g:img dir="images" file="config.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
+                                    <th style="color: #2E3842;"><a href="${createLink(controller : 'perfilAdministrador', action:'update')}" ><g:img dir="images" file="config.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
 
                                 </tr>
                                 </thead>
@@ -121,7 +131,7 @@
                             </table>
                         </div>
 
-                        <div id="librerias" class="tab-pane">
+                        <div id="usuario" class="tab-pane">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <table class="table table-striped" style="color: #2E3842;">
@@ -129,22 +139,28 @@
                                         <tr>
                                             <th style="color: #2E3842;">Usuarios</th>
                                             <th style="color: #2E3842;"></th>
+                                            <th style="color: #2E3842;"></th>
+
                                         </tr>
                                         </thead>
 
                                         <tbody>
                                         <g:each in="${listaUsuario}" var="lista">
                                             <tr>
-                                                <td> <g:img dir="images" file="lista.png"  style="margin:15px; width: 50px"/></td>
-                                                <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.nombre}</i></b></p>
-                                                    <p style="padding:0px;line-height:15px; margin: 0px;">Apellidos: ${lista.apellidoP} ${lista.apellidoM}</p>
-                                                    <p style="padding:0px;line-height:25px; margin: 0px;">Genero: ${lista.genero}</p>
+                                                <td><img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: lista.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
+                                                <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.nombre} ${lista.apellidoP} ${lista.apellidoM}</i></b></p>
+                                                    <p style="padding:0px;line-height:15px; margin: 0px;">Nombre de Usuario: ${lista.username}</p>
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="myDropdown1" class="dropdown-content">
+<<<<<<< HEAD
                                                             <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></a>
                                                             <p class="deleteUsuario" id="${lista.id}" style="margin-top: 14px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></p>
+=======
+                                                            <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
+                                                            <a href="${createLink(controller : 'usuario', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
+>>>>>>> f406aa7de64f4f9c4f2a21135153116e73a9bb15
                                                         </div>
                                                     </div>
 
@@ -158,8 +174,7 @@
                             </div>
                         </div>
 
-
-                        <div id="preferencia" class="tab-pane active">
+                        <div id="libros" class="tab-pane active">
                             <div id="myDIV" style="padding-top: 5px; display: none;">
                                 <div class="container">
                                     <p style="padding: 0px; margin: 0px;">Crear Libro</p>
@@ -183,10 +198,9 @@
                                 <tbody>
                                 <g:each in="${libros1}" var="lista">
                                     <tr>
-                                        <td> <g:img dir="images" file="book.png"  style="margin:15px; width: 50px"/></td>
-                                        <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.titulo}</i></b></p>
-                                            <p style="padding:0px;line-height:15px; margin: 0px;">Año: ${lista.fechaPub}</p>
-                                            <p style="padding:0px;line-height:25px; margin: 0px;">Autores: ${lista.autores.nombreCompleto}</p>
+                                        <td> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: lista.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
+                                        <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${lista.titulo}, ${lista.fechaPub.toString().substring(0,4)}</i></b></p>
+                                            <p style="padding:0px;line-height:25px; margin: 0px; font-size: 15px;">Autores: ${lista.autores.nombreCompleto}</p>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -208,7 +222,7 @@
 
                          </div>
 
-                        <div id="amigos" class="tab-pane fade">
+                        <div id="autores" class="tab-pane fade">
                             <table class="table table-striped" style="color: #2E3842;">
                                 <thead>
                                 <tr>
@@ -222,14 +236,14 @@
                                     <tr>
                                         <td><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: amigo.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
                                         <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${amigo.nombreCompleto}</i></b></p>
-                                            <p style="padding:0px;line-height:15px; margin: 0px;">Creación: ${amigo.fechaNac}</p>
+                                            <p style="padding:0px;line-height:15px; margin: 0px;">Año: ${amigo.fechaNac.toString().substring(0,4)}</p>
                                         </td>
                                         <td>
                                             <div class="dropdown">
                                                 <div id="myDropdown3" class="dropdown-content">
                                                     <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: amigo.id])}" style="font-size: 13px;">Ver</a>
                                                     <a href="${createLink(controller : 'autor', action:'update', params: [id: amigo.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'autor', action:'de', params: [id: amigo.id])}" style="font-size: 13px;">Eliminar</a>
+                                                    <a href="${createLink(controller : 'autor', action:'delete', params: [id: amigo.id])}" style="font-size: 13px;">Eliminar</a>
 
                                                 </div>
                                             </div>

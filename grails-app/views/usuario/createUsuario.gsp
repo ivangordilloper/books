@@ -70,7 +70,7 @@
                                         <div id="errorContrasena2" style="display:none; color:#FF0000;"></div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-6">
-                                        Foto de perfil:<input name="perfil" required ="true" type="file" style="color: #0A122A;" width="300" height="300"/>
+                                        Foto de perfil:<input name="perfil" id="perfil" required ="true" type="file" style="color: #0A122A;" width="300" height="300"/>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -202,6 +202,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
     <script type="text/javascript" async defer>
+
+        $('#perfil').bind('change', function() {
+            if(this.files[0].size/1024>1000) {
+                alert("Imagen muy grande");
+                disable();
+            }else{
+                enable();
+            }
+        });
+
+        function disable() {
+            $(':input[type="submit"]').prop('disabled', true);
+
+        }
+        function enable() {
+            $(':input[type="submit"]').prop('disabled', false);
+
+        }
+
         function validarCorreoBD(email){
             var retVal;
             $.ajax({

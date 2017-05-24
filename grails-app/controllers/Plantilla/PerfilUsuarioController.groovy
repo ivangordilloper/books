@@ -13,15 +13,13 @@ class PerfilUsuarioController {
 
     def usuario(long id) {
         //FOAFService.obtenLibros()
-        def librosListaFOAF = FOAFService.obtenLibrosByEmail("raid_ivan@hotmail.com")
-        def autoresListaFOAF = FOAFService.obtenAutoresByEmail("raid_ivan@hotmail.com")
         def usuarioU= springSecurityService.principal
         def usuario = Usuario.findById(usuarioU.id)
         def lista = usuario.listaA
         def listaAmigos = usuario.amigos
         //def listaA = ListaPreferenciaAutor.list()
         //def li = listaA.id
-
+         FOAFService.obtenLibrosByEmail(usuario.correo)
 
 
 
@@ -29,8 +27,6 @@ class PerfilUsuarioController {
         //FOAFService.setLibro(2, "ivan@hotmail.com");
         //FOAFService.setAmigo("ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
         //ArrayList<String> uri =  FOAFService.getAmigosFOAF("ivan@hotmail.com")
-        //FOAFService.setLibro(2, "raid_ivan@hotmail.com");
-        //FOAFService.setLibro(2, "raid_ivan@hotmail.com");
         //FOAFService.setAutor(3, "raid_ivan@hotmail.com");
 
         //FOAFService.setAmigo("raid_ivan@hotmail.com", "Ivan Gordillo", "Gordillo", "Perez", "raid_ivan@hotmail.com")
@@ -66,11 +62,26 @@ class PerfilUsuarioController {
     }*/
 
     def librosCategoria(){
-        def libroCi = LibroService.libroToList()
         def usuarioU = springSecurityService.principal
+        def usuario = Usuario.findById(usuarioU.id)
+        def listaLibrosFOAF =FOAFService.obtenLibrosByEmail(usuario.correo)
+        def librosUsuarioFOAF
+        if(listaLibrosFOAF) {
+            librosUsuarioFOAF = Libro.findAllByIdInList(listaLibrosFOAF)
+        }else{
+            librosUsuarioFOAF = []
+        }
+        def libroCi = LibroService.libroToList()
         def calificaciones = CalificacionLibro.list()
-        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones]
+        //FOAFService.setAmigo(usuario.correo,"Ivan", "Gordillo","Perez", "ivan@hotmail.com" )
+        FOAFService.getAmigosFOAF(usuario.correo)
+        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones, libroFOAF:librosUsuarioFOAF ]
 
+    }
+    def verUsuario(int id){
+        def usuarioBusqueda = Usuario.findById(id)
+        def usuario = springSecurityService.principal
+        [usuarioBusqueda:usuarioBusqueda, usuarioS: usuario]
     }
 
     def update(){

@@ -1,10 +1,13 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+    <g:external dir="css" file="modals.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
 
@@ -15,7 +18,6 @@
     color: #BC673F;
     size: 1px;
 }
-
 </style>
 <body>
 <div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
@@ -25,30 +27,30 @@
         <div class="row" style="height: 45px">
         </div> <!--Fila 1 : Vacia-->
 
-         <!--Fila 2 : 3 columnas-->
+    <!--Fila 2 : 3 columnas-->
         <div class="row">
             <!--Fila 2.1 -->
             <div class="col-sm-6 col-md-2">
-                    <div class="container">
-                        <div class="row">
-                            <p style="margin-bottom:1px; color: black; font-size: 35px"><i></i> </p>
-                            <br/>
-                        </div>
+                <div class="container">
+                    <div class="row">
+                        <p style="margin-bottom:1px; color: black; font-size: 35px"><i></i> </p>
+                        <br/>
+                    </div>
                     <div class="row">
                         <img src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id ])}"  style="height: 170px; width: 170px;"/>
                     </div>
-                            <div class="row">
-                                <br/>
-                                <div class="dropdown">
-                                    <button class="special" style="width: 155px; font-size: 10px;">Editar foto</button>
-                                </div>
-                            </div>
-
-
+                    <div class="row">
+                        <br/>
+                        <div class="dropdown">
+                            <button class="special" style="width: 155px; font-size: 10px;">Editar foto</button>
+                        </div>
                     </div>
+
+
+                </div>
             </div>  <!--Fila 2.1 -->
 
-             <!--Fila 2.2 -->
+        <!--Fila 2.2 -->
             <div class="col-sm-12 col-md-10">
                 <section>
 
@@ -73,22 +75,22 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td> Nombre </td>
-                                        <td> <p id=o; style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).nombre}</i></b></p>
-                                            <div id="ocultar" style="display: none">
-                                                <div class="col-xs-6 col-md-6">
-                                                    <g:field  type="text" name="nombre" id="nombre"  value="${Plantilla.Usuario.findById(usuarioS.id).nombre}" requiered="true" maxlength="30"/>
-                                                </div>
+                                <tr>
+                                    <td> Nombre </td>
+                                    <td> <p id=o; style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).nombre}</i></b></p>
+                                        <div id="ocultar" style="display: none">
+                                            <div class="col-xs-6 col-md-6">
+                                                <g:field  type="text" name="nombre" id="nombre"  value="${Plantilla.Usuario.findById(usuarioS.id).nombre}" requiered="true" maxlength="30"/>
                                             </div>
-                                        </td>
+                                        </div>
+                                    </td>
 
-                                    </tr>
+                                </tr>
                                 <tr>
                                     <td> Apellido paterno </td>
                                     <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).apellidoP}</i></b></p>
-                                      <div id="ocultar2" style="display: none"> Hola
-                                      </div> </td>
+                                        <div id="ocultar2" style="display: none"> Hola
+                                        </div> </td>
                                 </tr>
                                 <tr>
                                     <td> Apellido materno</td>
@@ -119,7 +121,7 @@
                                 </tbody>
 
                             </table>
-                                </div>
+                        </div>
                         <div id="preferencia" class="tab-pane active">
                             <div id="myDIV" style="padding-top: 5px; display: none;">
                                 <div class="container">
@@ -134,7 +136,7 @@
 
                                             <div class="col-xs-12 col-md-4">
                                                 <ul class="actions vertical">
-                                                    <li ><g:submitButton name="submit" value="Crear" class="special" /></li>
+                                                    <li ><g:submitButton name="submit" value="Crear" id="crearL" class="special" /></li>
                                                 </ul>
                                             </div>
 
@@ -161,9 +163,10 @@
                                         <td>
                                             <div class="dropdown">
                                                 <div id="myDropdown" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
+                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
+                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
+                                                    <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18"   /></p>
+
 
                                                 </div>
                                             </div>
@@ -197,9 +200,9 @@
                                     <td>
                                         <div class="dropdown">
                                             <div id="myDropdown2" class="dropdown-content">
-                                                <a style="font-size: 13px;">Ver</a>
-                                                <a style="font-size: 13px;">Editar</a>
-                                                <a style="font-size: 13px; color: white;">............</a>
+                                                <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: listaA.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"/></a>
+                                                <a style="font-size: 13px; color: white;">..........</a>
+                                                <a style="font-size: 13px; color: white;">...........</a>
                                             </div>
                                         </div>
 
@@ -221,195 +224,189 @@
                                     </table>
                                 </div>
                             </div>
-                                <div class="col-sm-12 col-md-12">
-                                        <section class="spotlight" >
-                                            <div id="map" class="maps"></div>
-                                            <script>
-                                                var pos;
-                                                var map;
-                                                var infoWindow;
-                                                var labels = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
-                                                var labelIndex = 0;
-
-                                                function initMap() {
-                                                    var myLatLng = {lat: 19.5045912, lng: -99.146815};
-                                                    map = new google.maps.Map(document.getElementById('map'), {
-                                                        zoom: 14,
-                                                        styles: [
+                            <div class="col-sm-12 col-md-12">
+                                <section class="spotlight" >
+                                    <div id="map" class="maps"></div>
+                                    <script>
+                                        var pos;
+                                        var map;
+                                        var infoWindow;
+                                        var labels = 'BCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                        var labelIndex = 0;
+                                        function initMap() {
+                                            var myLatLng = {lat: 19.5045912, lng: -99.146815};
+                                            map = new google.maps.Map(document.getElementById('map'), {
+                                                zoom: 14,
+                                                styles: [
+                                                    {
+                                                        "featureType": "administrative",
+                                                        "stylers": [
                                                             {
-                                                                "featureType": "administrative",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "off"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "poi",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "simplified"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "road",
-                                                                "elementType": "labels",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "simplified"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "water",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "simplified"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "transit",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "simplified"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "landscape",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "simplified"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "road.highway",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "off"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "road.local",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "on"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "road.highway",
-                                                                "elementType": "geometry",
-                                                                "stylers": [
-                                                                    {
-                                                                        "visibility": "on"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "water",
-                                                                "stylers": [
-                                                                    {
-                                                                        "color": "#84afa3"
-                                                                    },
-                                                                    {
-                                                                        "lightness": 52
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "stylers": [
-                                                                    {
-                                                                        "saturation": -17
-                                                                    },
-                                                                    {
-                                                                        "gamma": 0.36
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "featureType": "transit.line",
-                                                                "elementType": "geometry",
-                                                                "stylers": [
-                                                                    {
-                                                                        "color": "#3f518c"
-                                                                    }
-                                                                ]
+                                                                "visibility": "off"
                                                             }
                                                         ]
-                                                    });
-                                                    infoWindow = new google.maps.InfoWindow({map: map}); //lat: , lng:
-                                                    if (navigator.geolocation) {
-                                                        navigator.geolocation.getCurrentPosition(function(position) {
-                                                            pos = {
-                                                                lat: 19.5045912,
-                                                                lng: -99.146815
-                                                            };
-                                                            var libreria = new google.maps.LatLng(19.5045912,-99.146815);
-                                                            var icon = {
-                                                                url: "/assets/marcador.png", // url
-                                                                origin: new google.maps.Point(0,0), // origin
-                                                                anchor: new google.maps.Point(0, 0) // anchor
-                                                            };
-                                                            var markerActual = new google.maps.Marker({
-                                                                position: pos,
-                                                                map: map,
-                                                                icon: icon
-                                                            });
-
-                                                            map.setCenter(pos);
-                                                            function callback(results, status) {
-                                                                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                                                                    for (var i = 0; i < results.length; i++) {
-                                                                        createMarker(results[i]);
-                                                                    }
-                                                                }
+                                                    },
+                                                    {
+                                                        "featureType": "poi",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "simplified"
                                                             }
-
-                                                            function createMarker(place) {
-                                                                var placeLoc = place.geometry.location;
-                                                                var marker = new google.maps.Marker({
-                                                                    map: map,
-                                                                    label: labels[labelIndex++ % labels.length],
-                                                                    position: place.geometry.location
-                                                                });
-                                                                var service2 = new google.maps.places.PlacesService(map);
-                                                                var request = { reference: place.reference };
-                                                                service2.getDetails(request,function(details, status){
-                                                                    google.maps.event.addListener(marker, 'click', function() {
-                                                                        var contentString = '<div><'
-
-                                                                        infoWindow.setContent(place.name + '<br>' + details.formatted_address);
-                                                                        //infoWindow.setContent(place.address);
-                                                                        infoWindow.open(map, this);
-                                                                    });
-                                                                });
-
-
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "road",
+                                                        "elementType": "labels",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "simplified"
                                                             }
-                                                            var service = new google.maps.places.PlacesService(map);
-                                                            service.nearbySearch({
-                                                                location: libreria,
-                                                                radius: 1000,
-                                                                types: ['book_store']
-                                                            }, callback);
-                                                        }, function() {
-                                                            handleLocationError(true, infoWindow, map.getCenter());
-                                                        });
-                                                    } else {
-                                                        // Browser doesn't support Geolocation
-                                                        handleLocationError(false, infoWindow, map.getCenter());
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "water",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "simplified"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "transit",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "simplified"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "landscape",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "simplified"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "road.highway",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "off"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "road.local",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "on"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "road.highway",
+                                                        "elementType": "geometry",
+                                                        "stylers": [
+                                                            {
+                                                                "visibility": "on"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "water",
+                                                        "stylers": [
+                                                            {
+                                                                "color": "#84afa3"
+                                                            },
+                                                            {
+                                                                "lightness": 52
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "stylers": [
+                                                            {
+                                                                "saturation": -17
+                                                            },
+                                                            {
+                                                                "gamma": 0.36
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "featureType": "transit.line",
+                                                        "elementType": "geometry",
+                                                        "stylers": [
+                                                            {
+                                                                "color": "#3f518c"
+                                                            }
+                                                        ]
                                                     }
-                                                }
-                                            </script>
-                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
-                                        </section>
+                                                ]
+                                            });
+                                            infoWindow = new google.maps.InfoWindow({map: map}); //lat: , lng:
+                                            if (navigator.geolocation) {
+                                                navigator.geolocation.getCurrentPosition(function(position) {
+                                                    pos = {
+                                                        lat: 19.5045912,
+                                                        lng: -99.146815
+                                                    };
+                                                    var libreria = new google.maps.LatLng(19.5045912,-99.146815);
+                                                    var icon = {
+                                                        url: "/assets/marcador.png", // url
+                                                        origin: new google.maps.Point(0,0), // origin
+                                                        anchor: new google.maps.Point(0, 0) // anchor
+                                                    };
+                                                    var markerActual = new google.maps.Marker({
+                                                        position: pos,
+                                                        map: map,
+                                                        icon: icon
+                                                    });
+                                                    map.setCenter(pos);
+                                                    function callback(results, status) {
+                                                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                                            for (var i = 0; i < results.length; i++) {
+                                                                createMarker(results[i]);
+                                                            }
+                                                        }
+                                                    }
+                                                    function createMarker(place) {
+                                                        var placeLoc = place.geometry.location;
+                                                        var marker = new google.maps.Marker({
+                                                            map: map,
+                                                            label: labels[labelIndex++ % labels.length],
+                                                            position: place.geometry.location
+                                                        });
+                                                        var service2 = new google.maps.places.PlacesService(map);
+                                                        var request = { reference: place.reference };
+                                                        service2.getDetails(request,function(details, status){
+                                                            google.maps.event.addListener(marker, 'click', function() {
+                                                                var contentString = '<div><'
+                                                                infoWindow.setContent(place.name + '<br>' + details.formatted_address);
+                                                                //infoWindow.setContent(place.address);
+                                                                infoWindow.open(map, this);
+                                                            });
+                                                        });
+                                                    }
+                                                    var service = new google.maps.places.PlacesService(map);
+                                                    service.nearbySearch({
+                                                        location: libreria,
+                                                        radius: 1000,
+                                                        types: ['book_store']
+                                                    }, callback);
+                                                }, function() {
+                                                    handleLocationError(true, infoWindow, map.getCenter());
+                                                });
+                                            } else {
+                                                // Browser doesn't support Geolocation
+                                                handleLocationError(false, infoWindow, map.getCenter());
+                                            }
+                                        }
+                                    </script>
+                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+                                </section>
 
-                                </div>
+                            </div>
                         </div>
                         <div id="amigos" class="tab-pane fade">
 
@@ -422,23 +419,22 @@
                                 </tr>
                                 </thead>
                             </table>
-                               <div style="height: 5px">
-                               </div>
-                            <g:each in="${Plantilla.Usuario.list()}" var="amigo">
-                                    <div class="col-xs-3 col-sm-3 col-md-3" >
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>
-                                            <div class="panel-body" style="padding-top: 8px; padding-bottom:8px; margin: 0px;"><p style="padding:0px; margin: 0px; text-align: center;"><b><i style="color: black; text-align: center; padding-bottom: 2px;">${amigo.username} (${amigo.listasL.size()} listas) </i></b></p>
-                                                    <a class="special" style="width: 155px; font-size: 10px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
-                                                    <a class="special" style="width: 155px; font-size: 10px;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
-                                            </div>
+                            <div style="height: 5px">
+                            </div>
+                            <g:each in="${listaAmigos}" var="amigo">
+                                <div class="col-xs-3 col-sm-3 col-md-3" >
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'perfilUsuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>
+                                        <div class="panel-body" style="padding-top: 8px; padding-bottom:8px; margin: 0px;"><p style="padding:0px; margin: 0px; text-align: center;"><b><i style="color: black; text-align: center; padding-bottom: 2px;">${amigo.username} (${amigo.listasL.size()} listas) </i></b></p>
+                                            <a class="special" style="width: 155px; font-size: 10px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
+                                            <a class="special" style="width: 155px; font-size: 10px;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
                                         </div>
                                     </div>
+                                </div>
                             </g:each>
 
                         </div>
-
-                    <div style="height: 10px"></div>
+                        <div style="height: 10px"></div>
                     </div>
                 </section>
 
@@ -527,6 +523,67 @@
         })
     });
 </g:javascript>
+
+<g:external dir="js" file="bootstrap.js"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Confirmación.</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">¿Está seguro de que deseas eliminar la lista de preferencia?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning delete" id="deleteL" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MSGA_08" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">Lista de Preferencias ha sido creada exitosamente.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script type="text/javascript" async defer>
+    jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
+        $('#cancelar').click(function () {
+            $('#MSGC_01').modal('show');
+        });
+        $('#crearL').click(function () {
+            $('#MSGA_08').modal('show');
+        });
+        $(document).on("click","p.deleteLista",function(e){
+            $("#deleteL").attr("onclick","window.location = '../listaPreferenciaLibro/delete/"+ $(this).attr("id") + "'");
+            $('#MSGC_01').modal('show');
+        });
+    });
+</script>
+
 
 </body>
 </html>

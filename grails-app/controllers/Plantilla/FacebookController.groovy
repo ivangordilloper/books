@@ -28,10 +28,14 @@ class FacebookController {
 
         def idUser=  params.idUsuarioFB
         def amigos = params.idAmigos
+        def books = params.books
+        //print books
         try {
             JSONObject amigosJ = JSON.parse(amigos)
-            //print amigosJ
+            JSONObject booksJ = JSON.parse(books)
+            //print booksJ
             def keys = amigosJ.keySet()
+            def keysB = booksJ.keySet()
             //print keys
             def emails = []
             for (def i = 0; i < keys.size(); i++) {
@@ -40,7 +44,19 @@ class FacebookController {
                 emails.push(user.correo)
                 FOAFService.setAmigo(userP.correo,user.nombre, user.apellidoP, user.apellidoM, user.correo )
             }
-            print emails
+
+            def booksList = []
+            for (def i = 0; i < keysB.size(); i++) {
+                String key = (String) keysB[i]
+                print booksJ.get(key)
+                def libroF = Libro.findByTitulo((String)booksJ.get(key))
+                if(libroF){
+                    FOAFService.setLibro((Integer)libroF.id, userP.correo )
+                }
+
+            }
+
+            //print emails
 
         }catch (Exception ignored){
             return "No tienes amigos"

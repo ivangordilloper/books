@@ -4,9 +4,57 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <foaf:Person rdf:about="http://localhost:8081/assets/modeloFOAFvaneurdb@hotmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:vaneurdb@hotmail.com"/>
     <foaf:family_name>Jaime Tamayo</foaf:family_name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:mbox rdf:resource="mailto:vaneurdb@hotmail.com"/>
     <foaf:givenname>Vanesa</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
     <foaf:name>Vanesa Jaime Tamayo</foaf:name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFivan@hotmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:ivan@hotmail.com"/>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:name>Ivan</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
   </foaf:Person>
 </rdf:RDF>

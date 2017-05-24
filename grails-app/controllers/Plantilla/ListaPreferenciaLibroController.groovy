@@ -29,21 +29,28 @@ class ListaPreferenciaLibroController {
 
     def eliminarElemento(long id) {
         def usuarioU = springSecurityService.principal
-        [idU: usuarioU]
+        def listaU = params.idLista
+        def elemento = params.id
+
+        def elemento2 = ListaPreferenciaLibro.findById(listaU).libros
+        elemento2.remove(Libro.findById(elemento))
+        [usuarioS: usuarioU]
+         redirect(controller:"perfilUsuario", action: "usuario")
 
     }
 
     def agregarElemento() {
         def usuarioU = springSecurityService.principal
+        def user = Usuario.findById(usuarioU.id)
         def  id= params.lista
         def idLibro = params.libro
 
         //render "${id} ${idLibro}"
         ListaPreferenciaLibro.findById(id).addToLibros(Libro.findById(idLibro))
-
+        FOAFService.setLibro(idLibro as int,user.correo)
       //  Usuario.findById(usuarioU.id).listasL.add(lib)
        // [idU: usuarioU]
-       // redirect (controller: "Libro", action:"verLibro", params: [id: idLibro])
+       // redirect (controller: "perfilUsuario", action:"verLibro", params: [id: idLibro])
 
     }
 
@@ -58,7 +65,7 @@ class ListaPreferenciaLibroController {
         def us = ListaPreferenciaLibro.findById(id)
         def us2 = us.Usuario.getId()
         def lis = ListaPreferenciaLibro.findById(id)
-        [lis: lis, idU: usuarioU]
+        [lis: lis, usuarioS: usuarioU]
     }
 
     def delete(long id) {
@@ -76,7 +83,7 @@ class ListaPreferenciaLibroController {
        // def editarLista = Usuario.findById(usuarioU.id).listasL
         def listaAutor = Autor.list()
 
-        [llista: editarLista, lautor: listaAutor, idU:usuarioU]
+        [llista: editarLista, lautor: listaAutor, usuarioS: usuarioU]
 
     }
 

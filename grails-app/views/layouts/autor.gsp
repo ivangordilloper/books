@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <g:external dir="css" file="slides.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="style-user.css"/>
-    <g:external dir="css" file="letra.css"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
     <g:layoutHead />
 
 
@@ -26,23 +28,16 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/perfilUsuario/usuario">BooksCom</a></h1>
+        <h1><a href="/perfilAdministrador/administrador">BooksCom</a></h1>
         <nav id="nav">
             <ul>
 
                 <li class="special">
 
-                    <a href="#menu" class="menuToggle"><g:img src="images" file="profile.png" class = "image-profile" href="/usuario/Libro"/><span>${idU.username}</span></a>
+                    <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: idU.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${idU.username}</span></a>
                     <div id="menu">
                         <ul>
-                            <li><a href="${createLink(controller : 'usuario', action:'read')}">  Buscar usuario</a></li>
-                            <li><a href="${createLink(controller : 'libro', action:'librosCategoria')}">  Buscar libro</a></li>
-                            <li><a href="${createLink(controller : 'autor', action:'verCatalogoAutor')}">  Buscar autor</a></li>
-                            <li><a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaLibro')}">Ver lista libros</a></li>
-                            <li><a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaAutor')}">Ver lista autores</a></li>
-                            <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
-                            <li><a href="/usuario/read">Configuracion</a></li>
-
+                            <li><a href="/logout">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </li>

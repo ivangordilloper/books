@@ -18,9 +18,9 @@ class Libro {
         resumen maxSize: 2000, nullable: true
         fechaPub nullable: true
         portada nullable: true, maxSize: 2 * 1024 * 1024
-        generoLiterario inList: ["Épico", "Lírico", "Dramático", "Historia", "Didáctica"], nullable: false
+        generoLiterario inList: ["Épico", "Lírico", "Dramático"], nullable: false
         isbn maxSize: 40, nullable: true
-        subGenero nullable: true,  inList: ["Elegía", "Canción", "Oda", "Sátira", "Égloga", "Cantar de gesta", "Romance", "Novela", "Cuento", "Poema épico", "Tragedia", "Comedia", "Tragicomedia", "Drama histórico", "Drama social", "Leyenda", "Ensayo", "Crítica"]
+        subGenero nullable: true
     }
 
     static belongsTo = [Autor, ListaPreferenciaLibro]

@@ -159,7 +159,7 @@
                         <div class="row">
                             <br/>
                             <div class="dropdown">
-                                <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
+                                <button onclick="boton()" class="dropbtn" style="width: 155px">Agregar</button>
                                 <div id="myDropdown" class="dropdown-content">
                                     <g:each in="${listas}" var="lista">
                                         <a onclick="agregar(${lista.id}, ${libro.id})" style="font-size: 15px;"> ${lista.nombre} </a>
@@ -196,7 +196,7 @@
 
                     <div class="row" style="margin-bottom: 0px">
                         <g:each in="${libro.autores}" var="b" >
-                        <p style="padding: 1px; margin-left: 28px"> por <a href="${createLink(controller : 'perfilUsuario', action:'verAutor', params: [id: b.id])}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
+                        <p style="padding: 1px; margin-left: 28px"> por <a href="/perfilUsuario/verAutor/${b.id}" > <b><i style="color: #0A122A">${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )}</i></b></a> </p>
                         </g:each>
                         <div>
 
@@ -337,7 +337,7 @@
                             <div> Género: ${Plantilla.Autor.findById(b.id).generoLiterario}</div>
                        </div>
                         <div class="col-md-4">
-                            <a href="${createLink(controller : 'autor', action:'verAutor', params: [id:b.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: b.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/></a>
+                            <a href="/perfilUsuario/verAutor/${b.id}" ><img src="${createLink(controller: 'imagen', action: 'renderImageA', params: [id: b.id])}"  style="margin-top: 15px; background-size:100%auto; height: 90px; width: 90px;"/></a>
                         </div>
                     </div>
                     </g:each>
@@ -386,7 +386,7 @@
 <script>
     /* When the user clicks on the button,
      toggle between hiding and showing the dropdown content */
-    function myFunction() {
+    function boton() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
     // Close the dropdown if the user clicks outside of it
