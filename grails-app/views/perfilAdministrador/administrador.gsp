@@ -197,14 +197,15 @@
                                             <p style="padding:0px;line-height:25px; margin: 0px; font-size: 15px;">Autores: ${lista.autores.nombreCompleto}</p>
                                         </td>
                                         <td>
-                                            <div class="dropdown">
-                                                <div id="myDropdown" class="dropdown-content">
 
-                                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
-                                                    <a href="${createLink(controller : 'libro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
-                                                    <p class="deleteL" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"  /></p>
-                                                </div>
-                                            </div>
+
+                                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right:0px;"/></a>
+                                        </td>
+                                        <td>
+                                                    <a href="${createLink(controller : 'libro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="  margin-right:-5px;" /></a>
+                                        </td>
+                                        <td>
+                                                    <p class="deleteL" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 0px;"  /></p>
 
                                         </td>
                                     </tr>
