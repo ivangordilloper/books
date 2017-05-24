@@ -53,11 +53,8 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-6">
-<<<<<<< HEAD
-                            <input name="photo" type="file" required ="true" max-size=32154/>
-=======
+
                             <input name="photo" type="file" id="photo" required ="true"/>
->>>>>>> f406aa7de64f4f9c4f2a21135153116e73a9bb15
 
                         </div>
 
