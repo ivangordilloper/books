@@ -39,48 +39,81 @@
         <h1><a href="../">BooksCom</a></h1>
 
 
-        <div ng-app="HelloUserApp">
-            <div ng-controller="HelloUserController">
-                <form class="form-inline">
-                    <div style="margin-left: 65%; margin-right: 12%;">
-                    <input ng-model="query" type="text"
-                           placeholder="Filter by" autofocus onkeypress="myFunction()" style="background-color : #ffffff;">
+    <div ng-app="HelloUserApp">
+        <div ng-controller="HelloUserController">
+            <form class="form-inline">
+                <div style="margin-left: 65%; margin-right: 12%;">
+                    <input ng-model="query" type="text" id="buscar"
+                           placeholder="Buscar..." autofocus onkeypress="myFunction()" style="-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; background-color :#AC654B!important; border: 2px solid transparent!important; margin-right:200px!important; font-size: 15px!important; width: auto!important; height: 30px!important; margin-top: 10px;">
                 </div>
-                </form>
-                <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; background-color: #ffffff; color: #000000;">
-                <ul>
+            </form>
+            <div id="ocultar">
+            <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; padding-right: 3px; padding-left: 3px; padding-top: 7px; padding-bottom: 3px; background-color: #FFFFFF; color: #000000;">
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
                     <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
-
-                        <img ng-src="/imagen/renderImageL/{{element.id}}"height="72" width="42" />
-
-                        <a ng-href="/perfilUsuario/verLibro/{{element.id}}">
-                            {{element.name}}
-                        </a>
-                    </li>
-                    <!--<li class="animate-repeat" ng-if="results.length === 0">
-                                        <strong>No results found...</strong>
-                                    </li>-->
-                </ul>
-                <ul>
-                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
-                        <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
-                        <a ng-href="../perfilUsuario/verAutor/{{element.id}}">
-                            {{element.name}}
-                        </a>
-                    </li>
-                </ul>
-                    <ul>
-                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
-                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
-                            <a ng-href="/perfilUsuario/verUsuario/{{element.id}}">
-                                {{element.name}}
+                        <div class="row" style="padding: 10px;">
+                        <div class="col-xs-12 col-md-3">
+                        <img ng-src="/imagen/renderImageL/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                        </div>
+                            <div class="col-xs-12 col-md-9">
+                            <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important; " ng-href="/perfilUsuario/verLibro/{{element.id}}">
+                           <b style="color: black;"> {{element.name}} </b>
                             </a>
-                        </li>
-                    </ul>
+                            </p>
+                                <p style="padding-top: 4px;line-height: 1; margin: 0px; font-size: 12px; color: black;">LIBRO</p>
 
-                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                        </div>
+                    </li>
+                </ul>
+
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
+                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                        <div class="row" style="padding: 10px;">
+                            <div class="col-xs-12 col-md-3">
+                             <img ng-src="../imagen/renderImageA/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                            </div>
+                                <div class="col-xs-12 col-md-9">
+                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="../perfilUsuario/verAutor/{{element.id}}">
+                                    <b style="color: black;"> {{element.name}} </b>
+                                </a> </p>
+                                    <p style="padding-top: 4px;line-height: 1; margin: 0px; font-size: 12px; color: black;">AUTOR</p>
+
+                                </div>
+                        </div>
+                        <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                        </div>
+                    </li>
+                </ul >
+
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
+                    <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                        <div class="row" style="padding: 10px;">
+                            <div class="col-xs-12 col-md-3">
+                        <img ng-src="/imagen/renderImageU/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="/perfilUsuario/verUsuario/{{element.id}}">
+                                    <b style="color: black;"> {{element.name}} </b>
+                                </a> </p>
+                                <p style="padding-top: 3px;line-height: 1; margin: 0px; font-size: 12px; color: black;">USUARIO</p>
+
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                        </div>
+                    </li>
+                </ul>
+
+
+
+            </div>
             </div>
         </div>
+
+    </div>
 
 
 
@@ -91,7 +124,9 @@
         <nav id="nav">
 
             <ul>
+               <li style="padding-right: 60px;">
 
+               </li>
                 <li class="special">
 
                     <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${usuarioS.username}</span></a>
@@ -129,6 +164,20 @@
 </div>
 <!-- Scripts -->
 <script>
+    $('#buscar').blur(function()
+    {
+        if( $(this).val().length === 0 ) {
+            $("#busqueda").wrap(function() {
+                return '<!--' + this.outerHTML + '"-->';
+            });
+
+        }else{
+            $('#ocultar')
+                .contents()
+                .filter(function(){return this.nodeType === 8;}) //get the comments
+                .replaceWith(function(){return this.data;})
+        }
+    });
     function myFunction() {
         $("#busqueda").css('display', '');
         var prueba = $("#obtenerValor").val();

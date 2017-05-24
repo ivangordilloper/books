@@ -97,14 +97,16 @@ class PerfilUsuarioController {
         editarUsuario.apellidoP = params.apellidoP
         editarUsuario.apellidoM = params.apellidoM
         editarUsuario.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
-        editarUsuario.telefono = params.telefono as INT
+        editarUsuario.telefono = params.telefono as int
         //Bloquear que no se pueda cambiar
         //editarUsuario.username = params.nombreUsuario
         //editarUsuario.correo = params.correo
-        //editarUsuario.password = params.contrasenia
-        editarUsuario.genero = params.genero
-        editarUsuario.save()
-        redirect(controller: "perfilUsuario", action: "usuario")
+        editarUsuario.password = params.contrasenia
+        //editarUsuario.genero = params.genero
+        editarUsuario.save(flush:true)
+        [usuarioS: user]
+        redirect (controller:"perfilUsuario",view: "usuario")
+
 
     }
 
@@ -178,6 +180,12 @@ class PerfilUsuarioController {
 
         [ editarAutor: editarAutor, cuentaE:cuentaE, libro:editarLibro, promedio: promedio, listas:listas,numeroCal: numeroCal, fecha:fecha, usuarioS: usuarioL, opiniones:opiniones, lista:lista, listaG: listaLibr, listaAI: libE]
 
+    }
+    def opinar(){
+        def usuarioL = springSecurityService.principal
+        def idU = usuarioL.id
+        LibroService.opinarLibro(params)
+        redirect (action: "verLibro", params: [id: params.idLibro])
     }
 
 }

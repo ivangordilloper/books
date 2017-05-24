@@ -2,10 +2,9 @@
 <head>
     <title> Bookscom</title>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
-<<<<<<< HEAD
     <g:external dir="js" file="angular.min.js"/>
     <g:external dir="css" file="modals.css"/>
-=======
+
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"angular.min.js")}" async defer></script>
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
@@ -16,7 +15,6 @@
     <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
 
 
->>>>>>> f406aa7de64f4f9c4f2a21135153116e73a9bb15
 </head>
 <style type="text/css">
 .linea{
@@ -154,13 +152,9 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="myDropdown1" class="dropdown-content">
-<<<<<<< HEAD
                                                             <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></a>
                                                             <p class="deleteUsuario" id="${lista.id}" style="margin-top: 14px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></p>
-=======
-                                                            <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                            <a href="${createLink(controller : 'usuario', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
->>>>>>> f406aa7de64f4f9c4f2a21135153116e73a9bb15
+
                                                         </div>
                                                     </div>
 
