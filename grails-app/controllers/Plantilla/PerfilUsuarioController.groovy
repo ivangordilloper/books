@@ -97,15 +97,15 @@ class PerfilUsuarioController {
         editarUsuario.apellidoP = params.apellidoP
         editarUsuario.apellidoM = params.apellidoM
         editarUsuario.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
-        editarUsuario.telefono = Integer.parseInt(params.telefono)
+        editarUsuario.telefono = params.telefono as int
         //Bloquear que no se pueda cambiar
         //editarUsuario.username = params.nombreUsuario
-        editarUsuario.correo = params.correo
+        //editarUsuario.correo = params.correo
         editarUsuario.password = params.contrasenia
-        editarUsuario.genero = params.genero
-        editarUsuario.save()
+        //editarUsuario.genero = params.genero
+        editarUsuario.save(flush:true)
         [usuarioS: user]
-        render (view: "usuario")
+        redirect (controller:"perfilUsuario",view: "usuario")
 
     }
 

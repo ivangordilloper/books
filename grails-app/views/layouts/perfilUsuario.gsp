@@ -43,10 +43,11 @@
         <div ng-controller="HelloUserController">
             <form class="form-inline">
                 <div style="margin-left: 65%; margin-right: 12%;">
-                    <input ng-model="query" type="text"
+                    <input ng-model="query" type="text" id="buscar"
                            placeholder="Buscar..." autofocus onkeypress="myFunction()" style="-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; background-color :#AC654B!important; border: 2px solid transparent!important; margin-right:200px!important; font-size: 15px!important; width: auto!important; height: 30px!important; margin-top: 10px;">
                 </div>
             </form>
+            <div id="ocultar">
             <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; padding-right: 3px; padding-left: 3px; padding-top: 7px; padding-bottom: 3px; background-color: #FFFFFF; color: #000000;">
                 <ul style="list-style: none; padding: 0px; margin: 0px;">
                     <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
@@ -94,7 +95,7 @@
                         <img ng-src="/imagen/renderImageU/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
                             </div>
                             <div class="col-xs-12 col-md-9">
-                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="/usuario/verUsuario/{{element.id}}">
+                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="/perfilUsuario/verUsuario/{{element.id}}">
                                     <b style="color: black;"> {{element.name}} </b>
                                 </a> </p>
                                 <p style="padding-top: 3px;line-height: 1; margin: 0px; font-size: 12px; color: black;">USUARIO</p>
@@ -106,17 +107,11 @@
                     </li>
                 </ul>
 
-                    <ul>
-                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
-                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
-                            <a ng-href="/perfilUsuario/verUsuario/{{element.id}}">
-                                {{element.name}}
-                            </a>
-                        </li>
-                    </ul>
+
 
             </div>
             </div>
+        </div>
 
     </div>
 
@@ -169,6 +164,20 @@
 </div>
 <!-- Scripts -->
 <script>
+    $('#buscar').blur(function()
+    {
+        if( $(this).val().length === 0 ) {
+            $("#busqueda").wrap(function() {
+                return '<!--' + this.outerHTML + '"-->';
+            });
+
+        }else{
+            $('#ocultar')
+                .contents()
+                .filter(function(){return this.nodeType === 8;}) //get the comments
+                .replaceWith(function(){return this.data;})
+        }
+    });
     function myFunction() {
         $("#busqueda").css('display', '');
         var prueba = $("#obtenerValor").val();

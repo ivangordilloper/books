@@ -224,9 +224,9 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-12">
+                            <div class="col-sm-12 col-md-12" style="height: 500px;">
                                 <section class="spotlight" >
-                                    <div id="map" class="maps"></div>
+                                    <div id="map" style="width: 100%; height: 100%;" class="maps"></div>
                                     <script>
                                         var pos;
                                         var map;
@@ -404,6 +404,7 @@
                                         }
                                     </script>
                                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+
                                 </section>
 
                             </div>
@@ -566,7 +567,6 @@
 </div>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 <script type="text/javascript" async defer>

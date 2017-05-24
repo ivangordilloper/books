@@ -35,4 +35,23 @@ class PerfilAdministradorController {
         def user = springSecurityService.principal
         [user:user, usuarioS: user]
     }
+    def actualizar(){
+
+        def user = springSecurityService.principal
+        def editarUsuario = Usuario.findById(user.id)
+        editarUsuario.nombre = params.nombre
+        editarUsuario.apellidoP = params.apellidoP
+        editarUsuario.apellidoM = params.apellidoM
+        editarUsuario.fechaNac = Date.parse('yyyy-MM-dd', params.fechaNac)
+        editarUsuario.telefono = params.telefono as int
+        //Bloquear que no se pueda cambiar
+        //editarUsuario.username = params.nombreUsuario
+        //editarUsuario.correo = params.correo
+        editarUsuario.password = params.contrasenia
+        //editarUsuario.genero = params.genero
+        editarUsuario.save(flush:true)
+        [usuarioS: user]
+        redirect (controller:"perfilUsuario",view: "usuario")
+
+    }
 }
