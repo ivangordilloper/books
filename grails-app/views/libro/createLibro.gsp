@@ -135,8 +135,22 @@ input[type=file].hidden {
             });
 
         $('#portada').bind('change', function() {
-            alert('This file size is: ' + this.files[0].size/1024 + "KB");
+            if(this.files[0].size/1024>1000) {
+                alert("Imagen muy grande");
+                disable();
+            }else{
+                enable();
+            }
         });
+
+        function disable() {
+            $(':input[type="submit"]').prop('disabled', true);
+
+        }
+        function enable() {
+            $(':input[type="submit"]').prop('disabled', false);
+
+        }
 
     </script>
 
