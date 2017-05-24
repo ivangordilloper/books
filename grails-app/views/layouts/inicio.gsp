@@ -55,7 +55,17 @@
             <li><a href="#" class="icon fa-envelope-o"><span class="label">Correo Electrónico</span></a></li>
         </ul>
 
+
     </footer>
+    <div class="row">
+        <div style="background: black; color: grey;" class="col-lg-12">
+            <div class="col-lg-6">Hecho en ESCOM</div>
+            <div class="col-lg-2 col-lg-offset-2"></div>
+            <a href="/assets/AvisoPrivacidad.pdf">Aviso de Privacidad</a>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
