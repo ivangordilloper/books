@@ -1,12 +1,10 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
+
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
-    <g:external dir="js" file="angular.min.js"/>
+    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"angular.min.js")}" async defer></script>
+
 </head>
 <style type="text/css">
 .linea{
