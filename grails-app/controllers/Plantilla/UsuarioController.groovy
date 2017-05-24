@@ -236,9 +236,19 @@ class UsuarioController {
         def usuarioL = springSecurityService.principal
         def idAmigo = params.idAmigo
         def usuario = Usuario.findById(usuarioL.id)
-        usuario.amigos.add(Usuario.findById(idAmigo))
+        def amigo = Usuario.findById(idAmigo)
+        usuario.amigos.add(amigo)
+        FOAFService.setAmigo(usuario.correo,amigo.nombre, amigo.apellidoP, amigo.apellidoM, amigo.correo )
         render("Amigo agregado")
     }
+    def eliminarAmigo(long id){
+        def usuarioL = springSecurityService.principal
+        def idAmigo = params.idAmigo
+        def usuario = Usuario.findById(usuarioL.id)
+        usuario.amigos.remove(Usuario.findById(idAmigo))
+        render("Amigo Eliminado")
+    }
+
 
 
 }

@@ -4,9 +4,17 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFraid.ivan.gor@gmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:raid.ivan.gor@gmail.com"/>
-    <foaf:family_name>Gordillo Perez</foaf:family_name>
-    <foaf:givenname>Ivan</foaf:givenname>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFigordillo@grupobecm.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:igordillo@grupobecm.com"/>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:name>Ivan</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
     <foaf:name>Ivan Gordillo Perez</foaf:name>
+    <foaf:givenname>Ivan</foaf:givenname>
+    <foaf:family_name>Gordillo Perez</foaf:family_name>
+    <foaf:mbox rdf:resource="mailto:raid.ivan.gor@gmail.com"/>
   </foaf:Person>
 </rdf:RDF>
