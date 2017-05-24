@@ -14,6 +14,7 @@ class UsuarioController {
     def passwordEncoder
 
     def createUsuario() {
+        print FOAFService.realPath()
     }
     def validarCorreoBD(){
         def email = params.correo
@@ -194,7 +195,7 @@ class UsuarioController {
             to correo
             subject "Validación de nuevo usuario en Bookscom."
             html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
-            inline 'logo', 'image/jpeg', new File('grails-app\\assets\\images\\captura2.png')
+            //inline 'logo', 'image/jpeg', new File('grails-app\\assets\\images\\captura2.png')
         }
         FOAFService.generaRdfUsuarioActual((String)correo, (String)nombre, (String)apellidoP, (String)apellidoM)
 
@@ -235,9 +236,19 @@ class UsuarioController {
         def usuarioL = springSecurityService.principal
         def idAmigo = params.idAmigo
         def usuario = Usuario.findById(usuarioL.id)
-        usuario.amigos.add(Usuario.findById(idAmigo))
+        def amigo = Usuario.findById(idAmigo)
+        usuario.amigos.add(amigo)
+        FOAFService.setAmigo(usuario.correo,amigo.nombre, amigo.apellidoP, amigo.apellidoM, amigo.correo )
         render("Amigo agregado")
     }
+    def eliminarAmigo(long id){
+        def usuarioL = springSecurityService.principal
+        def idAmigo = params.idAmigo
+        def usuario = Usuario.findById(usuarioL.id)
+        usuario.amigos.remove(Usuario.findById(idAmigo))
+        render("Amigo Eliminado")
+    }
+
 
 
 }

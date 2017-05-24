@@ -21,7 +21,7 @@
                     <div class="row uniform">
 
                         <div class="col-xs-4 col-md-4">
-                            <g:field  type="text" name="nombre" id="nombre"  requiered="true" maxlength="30"/>
+                            <g:field  type="text" name="nombre" id="nombre"  required="true" maxlength="30"/>
                         </div>
 
                         <div class="col-xs-4 col-md-4">

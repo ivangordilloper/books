@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
-
+    <g:external dir="css" file="modals.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
+
 </head>
 <style type="text/css">
 .linea{
@@ -135,7 +136,7 @@
 
                                             <div class="col-xs-12 col-md-4">
                                                 <ul class="actions vertical">
-                                                    <li ><g:submitButton name="submit" value="Crear" class="special" /></li>
+                                                    <li ><g:submitButton name="submit" value="Crear" id="crearL" class="special" /></li>
                                                 </ul>
                                             </div>
 
@@ -162,9 +163,10 @@
                                         <td>
                                             <div class="dropdown">
                                                 <div id="myDropdown" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
+                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
+                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
+                                                    <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18"   /></p>
+
 
                                                 </div>
                                             </div>
@@ -198,7 +200,7 @@
                                     <td>
                                         <div class="dropdown">
                                             <div id="myDropdown2" class="dropdown-content">
-                                                <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: listaA.id])}" style="font-size: 13px;">Ver</a>
+                                                <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: listaA.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"/></a>
                                                 <a style="font-size: 13px; color: white;">..........</a>
                                                 <a style="font-size: 13px; color: white;">...........</a>
                                             </div>
@@ -521,6 +523,67 @@
         })
     });
 </g:javascript>
+
+<g:external dir="js" file="bootstrap.js"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_01" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Confirmación.</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">¿Está seguro de que deseas eliminar la lista de preferencia?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning delete" id="deleteL" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MSGA_08" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">Lista de Preferencias ha sido creada exitosamente.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeBwBcIGZR7nUPEjmCnkvh9jhFfsXTBbE&libraries=places&callback=initMap" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script type="text/javascript" async defer>
+    jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->
+        $('#cancelar').click(function () {
+            $('#MSGC_01').modal('show');
+        });
+        $('#crearL').click(function () {
+            $('#MSGA_08').modal('show');
+        });
+        $(document).on("click","p.deleteLista",function(e){
+            $("#deleteL").attr("onclick","window.location = '../listaPreferenciaLibro/delete/"+ $(this).attr("id") + "'");
+            $('#MSGC_01').modal('show');
+        });
+    });
+</script>
+
 
 </body>
 </html>

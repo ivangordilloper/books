@@ -1,6 +1,6 @@
 <html>
 <body>
-<img src="cid:logo" />
+<!--<img src="cid:logo" />-->
 <div align="center">
     <br>
     Hola ${pusuario}

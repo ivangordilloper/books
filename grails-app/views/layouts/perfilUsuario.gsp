@@ -106,6 +106,15 @@
                     </li>
                 </ul>
 
+                    <ul>
+                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
+                            <a ng-href="/perfilUsuario/verUsuario/{{element.id}}">
+                                {{element.name}}
+                            </a>
+                        </li>
+                    </ul>
+
             </div>
             </div>
 
