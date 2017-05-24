@@ -14,6 +14,7 @@ class UsuarioController {
     def passwordEncoder
 
     def createUsuario() {
+        print FOAFService.realPath()
     }
     def validarCorreoBD(){
         def email = params.correo

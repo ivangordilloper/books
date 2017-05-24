@@ -30,7 +30,6 @@ class FOAFService {
     private static String listaAmigos;
     private final static String nombreArchivo = "ivan"
     def static libros =[]
-    public static URLServer = "http://www.bookscomtt.com"
 
 
     static getAutores() {
@@ -80,11 +79,14 @@ class FOAFService {
         generaRdfUsuarioActual();
         return "SUCCESS";
     }
+    public static String realPath(){
+        return System.properties['user.dir']
+    }
 
 
     public static void generaRdfUsuarioActual(String email, String nombres, String apP, String apM) throws Exception{
 
-        String rutaProcesarRDF = "grails-app\\assets\\"
+        String rutaProcesarRDF = realPath()+"\\grails-app\\assets\\"
         Model modelo = ModelFactory.createDefaultModel();
         modelo.setNsPrefix("rdfs",RDFS.getURI());
         modelo.setNsPrefix("foaf",FOAF.getURI());
@@ -94,7 +96,7 @@ class FOAFService {
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
 
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         System.out.println("En el modelo, el sujeto principal <subject> es: " + sujetoStr2);
 
@@ -152,11 +154,11 @@ class FOAFService {
 
 /*
  * Get amigos by email from RDF
- * 
+ *
  */
 
     public static ArrayList<String> getAmigosFOAF(String email){
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         ArrayList<String> uri = new ArrayList<>()
 
         Model m = ModelFactory.createDefaultModel();
@@ -187,7 +189,7 @@ class FOAFService {
 
     public static ArrayList<Integer>  obtenLibrosByEmail(String email){
         ArrayList<Integer> libros = new ArrayList<>()
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         Model m = ModelFactory.createDefaultModel();
         m.read(sujetoStr2);
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
@@ -217,7 +219,7 @@ class FOAFService {
 
     public static ArrayList<Integer>  obtenAutoresByEmail(String email){
         ArrayList<Integer> autores = new ArrayList<>()
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
         Model m = ModelFactory.createDefaultModel();
         m.read(sujetoStr2);
         String queryString =  " SELECT ?yo ?document ?topic ?prymary " +
@@ -305,10 +307,10 @@ class FOAFService {
 
     public static void  setLibro(int id, String email){
 
-        String rutaProcesarRDF = "grails-app\\assets\\"
+        String rutaProcesarRDF = realPath()+"grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -332,10 +334,10 @@ class FOAFService {
 
     public static void  setAutor(int id, String email){
 
-        String rutaProcesarRDF = "grails-app\\assets\\"
+        String rutaProcesarRDF = realPath()+"grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -358,10 +360,10 @@ class FOAFService {
 
     public static void  setAmigo(String email, String nombreC, String apP, String apM, String emailAmigo){
 
-        String rutaProcesarRDF = "grails-app\\assets\\"
+        String rutaProcesarRDF = realPath()+"grails-app\\assets\\"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF\\").concat("modeloFOAF").concat(email).concat(".rdf") ;
-        String sujetoStr2 = URLServer+"/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
+        String sujetoStr2 = "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
 
         def autores = []
         Model m = ModelFactory.createDefaultModel();
@@ -372,7 +374,7 @@ class FOAFService {
 
         Resource sujeto = m.getResource(sujetoStr2);
         Resource person = m.createResource()
-        String tmpSeeAlso= URLServer+"/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
+        String tmpSeeAlso= "http://www.bookscomtt.com/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
 
 
 
