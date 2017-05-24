@@ -421,7 +421,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/libro/calificar",
+            "url": "${application["IPSOURCE"]}libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -452,7 +452,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/listaPreferenciaLibro/agregarElemento",
+            "url": "${application["IPSOURCE"]}listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

@@ -51,9 +51,9 @@
                 <ul>
                     <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
 
-                        <img ng-src="../imagen/renderImageL/{{element.id}}"height="72" width="42" />
+                        <img ng-src="/imagen/renderImageL/{{element.id}}"height="72" width="42" />
 
-                        <a ng-href="../perfilUsuario/verLibro/{{element.id}}">
+                        <a ng-href="/perfilUsuario/verLibro/{{element.id}}">
                             {{element.name}}
                         </a>
                     </li>
@@ -64,15 +64,15 @@
                 <ul>
                     <li data-ng-repeat="element in busqueda.autores | filter:query ">
                         <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
-                        <a ng-href="../perfilUsuario/verAutor/{{element.id}}">
+                        <a ng-href="/perfilUsuario/verAutor/{{element.id}}">
                             {{element.name}}
                         </a>
                     </li>
                 </ul>
                     <ul>
                         <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
-                            <img ng-src="../imagen/renderImageU/{{element.id}}"height="72" width="42" />
-                            <a ng-href="../usuario/verUsuario/{{element.id}}">
+                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
+                            <a ng-href="/usuario/verUsuario/{{element.id}}">
                                 {{element.name}}
                             </a>
                         </li>
@@ -219,7 +219,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/facebook/connect",
+            "url": "${application["IPSOURCE"]}facebook/connect",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

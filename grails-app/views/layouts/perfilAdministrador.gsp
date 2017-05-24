@@ -139,7 +139,7 @@ body{
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/facebook/connect",
+            "url": "${application["IPSOURCE"]}facebook/connect",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

@@ -263,7 +263,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/autor/calificar",
+            "url": "${application["IPSOURCE"]}autor/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -313,7 +313,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/listaPreferenciaAutor/agregarElemento",
+            "url": "${application["IPSOURCE"]}listaPreferenciaAutor/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
