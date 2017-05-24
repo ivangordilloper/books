@@ -304,6 +304,35 @@ class FOAFService {
         return autores
     }
 
+    public static  getEmailFromURI(String URI){
+       def email
+        Model m = ModelFactory.createDefaultModel();
+        //print URI
+        m.read(URI);;
+
+        String queryString =  " SELECT ?yo ?amigo ?email ?seeAlso " +
+                " WHERE {" +
+                "  ?yo <" + FOAF.mbox + "> ?email. " +
+
+                "   }";
+
+        Query query = QueryFactory.create(queryString);
+        QueryExecution qe = QueryExecutionFactory.create(query, m);
+        ResultSet resultado = qe.execSelect();
+
+        while ( resultado.hasNext() ) {
+
+            QuerySolution soln = resultado.nextSolution();
+
+            Resource emailF= (Resource) soln.get("email");
+            email = emailF.toString().split(':')[1]
+
+
+        }
+        return email;
+    }
+
+
 
     public static void  setLibro(int id, String email){
 

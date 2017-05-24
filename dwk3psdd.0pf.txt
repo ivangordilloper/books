@@ -1,0 +1,19 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Explicit paths specified without -i or -o; assuming --only paths...
+# On branch rodrigo
+# Your branch is up-to-date with 'origin/rodrigo'.
+#
+# Changes to be committed:
+#	modified:   grails-app/controllers/Plantilla/LibroController.groovy
+#	modified:   grails-app/services/Plantilla/LibroService.groovy
+#	modified:   grails-app/views/autor/update.gsp
+#	modified:   grails-app/views/layouts/perfilUsuario.gsp
+#	modified:   grails-app/views/libro/createLibro.gsp
+#	modified:   grails-app/views/libro/update.gsp
+#	modified:   grails-app/views/perfilAdministrador/administrador.gsp
+#	modified:   grails-app/views/perfilUsuario/update.gsp
+#	modified:   grails-app/views/perfilUsuario/usuario.gsp
+#
+

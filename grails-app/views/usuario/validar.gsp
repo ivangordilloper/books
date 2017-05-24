@@ -25,9 +25,7 @@
 <div id="inicio">
     <!-- Main -->
     <article id="main">
-        <header>
-            <h2>Contacto</h2>
-        </header>
+            <header style="padding-top: 130px!important; padding-bottom: 110px!important;"><h2>Preferencias</h2></header>
         <section class="wrapper style5">
             <div class="inner">
                 <section>
