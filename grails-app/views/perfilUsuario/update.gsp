@@ -6,7 +6,7 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
-
+    <g:external dir="css" file="modals.css"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
@@ -98,6 +98,9 @@
     </div>
 </div>
 <div class="modal fade" id="MSGA_03" role="dialog">
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-has-success">

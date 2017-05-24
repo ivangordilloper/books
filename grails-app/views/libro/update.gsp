@@ -33,46 +33,28 @@
                             <g:select name="autores" required="true" from="${autorl.nombreCompleto}"  >
                             </g:select>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="12u 12u$(xsmall)">
                             <g:field  type="text" name="isbn" id="isbn" value ="${libro.isbn}" placeholder="ISBN" required="true" maxlength="50"/>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <g:field type="text" name="editorial" id="editorial" value="${libro.editorial}" placeholder="Editorial" maxlength="50" required="true"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            Selecciona género literario:<g:select name="pais" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" value="${libro.generoLiterario}" required="true">
-                            </g:select>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value="${libro.fechaPub}"  placeholder="Fecha Publicación" required="true"/>
-                        </div>
-
-
-
-
-
-
-
                         <div class="6u 12u$(xsmall)">
                             <g:field type="text" name="editorial" id="editorial"  value="${libro.editorial}" placeholder="Editorial" maxlength="20" required="true"/>
                         </div>
                         <div class="6u 6u$(xsmall)">
                             <g:field type="text" name="pais" id="pais" value="${libro.pais}"  placeholder="País" maxlength="20" required="true"/>
                         </div>
-
                         <div class="6u 6u$(xsmall)">
-                            <g:field  type="date" name="fechaPub" id="fechaPub" value="${fecha}"  placeholder="Fecha Publicación" required="true"/>
+                            Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value="${fecha}"  placeholder="Fecha Publicación" required="true"/>
                         </div>
-                        <div class="6u 6u$(xsmall)">
-                            <g:select name="generoLiterario"  value="${libro.generoLiterario}" requiered="true" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}">
+
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Selecciona género literario:<g:select name="generoLiterario"  value="${libro.generoLiterario}" requiered="true" from="${['Género literario', 'Épico', 'Lírico', 'Dramático']}">
                             </g:select>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <g:field  type="text" name="subGenero" id="subGenero" value="${libro.subGenero}"  placeholder="Subgénero" required="true"/>
                         </div>
                         <div class="12u 12u$(xsmall)">
                             <g:field type="text" name="resumen" id="resumen" value="${libro.resumen}"  placeholder="Resumen" maxlength="100" required="true"/>
-                        </div>
-
-                        <div class="12u 12u$(xsmall)">
-                            Portada: <input name="portada"  type="file" required="true"/>
                         </div>
 
                         <div class="12u 12u$(xsmall)">
@@ -103,15 +85,35 @@
                 <h4 class="modal-title">Mensaje de confirmación</h4>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro de que desea cancelar la actualización de libro?</p>
+                <p style="color: black; text-align: justify">¿Está seguro de que desea cancelar la actualización de libro?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-warning" onclick="window.location = '../read';" data-dismiss="modal">Sí</button>
+                <button type="button" class="btn btn-warning" onclick="window.location = '../../perfilAdministrador/administrador';" data-dismiss="modal">Sí</button>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="MSGA_03" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-success">
+                <h4 class="modal-title">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">Los datos han sido actualizados de manera exitosa.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../../perfilAdministrador/administrador';">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js" async defer></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
@@ -121,10 +123,10 @@
         $('#cancelar').click(function () {
             $('#MSGC_01').modal('show');
         });
-    });
-    $("form").submit(function() {
+        $("form").submit(function() {
+            $('#MSGA_03').modal('show');
 
-
+        });
     });
 </script>
 </body>

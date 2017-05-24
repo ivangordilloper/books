@@ -94,16 +94,10 @@ class LibroService {
         def autor = params.autores
         def a = Autor.findByNombreCompleto(autor)
         editarLibro.pais = params.pais
-        def portada1 = params.portada
-        byte[] portada = portada1.getBytes()
-
-        if (portada1 != null) {
-            editarLibro.portada = portada1.getBytes()
-
-        }
         editarLibro.fechaPub = Date.parse('yyyy-MM-dd', params.fechaPub)
         editarLibro.resumen = params.resumen
         editarLibro.generoLiterario = params.generoLiterario
+        editarLibro.subGenero = params.subGenero
         editarLibro.save()
         a.addToLibros(editarLibro)
 

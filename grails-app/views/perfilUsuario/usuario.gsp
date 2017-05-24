@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
     <g:external dir="css" file="modals.css"/>
-    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
-    <g:external dir="js" file="angular.min.js"/>
 
 </head>
 <style type="text/css">
@@ -165,7 +163,7 @@
                                                 <div id="myDropdown" class="dropdown-content">
                                                     <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
                                                     <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
-                                                    <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18"   /></p>
+                                                    <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"  /></p>
 
 
                                                 </div>
@@ -566,8 +564,6 @@
     </div>
 </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 <script type="text/javascript" async defer>
     jQuery(document).ready(function($){<!--from  w w  w.java2s . c o m-->

@@ -116,8 +116,7 @@ class LibroController {
         redirect (action: "verLibro", params: [id: params.idLibro])
     }
     def actualizar(){
-        def usuarioU = springSecurityService.principal
-        def idU = usuarioU
+        LibroService.updateLibro(params)
         redirect(controller: "perfilAdministrador", action: "administrador")
     }
     def calificar(){

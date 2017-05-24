@@ -49,7 +49,7 @@ input[type=file].hidden {
                             </g:select>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <g:field type="text" name="pais" id="subGenero" placeholder="Subgénero" maxlength="50" required="true"/>
+                            <g:field type="text" name="subGenero" id="subGenero" placeholder="Subgénero" maxlength="50" required="true"/>
 
                         </div>
 

@@ -180,7 +180,10 @@
     });
     function myFunction() {
         $("#busqueda").css('display', '');
-        var prueba = $("#obtenerValor").val();
+        var edValue = document.getElementById("buscar");
+        var s = edValue.value;
+        if(s.length == 0)
+            $("#busqueda").css('display', 'none');
         //alert(prueba);
     }
 </script>

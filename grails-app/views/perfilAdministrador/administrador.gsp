@@ -199,9 +199,10 @@
                                         <td>
                                             <div class="dropdown">
                                                 <div id="myDropdown" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                                    <a href="${createLink(controller : 'libro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'libro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
+
+                                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
+                                                    <a href="${createLink(controller : 'libro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
+                                                    <p class="deleteL" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"  /></p>
                                                 </div>
                                             </div>
 
@@ -235,9 +236,15 @@
                                         <td>
                                             <div class="dropdown">
                                                 <div id="myDropdown3" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: amigo.id])}" style="font-size: 13px;">Ver</a>
-                                                    <a href="${createLink(controller : 'autor', action:'update', params: [id: amigo.id])}" style="font-size: 13px;">Editar</a>
-                                                    <a href="${createLink(controller : 'autor', action:'delete', params: [id: amigo.id])}" style="font-size: 13px;">Eliminar</a>
+
+                                                    <a href="${createLink(controller : 'autor', action:'verAutor', params: [id: amigo.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
+                                                    <a href="${createLink(controller : 'autor', action:'update', params: [id: amigo.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
+                                                    <p class="deleteA" id="${amigo.id}" style="margin-right: 25px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"  /></p>
+
+
+
+
+
 
                                                 </div>
                                             </div>
@@ -543,6 +550,46 @@
     </div>
 </div>
 
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_012" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Confirmación.</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">¿Está seguro de que deseas eliminar el libro?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning delete" id="deleteLibro" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="MSGC_013" role="dialog">
+    <br>
+    <br>
+    <br>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-has-warning">
+                <h4 class="modal-title">Confirmación.</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; text-align: justify">¿Está seguro de que deseas eliminar el autor?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning delete" id="deleteAutor" data-dismiss="modal">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -558,6 +605,17 @@
             $("#deleteClick").attr("onclick","window.location = '../usuario/delete/"+ $(this).attr("id") + "'");
             $('#MSGC_01').modal('show');
         });
+        $(document).on("click","p.deleteL",function(e){
+            $("#deleteLibro").attr("onclick","window.location = '../libro/delete/"+ $(this).attr("id") + "'");
+            $('#MSGC_012').modal('show');
+        });
+
+        $(document).on("click","p.deleteA",function(e){
+            $("#deleteAutor").attr("onclick","window.location = '../libro/delete/"+ $(this).attr("id") + "'");
+            $('#MSGC_013').modal('show');
+        });
+
+
     });
 </script>
 
