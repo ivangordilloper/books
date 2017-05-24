@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-6">
-                            <input name="photo" type="file" required ="true"/>
+                            <input name="photo" type="file" id="photo" required ="true"/>
 
                         </div>
 
@@ -138,6 +138,24 @@
 
     });
     });
+
+    $('#photo').bind('change', function() {
+        if(this.files[0].size/1024>1000) {
+            alert("Imagen muy grande");
+            disable();
+        }else{
+            enable();
+        }
+    });
+
+    function disable() {
+        $(':input[type="submit"]').prop('disabled', true);
+
+    }
+    function enable() {
+        $(':input[type="submit"]').prop('disabled', false);
+
+    }
 </script>
 
 </body>

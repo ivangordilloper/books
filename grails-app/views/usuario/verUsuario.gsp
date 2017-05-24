@@ -144,7 +144,6 @@ hr{
     <header style="padding-top: 50px!important;padding-bottom: 40px!important; margin: 0px;">
         <p><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioBusqueda.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/>
         <p style="margin: 0px; padding: 0px"><h2 style="margin: 0px; padding: 0px">${usuarioBusqueda.username}</h2></p>
-        <button onclick="agregarAmigo(${usuarioBusqueda.id})" class="special">Agregar</button>
     </header>
 </article>
 
