@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Bookscom</title>
+    <title> Bookscom | Perfil</title>
     <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
 
@@ -149,7 +149,9 @@
                                 <tr>
                                     <th style="color: #2E3842;">Libros</th>
                                     <th style="color: #2E3842;"></th>
-                                    <th style="color: #2E3842;"><a onclick="hideblock()"><g:img dir="images" file="mas.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
+                                    <th style="color: #2E3842; width: auto;"></th>
+                                    <th style="color: #2E3842; width: auto;"></th>
+                                    <th style="color: #2E3842; width: auto;"><a onclick="hideblock()"><g:img dir="images" file="mas.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -161,15 +163,21 @@
                                             <p style="padding:0px;line-height:25px; margin: 0px;">Libros: ${lista.libros.size()}</p>
                                         </td>
                                         <td>
-                                            <div class="dropdown">
+                                            <!--<div class="dropdown">
                                                 <div id="myDropdown" class="dropdown-content">
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-right: 25px; margin-right:30px;"/></a>
-                                                    <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" style="margin-right: -550px; margin-top:0px;" /></a>
-                                                    <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18"   /></p>
-
 
                                                 </div>
-                                            </div>
+                                            </div>-->
+                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
+
+                                        </td>
+                                        <td>
+                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="editar.png"  align="left" class="image-list3" height="18" width="18" /></a>
+
+                                        </td>
+                                        <td>
+                                            <p class="deleteLista" id="${lista.id}" style="margin-right: 25px;"><g:img dir="images"  file="eliminar.png" align="left" class="image-list3" height="18" width="18"   /></p>
+
 
                                         </td>
                                     </tr>
@@ -187,7 +195,10 @@
                                 <tr>
                                     <th style="color: #2E3842;">Autores</th>
                                     <th style="color: #2E3842;"></th>
-                                    <th style="color: #2E3842;"></th>
+                                    <th style="color: #2E3842; width: auto;"></th>
+                                    <th style="color: #2E3842; width: auto;"></th>
+                                    <th style="color: #2E3842; width: auto;"></th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -198,15 +209,23 @@
                                         <p style="padding:0px;line-height:25px; margin: 0px;">Autores: ${listaA.autores.size()}</p>
                                     </td>
                                     <td>
-                                        <div class="dropdown">
-                                            <div id="myDropdown2" class="dropdown-content">
-                                                <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: listaA.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="right" class="image-list3" height="18" width="18" style="margin-right: 25px;"/></a>
-                                                <a style="font-size: 13px; color: white;">..........</a>
-                                                <a style="font-size: 13px; color: white;">...........</a>
-                                            </div>
-                                        </div>
+                                        <!--<div class="dropdown">
+                                                <div id="myDropdown" class="dropdown-content">
+
+                                                </div>
+                                            </div>-->
+                                        <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: listaA.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
 
                                     </td>
+                                    <td>
+                                        <a style="color: transparent">hol</a>
+
+                                    </td>
+                                    <td>
+                                        <a style="color: transparent">hol</a>
+
+                                    </td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -408,6 +427,7 @@
 
                             </div>
                         </div>
+
                         <div id="amigos" class="tab-pane fade">
 
                             <table class="table table-striped" style="color: #2E3842;">
@@ -422,7 +442,7 @@
                             <div style="height: 5px">
                             </div>
                             <g:each in="${listaAmigos}" var="amigo">
-                                <div class="col-xs-3 col-sm-3 col-md-3" >
+                                <div class="col-xs-6 col-sm-6 col-md-3" >
                                     <div class="panel panel-default">
                                         <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'perfilUsuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>
                                         <div class="panel-body" style="padding-top: 8px; padding-bottom:8px; margin: 0px;"><p style="padding:0px; margin: 0px; text-align: center;"><b><i style="color: black; text-align: center; padding-bottom: 2px;">${amigo.username} (${amigo.listasL.size()} listas) </i></b></p>

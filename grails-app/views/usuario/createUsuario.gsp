@@ -14,9 +14,7 @@
 <div id="inicio">
     <!-- Main -->
     <article id="main">
-        <header>
-            <h2>Regístrate</h2>
-        </header>
+    <header style="padding-top: 130px!important; padding-bottom: 110px!important;"><h2>Regístrate</h2></header>
         <section class="wrapper style5" style="padding-top: 0px; margin-top: 0px;">
             <div class="inner">
                 <section>

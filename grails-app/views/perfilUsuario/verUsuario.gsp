@@ -1,7 +1,7 @@
 <%@ page import="Plantilla.Usuario" %>
 <html>
 <head>
-    <title> Bookscom</title>
+    <title> Bookscom | Ver amigo</title>
     <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
 
@@ -183,7 +183,7 @@ hr{
                         <tr>
                             <th style="color: #2E3842;">Listas de preferencia de libros</th>
                             <th style="color: #2E3842;"></th>
-                            <th style="color: #2E3842;"><a href="/listaPreferenciaLibro/createlistaPreferenciaLibro"><g:img dir="images" file="mas.png" align="right" class="img-config2" style="height: 20px; width: 20px"/></a></th>
+                            <th style="color: #2E3842;"></th>
                         </tr>
                         </thead>
                     </table>
@@ -199,10 +199,7 @@ hr{
                                 <td>
                                     <div class="dropdown">
                                         <div id="myDropdown" class="dropdown-content">
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
-
+                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
                                         </div>
                                     </div>
 
@@ -236,10 +233,7 @@ hr{
                                 <td>
                                     <div class="dropdown">
                                         <div id="myDropdown2" class="dropdown-content">
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;">Ver</a>
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'update', params: [id: lista.id])}" style="font-size: 13px;">Editar</a>
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'delete', params: [id: lista.id])}" style="font-size: 13px;">Eliminar</a>
-
+                                            <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
                                         </div>
                                     </div>
 
@@ -266,14 +260,14 @@ hr{
                 </table>
                 <div class="row">
                     <g:each in="${usuarioBusqueda.amigos}" var="amigo">
-                        <ul class="list-group" style="padding-top: 20px;" >
-                            <li class="list-group-item" >
+                        <ul class="list-group"  >
+                            <li class="list-group-item" style="border-color: transparent;" >
 
                                 <div class="row">
                                     <div class="col-xs-3 col-md-3">
-                                        <img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/>
-                                        <p style="text-align: center; padding-left: 16px;"> ${amigo.username}</p>
-                                        <button onclick="agregarAmigo()" class="special" style="font-size: 10px; ">Agregar</button>
+                                        <a style="color: transparent;" href="${createLink(controller : 'perfilUsuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/></a>
+                                        <p style="text-align: center;"> <b style="color: black;text-align: center;">${amigo.username}<b></p>
+                                      <!--  <button onclick="agregarAmigo()" class="special" style="font-size: 10px; ">Agregar</button>-->
                                     </div>
                                 </div>
 

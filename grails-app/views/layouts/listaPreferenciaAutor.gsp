@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title> <g:layoutTitle/></title>
+    <title> Bookscom | Lista autor</title>
     <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -37,7 +37,7 @@ body{
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="../">BooksCom</a></h1>
+        <h1><a href="/perfilUsuario/usuario">BooksCom</a></h1>
 
 
         <div ng-app="HelloUserApp">
@@ -45,33 +45,80 @@ body{
                 <form class="form-inline">
                     <div style="margin-left: 65%; margin-right: 12%;">
                         <input ng-model="query" type="text"
-                               placeholder="Filter by" autofocus onkeypress="myFunction()" style="background-color : #ffffff;">
+                               placeholder="Buscar..." autofocus onkeypress="myFunction()" style="-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; background-color :#AC654B!important; border: 2px solid transparent!important; margin-right:200px!important; font-size: 15px!important; width: auto!important; height: 30px!important; margin-top: 10px;">
                     </div>
                 </form>
-                <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; background-color: #ffffff; color: #000000;">
-                    <ul>
+                <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; padding-right: 3px; padding-left: 3px; padding-top: 7px; padding-bottom: 3px; background-color: #FFFFFF; color: #000000;">
+                    <ul style="list-style: none; padding: 0px; margin: 0px;">
                         <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+                            <div class="row" style="padding: 10px;">
+                                <div class="col-xs-12 col-md-3">
+                                    <img ng-src="/imagen/renderImageL/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                                </div>
+                                <div class="col-xs-12 col-md-9">
+                                    <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important; " ng-href="/perfilUsuario/verLibro/{{element.id}}">
+                                        <b style="color: black;"> {{element.name}} </b>
+                                    </a>
+                                    </p>
+                                    <p style="padding-top: 4px;line-height: 1; margin: 0px; font-size: 12px; color: black;">LIBRO</p>
 
-                            <img ng-src="../imagen/renderImageL/{{element.id}}"height="72" width="42" />
-
-                            <a ng-href="../libro/verLibro/{{element.id}}">
-                                {{element.name}}
-                            </a>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                            </div>
                         </li>
-                        <!--<li class="animate-repeat" ng-if="results.length === 0">
-                                        <strong>No results found...</strong>
-                                    </li>-->
                     </ul>
-                    <ul>
+
+                    <ul style="list-style: none; padding: 0px; margin: 0px;">
                         <li data-ng-repeat="element in busqueda.autores | filter:query ">
-                            <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
-                            <a ng-href="../autor/verAutor/{{element.id}}">
+                            <div class="row" style="padding: 10px;">
+                                <div class="col-xs-12 col-md-3">
+                                    <img ng-src="../imagen/renderImageA/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                                </div>
+                                <div class="col-xs-12 col-md-9">
+                                    <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="../perfilUsuario/verAutor/{{element.id}}">
+                                        <b style="color: black;"> {{element.name}} </b>
+                                    </a> </p>
+                                    <p style="padding-top: 4px;line-height: 1; margin: 0px; font-size: 12px; color: black;">AUTOR</p>
+
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                            </div>
+                        </li>
+                    </ul >
+
+                    <ul style="list-style: none; padding: 0px; margin: 0px;">
+                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                            <div class="row" style="padding: 10px;">
+                                <div class="col-xs-12 col-md-3">
+                                    <img ng-src="/imagen/renderImageU/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
+                                </div>
+                                <div class="col-xs-12 col-md-9">
+                                    <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="/usuario/verUsuario/{{element.id}}">
+                                        <b style="color: black;"> {{element.name}} </b>
+                                    </a> </p>
+                                    <p style="padding-top: 3px;line-height: 1; margin: 0px; font-size: 12px; color: black;">USUARIO</p>
+
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0px; margin: 0px; height: 1px; background: gainsboro;">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
+                            <a ng-href="/perfilUsuario/verUsuario/{{element.id}}">
                                 {{element.name}}
                             </a>
                         </li>
                     </ul>
+
                 </div>
             </div>
+
         </div>
 
 
@@ -83,7 +130,9 @@ body{
         <nav id="nav">
 
             <ul>
+                <li style="padding-right: 60px;">
 
+                </li>
                 <li class="special">
 
                     <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${usuarioS.username}</span></a>
@@ -124,7 +173,7 @@ body{
     function myFunction() {
         $("#busqueda").css('display', '');
         var prueba = $("#obtenerValor").val();
-        alert(prueba);
+        //alert(prueba);
     }
 </script>
 <script>
@@ -150,8 +199,8 @@ body{
 
         FB.getLoginStatus(function(response) {
             if(response.status == 'connected') {
-                FB.api('/me?fields=id,name,email,friends{email,name}', function(response){
-                    alert('Hola ' + response.email);
+                FB.api('/me?fields=id,name,email,friends{email,name},books', function(response){
+                    alert('Hola ' + response.friends);
                     //console.log(response)
                     getEmailFriends(response)
                 });
@@ -171,6 +220,8 @@ body{
 
     function getEmailFriends(response){
         var jsonObj ={};
+        var jsonObj_Books ={};
+
         console.log(response);
         console.log("hola");
 
@@ -183,15 +234,28 @@ body{
 
 
         }
-        sendFriends(response.id, jsonObj)
+        for (i in response.books.data){
+            //console.log("hola");
+            var newUser = "user" + i;
+            var newValue = "value" + i;
+            jsonObj_Books[i]=response.books.data[i].name;
+
+
+
+        }
+        console.log(jsonObj_Books);
+
+        sendFriends(response.id, jsonObj,jsonObj_Books)
     }
 
 
-    function sendFriends(id, friends) {
+    function sendFriends(id, friends,books) {
 
         var form = new FormData();
         form.append("idUsuarioFB", id);
         form.append("idAmigos", JSON.stringify(friends));
+        form.append("books", JSON.stringify(books));
+
         console.log(friends)
         var settings = {
             "async": true,
