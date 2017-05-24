@@ -34,26 +34,15 @@
                                 <g:field type="text" name="apellidoM" id="apellidoM" value="${user.apellidoM}"  placeholder="Apellido Materno" required="true" maxlength="10"/>
                                 <div id="errorApellidoM" style="display:none; color:#FF0000;"></div>
                             </div>
-                            <div class="6u 6u$(xsmall)">
-                                <g:field type="text" name="nombreUsuario"  id="nombreUsuario" value="${user.username}"  placeholder="Nombre de usuario" required="true"/>
-                                <div id="errorUsuario" style="display:none; color:#FF0000;"></div>
-                            </div>
-                            <div class="6u 6u$(xsmall)">
+                            <div class="12u 12u$(xsmall)">
                                 <g:field type="number" name="telefono" id="number" value="${user.telefono}"  placeholder="Teléfono" maxlength="20"/>
                             </div>
                             <div class="6u 6u$(xsmall)">
-                                <div class="6u 6u$(xsmall)">
-                                    <div class='input-group date' id='datetimepicker9'>
-                                        <input type='text' class="form-control" name= "fechaNac" id="fechaNac" required="true"/>
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar">
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
+                                Fecha de nacimiento:<g:field  type="date" name="fechaNac" id="fechaNac" required="true"/>
+
                             </div>
                             <div class="6u 6u$(xMedium)">
-                                <g:select name="genero" value="${user.genero}" from="${['M', 'F']}">
+                                Género: <g:select name="genero" value="${user.genero}" from="${['M', 'F']}">
                                 </g:select>
                             </div>
                             <div class="12u 12u$(xsmall)">
@@ -142,7 +131,6 @@
             var nombre = $('#nombre').val();
             var apellidoP = $('#apellidoP').val();
             var apellidoM = $('#apellidoM').val();
-            var nombreUsuario = $('#nombreUsuario').val();
             var telefono = $('#telefono').val();
             var genero = $('#genero').val();
             var fechaNac = $('#fechaNac').val();
@@ -198,11 +186,7 @@
                 //return true;
             }
             if(indicador == '5'){
-                var validar = validarUsuarioBD(nombreUsuario);
                 var validar2 = validarCorreoBD(email);
-                alert(validar);
-                alert(validar2);
-                if(validar == 'false'){
                     if(validar2 == 'false'){
                         $('#MSGA_05').modal('show');
                         return true;
@@ -211,11 +195,6 @@
                         $('#MSGE_10').modal('show');
                         return false;
                     }
-                }
-                else{
-                    $('#MSGE_03').modal('show');
-                    return false;
-                }
             }
             else{
                 $(window).scrollTop(3);

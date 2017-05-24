@@ -5,6 +5,7 @@
     <g:external dir="css" file="usuario.css"/>
     <g:external dir="css" file="swiper.min.css"/>
     <g:external dir="css" file="slides.css"/>
+    <g:external dir="css" file="modals.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
 </head>
@@ -266,8 +267,40 @@ hr{
         </div> <!--dos.tres-->
 
 </div>
-<!-- Scripts -->
-<script>
+
+
+    <div class="modal fade" id="MSGA_17" role="dialog">
+        <br>
+        <br>
+        <br>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-has-success">
+                    <h4 class="modal-title">Alerta</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: black; text-align: justify">El formulario ha sido completado con éxito.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location = '../';">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
+    <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
+    <script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>
+    <script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
+
+    <g:external dir="js" file="bootstrap.js"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <!-- Scripts -->
+    <script type="text/javascript" async defer>
+        jQuery(document).ready(function($){
     function agregarAmigo(id) {
         var form = new FormData();
         form.append("idAmigo", id);
@@ -289,12 +322,12 @@ hr{
         }
 
         $.ajax(settings).done(function (response) {
-            alert(response);
+            $('#MSGA_10').modal('show');
         });
 
 
     }
-
+    });
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

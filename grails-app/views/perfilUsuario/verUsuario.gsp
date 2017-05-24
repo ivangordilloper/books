@@ -11,6 +11,12 @@
 
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <script ></script>
+    <g:external dir="css" file="main.css"/>
+    <g:external dir="css" file="modals.css"/>
 </head>
 <style type="text/css">
 body{
@@ -284,45 +290,66 @@ hr{
             </div> <!--dos.tres-->
 
         </div>
+
+        <div class="modal fade" id="MSGA_17" role="dialog">
+            <br>
+            <br>
+            <br>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-has-success">
+                        <h4 class="modal-title">Alerta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: black; text-align: justify">El amigo se ha agregado.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="MSGA_18" role="dialog">
+            <br>
+            <br>
+            <br>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-has-success">
+                        <h4 class="modal-title">Alerta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: black; text-align: justify">El amigo se ha eliminado.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="${resource(dir: '/assets/js/',file:"jquery-2.2.0.min.js")}"></script>
+        <script src="${resource(dir: '/assets/js/',file:"jquery.scrollex.min.js")}"></script>
+        <script src="${resource(dir: '/assets/js/',file:"jquery.scrolly.min.js")}"></script>
+        <script src="${resource(dir: '/assets/js/',file:"swiper.min.js")}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <g:external dir="js" file="bootstrap.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <g:external dir="js" file="bootstrap.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" async defer></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
         <!-- Scripts -->
-        <script>
-
-        function eliminarAmigo(id) {
-            var form = new FormData();
-            form.append("idAmigo", id);
-
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "${application["IPSOURCE"]}usuario/eliminarAmigo",
-                "method": "POST",
-                "headers": {
-                    "cache-control": "no-cache",
-                    "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
-                },
-                "processData": false,
-                "contentType": false,
-                "mimeType": "multipart/form-data",
-                "data": form
-            }
-
-            $.ajax(settings).done(function (response) {
-                alert(response);
-            });
-
-
-        }
-        eliminarAmigo
-            function agregarAmigo(id) {
+        <script type="text/javascript" async defer>
+            function eliminarAmigo(id) {
                 var form = new FormData();
                 form.append("idAmigo", id);
-
-
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "${application["IPSOURCE"]}usuario/agregarAmigo",
+                    "url": "${application["IPSOURCE"]}usuario/eliminarAmigo",
                     "method": "POST",
                     "headers": {
                         "cache-control": "no-cache",
@@ -336,10 +363,42 @@ hr{
 
                 $.ajax(settings).done(function (response) {
                     alert(response);
+                    //$('#MSGA_18').modal('show');
                 });
 
 
             }
+
+                function agregarAmigo(id) {
+                    var form = new FormData();
+                    form.append("idAmigo", id);
+
+
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "${application["IPSOURCE"]}usuario/agregarAmigo",
+                        "method": "POST",
+                        "headers": {
+                            "cache-control": "no-cache",
+                            "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+                        },
+                        "processData": false,
+                        "contentType": false,
+                        "mimeType": "multipart/form-data",
+                        "data": form
+                    }
+
+                    $.ajax(settings).done(function (response) {
+                        //$('#MSGA_17').modal('show');
+                        alert(response);
+                    });
+                }
+
+
+
+
+
 
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
