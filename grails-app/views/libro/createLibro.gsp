@@ -45,7 +45,7 @@ input[type=file].hidden {
                             Fecha de publicación:<g:field  type="date" name="fechaPub" id="fechaPub" value=""  placeholder="Fecha Publicación" required="true"/>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6">
-                            Selecciona género literario:<g:select name="generoLiterario" from="${['Épico', 'Lírico', 'Dramático', 'Historia', 'Didáctico']}" required="true">
+                            Selecciona género literario:<g:select name="generoLiterario" from="${['Épico', 'Lírico', 'Dramático']}" required="true">
                             </g:select>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">

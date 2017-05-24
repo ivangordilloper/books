@@ -159,7 +159,7 @@
                         <div class="row">
                             <br/>
                             <div class="dropdown">
-                                <button onclick="myFunction()" class="dropbtn" style="width: 155px">Agregar</button>
+                                <button onclick="boton()" class="dropbtn" style="width: 155px">Agregar</button>
                                 <div id="myDropdown" class="dropdown-content">
                                     <g:each in="${listas}" var="lista">
                                         <a onclick="agregar(${lista.id}, ${libro.id})" style="font-size: 15px;"> ${lista.nombre} </a>
@@ -386,7 +386,7 @@
 <script>
     /* When the user clicks on the button,
      toggle between hiding and showing the dropdown content */
-    function myFunction() {
+    function boton() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
     // Close the dropdown if the user clicks outside of it

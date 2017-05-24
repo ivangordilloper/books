@@ -23,9 +23,8 @@
                             <thead>
                             <tr>
                                 <th></th>
-
-                                <th style="text-align:center;" >Autor</th>
                                 <th style="text-align:center;">Título</th>
+                                <th style="text-align:center;" >Autor</th>
                                 <th style="text-align:center;" >Género literario</th>
                                 <th style="text-align:center;">Calificacion</th>
                                 <th style="text-align:center;" colspan="3">Acciones</th>
@@ -37,9 +36,73 @@
                                 <tr>
                                     <td style="padding-top: 10px"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: lista.id])}"  style="background-radius:50%; border-radius: 50%; background-size:100%auto; height: 50px; width: 50px"/></td>
                                     <td style="padding: 5px; color:#666666">${lista.titulo}</td>
-                                    <td style="padding: 5px; color:#666666">${lista.autores.nombreCompleto}</td>
+                                    <td style="padding: 5px; color:#666666">${lista.autores.nombreCompleto.toString().substring(1, lista.autores.nombreCompleto.toString().length()-1)}</td>
                                     <td style="padding: 5px; color:#666666">${lista.generoLiterario}</td>
-                                    <td style="padding: 5px; color:#666666">Calificacion</td>
+                                    <td style="padding: 5px; color:#666666">
+                                        <% def promedio = lista.califL.calif.collect().sum() / lista.califL.size()
+                                        def cuentaE
+
+                                        if (promedio>= 5){
+                                            cuentaE ="5"
+                                        }else if(promedio>=4 && promedio<5) {
+                                            cuentaE= "4"
+                                        }else if(promedio>=3 && promedio<4){
+                                            cuentaE= "3"
+                                        }else if (promedio>= 2 && promedio <3){
+                                            cuentaE= "2"
+                                        }else if (promedio>=1 && promedio<2){
+                                            cuentaE="1"
+                                        }
+                                        %>
+                                        <div style="text-align: center">
+                                            <g:if test="${cuentaE.equals("1")}">
+                                                <% def count1= 1 %>
+                                                <g:each in="${1..count1}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count11= 4 %>
+                                                <g:each in="${1..count11}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+
+                                            <g:if test="${cuentaE.equals("2")}">
+                                                <% def count2= 2 %>
+                                                <g:each in="${1..count2}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count21= 3 %>
+                                                <g:each in="${1..count21}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("3")}">
+                                                <% def count3= 3 %>
+                                                <g:each in="${1..count3}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count31= 2 %>
+                                                <g:each in="${1..count31}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("4")}">
+                                                <% def count4= 4 %>
+                                                <g:each in="${1..count4}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                                <% def count41= 1 %>
+                                                <g:each in="${1..count41}" var="b" >
+                                                    <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                            <g:if test="${cuentaE.equals("5")}">
+                                                <% def count5= 5 %>
+                                                <g:each in="${1..count5}" var="b" >
+                                                    <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                                </g:each>
+                                            </g:if>
+                                    </td>
                                     <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:lista.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
                                     <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'opinar', params: [id:lista.id])}"><g:img dir="images" file="opinion.png" align="right" class="image-list3" /></a></td>
                                     <td style="padding: 5px; color:#666666"> <g:link action="eliminarElemento" id="${lista.id}"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" /></g:link></td>

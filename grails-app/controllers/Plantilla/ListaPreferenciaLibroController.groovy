@@ -51,7 +51,7 @@ class ListaPreferenciaLibroController {
     def verListaLibro(){
         def usuarioU = springSecurityService.principal
 
-        [idU: usuarioU]
+        [usuarioS: usuarioU]
     }
 
     def update(long id) {
@@ -59,7 +59,7 @@ class ListaPreferenciaLibroController {
         def us = ListaPreferenciaLibro.findById(id)
         def us2 = us.Usuario.getId()
         def lis = ListaPreferenciaLibro.findById(id)
-        [lis: lis, idU: usuarioU]
+        [lis: lis, usuarioS: usuarioU]
     }
 
     def delete(long id) {
@@ -77,7 +77,7 @@ class ListaPreferenciaLibroController {
        // def editarLista = Usuario.findById(usuarioU.id).listasL
         def listaAutor = Autor.list()
 
-        [llista: editarLista, lautor: listaAutor, idU:usuarioU]
+        [llista: editarLista, lautor: listaAutor, usuarioS:usuarioU]
 
     }
 
