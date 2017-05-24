@@ -418,7 +418,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/libro/calificar",
+            "url": "http://localhost:8080/libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -449,7 +449,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/listaPreferenciaLibro/agregarElemento",
+            "url": "http://localhost:8080/listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

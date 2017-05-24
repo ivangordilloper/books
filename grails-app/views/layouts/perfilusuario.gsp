@@ -218,7 +218,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/facebook/connect",
+            "url": "http://localhost:8080/facebook/connect",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

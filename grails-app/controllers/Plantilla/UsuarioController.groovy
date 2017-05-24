@@ -194,7 +194,7 @@ class UsuarioController {
             to correo
             subject "Validación de nuevo usuario en Bookscom."
             html  view: "/email/registro", model: [pusuario: nombreUsuario, pnombre: nombre, papellidop: apellidoP, papellidoM: apellidoM, token:uTok]
-            inline 'logo', 'image/jpeg', new File('C:\\captura2.png')
+            inline 'logo', 'image/jpeg', new File('grails-app\\assets\\images\\captura2.png')
         }
         FOAFService.generaRdfUsuarioActual((String)correo, (String)nombre, (String)apellidoP, (String)apellidoM)
 

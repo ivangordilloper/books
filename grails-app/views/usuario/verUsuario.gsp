@@ -277,7 +277,7 @@ hr{
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8081/usuario/agregarAmigo",
+            "url": "http://localhost:8080/usuario/agregarAmigo",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
