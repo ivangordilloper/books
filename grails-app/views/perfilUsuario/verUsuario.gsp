@@ -1,3 +1,4 @@
+<%@ page import="Plantilla.Usuario" %>
 <html>
 <head>
     <title> Bookscom</title>
@@ -147,7 +148,20 @@ hr{
         <header style="padding-top: 50px!important;padding-bottom: 40px!important; margin: 0px;">
             <p><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioBusqueda.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/>
             <p style="margin: 0px; padding: 0px"><h2 style="margin: 0px; padding: 0px">${usuarioBusqueda.username}</h2></p>
+            <%def exist = Plantilla.Usuario.findById(usuarioS.id).amigos
+            def flag = 0
+            exist.id.each {
+                    if(it==usuarioBusqueda.id){
+                        flag=1;
+                    }
+                }
+            %>
+            <%if(flag==0){%>
             <button onclick="agregarAmigo(${usuarioBusqueda.id})" class="special">Agregar</button>
+            <%}else{%>
+            <button onclick="eliminarAmigo(${usuarioBusqueda.id})" class="special">Eliminar</button>
+
+            <%}%>
         </header>
     </article>
 
@@ -272,6 +286,34 @@ hr{
         </div>
         <!-- Scripts -->
         <script>
+
+        function eliminarAmigo(id) {
+            var form = new FormData();
+            form.append("idAmigo", id);
+
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "${application["IPSOURCE"]}usuario/eliminarAmigo",
+                "method": "POST",
+                "headers": {
+                    "cache-control": "no-cache",
+                    "postman-token": "149fffae-4c04-1d6b-b765-377b3b3bb9a5"
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
+
+            $.ajax(settings).done(function (response) {
+                alert(response);
+            });
+
+
+        }
+        eliminarAmigo
             function agregarAmigo(id) {
                 var form = new FormData();
                 form.append("idAmigo", id);
