@@ -74,8 +74,31 @@ class PerfilUsuarioController {
         def libroCi = LibroService.libroToList()
         def calificaciones = CalificacionLibro.list()
         //FOAFService.setAmigo(usuario.correo,"Ivan", "Gordillo","Perez", "ivan@hotmail.com" )
-        FOAFService.getAmigosFOAF(usuario.correo)
-        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones, libroFOAF:librosUsuarioFOAF ]
+
+        def uri= FOAFService.getAmigosFOAF(usuario.correo)
+        def autores= FOAFService.obtenAutoresByEmail(usuario.correo)
+        def listaAutores=[]
+        autores.each {
+            def subList=[]
+            def autor =Autor.findById(it)
+            subList.push(autor)
+            subList.push(autor.libros);
+            listaAutores.push(subList)
+        }
+        def listFOAF=[]
+
+        uri.each {
+            def user=[]
+            user.push(Usuario.findByCorreo(FOAFService.getEmailFromURI(it as String) as String))
+            def listB = FOAFService.obtenLibrosByURI(it as String)
+            if(listB) {
+                user.push(Libro.findAllByIdInList(listB))
+            }else{
+                user.push([])
+            }
+            listFOAF.push(user)
+        }
+        [libroC: libroCi, usuarioS:usuarioU, calif : calificaciones, libroFOAF:librosUsuarioFOAF, uri:listFOAF, listaAutores:listaAutores]
 
     }
     def verUsuario(int id){
@@ -161,7 +184,12 @@ class PerfilUsuarioController {
 
         def cal2 = editarLibro.califL.calif
         def cal3 = cal2.sum()
-        def promedio = cal3 / numeroCal
+        def promedio
+        if(numeroCal) {
+            promedio = cal3 / numeroCal
+        }else{
+            promedio = 1/1
+        }
         def cuentaE
 
         if (promedio>= 5){
