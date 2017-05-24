@@ -1,10 +1,13 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
     <g:external dir="js" file="angular.min.js"/>
 </head>
@@ -277,7 +280,7 @@ hr{
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://localhost:8081/usuario/agregarAmigo",
+                    "url": "${application["IPSOURCE"]}usuario/agregarAmigo",
                     "method": "POST",
                     "headers": {
                         "cache-control": "no-cache",

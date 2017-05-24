@@ -1,4 +1,3 @@
-<%@ page import="Plantilla.Usuario" %>
 <html>
 <head>
 
@@ -10,20 +9,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <g:external dir="css" file="slides.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="style-user.css"/>
-    <g:external dir="css" file="letra.css"/>
+    <g:external dir="js" file="angular.min.js"/>
+    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
+
     <g:layoutHead />
 
 
 
 </head>
 <style type="text/css">
-body{
-    background: #0B173B;
-}
+    body{
+        background: #0B173B;
+    }
 </style>
 <body>
 
@@ -32,8 +36,60 @@ body{
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/perfilAdministrador/administrador">BooksCom</a></h1>
+        <h1><a href="../">BooksCom</a></h1>
+
+
+        <div ng-app="HelloUserApp">
+            <div ng-controller="HelloUserController">
+                <form class="form-inline">
+                    <div style="margin-left: 65%; margin-right: 12%;">
+                    <input ng-model="query" type="text"
+                           placeholder="Filter by" autofocus onkeypress="myFunction()" style="background-color : #ffffff;">
+                </div>
+                </form>
+                <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; background-color: #ffffff; color: #000000;">
+                <ul>
+                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+
+                        <img ng-src="/imagen/renderImageL/{{element.id}}"height="72" width="42" />
+
+                        <a ng-href="/perfilUsuario/verLibro/{{element.id}}">
+                            {{element.name}}
+                        </a>
+                    </li>
+                    <!--<li class="animate-repeat" ng-if="results.length === 0">
+                                        <strong>No results found...</strong>
+                                    </li>-->
+                </ul>
+                <ul>
+                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                        <img ng-src="../imagen/renderImageA/{{element.id}}"height="72" width="42" />
+                        <a ng-href="/perfilUsuario/verAutor/{{element.id}}">
+                            {{element.name}}
+                        </a>
+                    </li>
+                </ul>
+                    <ul>
+                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                            <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
+                            <a ng-href="/usuario/verUsuario/{{element.id}}">
+                                {{element.name}}
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <div id="livesearch"> </div>
+
         <nav id="nav">
+
             <ul>
 
                 <li class="special">
@@ -41,6 +97,10 @@ body{
                     <a href="#menu" class="menuToggle"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: usuarioS.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 31px; width: auto; margin-bottom: -9px; margin-right: 10px!important;"/><span>${usuarioS.username}</span></a>
                     <div id="menu">
                         <ul>
+                            <li><a href="/perfilUsuario/usuario">Mi perfil</a></li>
+                            <li><a href="${createLink(controller : 'perfilUsuario', action:'librosCategoria')}">  Buscar libros</a></li>
+                            <li><a href="${createLink(controller : 'chat', action:'index')}">  Comunidad</a></li>
+                            <li><a href="#" id="IngresaFacebook" onclick="ingresar()">Conectar con Facebook</a></li>
                             <li><a href="/logout">Cerrar sesión</a></li>
                         </ul>
                     </div>
@@ -68,7 +128,13 @@ body{
 
 </div>
 <!-- Scripts -->
-
+<script>
+    function myFunction() {
+        $("#busqueda").css('display', '');
+        var prueba = $("#obtenerValor").val();
+        //alert(prueba);
+    }
+</script>
 <script>
 
     var usuarios = []
@@ -92,8 +158,8 @@ body{
 
         FB.getLoginStatus(function(response) {
             if(response.status == 'connected') {
-                FB.api('/me?fields=id,name,email,friends{email,name}', function(response){
-                    alert('Hola ' + response.email);
+                FB.api('/me?fields=id,name,email,friends{email,name},books', function(response){
+                    alert('Hola ' + response.friends);
                     //console.log(response)
                     getEmailFriends(response)
                 });
@@ -113,6 +179,8 @@ body{
 
     function getEmailFriends(response){
         var jsonObj ={};
+        var jsonObj_Books ={};
+
         console.log(response);
         console.log("hola");
 
@@ -125,20 +193,33 @@ body{
 
 
         }
-        sendFriends(response.id, jsonObj)
+        for (i in response.books.data){
+            //console.log("hola");
+            var newUser = "user" + i;
+            var newValue = "value" + i;
+            jsonObj_Books[i]=response.books.data[i].name;
+
+
+
+        }
+        console.log(jsonObj_Books);
+
+        sendFriends(response.id, jsonObj,jsonObj_Books)
     }
 
 
-    function sendFriends(id, friends) {
+    function sendFriends(id, friends,books) {
 
         var form = new FormData();
         form.append("idUsuarioFB", id);
         form.append("idAmigos", JSON.stringify(friends));
+        form.append("books", JSON.stringify(books));
+
         console.log(friends)
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8080/facebook/connect",
+            "url": "${application["IPSOURCE"]}facebook/connect",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

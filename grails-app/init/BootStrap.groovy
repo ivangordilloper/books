@@ -12,6 +12,9 @@ class BootStrap {
         Role user = new Role(authority: "ROLE_USER").save()
         //UsuarioRole.create(ivan2,user);
         //UsuarioRole.create(ivan,admin);
+
+        servletContext["IPSOURCE"] = "http://localhost:8080/"
+
     }
     def destroy = {
     }

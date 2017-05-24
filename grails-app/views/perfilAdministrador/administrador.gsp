@@ -1,12 +1,17 @@
 <html>
 <head>
     <title> Bookscom</title>
-    <g:external dir="css" file="main.css"/>
-    <g:external dir="css" file="usuario.css"/>
-    <g:external dir="css" file="swiper.min.css"/>
-    <g:external dir="css" file="slides.css"/>
     <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"MiAngular.js")}" async defer></script>
-    <g:external dir="js" file="angular.min.js"/>
+    <script type="text/javascript" src="${resource(dir: '/assets/js/',file:"angular.min.js")}" async defer></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="${resource(dir:'css', file:'slides.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'swiper.min.css')}" type="text/css" media="all"/>
+
+    <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
+
+
 </head>
 <style type="text/css">
 .linea{
@@ -17,6 +22,7 @@
 
 </style>
 <body>
+
 <div style="background:white; color: black; font-size: 15px; padding: 0px; margin: 0px;">
     <div class="container">
 
