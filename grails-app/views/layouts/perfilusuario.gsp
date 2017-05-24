@@ -1,4 +1,3 @@
-<%@ page import="Plantilla.Usuario" %>
 <html>
 <head>
 
@@ -19,7 +18,7 @@
     <link rel="stylesheet" href="${resource(dir:'css', file:'style-user.css')}" type="text/css" media="all"/>
     <link rel="stylesheet" href="${resource(dir:'css', file:'letra.css')}" type="text/css" media="all"/>
 
-   
+
     <g:layoutHead />
 
 
