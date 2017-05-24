@@ -307,7 +307,7 @@ class FOAFService {
 
     public static void  setLibro(int id, String email){
 
-        String rutaProcesarRDF = realPath()+"grails-app/assets/"
+        String rutaProcesarRDF = realPath()+"/grails-app/assets/"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF/").concat("modeloFOAF").concat(email).concat(".rdf") ;
         String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
@@ -334,7 +334,7 @@ class FOAFService {
 
     public static void  setAutor(int id, String email){
 
-        String rutaProcesarRDF = realPath()+"grails-app/assets/"
+        String rutaProcesarRDF = realPath()+"/grails-app/assets/"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF/").concat("modeloFOAF").concat(email).concat(".rdf") ;
         String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
@@ -360,7 +360,7 @@ class FOAFService {
 
     public static void  setAmigo(String email, String nombreC, String apP, String apM, String emailAmigo){
 
-        String rutaProcesarRDF = realPath()+"grails-app/assets/"
+        String rutaProcesarRDF = realPath()+"/grails-app/assets/"
 
         String rutaSerializar = rutaProcesarRDF.concat("documentosRDF/").concat("modeloFOAF").concat(email).concat(".rdf") ;
         String sujetoStr2 = "http://localhost:8080/assets/".concat("modeloFOAF").concat(email).concat(".rdf") ;
@@ -374,7 +374,7 @@ class FOAFService {
 
         Resource sujeto = m.getResource(sujetoStr2);
         Resource person = m.createResource()
-        String tmpSeeAlso= "http://localhost:8080/assets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
+        String tmpSeeAlso= "http://localhost:8080/ass   ets/".concat("modeloFOAF").concat(emailAmigo).concat(".rdf");
 
 
 
