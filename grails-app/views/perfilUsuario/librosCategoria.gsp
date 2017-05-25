@@ -38,9 +38,7 @@
         <h1 style="color: black;">Encuentra tus libros favoritos</h1>
         <ul class="nav nav-tabs">
             <li class="active" ><a data-toggle="tab" href="#recomendaciones">Recomendaciones</a></li>
-            <li><a data-toggle="tab" href="#dramatico">Dramático</a></li>
-            <li ><a data-toggle="tab" href="#epico">Épico</a></li>
-            <li ><a data-toggle="tab" href="#historia">Historia</a></li>
+
         </ul>
 
 
@@ -60,7 +58,7 @@
                             <!-- Slides -->
                                 <g:each in="${libroFOAF}" var="libro">
                                     <div class="swiper-slide separator-slide">
-                                        <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
+                                        <a class="link-libro" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  class="image-book"/></a>
                                         <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
                                         <%
                                             if (libro.califL.size() ==0){
@@ -168,7 +166,7 @@
                         <!-- Slides -->
                             <g:each in="${listaAmigos[1]}" var="libro">
                                 <div class="swiper-slide separator-slide">
-                                    <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
+                                    <a class="link-libro" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  class="image-book"/></a>
                                     <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
                                     <%
                                          promedio
@@ -279,7 +277,7 @@
                                 <!-- Slides -->
                                     <g:each in="${listaAmigos[1]}" var="libro">
                                         <div class="swiper-slide separator-slide">
-                                            <a style="padding: 0px; text-align: center; align-content: center;  margin-left: 30px;" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  style="background-size:100%auto; height: 120px; width: 100px"/></a>
+                                            <a class="link-libro" href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: libro.id])}"  class="image-book"/></a>
                                             <p style="color: #0A122A; background: transparent; padding: 0px;  margin: 0px; text-align: center; height: 50px;"><b style="color: black;">${libro.titulo}</b></p>
                                             <%
                                                 promedio

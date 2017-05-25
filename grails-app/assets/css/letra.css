@@ -1,3 +1,12 @@
 .letraC {
     color: black!important;
 }
+.image-book{
+    background-size:100%auto; height: 120px; width: 100px;
+    margin-left: 100px;
+    border-bottom:none!important;
+}
+.link-libro{
+    padding: 0px; text-align: center; align-content: center;  margin-left: 30px;
+    border-bottom:none!important;
+}

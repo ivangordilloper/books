@@ -13,9 +13,13 @@ class BootStrap {
         //UsuarioRole.create(ivan2,user);
         //UsuarioRole.create(ivan,admin);
 
-        //SERVIDOR         servletContext["IPSOURCE"] = "http://www.bookscomtt.com/"
 
-        servletContext["IPSOURCE"] ="http://localhost:8080/" //"http://www.bookscomtt.com/"
+        //
+        // servletContext["IPSOURCE"] ="http://localhost:8080/"
+
+        
+        //SERVIDOR
+        servletContext["IPSOURCE"] ="http://www.bookscomtt.com/"
 
 
 
