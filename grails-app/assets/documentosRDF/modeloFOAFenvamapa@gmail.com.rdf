@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFenvamapa@gmail.com.rdf">
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>13</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:mbox rdf:resource="mailto:envamapa@gmail.com"/>
+    <foaf:family_name>Martínez Paredes</foaf:family_name>
+    <foaf:name>Enya Valeria  Martínez Paredes</foaf:name>
+    <foaf:givenname>Enya Valeria </foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>20</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>3</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>18</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>20</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>13</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:name>Ivan</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>11</foaf:primaryTopic>
+    </foaf:Document>
+  </foaf:Person>
+</rdf:RDF>

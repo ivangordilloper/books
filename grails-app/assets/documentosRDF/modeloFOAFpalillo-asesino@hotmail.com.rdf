@@ -1,0 +1,32 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFpalillo-asesino@hotmail.com.rdf">
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>15</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid.ivan.gor@gmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:raid.ivan.gor@gmail.com"/>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:name>Ivan</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:mbox rdf:resource="mailto:palillo-asesino@hotmail.com"/>
+    <foaf:family_name>Robles Pedraza</foaf:family_name>
+    <foaf:givenname>Betito</foaf:givenname>
+    <foaf:name>Betito Robles Pedraza</foaf:name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>15</foaf:primaryTopic>
+    </foaf:Document>
+  </foaf:Person>
+</rdf:RDF>

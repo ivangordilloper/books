@@ -3,8 +3,8 @@
     xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <foaf:Person rdf:about="http://localhost:8086/assets/documentosRDF/modeloFOAFivan2@hotmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:ivan2@hotmail.com"/>
+  <foaf:Person rdf:about="http://www.bookscomtt.com/assets/modeloFOAFraid_ivan@hotmail.com.rdf">
+    <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
     <foaf:family_name>Gordillo Perez</foaf:family_name>
     <foaf:givenname>Ivan</foaf:givenname>
     <foaf:name>Ivan Gordillo Perez</foaf:name>
