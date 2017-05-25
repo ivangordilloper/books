@@ -152,7 +152,7 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <div id="myDropdown1" class="dropdown-content">
-                                                            <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></a>
+                                                            <a href="${createLink(controller : 'perfilAdministrador', action:'verUsuario', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></a>
                                                             <p class="deleteUsuario" id="${lista.id}" style="margin-top: 14px;"><g:img dir="images"  file="eliminar.png" align="right" class="image-list3" height="18" width="18" style="margin-top:-28px;" /></p>
 
                                                         </div>

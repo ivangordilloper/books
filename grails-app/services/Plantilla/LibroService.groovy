@@ -8,6 +8,8 @@ import static Plantilla.AutorService.*
 class LibroService {
 
     def AutorService
+    def springSecurityService
+
     def libroToList() {
         return Libro.list()
     }
@@ -110,9 +112,10 @@ class LibroService {
     }
     def calificarLibro(params){
         def cal = params.stars
-        def idU = params.id
+        def idU = springSecurityService.principal
+        def idUU = idU.id
         def libro1 = params.id
-        def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idU)
+        def lc = new CalificacionLibro(calif:cal, libro: libro1, usuario: idUU)
         if(lc.validate()){
             lc.save()
         }

@@ -205,7 +205,7 @@ hr{
                                 <td>
                                     <div class="dropdown">
                                         <div id="myDropdown" class="dropdown-content">
-                                            <a href="${createLink(controller : 'listaPreferenciaLibro', action:'verListaPreferenciaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
+                                            <a href="${createLink(controller : 'perfilUsuario', action:'verListaLibro', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
                                         </div>
                                     </div>
 
@@ -239,7 +239,7 @@ hr{
                                 <td>
                                     <div class="dropdown">
                                         <div id="myDropdown2" class="dropdown-content">
-                                            <a href="${createLink(controller : 'listaPreferenciaAutor', action:'verListaPreferenciaAutor', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
+                                            <a href="${createLink(controller : 'perfilUsuario', action:'verListaAutor', params: [id: lista.id])}" style="font-size: 13px;"><g:img dir="images" file="lupa.png" align="left" class="image-list3" height="18" width="18"/></a>
                                         </div>
                                     </div>
 
@@ -272,7 +272,8 @@ hr{
                                 <div class="row">
                                     <div class="col-xs-3 col-md-3">
                                         <a style="color: transparent;" href="${createLink(controller : 'perfilUsuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/></a>
-                                        <p style="text-align: center;"> <b style="color: black;text-align: center;">${amigo.username}<b></p>
+                                        <p style="text-align: center;"> <b style="color: black;text-align: center;">${amigo.username}</b>
+                                        </p>
                                       <!--  <button onclick="agregarAmigo()" class="special" style="font-size: 10px; ">Agregar</button>-->
                                     </div>
                                 </div>

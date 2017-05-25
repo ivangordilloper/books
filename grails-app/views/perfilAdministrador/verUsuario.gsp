@@ -248,7 +248,7 @@ hr{
 
                 <div class="row">
                     <div class="col-xs-3 col-md-3">
-                       <a href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}" style="font-size: 13px;"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/> </a>
+                       <a href="${createLink(controller : 'perfilAdministrador', action:'verUsuario', params: [id: amigo.id])}" style="font-size: 13px;"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-size:100%auto; height: 100px; width: 120px;" class="img-profile"/> </a>
                         <p style="text-align: center; padding-left: 16px;"> ${amigo.username}</p>
                     </div>
                 </div>

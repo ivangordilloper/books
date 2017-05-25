@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Bookscom </title>
+    <title> Bookscom | Ver Libro</title>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="usuario.css"/>
     <g:external dir="css" file="swiper.min.css"/>
@@ -187,6 +187,12 @@
                         </g:each>
                         <div>
 
+                            <g:if test = "${cuentaE.equals("0")}">
+                                <% def count110= 5 %>
+                                <g:each in="${1..count110}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro;">&starf;</span>
+                                </g:each>
+                            </g:if>
                             <g:if test="${cuentaE.equals("1")}">
                                 <% def count1= 1 %>
                                 <g:each in="${1..count1}" var="b" >
@@ -301,19 +307,22 @@
                     <hr/>
                     <!-- Libros relacionados por GeneroLiterario-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count=listaG.collect().size()-1 %>
+                        <% def count=listaG.collect().size()-1
+                            if (count>=4) {
+                                count = 3
+                            } %>
                         <g:each in="${0..count}" var="c" >
                             <g:if test="${listaG[c].id.equals(libro.id)}">
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
+                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:listaG[c].id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
                                 </div>
                             </g:else>
                         </g:each>
                     </div> <!-- Libros relacionados por GeneroLiterario-->
 
-
+                    <g:each in="${libro.autores}" var="b2" >
                     <h3 style="color:#D2691E; font-size: 15px; padding-top: 30px">ACERCA DE ${libro.autores.nombreCompleto.toString().substring(1,libro.autores.nombreCompleto.toString().length() - 1 )} <br/> </h3>
                     <hr/>
                     <g:each in="${libro.autores}" var="b" >
@@ -330,9 +339,9 @@
                     </g:each>
                     <br>
 
-<g:each in="${libro.autores}" var="b2" >
+
                     <div class="row">
-                        <p style="text-align: justify"> ${b2.bio.toString().substring(1, b2.bio.toString().length()-1)}</p>
+                        <p style="text-align: justify"> ${b2.bio}</p>
                     </div>
 </g:each>
 
@@ -344,13 +353,13 @@
                     <hr/>
                     <!-- Libros relacionados por mismo Autor-->
                     <div class="row" style="margin-top: 10px">
-                        <% def count2= listaAI.collect().size()-1%>
-                        <g:each in="${0..count2}" var="c" >
+                        <% def countLA= listaAI.collect().size()-1%>
+                        <g:each in="${0..countLA}" var="c" >
                             <g:if test="${listaAI[c].id.equals(libro.id)}">
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:libro.id])}"> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/> </a>
+                                    <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:listaAI[c].id])}"> <img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaAI[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/> </a>
                                 </div>
                             </g:else>
                         </g:each>

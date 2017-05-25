@@ -172,7 +172,7 @@ class PerfilUsuarioController {
 
         //mandarServicio
         def genero = editarLibro.generoLiterario
-        def listaLibr = Libro.findAllByGeneroLiterario(genero)
+        def listaLibr = Libro.findAllByGeneroLiterario(genero).asList().subList(0,1)
         def autorL = editarLibro.autores
         def editarAutor = Autor.findById(autorL.id)
         def libE = AutorService.librosByAutor(editarAutor)
@@ -185,13 +185,17 @@ class PerfilUsuarioController {
         def cal2 = editarLibro.califL.calif
         def cal3 = cal2.sum()
         def promedio
-        if(numeroCal) {
+
+        if(numeroCal>0) {
             promedio = cal3 / numeroCal
         }else{
-            promedio = 1/1
+            promedio = 0
         }
         def cuentaE
 
+        if (promedio==0){
+            cuentaE = "0"
+        }
         if (promedio>= 5){
             cuentaE ="5"
         }else if(promedio>=4 && promedio<5) {
@@ -216,4 +220,34 @@ class PerfilUsuarioController {
         redirect (action: "verLibro", params: [id: params.idLibro])
     }
 
+    def verListaPreferenciaLibro(long id) {
+        def usuarioU = springSecurityService.principal
+        def editarLista = ListaPreferenciaLibro.findById(id)
+        // def editarLista = Usuario.findById(usuarioU.id).listasL
+        def listaAutor = Autor.list()
+
+        [llista: editarLista, lautor: listaAutor, usuarioS: usuarioU]
+
+    }
+
+    def verListaLibro(long id) {
+        def usuarioU = springSecurityService.principal
+        def editarLista = ListaPreferenciaLibro.findById(id)
+
+
+        // def editarLista = Usuario.findById(usuarioU.id).listasL
+        def listaAutor = Autor.list()
+
+        [llista: editarLista, lautor: listaAutor, usuarioS: usuarioU]
+
+    }
+
+    def verListaAutor(long id) {
+        def idU = springSecurityService.principal
+        def editarLista = ListaPreferenciaAutor.findById(id)
+        def listaAutor = Libro.list()
+
+        [llista: editarLista, llibro: listaAutor, usuarioS: idU]
+
+    }
 }

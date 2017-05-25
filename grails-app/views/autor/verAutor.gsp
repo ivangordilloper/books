@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Bookscom </title>
+    <title> Bookscom | Ver Autor </title>
 
     <style type="text/css">
 
@@ -189,15 +189,93 @@
                                         <p style="font-size: 15px; color: black; margin: 0px; padding-top: 1px">
                                         <b style="color: black; margin: 0px; padding-top: 0px">${libro.titulo}<br/></b>
                                         <i> ${libro.fechaPub.toString().substring(0,10)} </i></p>
-                            <% def count=1 %>
-                            <g:each in="${0..count}" var="c" >
-                                <span style="font-size:150%;color:#BC673F;">&starf;</span>
-                            </g:each>
+
+                                    <%
+                                        def promedio
+                                        if (libro.califL.size() ==0){
+                                            promedio = 0
+                                        }
+                                        else {
+                                            promedio = libro.califL.calif.collect().sum() / libro.califL.size()
+                                        }
+                                        def cuentaE
+
+                                        if (promedio == 0){
+                                            cuentaE ="0"
+                                        }
+                                        if (promedio>= 5){
+                                            cuentaE ="5"
+                                        }else if(promedio>=4 && promedio<5) {
+                                            cuentaE= "4"
+                                        }else if(promedio>=3 && promedio<4){
+                                            cuentaE= "3"
+                                        }else if (promedio>= 2 && promedio <3){
+                                            cuentaE= "2"
+                                        }else if (promedio>=1 && promedio<2){
+                                            cuentaE="1"
+                                        }
+                                    %>
+                                    <g:if test="${cuentaE.equals("0")}">
+                                        <% def count1nada= 5 %>
+                                        <g:each in="${1..count1nada}" var="b" >
+                                            <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+
+                                    <g:if test="${cuentaE.equals("1")}">
+                                        <% def count1= 1 %>
+                                        <g:each in="${1..count1}" var="b" >
+                                            <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                        </g:each>
+                                        <% def count11= 4 %>
+                                        <g:each in="${1..count11}" var="b" >
+                                            <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+
+                                    <g:if test="${cuentaE.equals("2")}">
+                                        <% def count2= 2 %>
+                                        <g:each in="${1..count2}" var="b" >
+                                            <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                        </g:each>
+                                        <% def count21= 3 %>
+                                        <g:each in="${1..count21}" var="b" >
+                                            <span style="font-size:150%;color:gainsboro">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+                                    <g:if test="${cuentaE.equals("3")}">
+                                        <% def count3= 3 %>
+                                        <g:each in="${1..count3}" var="b" >
+                                            <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                        </g:each>
+                                        <% def count31= 2 %>
+                                        <g:each in="${1..count31}" var="b" >
+                                            <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+                                    <g:if test="${cuentaE.equals("4")}">
+                                        <% def count4= 4 %>
+                                        <g:each in="${1..count4}" var="b" >
+                                            <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                        </g:each>
+                                        <% def count41= 1 %>
+                                        <g:each in="${1..count41}" var="b" >
+                                            <span style="font-size:150%;color:gainsboro;">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+                                    <g:if test="${cuentaE.equals("5")}">
+                                        <% def count5= 5 %>
+                                        <g:each in="${1..count5}" var="b" >
+                                            <span style="font-size:150%;color:#D2691E;">&starf;</span>
+                                        </g:each>
+                                    </g:if>
+
+
                                 </div>
 
                                 <div class="col-xs-4 col-sm-8 col-md-4 col-lg-5">
                                     <!--${libro.resumen.toString().substring(0,10)}. -->
-                                    <div id="resumen" style="text-align: justify">  ${libro.resumen.substring(0, 10)} ... </div>
+                                    <div id="resumen" style="text-align: justify">  ${libro.resumen} </div>
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <a href="${createLink(controller : 'libro', action:'verLibro', params: [id: libro.id])}" > ver libro</a>
