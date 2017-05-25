@@ -21,7 +21,7 @@
                     <div class="box">
                         <h4>Regístrate</h4>
 
-                        <g:uploadForm action="#" method="post" name="form" id="formRegister">
+                        <g:uploadForm action="crear" method="post" name="form" id="formRegister">
                             <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                 <div class="row uniform">
                                     <div class="col-xs-12 col-sm-12 col-md-12">

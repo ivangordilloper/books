@@ -110,7 +110,7 @@
 
                                             <%}%>
                                     </td>
-                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:lista.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
+                                    <td style="padding: 5px; color:#666666"> <a href="${createLink(controller : 'libro', action:'verLibro', params: [id:lista.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" /></a></td>
                                 </tr>
                             </g:each>
 
