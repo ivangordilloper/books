@@ -21,7 +21,7 @@
                     <div class="box">
                         <h4>Regístrate</h4>
 
-                        <g:uploadForm action="crear" method="post" name="form" id="formRegister">
+                        <g:uploadForm action="#" method="post" name="form" id="formRegister">
                             <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
                                 <div class="row uniform">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,7 +44,7 @@
                                         <input type="number" name="telefono" id="telefono" value=""  placeholder="Teléfono" maxlength="20" required="true"/>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
-                                        Fecha de nacimiento:<g:field  type="date" name="fechaNac" id="fechaNac" required="true"/>
+                                        Fecha de nacimiento:<g:field  type="date" name="fechaNac"  value="${new Date()}" maxlength="7" size="8" id="fechaNac" required="true"/>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -99,6 +99,20 @@
 </div>
 
 <!-- Scripts -->
+
+<script>
+    $('#fechaNac').blur(function()
+    {
+    var hola = $("#fechaNac").val().length
+        if(hola===10){
+            enable();
+        }else{
+            alert("El formato de fecha debe ser dd/mm/yyyy");
+            disable()
+
+        }
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <g:external dir="js" file="bootstrap.js"/>
@@ -202,7 +216,13 @@
     <script type="text/javascript" async defer>
 
         $('#perfil').bind('change', function() {
-            if(this.files[0].size/1024>126) {
+
+            var ext = $('#perfil').val().split('.').pop().toLowerCase();
+            if($.inArray(ext, ['png','jpg','jpeg']) === -1) {
+                alert('El archivo seleccionado debe ser imagen formato jpg');
+                disable();
+
+            }else if(this.files[0].size/1024>126) {
                 alert("Imagen muy grande");
                 disable();
             }else{
