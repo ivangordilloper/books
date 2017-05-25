@@ -50,7 +50,7 @@ body{
                 </form>
                 <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; padding-right: 3px; padding-left: 3px; padding-top: 7px; padding-bottom: 3px; background-color: #FFFFFF; color: #000000;">
                     <ul style="list-style: none; padding: 0px; margin: 0px;">
-                        <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+                        <li data-ng-repeat="element in busqueda.libros | filter:query | limitTo : 3">
                             <div class="row" style="padding: 10px;">
                                 <div class="col-xs-12 col-md-3">
                                     <img ng-src="/imagen/renderImageL/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
@@ -70,7 +70,7 @@ body{
                     </ul>
 
                     <ul style="list-style: none; padding: 0px; margin: 0px;">
-                        <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                        <li data-ng-repeat="element in busqueda.autores | filter:query | limitTo : 3">
                             <div class="row" style="padding: 10px;">
                                 <div class="col-xs-12 col-md-3">
                                     <img ng-src="../imagen/renderImageA/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
@@ -108,7 +108,7 @@ body{
                     </ul>
 
                     <ul>
-                        <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                        <li data-ng-repeat="element in busqueda.usuarios | filter:query | limitTo : 3">
                             <img ng-src="/imagen/renderImageU/{{element.id}}"height="72" width="42" />
                             <a ng-href="/perfilUsuario/verUsuario/{{element.id}}">
                                 {{element.name}}

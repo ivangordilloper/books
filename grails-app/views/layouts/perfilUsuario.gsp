@@ -50,7 +50,7 @@
             <div id="ocultar">
             <div class="box" id="busqueda" style="display:none; margin-top:-25px; margin-left: 65%; margin-right: 10%; padding-right: 3px; padding-left: 3px; padding-top: 7px; padding-bottom: 3px; background-color: #FFFFFF; color: #000000;">
                 <ul style="list-style: none; padding: 0px; margin: 0px;">
-                    <li data-ng-repeat="element in busqueda.libros | filter:query as results ">
+                    <li data-ng-repeat="element in busqueda.libros | filter:query | limitTo : 3">
                         <div class="row" style="padding: 10px;">
                         <div class="col-xs-12 col-md-3">
                         <img ng-src="/imagen/renderImageL/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
@@ -70,13 +70,13 @@
                 </ul>
 
                 <ul style="list-style: none; padding: 0px; margin: 0px;">
-                    <li data-ng-repeat="element in busqueda.autores | filter:query ">
+                    <li data-ng-repeat="element in busqueda.autores | filter:query | limitTo : 3">
                         <div class="row" style="padding: 10px;">
                             <div class="col-xs-12 col-md-3">
                              <img ng-src="../imagen/renderImageA/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
                             </div>
                                 <div class="col-xs-12 col-md-9">
-                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="../perfilUsuario/verAutor/{{element.id}}">
+                                <p style="margin: 0px; padding: 0px;line-height: 1; color: black; font-size: 12px;"><a style="font-size: 15px;  border-bottom:none!important;" ng-href="/perfilUsuario/verAutor/{{element.id}}">
                                     <b style="color: black;"> {{element.name}} </b>
                                 </a> </p>
                                     <p style="padding-top: 4px;line-height: 1; margin: 0px; font-size: 12px; color: black;">AUTOR</p>
@@ -89,7 +89,7 @@
                 </ul >
 
                 <ul style="list-style: none; padding: 0px; margin: 0px;">
-                    <li data-ng-repeat="element in busqueda.usuarios | filter:query ">
+                    <li data-ng-repeat="element in busqueda.usuarios | filter:query | limitTo : 3 ">
                         <div class="row" style="padding: 10px;">
                             <div class="col-xs-12 col-md-3">
                         <img ng-src="/imagen/renderImageU/{{element.id}}"height="60" width="50" style="margin: 0px; padding: 0px;"/>
@@ -164,20 +164,6 @@
 </div>
 <!-- Scripts -->
 <script>
-    $('#buscar').blur(function()
-    {
-        if( $(this).val().length === 0 ) {
-            $("#busqueda").wrap(function() {
-                return '<!--' + this.outerHTML + '"-->';
-            });
-
-        }else{
-            $('#ocultar')
-                .contents()
-                .filter(function(){return this.nodeType === 8;}) //get the comments
-                .replaceWith(function(){return this.data;})
-        }
-    });
     function myFunction() {
         $("#busqueda").css('display', '');
         var edValue = document.getElementById("buscar");

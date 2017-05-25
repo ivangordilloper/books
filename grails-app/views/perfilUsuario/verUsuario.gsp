@@ -357,6 +357,7 @@ hr{
 
                 $.ajax(settings).done(function (response) {
                     alert(response);
+                    location.reload();
                     //$('#MSGA_18').modal('show');
                 });
 
@@ -386,6 +387,7 @@ hr{
                     $.ajax(settings).done(function (response) {
                         //$('#MSGA_17').modal('show');
                         alert(response);
+                        location.reload();
                     });
                 }
 

@@ -48,7 +48,7 @@
                     <div class="row">
                         <br/>
                         <div class="dropdown">
-                            <button class="special" style="width: 155px; font-size: 10px;">Editar foto</button>
+                            <!--<button class="special" style="width: 155px; font-size: 10px;">Editar foto</button>-->
                         </div>
                     </div>
 

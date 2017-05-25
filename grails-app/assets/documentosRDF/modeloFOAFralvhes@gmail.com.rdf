@@ -6,37 +6,33 @@
   <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFralvhes@gmail.com.rdf">
     <foaf:knows>
       <foaf:Person>
-        <foaf:name>Rodrigo</foaf:name>
-        <foaf:family_name>Alvarado Hernandez</foaf:family_name>
-        <foaf:mbox rdf:resource="mailto:ralvhes@gmail.com"/>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFralvhes@gmail.com.rdf"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
+        <foaf:family_name>King Hernandez</foaf:family_name>
+        <foaf:name>Stephen</foaf:name>
       </foaf:Person>
     </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>3</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
     <foaf:mbox rdf:resource="mailto:ralvhes@gmail.com"/>
     <foaf:knows>
       <foaf:Person>
-        <foaf:name>Stephen</foaf:name>
-        <foaf:family_name>King Hernandez</foaf:family_name>
-        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
+        <foaf:name>Rodrigo</foaf:name>
+        <foaf:family_name>Alvarado Hernandez</foaf:family_name>
+        <foaf:mbox rdf:resource="mailto:ralvhes@gmail.com"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFralvhes@gmail.com.rdf"/>
       </foaf:Person>
     </foaf:knows>
-    <foaf:knows>
-      <foaf:Person>
-        <foaf:name>Stephen</foaf:name>
-        <foaf:family_name>King Hernandez</foaf:family_name>
-        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
-      </foaf:Person>
-    </foaf:knows>
-    <foaf:knows>
-      <foaf:Person>
-        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
-        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
-        <foaf:family_name>King Hernandez</foaf:family_name>
-        <foaf:name>Stephen</foaf:name>
-      </foaf:Person>
-    </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>3</foaf:primaryTopic>
+    </foaf:Document>
     <foaf:knows>
       <foaf:Person>
         <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFralvhes@gmail.com.rdf"/>
@@ -47,14 +43,74 @@
     </foaf:knows>
     <foaf:knows>
       <foaf:Person>
+        <foaf:name>Stephen</foaf:name>
+        <foaf:family_name>King Hernandez</foaf:family_name>
+        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person>
         <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
         <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
         <foaf:family_name>King Hernandez</foaf:family_name>
         <foaf:name>Stephen</foaf:name>
       </foaf:Person>
     </foaf:knows>
+    <foaf:knows>
+      <foaf:Person>
+        <foaf:name>Rodrigo</foaf:name>
+        <foaf:family_name>Alvarado Hernandez</foaf:family_name>
+        <foaf:mbox rdf:resource="mailto:ralvhe@gmail.com"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFralvhe@gmail.com.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFralvhe@gmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:ralvhe@gmail.com"/>
+        <foaf:family_name>Alvarado Hernandez</foaf:family_name>
+        <foaf:name>Rodrigo</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>3</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <foaf:name>Stephen</foaf:name>
+        <foaf:family_name>King Hernandez</foaf:family_name>
+        <foaf:mbox rdf:resource="mailto:raid@raid.com"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid@raid.com.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
     <foaf:givenname>Rodrigo</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>3</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
     <foaf:name>Rodrigo Alvarado Hernandez</foaf:name>
     <foaf:family_name>Alvarado Hernandez</foaf:family_name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
   </foaf:Person>
 </rdf:RDF>
