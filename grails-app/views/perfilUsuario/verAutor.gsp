@@ -382,7 +382,7 @@
 </script>
 <script>
     function agregarA(id) {
-
+        alert("Autor agregado a tu lista");
         var form = new FormData();
         form.append("autorI", id);
 
@@ -402,7 +402,7 @@
         }
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
+            alert("Libro agregado a tu lista.");
         });
 
     }

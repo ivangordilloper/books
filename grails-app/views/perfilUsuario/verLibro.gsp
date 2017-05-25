@@ -412,7 +412,7 @@
 
 <script>
     function sendStars(id, calificacion) {
-
+        alert("Libro calificado");
         var form = new FormData();
         form.append("stars", calificacion);
         form.append("id", id);
@@ -446,6 +446,7 @@
 
 <script>
     function agregar(id, idL) {
+        alert("Libro agregado a tu lista");
 
         var form = new FormData();
         form.append("lista", id);

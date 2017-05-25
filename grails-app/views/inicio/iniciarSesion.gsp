@@ -143,7 +143,8 @@
             success: function (data) {
                 retVal = data;
             },
-            error: function () { alert("Data not deleted"); }
+            error: function () { //alert("Data not deleted");
+            }
         });
         return retVal;
     }
