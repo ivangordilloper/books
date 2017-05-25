@@ -80,10 +80,14 @@ class PerfilUsuarioController {
         def listaAutores=[]
         autores.each {
             def subList=[]
-            def autor =Autor.findById(it)
-            subList.push(autor)
-            subList.push(autor.libros);
-            listaAutores.push(subList)
+            if(it) {
+                def autor = Autor.findById(it)
+                subList.push(autor)
+                subList.push(autor.libros);
+                listaAutores.push(subList)
+            }else{
+
+            }
         }
         def listFOAF=[]
 
