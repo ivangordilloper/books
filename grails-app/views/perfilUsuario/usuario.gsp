@@ -89,7 +89,7 @@
                                     <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).apellidoP}</i></b></p>
                                         <div id="ocultar2" style="display: none"> Hola
                                         </div> </td>
-                                </tr>
+                              </tr>
                                 <tr>
                                     <td> Apellido materno</td>
                                     <td> <p style="padding:0px; margin: 0px;"><b><i style="color: black">${Plantilla.Usuario.findById(usuarioS.id).apellidoM}</i></b></p>
@@ -450,8 +450,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading" style="text-align: center; "><a style="color: transparent;" href="${createLink(controller : 'perfilUsuario', action:'verUsuario', params: [id: amigo.id])}"><img  src="${createLink(controller: 'imagen', action: 'renderImageU', params: [id: amigo.id])}" style="background-radius:50%; border-radius: 50%;background-size:100%auto; height: 150px; width: 150px;" class="img-profile"/></a></div>
                                         <div class="panel-body" style="padding-top: 8px; padding-bottom:8px; margin: 0px;"><p style="padding:0px; margin: 0px; text-align: center;"><b><i style="color: black; text-align: center; padding-bottom: 2px;">${amigo.username} (${amigo.listasL.size()} listas) </i></b></p>
-                                            <a class="special" style="width: 155px; font-size: 10px;"><g:img dir="images" file="eliminar.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
-                                            <a class="special" style="width: 155px; font-size: 10px;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
+                                           <a class="special" style="width: 155px; font-size: 10px;" href="${createLink(controller : 'usuario', action:'verUsuario', params: [id: amigo.id])}"><g:img dir="images" file="lupa.png" align="right" class="image-list3" style="height: 20px; width: 20px; padding: 0px; margin: 0px;"/></a>
                                         </div>
                                     </div>
                                 </div>

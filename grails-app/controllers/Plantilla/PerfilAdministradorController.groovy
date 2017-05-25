@@ -31,6 +31,33 @@ class PerfilAdministradorController {
 
     }
 
+    def verListaAutor(long id) {
+        def idU = springSecurityService.principal
+        def editarLista = ListaPreferenciaAutor.findById(id)
+        def listaAutor = Libro.list()
+
+        [llista: editarLista, llibro: listaAutor, usuarioS: idU]
+
+    }
+    def verUsuario(int id){
+        def usuarioBusqueda = Usuario.findById(id)
+        def usuario = springSecurityService.principal
+        [usuarioBusqueda:usuarioBusqueda, usuarioS: usuario]
+    }
+
+    def verListaLibro(long id) {
+        def usuarioU = springSecurityService.principal
+        def editarLista = ListaPreferenciaLibro.findById(id)
+
+
+        // def editarLista = Usuario.findById(usuarioU.id).listasL
+        def listaAutor = Autor.list()
+
+        [llista: editarLista, lautor: listaAutor, usuarioS: usuarioU]
+
+    }
+
+
     def update(){
         def user = springSecurityService.principal
         [user:user, usuarioS: user]

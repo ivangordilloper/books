@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>LIBRO</title>
+    <title>Bookscom | Libro</title>
     <g:external dir="css" file="main.css"/>
     <g:external dir="css" file="usuario.css"/>
     <g:external dir="css" file="swiper.min.css"/>
@@ -200,6 +200,12 @@
                         </g:each>
                         <div>
 
+                            <g:if test = "${cuentaE.equals("0")}">
+                                <% def count110= 5 %>
+                                <g:each in="${1..count110}" var="b" >
+                                    <span style="font-size:200%;color:gainsboro;">&starf;</span>
+                                </g:each>
+                            </g:if>
                             <g:if test="${cuentaE.equals("1")}">
                                 <% def count1= 1 %>
                                 <g:each in="${1..count1}" var="b" >
@@ -320,7 +326,7 @@
                             </g:if>
                             <g:else>
                                 <div class="col-sm-3">
-                                    <a href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id:libro.id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
+                                    <a href="${createLink(controller : 'perfilUsuario', action:'verLibro', params: [id: listaG[c].id])}"><img src="${createLink(controller: 'imagen', action: 'renderImageL', params: [id: listaG[c].id])}"  style="background-size:100%auto; height: 100px; width: 70px;"/></a>
                                 </div>
                             </g:else>
                         </g:each>
@@ -345,7 +351,7 @@
 
 <g:each in="${libro.autores}" var="b2" >
                     <div class="row">
-                        <p style="text-align: justify"> ${b2.bio.toString().substring(1, b2.bio.toString().length()-1)}</p>
+                        <p style="text-align: justify"> ${b2.bio}</p>
                     </div>
 </g:each>
 
@@ -418,7 +424,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "${application["IPSOURCE"]}libro/calificar",
+            "url": "http://localhost:8080/libro/calificar",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",
@@ -449,7 +455,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "${application["IPSOURCE"]}listaPreferenciaLibro/agregarElemento",
+            "url": "http://localhost:8080/listaPreferenciaLibro/agregarElemento",
             "method": "POST",
             "headers": {
                 "cache-control": "no-cache",

@@ -8,20 +8,92 @@
       <foaf:topic>autor</foaf:topic>
       <foaf:primaryTopic>1</foaf:primaryTopic>
     </foaf:Document>
-    <foaf:family_name>Jaime Tamayo</foaf:family_name>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFvaneurdb@hotmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:vaneurdb@hotmail.com"/>
+        <foaf:family_name>Jaime Tamayo</foaf:family_name>
+        <foaf:name>Vanesa</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+    </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
       <foaf:topic>book</foaf:topic>
       <foaf:primaryTopic>2</foaf:primaryTopic>
     </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
-      <foaf:primaryTopic>1</foaf:primaryTopic>
-      <foaf:topic>book</foaf:topic>
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
     </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
       <foaf:primaryTopic>1</foaf:primaryTopic>
       <foaf:topic>autor</foaf:topic>
     </foaf:Document>
-    <foaf:mbox rdf:resource="mailto:vaneurdb@hotmail.com"/>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:givenname>Vanesa</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:name>Vanesa Jaime Tamayo</foaf:name>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
     <foaf:knows>
       <foaf:Person>
         <rdfs:seeAlso rdf:resource="http://localhost:8081/assets/modeloFOAFivan@hotmail.com.rdf"/>
@@ -31,38 +103,58 @@
       </foaf:Person>
     </foaf:knows>
     <foaf:Document rdf:parseType="Resource">
-      <foaf:topic>book</foaf:topic>
       <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
     </foaf:Document>
-    <foaf:givenname>Vanesa</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
       <foaf:topic>book</foaf:topic>
       <foaf:primaryTopic>2</foaf:primaryTopic>
     </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
-      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
       <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:mbox rdf:resource="mailto:vaneurdb@hotmail.com"/>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
     </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
       <foaf:primaryTopic>1</foaf:primaryTopic>
       <foaf:topic>autor</foaf:topic>
     </foaf:Document>
-    <foaf:name>Vanesa Jaime Tamayo</foaf:name>
-    <foaf:Document rdf:parseType="Resource">
-      <foaf:primaryTopic>2</foaf:primaryTopic>
-      <foaf:topic>book</foaf:topic>
-    </foaf:Document>
-    <foaf:Document rdf:parseType="Resource">
-      <foaf:primaryTopic>1</foaf:primaryTopic>
-      <foaf:topic>book</foaf:topic>
-    </foaf:Document>
+    <foaf:family_name>Jaime Tamayo</foaf:family_name>
     <foaf:Document rdf:parseType="Resource">
       <foaf:topic>book</foaf:topic>
       <foaf:primaryTopic>2</foaf:primaryTopic>
     </foaf:Document>
     <foaf:Document rdf:parseType="Resource">
       <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
       <foaf:primaryTopic>1</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
     </foaf:Document>
   </foaf:Person>
 </rdf:RDF>
