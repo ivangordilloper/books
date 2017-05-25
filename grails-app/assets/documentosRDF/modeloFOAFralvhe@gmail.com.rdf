@@ -3,10 +3,54 @@
     xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <foaf:Person rdf:about="http://localhost:8081/assets/modeloFOAFralvhe@gmail.com.rdf">
-    <foaf:mbox rdf:resource="mailto:ralvhe@gmail.com"/>
-    <foaf:family_name>Alvarado Hernandez</foaf:family_name>
+  <foaf:Person rdf:about="http://localhost:8080/assets/modeloFOAFralvhe@gmail.com.rdf">
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>book</foaf:topic>
+      <foaf:primaryTopic>7</foaf:primaryTopic>
+    </foaf:Document>
     <foaf:givenname>Rodrigo</foaf:givenname>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>2</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid_ivan@hotmail.com.rdf"/>
+        <foaf:mbox rdf:resource="mailto:raid_ivan@hotmail.com"/>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:name>Ivan</foaf:name>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:family_name>Alvarado Hernandez</foaf:family_name>
     <foaf:name>Rodrigo Alvarado Hernandez</foaf:name>
+    <foaf:mbox rdf:resource="mailto:ralvhe@gmail.com"/>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>5</foaf:primaryTopic>
+      <foaf:topic>autor</foaf:topic>
+    </foaf:Document>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:topic>autor</foaf:topic>
+      <foaf:primaryTopic>8</foaf:primaryTopic>
+    </foaf:Document>
+    <foaf:knows>
+      <foaf:Person>
+        <foaf:name>Ivan</foaf:name>
+        <foaf:family_name>Gordillo Perez</foaf:family_name>
+        <foaf:mbox rdf:resource="mailto:raid.ivan.gor@gmail.com"/>
+        <rdfs:seeAlso rdf:resource="http://localhost:8080/assets/modeloFOAFraid.ivan.gor@gmail.com.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:Document rdf:parseType="Resource">
+      <foaf:primaryTopic>6</foaf:primaryTopic>
+      <foaf:topic>book</foaf:topic>
+    </foaf:Document>
   </foaf:Person>
 </rdf:RDF>
